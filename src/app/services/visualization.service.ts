@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VisualizationService {
 
-  apiURL: string = "http://3.226.243.38:8081";
+  apiURL: string = 'http://3.226.243.38:8081';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class VisualizationService {
   }
 
   addVisualization(name: string, cirriculaList: Array<any>): Observable<any> {
-    let visualizationDTO = {
+    const visualizationDTO = {
       visualizationName: name,
       cirriculumList: cirriculaList
     }
@@ -28,7 +28,7 @@ export class VisualizationService {
   }
 
   updateVisualization(id: number, name: string, cirriculaList: Array<any>): Observable<any> {
-    let visualizationDTO = {
+    const visualizationDTO = {
       visualizationId: id,
       visualizationName: name,
       cirriculumList: cirriculaList

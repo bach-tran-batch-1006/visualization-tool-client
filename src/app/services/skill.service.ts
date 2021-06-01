@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SkillService {
 
-  apiURL: string = "http://3.226.243.38:8081";
+  apiURL: string = 'http://3.226.243.38:8081';
 
   constructor(private httpClient: HttpClient) { }
 

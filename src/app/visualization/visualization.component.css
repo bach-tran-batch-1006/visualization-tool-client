@@ -1,0 +1,22 @@
+.height {
+    display: flex;
+    min-height: 100%;
+}
+
+.leftColumn {
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.rightColumnRows {
+    height: 50%;
+    margin-bottom: 0;
+}

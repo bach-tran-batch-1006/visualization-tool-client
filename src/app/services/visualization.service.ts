@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VisualizationService {
 
-  apiURL: string = 'http://3.226.243.38:8081';
+  apiURL = 'http://3.226.243.38:8081';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class VisualizationService {
     const visualizationDTO = {
       visualizationName: name,
       cirriculumList: cirriculaList
-    }
+    };
     return this.httpClient.post(`${this.apiURL}/visualization`, visualizationDTO);
   }
 
@@ -32,7 +32,7 @@ export class VisualizationService {
       visualizationId: id,
       visualizationName: name,
       cirriculumList: cirriculaList
-    }
+    };
     return this.httpClient.put(`${this.apiURL}/visualization/${id}`, visualizationDTO);
   }
 

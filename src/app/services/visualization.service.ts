@@ -22,7 +22,7 @@ export class VisualizationService {
   addVisualization(name: string, cirriculaList: Array<any>): Observable<any> {
     const visualizationDTO = {
       visualizationName: name,
-      cirriculumList: cirriculaList
+      curriculumList: cirriculaList
     };
     return this.httpClient.post(`${this.apiURL}/visualization`, visualizationDTO);
   }
@@ -31,7 +31,7 @@ export class VisualizationService {
     const visualizationDTO = {
       visualizationId: id,
       visualizationName: name,
-      cirriculumList: cirriculaList
+      curriculumList: cirriculaList
     };
     return this.httpClient.put(`${this.apiURL}/visualization/${id}`, visualizationDTO);
   }

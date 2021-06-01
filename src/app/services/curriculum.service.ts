@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CirriculumService {
+export class CurriculumService {
 
   apiURL = 'http://3.226.243.38:8081';
 

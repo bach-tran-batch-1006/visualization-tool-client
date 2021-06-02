@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VisualizationService {
 
-  apiURL = 'http://3.226.243.38:8081';
+  // apiURL = 'http://3.226.243.38:8081';
+  apiURL = 'http://localhost:8081';
 
   constructor(private httpClient: HttpClient) { }
 

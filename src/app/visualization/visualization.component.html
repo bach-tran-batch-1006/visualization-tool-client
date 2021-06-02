@@ -1,14 +1,21 @@
 <div class="container box m-5">
-    <input type="button" value="Submit">
+    <div class="select" *ngIf="visualizations">
+        <select [(ngModel)]="selected" (change)="changeVis($event)">
+            <option [value]="0" disabled>Select a Visualization</option>
+            <option *ngFor="let vis of visualizations" [value]="vis.visualizationId">
+                {{vis.visualizationName}}
+            </option>
+        </select>
+    </div>
 </div>
 <div class="container m-5">
     <div class="columns box">
         <div class="column box leftColumn mb-0 is-6-desktop">
-            <app-curriculum></app-curriculum>
+            <app-curriculum [visualizationId]="visualizationId"></app-curriculum>
         </div>
         <div class="column box rightColumn is-6-desktop">
             <div class="row box rightColumnRows">
-                <app-skill></app-skill>
+                <app-skill [visualizationId]="visualizationId"></app-skill>
             </div>
             <div class="row box rightColumnRows">
                 <app-category></app-category>

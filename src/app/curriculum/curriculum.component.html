@@ -1,3 +1,7 @@
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus error tenetur soluta optio. Aspernatur veritatis praesentium repellat quibusdam, minima architecto aliquid ut? Vel, ea explicabo.</p>
-<p *ngIf="visualizationId == 0">No Visualization Selected</p>
-<input *ngIf="visualizationId != 0" [(ngModel)]="visualizationId">
+<ul>
+    <ng-container *ngFor="let curriculum of curriculumList">
+        <li id="button" class="column box leftColumn mb-0 is-full"><a>{{ curriculum.curriculumName }}</a></li>
+    </ng-container>
+</ul>
+
+<!-- {{visualizationId}} -->

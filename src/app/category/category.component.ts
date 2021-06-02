@@ -19,12 +19,14 @@ export class CategoryComponent implements OnInit {
     {
       id:2,
       categoryName:"DevOps",
-      categoryDescription:"Developement and Operations"
+      categoryDescription:"Developement and Operations",
+      categoryColor:"#e59372"
     },
     {
       id:3,
       categoryName:"Frontend",
-      categoryDescription:"Client Side Frameworks"
+      categoryDescription:"Client Side Frameworks",
+      categoryColor:"#e59372"
     }
   ];
   constructor(private categoryService: CategoryService) { 

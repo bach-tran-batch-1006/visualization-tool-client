@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,25 +8,26 @@ import { HttpClient } from '@angular/common/http';
 export class CategoryService {
 
   apiURL = 'http://3.226.243.38:8081/category/';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
 
   constructor(private httpClient: HttpClient) { }
 
-  getCategories(){
-    return this.httpClient.get<Object[]>(this.apiURL);
+  getCategories():Observable<[]>{
+    return this.httpClient.get<[]>(this.apiURL);
   }
 
-  addCategory(bodyObject: object){
-    return this.httpClient.post<Object[]>(this.apiURL,
-    bodyObject);
+  addCategory(bodyObject: object):Observable<object>{
+    return this.httpClient.post<object>(this.apiURL,bodyObject, this.httpOptions);
   }
 
-  updateCategory(id: number, bodyObject: object){
-    return this.httpClient.put<Object[]>(this.apiURL+id,
-    bodyObject);
+  updateCategory(id: number, bodyObject: object):Observable<object>{
+    return this.httpClient.put<object>(this.apiURL+id,bodyObject, this.httpOptions);
   }
 
-  deleteCategory(id: number, bodyObject: object){
-    return this.httpClient.delete<Object[]>(this.apiURL+id,
-    bodyObject);
+  deleteCategory(id: number){
+    return this.httpClient.delete(this.apiURL+id);
   }
 }

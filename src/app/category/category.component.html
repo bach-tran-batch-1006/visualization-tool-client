@@ -1,6 +1,6 @@
 <h1>Categories</h1>
-<div>
-    <ul *ngFor="let item of categoryList" class="is-flex">
-        <li [attr.category-id]="item.id"><input type="color" [value]="item.categoryColor" class="tag">{{item.categoryName}}</li>
+<div class="scroll">
+    <ul>
+        <li [attr.category-id]="item.id" *ngFor="let item of categoryList"><input type="color" [value]="randColor()" class="tag">{{item.categoryName}}</li>
     </ul>
 </div>

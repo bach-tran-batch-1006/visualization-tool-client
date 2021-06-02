@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Curriculum } from 'src/app/models/Curriculum';
 
 @Component({
   selector: 'app-curriculum',
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurriculumComponent implements OnInit {
 
+  @Input() visualizationId: number;
+  curriculumList: Curriculum[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    this.getCurriculumListByVisualizationId();
+  }
+
+  getCurriculumListByVisualizationId(): void {
+    let curriculum1: Curriculum = {
+      curriculumId: 1,
+      curriculumName: "Java With Automation",
+      skillList: ["JUnit"]
+    };
+    let curriculum2: Curriculum = {
+      curriculumId: 2,
+      curriculumName: "Microservices",
+      skillList: [""]
+    };
+    let curriculum3: Curriculum = {
+      curriculumId: 3,
+      curriculumName: "Backend Developer",
+      skillList: [""]
+    };
+    this.curriculumList.push(curriculum1);
+    this.curriculumList.push(curriculum2);
+    this.curriculumList.push(curriculum3);
   }
 
 }

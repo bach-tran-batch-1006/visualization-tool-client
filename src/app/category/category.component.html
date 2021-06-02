@@ -1,1 +1,6 @@
-<p>Category</p>
+<h1>Categories</h1>
+<div class="scroll">
+    <ul>
+        <li [attr.category-id]="item.id" *ngFor="let item of categoryList"><input type="color" [value]="randColor()" class="tag">{{item.categoryName}}</li>
+    </ul>
+</div>

@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Futura-Bold";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Bold.otf) format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Futura-Book";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Book.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "Futura-Heavy";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Heavy.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "Futura-Medium";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Medium.otf) format("truetype");
+    font-size: medium;
+}
+
+#button {
+    font-family: "Futura-Heavy";
+    font-size: 20px;
+    text-align: left;
+    margin: 20px 10px;
+    border-style: none;
+}
+
+#button:focus {
+    font-family: "Futura-Heavy";
+    font-size: 20px;
+    box-shadow: 4px 5px 10px 5px rgba(115, 165, 194, 0.5);
+}
+
+/* #button {
+    font-family: "Futura-Heavy";
+    font-size: 20px;
+    box-shadow: 4px 5px 10px 5px rgba(115, 165, 194, 0.5);
+} */

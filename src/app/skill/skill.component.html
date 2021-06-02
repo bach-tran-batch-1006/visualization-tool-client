@@ -1,1 +1,19 @@
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus error tenetur soluta optio. Aspernatur veritatis praesentium repellat quibusdam, minima architecto aliquid ut? Vel, ea explicabo.</p>
+<!-- <div class="skillDiv">
+    <ul class="navList">
+        <button>Algorithms</button>
+        <button>Angular</button>
+        <button>Apache 2</button>
+        <button>Apache 2</button>
+        <button>Apache 2</button>
+        <button>Apache 2</button>
+        <button>Apache 2</button>
+        <button>CSS</button>
+        <button>Object Oriented Programming</button>
+    </ul>
+</div> -->
+
+<ul>
+    <ng-container *ngFor="let skill of skillList">
+        <li id="button" class="navList"><button>{{ skill.skillName }}</button></li>
+    </ng-container>
+</ul>

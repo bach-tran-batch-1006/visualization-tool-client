@@ -1,1 +1,6 @@
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus error tenetur soluta optio. Aspernatur veritatis praesentium repellat quibusdam, minima architecto aliquid ut? Vel, ea explicabo.</p>
+<h1>Categories</h1>
+<div>
+    <ul *ngFor="let item of categoryList" class="is-flex">
+        <li [attr.category-id]="item.id"><input type="color" [value]="item.categoryColor" class="tag">{{item.categoryName}}</li>
+    </ul>
+</div>

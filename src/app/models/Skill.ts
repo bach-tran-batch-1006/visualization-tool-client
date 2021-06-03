@@ -1,5 +1,8 @@
+import { Category } from "./Category";
+
 export interface Skill {
     skillId: number;
     skillName: string;
-    category: any;
+    category: Category;
+    isActive: boolean;
 }

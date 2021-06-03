@@ -11,14 +11,16 @@
 <div class="container m-5">
     <div class="columns box">
         <div class="column box leftColumn mb-0 is-6-desktop">
-            <app-curriculum class="is-full" style="width:85%" [visualizationId]="visualizationId"></app-curriculum>
+            <app-curriculum class="is-full" style="width:85%" [currentCurriculumList]="currentCurriculumList" (currentCurriculumId)="changeCurriculumEvent($event)"></app-curriculum>
+            <!-- <app-curriculum class="is-full" style="width:85%" [visualizationId]="visualizationId"></app-curriculum> -->
         </div>
         <div class="column box rightColumn is-6-desktop">
             <div class="row box rightColumnRows">
-                <app-skill [visualizationId]="visualizationId"></app-skill>
+                <app-skill [currentSkillList]="distinctSkillList" [activeSkillList]="currentSkillList"></app-skill>
+                <!-- <app-skill [visualizationId]="visualizationId"></app-skill> -->
             </div>
             <div class="row box rightColumnRows">
-                <app-category></app-category>
+                <app-category [currentCategoryList]="distinctCategoryList"></app-category>
             </div>
         </div>
     </div>

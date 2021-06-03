@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Category } from '../models/Category';
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -29,6 +30,9 @@ export class CategoryComponent implements OnInit {
       categoryColor:"#e59372"
     }
   ];
+
+  @Input() currentCategoryList: Category[] = [];
+
   constructor(private categoryService: CategoryService) { 
     
   }

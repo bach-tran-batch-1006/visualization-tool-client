@@ -12,12 +12,10 @@
     <div class="columns box">
         <div class="column box leftColumn mb-0 is-6-desktop">
             <app-curriculum class="is-full" style="width:85%" [currentCurriculumList]="currentCurriculumList" (currentCurriculumId)="changeCurriculumEvent($event)"></app-curriculum>
-            <!-- <app-curriculum class="is-full" style="width:85%" [visualizationId]="visualizationId"></app-curriculum> -->
         </div>
         <div class="column box rightColumn is-6-desktop">
             <div class="row box rightColumnRows">
                 <app-skill [currentSkillList]="distinctSkillList" [activeSkillList]="currentSkillList"></app-skill>
-                <!-- <app-skill [visualizationId]="visualizationId"></app-skill> -->
             </div>
             <div class="row box rightColumnRows">
                 <app-category [currentCategoryList]="distinctCategoryList"></app-category>

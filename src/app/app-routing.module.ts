@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryComponent } from './category/category.component';
-import { CurriculumComponent } from './curriculum/curriculum.component';
-import { SkillComponent } from './skill/skill.component';
-import { VisualizationViewComponent } from './visualization-view/visualization-view.component';
+import { CurriculumEditComponent } from './curriculum-edit/curriculum-edit.component';
+import { SkillCategoryEditComponent } from './skill-category-edit/skill-category-edit.component';
+import { VisualizationEditComponent } from './visualization-edit/visualization-edit.component';
 import { VisualizationComponent } from './visualization/visualization.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
-  { path: 'category', component: CategoryComponent },
-  { path: 'curriculum', component: CurriculumComponent },
-  { path: 'skill', component: SkillComponent },
-  { path: 'visualization', component: VisualizationComponent },
-  { path: 'visualization/:id', component: VisualizationViewComponent }
+  { path: '', redirectTo: '/edit/visualization', pathMatch: 'full' },
+  { path: 'navbar', component: NavbarComponent },
+  { path: 'edit/curriculum', component: CurriculumEditComponent },
+  { path: 'edit/skill-category', component: SkillCategoryEditComponent },
+  { path: 'edit/visualization', component: VisualizationEditComponent },
+  { path: 'visualization/:id', component: VisualizationComponent }
 ];
 
 @NgModule({

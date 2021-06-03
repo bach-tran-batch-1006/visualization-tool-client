@@ -34,29 +34,6 @@ export class VisualizationComponent implements OnInit {
   ngOnInit(): void {
     this.visualizationService.getAllVisualizations().subscribe((response) => {
       this.visualizations = response;
-      // console.log(this.visualizations);
-
-      // for (let visualization of this.visualizations){
-      //   for (let curriculum of visualization.curriculumList){
-      //     this.duplicateSkillList.push.apply(this.duplicateSkillList, curriculum.skillList);
-      //     // this.duplicateCategoryList.push.apply(this.duplicateCategoryList, curriculum.skillList);
-      //   }
-      // }
-      // for (let skill of this.duplicateSkillList){
-      //   this.duplicateCategoryList.push(skill.category);
-      // }
-      // // console.log(this.duplicateSkillList);
-      // this.distinctSkillList = this.duplicateSkillList.filter((skill, index, self) =>
-      //   index === self.findIndex((t) => (
-      //     t.skillId === skill.skillId
-      //   ))
-      // )
-      // this.distinctCategoryList = this.duplicateCategoryList.filter((category, index, self) =>
-      //   index === self.findIndex((t) => (
-      //     t.categoryId === category.categoryId
-      //   ))
-      // )
-      // console.log(this.currentCategoryList);
     });
   }
 
@@ -80,7 +57,6 @@ export class VisualizationComponent implements OnInit {
     for (let skill of this.duplicateSkillList){
       this.duplicateCategoryList.push(skill.category);
     }
-    // console.log(this.duplicateSkillList);
     this.distinctSkillList = this.duplicateSkillList.filter((skill, index, self) =>
       index === self.findIndex((t) => (
         t.skillId === skill.skillId
@@ -91,11 +67,9 @@ export class VisualizationComponent implements OnInit {
         t.categoryId === category.categoryId
       ))
     )
-    
   }
 
   changeCurriculumEvent(currentCurriculumId: number) {
-    // console.log("Current Curriculum Id from Visualization: "+currentCurriculumId);
     for (let curriculum of this.currentVisualization.curriculumList){
       if( currentCurriculumId === curriculum.curriculumId){
         this.currentSkillList = curriculum.skillList;

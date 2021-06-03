@@ -1,4 +1,4 @@
-.navList button {
+.skillList button {
     display: inline;
     list-style-type: none;
     padding-right: 20px;
@@ -9,13 +9,7 @@
     padding: 3px 10px;
     text-align: center;
     overflow-wrap: break-word;
-}
-
-.skillDiv {
     width: auto;
-}
-
-li {
     font-family: "Futura-Heavy";
     font-size: 20px;
 }

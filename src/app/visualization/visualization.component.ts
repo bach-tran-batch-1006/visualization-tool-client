@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Category } from '../models/Category';
 import { Curriculum } from '../models/Curriculum';
 import { Skill } from '../models/Skill';
@@ -14,68 +15,52 @@ import { VisualizationService } from '../services/visualization.service';
 export class VisualizationComponent implements OnInit {
 
   visualizationId: number = 0;
-  visualizations: Visualization[] = null;
 
   currentVisualization: Visualization;
   currentCurriculumList: Curriculum[] = null;
   selected: number = 0;
 
-  duplicateSkillList: Skill[] = [];
   distinctSkillList: Skill[] = [];
-
-  duplicateCategoryList: Category[] = [];
   distinctCategoryList: Category[] = [];
 
   currentCurriculumId: number;
   currentSkillList: Skill[] = [];
 
-  constructor(private visualizationService: VisualizationService) { }
+  categoryColorList: String[] = [];
+
+  constructor(private visualizationService: VisualizationService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.visualizationService.getAllVisualizations().subscribe((response) => {
-      this.visualizations = response;
+    this.visualizationId = Number(this.route.snapshot.paramMap.get("id"));
+    this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
+      console.log(response);
+      this.currentVisualization = response;
+      this.currentCurriculumList = response.curriculumList;
+      this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
     });
-  }
-
-  changeVis(event): void {
-    this.visualizationId = event.target.value;
-    for (let visualization of this.visualizations){
-      if(visualization.visualizationId == this.visualizationId){
-        this.currentVisualization = visualization;
+    this.visualizationService.getAllUniqueSkillsByVisualization(this.visualizationId).subscribe((response) => {
+      this.distinctSkillList = response;
+    });
+    this.visualizationService.getAllUniqueCategoriesByVisualization(this.visualizationId).subscribe((response) => {
+      this.distinctCategoryList = response;
+      let total = Math.floor(360 / this.distinctCategoryList.length);
+      for (let idx = 0; idx < this.distinctCategoryList.length; idx++) {
+        this.categoryColorList.push(this.randColor(idx, total));
       }
-    }
-    this.currentCurriculumList = this.currentVisualization.curriculumList;
-
-    this.duplicateSkillList = [];
-    this.duplicateCategoryList = [];
-    this.distinctSkillList = [];
-    this.distinctCategoryList = [];
-
-    for (let curriculum of this.currentVisualization.curriculumList){
-      this.duplicateSkillList.push.apply(this.duplicateSkillList, curriculum.skillList);
-    }
-    for (let skill of this.duplicateSkillList){
-      this.duplicateCategoryList.push(skill.category);
-    }
-    this.distinctSkillList = this.duplicateSkillList.filter((skill, index, self) =>
-      index === self.findIndex((t) => (
-        t.skillId === skill.skillId
-      ))
-    )
-    this.distinctCategoryList = this.duplicateCategoryList.filter((category, index, self) =>
-      index === self.findIndex((t) => (
-        t.categoryId === category.categoryId
-      ))
-    )
+      console.log("colorList", this.categoryColorList);
+    });
   }
 
   changeCurriculumEvent(currentCurriculumId: number) {
     for (let curriculum of this.currentVisualization.curriculumList){
       if( currentCurriculumId === curriculum.curriculumId){
         this.currentSkillList = curriculum.skillList;
-        console.log(this.currentSkillList);
       }
     }
+  }
+
+  randColor(i: number, total: number){
+    return "hsl(" + i * total + ", 50%, 75%)";
   }
 
 }

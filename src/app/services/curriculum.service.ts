@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Curriculum } from '../models/Curriculum';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +13,8 @@ export class CurriculumService {
   constructor(private httpClient: HttpClient) { }
 
 
+  getAllCurriculum(): Observable<Curriculum[]> {
+    return this.httpClient.get<Curriculum[]>(`${this.apiURL}/curriculum`);
+  }
 
 }

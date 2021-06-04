@@ -1,0 +1,77 @@
+
+
+@font-face {
+    font-family: "Futura-Bold";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Bold.otf) format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Futura-Book";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Book.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "Futura-Heavy";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Heavy.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "Futura-Medium";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Medium.otf) format("truetype");
+    font-size: medium;
+}
+
+
+*{
+    font-family:"Futura-Medium", "Futura-Book" ;
+}
+
+
+
+legend{
+    font-family:"Futura-Bold" , "Futura-Heavy";
+}
+
+
+
+.containerflex{
+
+    margin-top: 20px;
+    min-height: 80vh;
+     height: auto;
+  
+
+    
+}
+
+.columnheight{
+    min-height: 100%;
+
+}
+
+.borders{
+    border: 1px solid black; 
+}
+
+.boxcolumn{
+margin-top: 10px;
+ /*background-color: blue;*/
+ height: auto;
+ margin-right: 1px;
+ margin-left: 1px;
+}
+
+.editbottom{
+    width: 100%;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.vLable{
+    margin-right: 4px;
+}
+.cLabel{
+    margin-left: 4px;
+}

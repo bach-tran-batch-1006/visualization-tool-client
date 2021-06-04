@@ -1,3 +1,53 @@
 <app-navbar></app-navbar>
 
-<p>visualization-edit works!</p>
+
+
+
+
+<fieldset class="container is-fluid containerflex borders">
+    <legend>Visualization</legend>
+    <div class="columns columnheight row ">
+    
+        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <legend>Visualization-Edit</legend>
+            <ul >
+                <li *ngFor="let vs of vList">
+                    <input type="radio"  [value]="vs.visualizationId" name="visualizationlist" (change)="ToggleCheckBox($event)" />
+                   <label class="vLabel" for="visualizationname"> {{ vs.visualizationName}}</label>
+                </li>
+                
+                
+            </ul>
+        </fieldset>
+
+        <fieldset class="column  borders boxcolumn is-6-desktop is-12-mobile">
+            <legend>Curriculum</legend>
+            <uL>
+
+             
+                <li *ngFor="let Curriculum of cList">
+                    <input type="checkbox" name="curriculumlist" />
+                    <label class="cLabel">{{ Curriculum.curriculumName}}</label>
+
+                </li>
+
+            </uL>
+        </fieldset>
+
+
+    </div>
+
+    <div class="row">
+       
+            <div class="editbottom">
+                <button>New</button>
+                <button> Update</button>
+                <input placeholder="name"/>
+                <button>Remove</button>
+                <button>View Visualization</button>
+             </div>
+    
+           
+    </div>
+    
+</fieldset>

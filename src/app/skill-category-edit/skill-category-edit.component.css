@@ -1,0 +1,46 @@
+
+
+.containerflex{
+
+    margin-top: 20px;
+    min-height: 80vh;
+     height: auto;
+  
+
+    
+}
+
+.columnheight{
+    min-height: 100%;
+
+}
+
+.borders{
+    border: 1px solid black; 
+}
+
+.boxcolumn{
+margin-top: 10px;
+ /*background-color: blue;*/
+ height: auto;
+ margin-right: 1px;
+ margin-left: 1px;
+}
+
+.editbottom{
+    width: 100%;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.skillLabel{
+    margin-right: 4px;
+}
+.categoryLabel{
+    margin-left: 4px;
+}
+
+.add-input {
+   border-color: #00d1b2;
+}

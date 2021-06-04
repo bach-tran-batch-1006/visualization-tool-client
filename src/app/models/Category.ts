@@ -4,3 +4,8 @@ export interface Category {
     categoryDescription: string;
     categoryColor: string;
 }
+
+export interface CategoryDTO {
+    categoryName: string;
+    categoryDescription: string;
+}

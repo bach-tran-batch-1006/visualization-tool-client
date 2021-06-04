@@ -6,3 +6,8 @@ export interface Skill {
     category: Category;
     isActive: boolean;
 }
+
+export interface SkillDTO {
+    name: string;
+    category: Category;
+}

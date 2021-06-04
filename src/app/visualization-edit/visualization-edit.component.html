@@ -25,8 +25,8 @@
             <uL>
 
              
-                <li *ngFor="let Curriculum of cList">
-                    <input type="checkbox" name="curriculumlist" />
+                <li *ngFor="let Curriculum of cList; let i = index">
+                    <input type="checkbox" name="curriculumlist" id="{{'checkbox' + i}}"/>
                     <label class="cLabel">{{ Curriculum.curriculumName}}</label>
 
                 </li>
@@ -40,9 +40,9 @@
     <div class="row">
        
             <div class="editbottom">
-                <button>New</button>
+                <button (click)="addVisualization()">New</button>
                 <button> Update</button>
-                <input placeholder="name"/>
+                <input [(ngModel)]="nameInput" placeholder="name"/>
                 <button>Remove</button>
                 <button>View Visualization</button>
              </div>

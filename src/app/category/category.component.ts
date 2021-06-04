@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Category } from '../models/Category';
 
 @Component({
@@ -6,17 +6,16 @@ import { Category } from '../models/Category';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnChanges {
 
   @Input() currentCategoryList: Category[] = [];
+  @Input() categoryColorList: String[] = [];
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    console.log("cat component", this.categoryColorList);
+    console.log("cat component", this.currentCategoryList);
   }
 
-  randColor(){
-    let number = Math.floor(Math.random()*16777215).toString(16);
-    return "#"+number;
-  }
 }

@@ -52,8 +52,10 @@ export class SkillCategoryEditComponent implements OnInit {
     this.skillService.getSkills().subscribe((response) => {
       this.skillList = response;
       this.skillList.sort((a, b) => (a.skillName.toLowerCase() > b.skillName.toLowerCase()) ? 1 : -1);
-      for (let skill of this.skillList) {
-        skill.isActive = false;
+      // for (let skill of this.skillList) {
+      let listSize = this.skillList.length;
+      for (let index = 0; index < listSize; index++) {
+        this.skillList[index].isActive = false;
       }
     });
   }
@@ -133,11 +135,20 @@ export class SkillCategoryEditComponent implements OnInit {
   }
 
   deleteSkill() {
-    console.log();
+    for(let skill of this.skillList){
+      if(skill.isActive){
+        console.log(skill);
+      }
+    }
   }
 
-  showSkillList(){
-    console.log(this.skillList);
+  toggleSkill(selectSkillId) {
+    let listSize = this.skillList.length;
+    for(let index = 0; index < listSize; index++){
+      if(this.skillList[index].skillId === selectSkillId){
+        this.skillList[index].isActive = !this.skillList[index].isActive;
+      }
+    }
   }
 
 }

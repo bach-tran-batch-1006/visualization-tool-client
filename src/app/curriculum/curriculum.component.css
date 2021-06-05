@@ -20,7 +20,7 @@
     font-size: medium;
 }
 
-#button {
+.button {
     font-family: "Futura-Heavy";
     font-size: 20px;
     text-align: left;
@@ -28,10 +28,22 @@
     border-style: none;
 }
 
-#button:focus {
-    font-family: "Futura-Heavy";
-    font-size: 20px;
-    box-shadow: 4px 5px 10px 5px rgba(115, 165, 194, 0.5);
+.curriculum-button{
+    display: none;
+}
+
+.curriculum-button + .curriculum-button-input{
+    border-radius: 5px;
+    box-shadow: 4px 5px 10px 5px rgba(184, 183, 201, 0.4);
+    transition: box-shadow 0.3s;
+}
+
+.curriculum-button:hover + .curriculum-button-input{
+    box-shadow: 4px 5px 10px 5px rgba(184, 183, 201, 0.6);
+}
+
+.curriculum-button:checked + .curriculum-button-input{
+    box-shadow: 4px 5px 10px 5px rgba(156, 156, 173, 1);
 }
 
 /* #button {

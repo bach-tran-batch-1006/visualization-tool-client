@@ -144,7 +144,6 @@ export class VisualizationEditComponent implements OnInit {
 
 updateVS(){
   let vNameElement=  <HTMLInputElement> document.getElementById("vsname");
-
 if(this.ActiveVs!=undefined)
 this.vservice.updateVisualization(this.ActiveVs.visualizationId, vNameElement.value, this.CheckCurList).subscribe(
   (response) =>{

@@ -1,0 +1,9 @@
+.brand-logo {
+    width: 200px;
+    height: auto;
+}
+
+li, a {
+    color: #F26925;
+    font-family: "Futura-Bold";
+}

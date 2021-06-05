@@ -1,5 +1,14 @@
-<ul>
-    <ng-container *ngFor="let curriculum of curriculumList">
-        <li id="button" class="column box leftColumn mb-0 is-full" (click)="changeCurrentCurriculum(curriculum.curriculumId)"><a>{{ curriculum.curriculumName }}</a></li>
-    </ng-container>
-</ul>
+<ng-container *ngFor="let curriculum of curriculumList; let idx = index">
+    <label (click)="changeCurrentCurriculum(curriculum.curriculumId)">
+        <input
+            class="curriculum-button"
+            type="radio"
+            name="curriculum-input"
+            value="{{ curriculum.curriculumName }}"
+            [checked]="(idx === 0)"
+        >
+        <div class="button curriculum-button-input column leftColumn mb-0 is-full">
+            <p>{{ curriculum.curriculumName }}</p>
+        </div>
+    </label>
+</ng-container>

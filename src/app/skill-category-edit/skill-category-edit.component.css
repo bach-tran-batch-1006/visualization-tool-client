@@ -1,12 +1,13 @@
-
+ 
+/* button{
+    color: #FFF;
+} */
 
 .containerflex{
 
     margin-top: 20px;
     min-height: 80vh;
      height: auto;
-  
-
     
 }
 

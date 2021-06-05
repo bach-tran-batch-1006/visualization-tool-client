@@ -35,15 +35,18 @@
 .curriculum-button + .curriculum-button-input{
     border-radius: 5px;
     box-shadow: 4px 5px 10px 5px rgba(184, 183, 201, 0.4);
-    transition: box-shadow 0.3s;
+    opacity: 65%;
+    transition: box-shadow 0.3s, opacity 0.3s;
 }
 
 .curriculum-button:hover + .curriculum-button-input{
     box-shadow: 4px 5px 10px 5px rgba(184, 183, 201, 0.6);
+    opacity: 80%;
 }
 
 .curriculum-button:checked + .curriculum-button-input{
     box-shadow: 4px 5px 10px 5px rgba(156, 156, 173, 1);
+    opacity: 100%;
 }
 
 /* #button {

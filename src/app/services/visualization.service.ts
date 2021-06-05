@@ -31,9 +31,8 @@ export class VisualizationService {
 
   updateVisualization(id: number, name: string, cirriculaList: Array<any>): Observable<any> {
     const visualizationDTO = {
-      visualizationId: id,
-      visualizationName: name,
-      curriculumList: cirriculaList
+       title:name,
+      curricula: cirriculaList
     };
     return this.httpClient.put(`${this.apiURL}/visualization/${id}`, visualizationDTO);
   }

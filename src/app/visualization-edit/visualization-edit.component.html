@@ -12,8 +12,8 @@
             <legend>Visualization-Edit</legend>
             <ul >
                 <li *ngFor="let vs of vList">
-                    <input type="radio"  [value]="vs.visualizationId" name="visualizationlist" (change)="ToggleCheckBox($event)" />
-                   <label class="vLabel" for="visualizationname"> {{ vs.visualizationName}}</label>
+                    <input type="radio"  [value]="vs.visualizationId" name="visualizationlist" (change)="ToggleCheckBox($event, vs)" />
+                   <label  class="vLabel" for="visualizationname"> {{ vs.visualizationName}}</label>
                 </li>
                 
                 
@@ -26,7 +26,7 @@
 
              
                 <li *ngFor="let Curriculum of cList; let i = index">
-                    <input type="checkbox" name="curriculumlist" id="{{'checkbox' + i}}"/>
+                    <input type="checkbox" name="curriculumlist" id="{{Curriculum.curriculumId }}" (click)="ClickCheckBox( $event, Curriculum)"/>
                     <label class="cLabel">{{ Curriculum.curriculumName}}</label>
 
                 </li>
@@ -41,8 +41,8 @@
        
             <div class="editbottom">
                 <button (click)="addVisualization()">New</button>
-                <button> Update</button>
-                <input [(ngModel)]="nameInput" placeholder="name"/>
+                <button (click)="updateVS()"> Update </button>
+                <input  id="vsname" [(ngModel)]="nameInput" placeholder="name"/>
                 <button>Remove</button>
                 <button>View Visualization</button>
              </div>

@@ -8,7 +8,7 @@
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Skill-Edit</legend>
             <ul>
-                <button (click)="clearSkillRadio()">clear selection</button>
+                <button class="button is-small btn-light-gray" (click)="clearSkillRadio()">clear selection</button>
                 <li *ngFor="let skill of skillList; let i = index">
                     <!-- <input type="checkbox" [value]="skill" [checked]="skill.isActive" name="skillCheckboxes" (click)="toggleSkill(skill.skillId)" /> -->
                     <label class="skillLabel" for="skill_{{skill.skillId}}">
@@ -24,7 +24,7 @@
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Category-Edit</legend>
             <ul>
-                <button (click)="clearCategoryRadio()">clear selection</button>
+                <button class="button is-small btn-light-gray" (click)="clearCategoryRadio()">clear selection</button>
                 <li *ngFor="let category of categoryList; let i = index">
                     <label class="categoryLabel" for="category_{{category.categoryId}}">
                         <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList" [(ngModel)]="selectedCategory" (change)="displayCategory()"/>
@@ -45,19 +45,24 @@
                 <div class="columns">
                     <div class="column">
                         <div class="buttons">
-                            <button class="button is-small has-background-primary" [ngClass]="showAddSkill? 'is-active' : ''" (click)="toggleAddSkill()">Add Skill</button>
-                            <button class="button is-small has-background-info" [ngClass]="showUpdateSkill? 'is-active' : ''" (click)="toggleUpdateSkill()" >Update Skill</button>
+                            <button class="button is-small btn-add" [ngClass]="showAddSkill? 'is-active' : ''" (click)="toggleAddSkill()">Add Skill</button>
+                            <button class="button is-small btn-update" [ngClass]="showUpdateSkill? 'is-active' : ''" (click)="toggleUpdateSkill()" >Update Skill</button>
                             <button class="button is-small has-background-danger" (click)="deleteSkill()">Remove</button>
                         </div>
                     </div>
                     <div class="column">
+                        <ng-container *ngIf="showSkillDeleteFail">
+                            <p class="help has-text-danger">Please select a skill to delete.</p>
+                        </ng-container>
                         <ng-container *ngIf="showAddSkill">
-                            <input class="input is-primary" placeholder="Skill Name" [(ngModel)]="skillNameAdd"/>
-                            <button class="button is-small has-background-primary" (click)="addSkill()">Submit</button>
+                            <input class="input add-input mb-1" placeholder="Skill Name" [(ngModel)]="skillNameAdd"/>
+                            <p class="help add-skill-help" *ngIf="selectedCategory == null">Please select a category for this skill</p>
+                            <button class="button is-small btn-add" (click)="addSkill()">Submit</button>
                         </ng-container>
                         <ng-container *ngIf="showUpdateSkill">
-                            <input class="input is-info" placeholder="Skill Name" [(ngModel)]="skillNameUpdate"/>
-                            <button class="button is-small has-background-info" (click)="updateSkill()">Save</button>
+                            <input class="input update-input mb-1" placeholder="Skill Name" [(ngModel)]="skillNameUpdate"/>
+                            <p class="help update-skill-help" *ngIf="skillNameUpdate == null">Please select a skill for update</p>
+                            <button class="button is-small btn-update" (click)="updateSkill()">Save</button>
                         </ng-container>
                     </div>
                 </div>
@@ -72,21 +77,24 @@
                 <div class="columns">
                     <div class="column">
                         <div class="buttons">
-                            <button class="button is-small has-background-primary" [ngClass]="showAddCategory? 'is-active' : ''" (click)="toggleAddCategory()">Add Category</button>
-                            <button class="button is-small has-background-info" [ngClass]="showUpdateCategory? 'is-active' : ''" (click)="toggleUpdateCategory()" >Update Category</button>
+                            <button class="button is-small btn-add" [ngClass]="showAddCategory? 'is-active' : ''" (click)="toggleAddCategory()">Add Category</button>
+                            <button class="button is-small btn-update" [ngClass]="showUpdateCategory? 'is-active' : ''" (click)="toggleUpdateCategory()" >Update Category</button>
                             <button class="button is-small has-background-danger" (click)="deleteCategory()">Remove</button>
                         </div>
                     </div>
                     <div class="column">
+                        <ng-container *ngIf="showCategoryDeleteFail">
+                            <p class="help has-text-danger">Please select a skill to delete.</p>
+                        </ng-container>
                         <ng-container *ngIf="showAddCategory">
-                            <input class="input is-primary" placeholder="Category Name" [(ngModel)]="categoryNameAdd"/>
-                            <textarea class="textarea is-primary" placeholder="Category Description" [(ngModel)]="categoryDescriptionAdd" cols="30" rows="5"></textarea>
-                            <button class="button is-small has-background-primary" (click)="addCategory()">Submit</button>
+                            <input class="input add-input mb-1" placeholder="Category Name*" [(ngModel)]="categoryNameAdd"/>
+                            <textarea class="textarea is-small add-input mb-1" placeholder="Category Description*" [(ngModel)]="categoryDescriptionAdd" cols="30" rows="5"></textarea>
+                            <button class="button is-small btn-add" (click)="addCategory()">Submit</button>
                         </ng-container>
                         <ng-container *ngIf="showUpdateCategory">
-                            <input class="input is-info" placeholder="Category Name" [(ngModel)]="categoryName"/>
-                            <textarea class="textarea is-info" placeholder="Category Description" [(ngModel)]="categoryDescription" cols="30" rows="5"></textarea>
-                            <button class="button is-small has-background-info" (click)="updateCategory()">Save</button>
+                            <input class="input update-input mb-1" placeholder="Category Name" [(ngModel)]="categoryName"/>
+                            <textarea class="textarea update-input is-small mb-1" placeholder="Category Description" [(ngModel)]="categoryDescription" cols="30" rows="5"></textarea>
+                            <button class="button is-small btn-update" (click)="updateCategory()">Save</button>
                         </ng-container>
                     </div>
                 </div>

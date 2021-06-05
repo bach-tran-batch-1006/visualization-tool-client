@@ -33,6 +33,8 @@ margin-top: 10px;
     justify-content:space-between;
     align-items: center;
     margin-bottom: 8px;
+    font-family: "Futura-Book";
+    color: #474C55;
 }
 
 .skillLabel{
@@ -43,5 +45,55 @@ margin-top: 10px;
 }
 
 .add-input {
-   border-color: #00d1b2;
+   border-color: #FCB414;
+}
+
+.update-input {
+    border-color: #72A4C2;
+}
+
+legend {
+    font-size: 1.1rem;
+    font-family: "Futura-Bold";
+    color: #474C55;
+}
+
+.btn-add {
+    background-color: #FCB414;
+    color: #474C55;
+}
+
+.btn-update {
+    background-color: #72A4C2;
+    color: #474C55;
+}
+
+.btn-light-gray {
+    background-color: #B9B9BA;
+    color: #474C55;
+}
+
+.column button {
+    border-radius: 4px;
+}
+
+.editbottom button {
+    border-radius: 4px;
+}
+
+.add-skill-help {
+    color: #FCB414;
+}
+
+.update-skill-help {
+    color: #72A4C2;
+}
+
+button {
+    transition: 0.25s;
+}
+
+.buttons button:hover, .buttons button:focus {
+    box-shadow: 0 0.6em 0.75em -0.4em #474C55;
+    transform: translateY(-0.10em);
 }

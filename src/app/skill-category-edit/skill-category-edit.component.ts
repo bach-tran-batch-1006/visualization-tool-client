@@ -17,18 +17,15 @@ export class SkillCategoryEditComponent implements OnInit {
   showUpdateSkill: boolean = false;
 
   skillNameAdd:string;
+  skillName:string;
 
   selectedSkillList: Skill[];
 
-
+  categoryList: Category[] = [];
   showAddCategory:boolean = false;
   showUpdateCategory: boolean = false;
-
-  categoryList: Category[] = [];
-
   categoryNameAdd:string;
   categoryDescriptionAdd:string;
-
   categoryName: string;
   categoryDescription: string;
   selectedCategory: Category;

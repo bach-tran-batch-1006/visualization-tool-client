@@ -5,3 +5,8 @@ export interface Curriculum {
     curriculumName: string;
     skillList: Skill[];
 }
+
+export interface CurriculumDTO {
+    name: string;
+    skillList: Skill[];
+}

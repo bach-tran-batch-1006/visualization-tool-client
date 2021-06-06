@@ -22,17 +22,17 @@ export class VisualizationService {
 
   addVisualization(name: string, cirriculaList: Array<any>): Observable<any> {
     const visualizationDTO = {
-      visualizationName: name,
-      curriculumList: cirriculaList
+      title: name,
+      curricula: cirriculaList
     };
+    console.log(visualizationDTO);
     return this.httpClient.post(`${this.apiURL}/visualization`, visualizationDTO);
   }
 
   updateVisualization(id: number, name: string, cirriculaList: Array<any>): Observable<any> {
     const visualizationDTO = {
-      visualizationId: id,
-      visualizationName: name,
-      curriculumList: cirriculaList
+       title:name,
+      curricula: cirriculaList
     };
     return this.httpClient.put(`${this.apiURL}/visualization/${id}`, visualizationDTO);
   }

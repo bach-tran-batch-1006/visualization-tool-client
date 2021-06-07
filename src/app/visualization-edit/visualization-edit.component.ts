@@ -68,36 +68,34 @@ export class VisualizationEditComponent implements OnInit {
   }
 
   updateVisualization(){
-    // console.log()
-    // this.selectedCurriculumList = [];
-    // let listSize = this.curriculumList.length;
-    // //console.log(this.curriculumList);
-    // for (let index = 0; index < listSize; index++) {
-    //   if(this.curriculumList[index].isActive){
-    //     this.selectedCurriculumList.push(this.curriculumList[index]);
-    //   }
-    // }
-    // // console.log("selected");
-    // // console.log(this.curriculumList);
-    // let visualizationId = this.selectedVisualization.visualizationId;
-    // let visualizationDTO: VisualizationDTO = {
-    //   title: this.visualizationNameUpdate,
-    //   curricula: this.selectedCurriculumList
-    // }
-    // console.log(visualizationDTO);
-    // this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
-    //   this.getAllVisualization();
-    // });
+    // Update Visualization Name works, need to fix curricula
+    this.selectedCurriculumList = [];
+    let listSize = this.curriculumList.length;
+    for (let index = 0; index < listSize; index++) {
+      if(this.curriculumList[index].isActive){
+        this.selectedCurriculumList.push(this.curriculumList[index]);
+      }
+    }
+    let visualizationId = this.selectedVisualization.visualizationId;
+    let visualizationDTO: VisualizationDTO = {
+      title: this.visualizationNameUpdate,
+      curricula: this.selectedCurriculumList
+    }
+    console.log(visualizationDTO);
+    this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
+      this.getAllVisualization();
+    });
   }
 
   deleteVisualization(){
-    // if(this.selectedVisualization){
-    //   this.visualizationService.deleteVisualization(this.selectedVisualization.visualizationId).subscribe((response) => {
-    //     this.getAllCurriculum();
-    //   });
-    // } else {
-    //   this.showVisualizationDeleteFail = true;
-    // }
+    if(this.selectedVisualization){
+      this.visualizationService.deleteVisualization(this.selectedVisualization.visualizationId).subscribe((response) => {
+        this.getAllVisualization();
+        this.getAllCurriculum();
+      });
+    } else {
+      this.showVisualizationDeleteFail = true;
+    }
   }
 
   displayVisualization(){

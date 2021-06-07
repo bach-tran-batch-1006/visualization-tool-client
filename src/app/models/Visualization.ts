@@ -5,3 +5,8 @@ export interface Visualization {
     visualizationName: string;
     curriculumList: Curriculum[];
 }
+
+export interface VisualizationDTO {
+    title: string;
+    curricula: Curriculum[];
+}

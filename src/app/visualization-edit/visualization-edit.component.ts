@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
-import {Visualization} from '../models/Visualization'
+import {Visualization, VisualizationDTO} from '../models/Visualization'
 import {CurriculumService} from "../services/curriculum.service";
 import { Curriculum } from '../models/Curriculum';
-import { ThisReceiver } from '@angular/compiler';
 
 
 @Component({
@@ -13,153 +12,151 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class VisualizationEditComponent implements OnInit {
 
- vList:Array<Visualization>=[];
- cList: Array<Curriculum> =[];
- nameInput: string;
- Vcurlist: Array<Curriculum>=[];
- CheckCurList: Array<Curriculum> = [];
- CheckCurListIndex: Array<string> = [];
- ActiveVs: Visualization;
+  visualizationList: Visualization[] = [];
+  selectedVisualization: Visualization;
+
+  showAddVisualization: boolean = false;
+  showUpdateVisualization: boolean = false;
+
+  showVisualizationDeleteFail: boolean = false;
+
+  visualizationNameAdd: string;
+  visualizationNameUpdate: string;
+
+  curriculumList: Curriculum[] = [];
+  selectedCurriculumList: Curriculum[] = [];
  
-  constructor(private vservice: VisualizationService, private cservice:CurriculumService) { }
+  constructor(private visualizationService: VisualizationService, private curriculumService: CurriculumService) { }
 
   ngOnInit(): void {
-
-   this.vservice.getAllVisualizations().subscribe(
-     (response) =>{
-       this.vList= response;
-       console.log(response);
-     }
-     
-   )
-  
-
-  this.cservice.getAllCurriculum().subscribe(
-    (response) =>{
-      this.cList= response;
-      console.log(response);
-    }
-  )
- }
-
- addVisualization(): void {
-  let curricula: Curriculum[] = [];
-  for (let i = 0; i < this.cList.length; i++) {
-    let element = <HTMLInputElement> document.getElementById('checkbox' + i);
-      if (element.checked) {
-        curricula.push(this.cList[i]);
-      }
-  }
-  console.log(curricula);
-  this.vservice.addVisualization(this.nameInput, curricula).subscribe(
-    (response) =>{
-      console.log(response);
-      this.vservice.getAllVisualizations();
-    }
-  )
- }
-
- ToggleCheckBox(e, visualization: Visualization){
-   console.log(e.target.value);
-
-   this.ActiveVs= visualization;
-   this.vservice.getVisualizationById(e.target.value).subscribe(
-     (response) => {
-        let vNameElement=  <HTMLInputElement> document.getElementById("vsname");
-        vNameElement.value= visualization.visualizationName;
-        this.Vcurlist= response.curriculumList;
-        console.log("Visualization currilulmlist " ,this.Vcurlist);
-       for (let i = 0; i < this.cList.length; i++) {
-        var element = <HTMLInputElement> document.getElementById(this.cList[i].curriculumId.toString());
-        element.checked = false;
-        // console.log(element);
-       }
-
-       //reset the check list of Curriculum
-        this.CheckCurList=[];
-        this.CheckCurListIndex=[];
-       
-         for (let j = 0; j < this.Vcurlist.length; j++) {
-          var element = <HTMLInputElement> document.getElementById(this.Vcurlist[j].curriculumId.toString());
-           if (element!=null || element!=undefined ) {
-            element.checked = true;
-            this.CheckCurList.push(this.Vcurlist[j]);
-            this.CheckCurListIndex.push( this.Vcurlist[j].curriculumId.toString());
-            console.log(element);
-           }
-         }
-         console.log(" checked currentlist " , this.CheckCurList);
-     }
-   )
-  
+    this.getAllVisualization();
+    this.getAllCurriculum();
   }
 
+  getAllVisualization(){
+    this.visualizationService.getAllVisualizations().subscribe((response) =>{
+      this.visualizationList = response;
+    });
+  }
 
-  ClickCheckBox(e, curriculum: Curriculum){
-    let exist=0;
-    let checkboxstate= e.target.checked;
-    let index= this.CheckCurListIndex.indexOf(curriculum.curriculumId.toString());
-    console.log("The index " , index);
+  getAllCurriculum(){
+    this.curriculumService.getAllCurriculum().subscribe((response) => {
+      this.curriculumList = response;
+      this.curriculumList.sort((a, b) => (a.curriculumName.toLowerCase() > b.curriculumName.toLowerCase()) ? 1 : -1);
+      let listSize = this.curriculumList.length;
+      for (let index = 0; index < listSize; index++) {
+        this.curriculumList[index].isActive = false;
+      }
+    });
+  }
 
- 
-    if(checkboxstate)
-    {
-       if(index===-1)
-       {
-         this.CheckCurList.push(curriculum);
-         this.CheckCurListIndex.push(curriculum.curriculumId.toString());
-         console.log("adding curriculium " , curriculum);
-       }
-    
+  addVisualization(){
+    this.selectedCurriculumList = [];
+    let listSize = this.curriculumList.length;
+    for (let index = 0; index < listSize; index++) {
+      if(this.curriculumList[index].isActive){
+        this.selectedCurriculumList.push(this.curriculumList[index]);
+      }
+    }
+    let visualizationDTO: VisualizationDTO = {
+      title: this.visualizationNameAdd,
+      curricula: this.selectedCurriculumList
+    }
+    this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
+      this.getAllVisualization();
+    });
+  }
 
+  updateVisualization(){
+    // console.log()
+    // this.selectedCurriculumList = [];
+    // let listSize = this.curriculumList.length;
+    // //console.log(this.curriculumList);
+    // for (let index = 0; index < listSize; index++) {
+    //   if(this.curriculumList[index].isActive){
+    //     this.selectedCurriculumList.push(this.curriculumList[index]);
+    //   }
+    // }
+    // // console.log("selected");
+    // // console.log(this.curriculumList);
+    // let visualizationId = this.selectedVisualization.visualizationId;
+    // let visualizationDTO: VisualizationDTO = {
+    //   title: this.visualizationNameUpdate,
+    //   curricula: this.selectedCurriculumList
+    // }
+    // console.log(visualizationDTO);
+    // this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
+    //   this.getAllVisualization();
+    // });
+  }
+
+  deleteVisualization(){
+    // if(this.selectedVisualization){
+    //   this.visualizationService.deleteVisualization(this.selectedVisualization.visualizationId).subscribe((response) => {
+    //     this.getAllCurriculum();
+    //   });
+    // } else {
+    //   this.showVisualizationDeleteFail = true;
+    // }
+  }
+
+  displayVisualization(){
+
+    this.showAddVisualization = false;
+    this.showVisualizationDeleteFail = false;
+    this.resetCurriculumActive();
+    this.visualizationNameUpdate = this.selectedVisualization.visualizationName;
+    this.showUpdateVisualization = true;
+    for(let curriculum of this.selectedVisualization.curriculumList){
+      let curriculumIndex = this.curriculumList.map(function(c) { return c.curriculumId; }).indexOf(curriculum.curriculumId);
+      if(!this.curriculumList[curriculumIndex].isActive){
+        this.selectedCurriculumList.push(this.curriculumList[curriculumIndex]);
+      } else {
+        this.selectedCurriculumList = this.selectedCurriculumList.filter(function(c) { return c.curriculumId != this.curriculumList[curriculumIndex].curriculumId; });
+      }
+      this.curriculumList[curriculumIndex].isActive = !this.curriculumList[curriculumIndex].isActive;
     }
 
-    if(checkboxstate===false)
-    {
-      console.log("false");
-      // unselected and the curriculum exist in the list then remove it 
+  }
 
-
-      if(index!=-1 &&  (index === (this.CheckCurList.length-1) ))
-      {
-          this.CheckCurList.pop();
-          this.CheckCurListIndex.pop();
-          exist=1;
-          console.log("removing curriculum ", curriculum);
-      }
-
-        if(index!=-1 && exist===0)
-        {
-            this.CheckCurList.splice(-index, 1);
-            this.CheckCurListIndex.splice(-index,1);
-            console.log("removing curriculum ", curriculum);
-            
+  toggleCurriculum(currentCurriculumId:number){
+    let listSize = this.curriculumList.length;
+    for (let index = 0; index < listSize; index++) {
+      if(this.curriculumList[index].curriculumId == currentCurriculumId){
+        if(!this.curriculumList[index].isActive){
+          this.selectedCurriculumList.push(this.curriculumList[index]);
+        } else {
+          this.selectedCurriculumList = this.selectedCurriculumList.filter(function(c) { return c.curriculumId != currentCurriculumId; });
         }
-    
-  }
-    console.log( "state of checklist " , this.CheckCurList);
-}
-
-
-
-updateVS(){
-  let vNameElement=  <HTMLInputElement> document.getElementById("vsname");
-if(this.ActiveVs!=undefined)
-this.vservice.updateVisualization(this.ActiveVs.visualizationId, vNameElement.value, this.CheckCurList).subscribe(
-  (response) =>{
-      for(let i=0; i<this.vList.length; i++)
-      {
-            if(this.vList[i].visualizationId === this.ActiveVs.visualizationId)
-            {
-              this.vList[i]= response;
-              this.ActiveVs= response;
-              break;
-            }
+        this.curriculumList[index].isActive = !this.curriculumList[index].isActive;
+      }
     }
-    
   }
-  
-)
-}
+
+  resetCurriculumActive() {
+    for(let curriculum of this.curriculumList) {
+      curriculum.isActive = false;
+    }
+    this.selectedCurriculumList = [];
+  }
+
+  toggleAddVisualization() {
+    this.showVisualizationDeleteFail = false;
+    this.showUpdateVisualization = false;
+    this.showAddVisualization = !this.showAddVisualization;
+
+  }
+
+  toggleUpdateVisualization() {
+    this.showVisualizationDeleteFail = false;
+    this.showAddVisualization = false;
+    this.showUpdateVisualization = !this.showUpdateVisualization;
+  }
+
+  clearVisualization() {
+    this.selectedVisualization = null;
+    this.visualizationNameUpdate = null;
+    this.resetCurriculumActive();
+  }
 
 }

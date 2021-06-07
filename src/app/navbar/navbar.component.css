@@ -1,9 +1,31 @@
 .brand-logo {
-    width: 200px;
+    max-width: 200px;
+    width: auto;
     height: auto;
+    object-fit: contain;
+    margin-top: 5px;
 }
 
 li, a {
     color: #F26925;
     font-family: "Futura-Bold";
+}
+
+@media only screen and (max-width: 1024px) {
+    li, a {
+        font-size: .9rem;
+    }
+    .brand-logo {
+        max-width: 175px;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    li, a {
+        font-size: .75rem;
+    }
+    .brand-logo {
+        max-width: 130px;
+        margin-top: 10px;
+    }
 }

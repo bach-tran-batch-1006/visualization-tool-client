@@ -9,7 +9,6 @@
             <legend>Skill-Edit</legend>
             <ul>
                 <li *ngFor="let skill of skillList; let i = index">
-                    <!-- <input type="checkbox" [value]="skill" [checked]="skill.isActive" name="skillCheckboxes" (click)="toggleSkill(skill.skillId)" /> -->
                     <label class="skillLabel" for="skill_{{skill.skillId}}">
                         <input type="radio" id="skill_{{skill.skillId}}" [value]="skill"  name="skillList" [(ngModel)]="selectedSkill" (change)="displaySkill()"/>
                         {{ skill.skillName }}

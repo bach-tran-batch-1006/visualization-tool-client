@@ -95,7 +95,6 @@ export class CurriculumEditComponent implements OnInit {
   }
 
   displayCurriculum() {
-    // this.skillList = this.selectedCurriculum.skillList;
     this.showAddCurriculum = false;
     this.showCurriculumDeleteFail = false;
     this.resetSkillActive();
@@ -145,11 +144,4 @@ export class CurriculumEditComponent implements OnInit {
     this.showAddCurriculum = false;
     this.showUpdateCurriculum = !this.showUpdateCurriculum;
   }
-
-  // clearCurriculum() {
-  //   this.selectedCurriculum = null;
-  //   this.curriculumNameUpdate = null;
-  //   this.resetSkillActive();
-  // }
-
 }

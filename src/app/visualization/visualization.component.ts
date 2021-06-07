@@ -33,7 +33,6 @@ export class VisualizationComponent implements OnInit {
   ngOnInit(): void {
     this.visualizationId = Number(this.route.snapshot.paramMap.get("id"));
     this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
-      console.log(response);
       this.currentVisualization = response;
       this.currentCurriculumList = response.curriculumList;
       this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
@@ -47,7 +46,6 @@ export class VisualizationComponent implements OnInit {
       for (let idx = 0; idx < this.distinctCategoryList.length; idx++) {
         this.categoryColorList.push(this.randColor(idx, total));
       }
-      console.log("colorList", this.categoryColorList);
     });
   }
 

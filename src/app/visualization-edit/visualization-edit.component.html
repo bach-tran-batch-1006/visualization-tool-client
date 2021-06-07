@@ -1,53 +1,79 @@
 <app-navbar></app-navbar>
 
 
-
-
-
 <fieldset class="container is-fluid containerflex borders">
     <legend>Visualization</legend>
     <div class="columns columnheight row ">
-    
+
+        <!-- Visualization-EDIT-LIST -->
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Visualization-Edit</legend>
-            <ul >
-                <li *ngFor="let vs of vList">
-                    <input type="radio"  [value]="vs.visualizationId" name="visualizationlist" (change)="ToggleCheckBox($event, vs)" />
-                   <label  class="vLabel" for="visualizationname"> {{ vs.visualizationName}}</label>
+            <ul>
+                <button class="button is-small btn-light-gray" (click)="clearVisualization()">clear selection</button>
+                <li *ngFor="let visualization of visualizationList; let i = index">
+                    <label class="visualizationLabel" for="visualization_{{visualization.visualizationId}}">
+                        <input type="radio" id="visualization_{{visualization.visualizationId}}" [value]="visualization"  name="visualizationList" [(ngModel)]="selectedVisualization" (change)="displayVisualization()"/>
+                        {{ visualization.visualizationName }}
+                    </label>
                 </li>
-                
-                
             </ul>
         </fieldset>
+        <!-- Visualization-EDIT-LIST -->
 
-        <fieldset class="column  borders boxcolumn is-6-desktop is-12-mobile">
-            <legend>Curriculum</legend>
-            <uL>
-
-             
-                <li *ngFor="let Curriculum of cList; let i = index">
-                    <input type="checkbox" name="curriculumlist" id="{{Curriculum.curriculumId }}" (click)="ClickCheckBox( $event, Curriculum)"/>
-                    <label class="cLabel">{{ Curriculum.curriculumName}}</label>
-
+        <!-- Curriculum-SELECT-LIST -->
+        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <legend>Curriculum-Select</legend>
+            <ul>
+                <button class="button is-small btn-light-gray" (click)="resetCurriculumActive()">clear selection</button>
+                <li *ngFor="let curriculum of curriculumList; let i = index">
+                    <!-- <input type="checkbox" [value]="curriculum" [checked]="curriculum.isActive" name="curriculumCheckboxes" (click)="toggleCurriculum(curriculum.curriculumId)" /> -->
+                    <label class="curriculumLabel" for="curriculum_{{curriculum.curriculumId}}">
+                        <!-- (change)="displayCurriculum()" -->
+                        <!-- [(ngModel)]="selectedCurriculum" -->
+                        <input type="checkbox" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum" [checked]="curriculum.isActive" name="curriculumList" (change)="toggleCurriculum(curriculum.curriculumId)"/>
+                        {{ curriculum.curriculumName }}
+                    </label>
                 </li>
-
-            </uL>
+            </ul>
         </fieldset>
-
+        <!-- Curriculum-SELECT-LIST -->
 
     </div>
+    <div class="columns row">
 
-    <div class="row">
-       
+        <!-- Visualization-EDIT-BUTTONS -->
+        <div class="column">
             <div class="editbottom">
-                <button (click)="addVisualization()">New</button>
-                <button (click)="updateVS()"> Update </button>
-                <input  id="vsname" [(ngModel)]="nameInput" placeholder="name"/>
-                <button>Remove</button>
-                <button>View Visualization</button>
-             </div>
-    
-           
+                <div class="columns">
+                    <div class="column">
+                        <div class="buttons">
+                            <div class="buttons">
+                                <button class="button is-small btn-add" [ngClass]="showAddVisualization? 'is-active' : ''" (click)="toggleAddVisualization()">Add Visualization</button>
+                                <button class="button is-small btn-update" [ngClass]="showUpdateVisualization? 'is-active' : ''" (click)="toggleUpdateVisualization()">Update Visualization</button>
+                                <button class="button is-small has-background-danger" (click)="deleteVisualization()">Remove Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <ng-container *ngIf="showVisualizationDeleteFail">
+                            <p class="help has-text-danger">Please select a Visualization to delete.</p>
+                        </ng-container>
+                        <ng-container *ngIf="showAddVisualization">
+                            <input class="input add-input mb-1" placeholder="Visualization Name" [(ngModel)]="visualizationNameAdd" />
+                            <p class="help add-visualization-help" *ngIf="visualizationNameAdd == '' || visualizationNameAdd == null">Please select a Name for this Visualization</p>
+                            <p class="help add-visualization-help" *ngIf="selectedCurriculumList.length==0">Please select a Curriculum for this Visualization</p>
+                            <button class="button is-small btn-add" (click)="addVisualization()">Submit</button>
+                        </ng-container>
+                        <ng-container *ngIf="showUpdateVisualization">
+                            <input class="input update-input mb-1" placeholder="Visualization Name" [(ngModel)]="visualizationNameUpdate" />
+                            <p class="help update-visualization-help" *ngIf="visualizationNameUpdate == null">Please select a visualization for update</p>
+                            <button class="button is-small btn-update" (click)="updateVisualization()">Save</button>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Visualization-EDIT-BUTTONS -->
+
     </div>
-    
 </fieldset>

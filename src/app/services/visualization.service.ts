@@ -1,44 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Visualization, VisualizationDTO} from '../models/Visualization';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VisualizationService {
 
-  apiURL = 'http://3.226.243.38:8081';
-  // apiURL = 'http://localhost:8081';
+  apiURL = 'http://3.226.243.38:8081/visualization/';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllVisualizations(): Observable<any> {
-    return this.httpClient.get(`${this.apiURL}/visualization`);
+  getAllVisualizations(): Observable<Visualization[]> {
+    return this.httpClient.get<Visualization[]>(`${this.apiURL}`);
   }
 
-  getVisualizationById(id: number): Observable<any> {
-    return this.httpClient.get(`${this.apiURL}/visualization/${id}`);
+  getVisualizationById(id: number): Observable<Visualization> {
+    return this.httpClient.get<Visualization>(this.apiURL+id);
   }
 
-  addVisualization(name: string, cirriculaList: Array<any>): Observable<any> {
-    const visualizationDTO = {
-      title: name,
-      curricula: cirriculaList
-    };
-    console.log(visualizationDTO);
-    return this.httpClient.post(`${this.apiURL}/visualization`, visualizationDTO);
+  addVisualization(bodyObject: VisualizationDTO): Observable<Visualization> {
+    return this.httpClient.post<Visualization>(this.apiURL,bodyObject, this.httpOptions);
   }
 
-  updateVisualization(id: number, name: string, cirriculaList: Array<any>): Observable<any> {
-    const visualizationDTO = {
-       title:name,
-      curricula: cirriculaList
-    };
-    return this.httpClient.put(`${this.apiURL}/visualization/${id}`, visualizationDTO);
+  updateVisualization(id: number, bodyObject: VisualizationDTO): Observable<Visualization> {
+      return this.httpClient.put<Visualization>(this.apiURL+id,bodyObject, this.httpOptions);
   }
 
-  deleteVisualization(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.apiURL}/visualization/${id}`);
+  deleteVisualization(id: number){
+    return this.httpClient.delete(this.apiURL+id);
   }
 
 }

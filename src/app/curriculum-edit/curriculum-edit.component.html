@@ -22,7 +22,7 @@
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Skill-Select</legend>
             <ul>
-                <button class="button is-small btn-light-gray" (click)="resetSkillActive()">clear selection</button>
+                <button class="button is-small btn-light-gray" (click)="resetSkillActive()">Clear Selection</button>
                 <li *ngFor="let skill of skillList; let i = index">
                     <label class="skillLabel" for="skill_{{skill.skillId}}">
                         <input type="checkbox" id="skill_{{skill.skillId}}" [value]="skill" [checked]="skill.isActive" name="skillList" (change)="toggleSkill(skill.skillId)"/>

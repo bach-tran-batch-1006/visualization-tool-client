@@ -28,7 +28,7 @@
                 <li *ngFor="let category of categoryList; let i = index">
                     <label class="categoryLabel" for="category_{{category.categoryId}}">
                         <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList" [(ngModel)]="selectedCategory" (change)="displayCategory()"/>
-                        {{ category.categoryId }}  {{ category.categoryName }}
+                        {{ category.categoryName }}
                     </label>
                 </li>
             </ul>

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Visualization, VisualizationDTO} from '../models/Visualization';
+import { Skill } from '../models/Skill'
+import { Category } from '../models/Category'
 
 
 @Injectable({

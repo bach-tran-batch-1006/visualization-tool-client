@@ -76,7 +76,7 @@ export class CurriculumEditComponent implements OnInit {
     }
     let curriculumId = this.selectedCurriculum.curriculumId;
     let curriculumDTO: CurriculumDTO = {
-      name: this.selectedCurriculum.curriculumName,
+      name: this.curriculumNameUpdate,
       skillList: this.selectedSkillList
     }
     this.curriculumService.updateCurriculum(curriculumId,curriculumDTO).subscribe((response) => {
@@ -146,10 +146,10 @@ export class CurriculumEditComponent implements OnInit {
     this.showUpdateCurriculum = !this.showUpdateCurriculum;
   }
 
-  clearCurriculum() {
-    this.selectedCurriculum = null;
-    this.curriculumNameUpdate = null;
-    this.resetSkillActive();
-  }
+  // clearCurriculum() {
+  //   this.selectedCurriculum = null;
+  //   this.curriculumNameUpdate = null;
+  //   this.resetSkillActive();
+  // }
 
 }

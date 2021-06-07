@@ -84,6 +84,7 @@ export class VisualizationEditComponent implements OnInit {
     console.log(visualizationDTO);
     this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
       this.getAllVisualization();
+      this.resetCurriculumActive();
     });
   }
 
@@ -151,10 +152,10 @@ export class VisualizationEditComponent implements OnInit {
     this.showUpdateVisualization = !this.showUpdateVisualization;
   }
 
-  clearVisualization() {
-    this.selectedVisualization = null;
-    this.visualizationNameUpdate = null;
-    this.resetCurriculumActive();
-  }
+  // clearVisualization() {
+  //   this.selectedVisualization = null;
+  //   this.visualizationNameUpdate = null;
+  //   this.resetCurriculumActive();
+  // }
 
 }

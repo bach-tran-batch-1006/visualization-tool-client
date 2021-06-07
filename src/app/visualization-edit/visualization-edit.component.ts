@@ -68,7 +68,6 @@ export class VisualizationEditComponent implements OnInit {
   }
 
   updateVisualization(){
-    // Update Visualization Name works, need to fix curricula
     this.selectedCurriculumList = [];
     let listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
@@ -81,7 +80,6 @@ export class VisualizationEditComponent implements OnInit {
       title: this.visualizationNameUpdate,
       curricula: this.selectedCurriculumList
     }
-    console.log(visualizationDTO);
     this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
       this.getAllVisualization();
       this.resetCurriculumActive();
@@ -151,11 +149,4 @@ export class VisualizationEditComponent implements OnInit {
     this.showAddVisualization = false;
     this.showUpdateVisualization = !this.showUpdateVisualization;
   }
-
-  // clearVisualization() {
-  //   this.selectedVisualization = null;
-  //   this.visualizationNameUpdate = null;
-  //   this.resetCurriculumActive();
-  // }
-
 }

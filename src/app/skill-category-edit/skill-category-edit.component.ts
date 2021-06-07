@@ -54,7 +54,6 @@ export class SkillCategoryEditComponent implements OnInit {
     this.skillService.getSkills().subscribe((response) => {
       this.skillList = response;
       this.skillList.sort((a, b) => (a.skillName.toLowerCase() > b.skillName.toLowerCase()) ? 1 : -1);
-      // for (let skill of this.skillList) {
       let listSize = this.skillList.length;
       for (let index = 0; index < listSize; index++) {
         this.skillList[index].isActive = false;
@@ -200,7 +199,6 @@ export class SkillCategoryEditComponent implements OnInit {
   }
 
   deleteSkill() {
-    // console.log(this.selectedSkill);
     if(this.selectedSkill == null){
       this.showSkillDeleteFail = true;
     } else {
@@ -208,9 +206,7 @@ export class SkillCategoryEditComponent implements OnInit {
 
       let selectedSkillRadio = <HTMLInputElement> document.getElementById(`skill_${this.selectedSkill.skillId}`);
       selectedSkillRadio.checked = false;
-      // if(){
-
-      // }
+      
       let selectedCategoryRadio = <HTMLInputElement> document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
       selectedCategoryRadio.checked = false;
 

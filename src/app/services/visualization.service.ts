@@ -18,31 +18,31 @@ export class VisualizationService {
   constructor(private httpClient: HttpClient) { }
 
   getAllVisualizations(): Observable<Visualization[]> {
-    return this.httpClient.get<Visualization[]>(`${this.apiURL}`);
+    return this.httpClient.get<Visualization[]>(this.apiURL);
   }
 
   getVisualizationById(id: number): Observable<Visualization> {
-    return this.httpClient.get<Visualization>(this.apiURL+id);
+    return this.httpClient.get<Visualization>(`${this.apiURL}${id}`);
   }
 
   addVisualization(bodyObject: VisualizationDTO): Observable<Visualization> {
-    return this.httpClient.post<Visualization>(this.apiURL,bodyObject, this.httpOptions);
+    return this.httpClient.post<Visualization>(this.apiURL, bodyObject, this.httpOptions);
   }
 
   updateVisualization(id: number, bodyObject: VisualizationDTO): Observable<Visualization> {
-      return this.httpClient.put<Visualization>(this.apiURL+id,bodyObject, this.httpOptions);
+      return this.httpClient.put<Visualization>(`${this.apiURL}${id}`, bodyObject, this.httpOptions);
   }
 
   deleteVisualization(id: number){
-    return this.httpClient.delete(this.apiURL+id);
+    return this.httpClient.delete(`${this.apiURL}${id}`);
   }
 
   getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(`${this.apiURL}/visualization/${id}/skills`);
+    return this.httpClient.get<Skill[]>(`${this.apiURL}${id}/skills`);
   }
 
   getAllUniqueCategoriesByVisualization(id: number): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(`${this.apiURL}/visualization/${id}/categories`);
+    return this.httpClient.get<Category[]>(`${this.apiURL}${id}/categories`);
   }
 
 }

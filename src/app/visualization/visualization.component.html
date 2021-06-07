@@ -1,13 +1,3 @@
-<div class="container box m-5">
-    <div class="select" *ngIf="visualizations">
-        <select [(ngModel)]="selected" (change)="changeVis($event)">
-            <option [value]="0" disabled>Select a Visualization</option>
-            <option *ngFor="let vis of visualizations" [value]="vis.visualizationId">
-                {{vis.visualizationName}}
-            </option>
-        </select>
-    </div>
-</div>
 <div class="container m-5">
     <div class="columns box">
         <div class="column box leftColumn mb-0 is-6-desktop">
@@ -15,10 +5,10 @@
         </div>
         <div class="column box rightColumn is-6-desktop">
             <div class="row box rightColumnRows">
-                <app-skill [currentSkillList]="distinctSkillList" [activeSkillList]="currentSkillList"></app-skill>
+                <app-skill [currentSkillList]="distinctSkillList" [activeSkillList]="currentSkillList" [currentCategoryList]="distinctCategoryList" [categoryColorList]="categoryColorList"></app-skill>
             </div>
             <div class="row box rightColumnRows">
-                <app-category [currentCategoryList]="distinctCategoryList"></app-category>
+                <app-category [currentCategoryList]="distinctCategoryList" [categoryColorList]="categoryColorList"></app-category>
             </div>
         </div>
     </div>

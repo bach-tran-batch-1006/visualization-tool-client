@@ -5,4 +5,10 @@ export interface Skill {
     skillName: string;
     category: Category;
     isActive: boolean;
+    color: String;
+}
+
+export interface SkillDTO {
+    name: string;
+    category: Category;
 }

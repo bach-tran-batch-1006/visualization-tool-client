@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Visualization, VisualizationDTO} from '../models/Visualization';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +34,14 @@ export class VisualizationService {
 
   deleteVisualization(id: number){
     return this.httpClient.delete(this.apiURL+id);
+  }
+
+  getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {
+    return this.httpClient.get<Skill[]>(`${this.apiURL}/visualization/${id}/skills`);
+  }
+
+  getAllUniqueCategoriesByVisualization(id: number): Observable<Category[]> {
+    return this.httpClient.get<Category[]>(`${this.apiURL}/visualization/${id}/categories`);
   }
 
 }

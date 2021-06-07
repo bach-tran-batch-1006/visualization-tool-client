@@ -21,7 +21,7 @@ export class SkillService {
   addSkill(bodyObject: object):Observable<object>{
     return this.httpClient.post<object>(this.apiURL+"/skill",bodyObject, this.httpOptions);
   }
-
+  
   updateSkill(id: number, bodyObject: object):Observable<object>{
     return this.httpClient.put<object>(this.apiURL+"/skill/"+id,bodyObject, this.httpOptions);
   }

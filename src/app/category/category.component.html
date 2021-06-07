@@ -1,13 +1,19 @@
 <h1>Categories</h1>
-<div class="scroll">
+<!-- <div>
     <ul>
-        <!-- TODO category COLOR -->
         <ng-container *ngFor="let item of currentCategoryList">
             <li [attr.category-id]="item.id">
-                <input type="color" value="#0072E0" class="tag">
-                {{item.categoryName}}
+                <div class="tag" [ngStyle]="{'background-color': this.categoryColorList[this.currentCategoryList.indexOf(item)]}">{{item.categoryName}}</div>
             </li>
         </ng-container>
         
     </ul>
+</div> -->
+
+<div class="categoryList">
+    <ng-container *ngFor="let item of currentCategoryList">
+        <button [attr.category-id]="item.id" [ngStyle]="{'background-color': this.categoryColorList[this.currentCategoryList.indexOf(item)]}">
+            {{ item.categoryName }}
+        </button>
+    </ng-container>
 </div>

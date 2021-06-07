@@ -23,7 +23,7 @@
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Curriculum-Select</legend>
             <ul>
-                <button class="button is-small btn-light-gray" (click)="resetCurriculumActive()">clear selection</button>
+                <button class="button is-small btn-light-gray" (click)="resetCurriculumActive()">Clear Selection</button>
                 <li *ngFor="let curriculum of curriculumList; let i = index">
                     <label class="curriculumLabel" for="curriculum_{{curriculum.curriculumId}}">
                         <input type="checkbox" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum" [checked]="curriculum.isActive" name="curriculumList" (change)="toggleCurriculum(curriculum.curriculumId)"/>

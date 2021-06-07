@@ -8,7 +8,6 @@
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Curriculum-Edit</legend>
             <ul>
-                <button class="button is-small btn-light-gray" (click)="clearCurriculum()">clear selection</button>
                 <li *ngFor="let curriculum of curriculumList; let i = index">
                     <label class="curriculumLabel" for="curriculum_{{curriculum.curriculumId}}">
                         <input type="radio" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum"  name="curriculumList" [(ngModel)]="selectedCurriculum" (change)="displayCurriculum()"/>
@@ -25,10 +24,7 @@
             <ul>
                 <button class="button is-small btn-light-gray" (click)="resetSkillActive()">clear selection</button>
                 <li *ngFor="let skill of skillList; let i = index">
-                    <!-- <input type="checkbox" [value]="skill" [checked]="skill.isActive" name="skillCheckboxes" (click)="toggleSkill(skill.skillId)" /> -->
                     <label class="skillLabel" for="skill_{{skill.skillId}}">
-                        <!-- (change)="displaySkill()" -->
-                        <!-- [(ngModel)]="selectedSkill" -->
                         <input type="checkbox" id="skill_{{skill.skillId}}" [value]="skill" [checked]="skill.isActive" name="skillList" (change)="toggleSkill(skill.skillId)"/>
                         {{ skill.skillName }}
                     </label>
@@ -66,7 +62,7 @@
                         <ng-container *ngIf="showUpdateCurriculum">
                             <input class="input update-input mb-1" placeholder="Curriculum Name" [(ngModel)]="curriculumNameUpdate"/>
                             <p class="help update-curriculum-help" *ngIf="curriculumNameUpdate == null">Please select a curriculum for update</p>
-                            <button class="button is-small btn-update" (click)="updateCurriculum()">Save</button>
+                            <button class="button is-small btn-update" (click)="updateCurriculum()">Update</button>
                         </ng-container>
                     </div>
                 </div>

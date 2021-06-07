@@ -9,7 +9,6 @@
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Visualization-Edit</legend>
             <ul>
-                <button class="button is-small btn-light-gray" (click)="clearVisualization()">clear selection</button>
                 <li *ngFor="let visualization of visualizationList; let i = index">
                     <label class="visualizationLabel" for="visualization_{{visualization.visualizationId}}">
                         <input type="radio" id="visualization_{{visualization.visualizationId}}" [value]="visualization"  name="visualizationList" [(ngModel)]="selectedVisualization" (change)="displayVisualization()"/>
@@ -26,10 +25,7 @@
             <ul>
                 <button class="button is-small btn-light-gray" (click)="resetCurriculumActive()">clear selection</button>
                 <li *ngFor="let curriculum of curriculumList; let i = index">
-                    <!-- <input type="checkbox" [value]="curriculum" [checked]="curriculum.isActive" name="curriculumCheckboxes" (click)="toggleCurriculum(curriculum.curriculumId)" /> -->
                     <label class="curriculumLabel" for="curriculum_{{curriculum.curriculumId}}">
-                        <!-- (change)="displayCurriculum()" -->
-                        <!-- [(ngModel)]="selectedCurriculum" -->
                         <input type="checkbox" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum" [checked]="curriculum.isActive" name="curriculumList" (change)="toggleCurriculum(curriculum.curriculumId)"/>
                         {{ curriculum.curriculumName }}
                     </label>
@@ -67,7 +63,7 @@
                         <ng-container *ngIf="showUpdateVisualization">
                             <input class="input update-input mb-1" placeholder="Visualization Name" [(ngModel)]="visualizationNameUpdate" />
                             <p class="help update-visualization-help" *ngIf="visualizationNameUpdate == null">Please select a visualization for update</p>
-                            <button class="button is-small btn-update" (click)="updateVisualization()">Save</button>
+                            <button class="button is-small btn-update" (click)="updateVisualization()">Update</button>
                         </ng-container>
                     </div>
                 </div>

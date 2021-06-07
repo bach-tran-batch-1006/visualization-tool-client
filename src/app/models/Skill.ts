@@ -7,3 +7,8 @@ export interface Skill {
     isActive: boolean;
     color: String;
 }
+
+export interface SkillDTO {
+    name: string;
+    category: Category;
+}

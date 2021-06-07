@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "Futura-Bold";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Bold.otf) format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Futura-Book";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Book.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "Futura-Heavy";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Heavy.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "Futura-Medium";
+    src: local("Futura"), url(src/assets/fonts/Futura-Std-Medium.otf) format("truetype");
+    font-size: medium;
+}
+
+body{
+    font-family: "Futura-Medium";
+}

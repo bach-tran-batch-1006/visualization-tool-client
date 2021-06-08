@@ -116,12 +116,13 @@ describe('CurriculumService', () => {
   });
 
 
-  it('should delete curriculum by Id'), () => {
+  it('should delete curriculum by Id', () => {
     let response;
     spyOn(service, 'deleteCurriculum').and.returnValue(of(1));
-    service.deleteCurriculum(1).subscribe((res) => {
+    service.deleteCurriculum(40).subscribe((res) => {
       response = res;
     });
     expect(response).toEqual(1);
-  };
+  });
+  
 });

@@ -35,7 +35,9 @@ export class VisualizationComponent implements OnInit {
     this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
       this.currentVisualization = response;
       this.currentCurriculumList = response.curriculumList;
-      this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
+      if (this.currentCurriculumList.length !== 0) {
+        this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
+      }
     });
     this.visualizationService.getAllUniqueSkillsByVisualization(this.visualizationId).subscribe((response) => {
       this.distinctSkillList = response;

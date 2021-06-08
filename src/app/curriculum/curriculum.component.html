@@ -1,10 +1,7 @@
-<div  *ngIf="currentCurriculumList.length === 0 ; else elseBlock">
-
-    <p id="nocurriula">No Curricula </p>
-
-</div>
-
-<ng-template #elseBlock>
+<div class="currriculumList">
+    <div *ngIf="currentCurriculumList.length === 0">
+        <p id="nocurriula">No Curricula </p>
+    </div>
     <ng-container *ngFor="let curriculum of curriculumList; let idx = index">
         <label (click)="changeCurrentCurriculum(curriculum.curriculumId)">
             <input
@@ -19,5 +16,4 @@
             </div>
         </label>
     </ng-container>
-</ng-template>
-
+</div>

@@ -47,12 +47,16 @@
                                 <button class="button is-small btn-add" [ngClass]="showAddVisualization? 'is-active' : ''" (click)="toggleAddVisualization()">Add Visualization</button>
                                 <button class="button is-small btn-update" [ngClass]="showUpdateVisualization? 'is-active' : ''" (click)="toggleUpdateVisualization()">Update Visualization</button>
                                 <button class="button is-small has-background-danger" (click)="deleteVisualization()">Remove Visualization</button>
+                                <button class="button is-small" (click)="viewVisualization()">View Visualization</button>
                             </div>
                         </div>
                     </div>
                     <div class="column">
                         <ng-container *ngIf="showVisualizationDeleteFail">
                             <p class="help has-text-danger">Please select a Visualization to delete.</p>
+                        </ng-container>
+                        <ng-container *ngIf="showViewVisualizationFail">
+                            <p class="help has-text-danger">Please select a Visualization to view.</p>
                         </ng-container>
                         <ng-container *ngIf="showAddVisualization">
                             <input class="input add-input mb-1" placeholder="Visualization Name" [(ngModel)]="visualizationNameAdd" />

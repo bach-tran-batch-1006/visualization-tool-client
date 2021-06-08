@@ -19,6 +19,7 @@ export class VisualizationEditComponent implements OnInit {
   showUpdateVisualization: boolean = false;
 
   showVisualizationDeleteFail: boolean = false;
+  showViewVisualizationFail: boolean = false;
 
   visualizationNameAdd: string;
   visualizationNameUpdate: string;
@@ -94,6 +95,7 @@ export class VisualizationEditComponent implements OnInit {
       });
     } else {
       this.showVisualizationDeleteFail = true;
+      this.showViewVisualizationFail = false;
     }
   }
 
@@ -101,6 +103,7 @@ export class VisualizationEditComponent implements OnInit {
 
     this.showAddVisualization = false;
     this.showVisualizationDeleteFail = false;
+    this.showViewVisualizationFail = false;
     this.resetCurriculumActive();
     this.visualizationNameUpdate = this.selectedVisualization.visualizationName;
     this.showUpdateVisualization = true;
@@ -139,6 +142,7 @@ export class VisualizationEditComponent implements OnInit {
 
   toggleAddVisualization() {
     this.showVisualizationDeleteFail = false;
+    this.showViewVisualizationFail = false;
     this.showUpdateVisualization = false;
     this.showAddVisualization = !this.showAddVisualization;
 
@@ -146,7 +150,18 @@ export class VisualizationEditComponent implements OnInit {
 
   toggleUpdateVisualization() {
     this.showVisualizationDeleteFail = false;
+    this.showViewVisualizationFail = false;
     this.showAddVisualization = false;
     this.showUpdateVisualization = !this.showUpdateVisualization;
   }
+
+  viewVisualization() {
+    if (this.selectedVisualization) {
+      window.open(`/visualization/${this.selectedVisualization.visualizationId}`);
+    } else {
+      this.showViewVisualizationFail = true;
+      this.showVisualizationDeleteFail = false;
+    }
+  }
+
 }

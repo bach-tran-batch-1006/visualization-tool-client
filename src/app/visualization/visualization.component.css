@@ -6,7 +6,6 @@
 .leftColumn {
     display: flex;
     justify-content: left;
-    /* min-height: 50vh; */
     border: 1px solid black;
     padding-top: 30px;
     padding-left: 5px;
@@ -16,11 +15,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* min-height: 50vh; */
 }
 
 .rightColumnRows {
-    /* height: 50%; */
     border: 1px solid black;
 }
 

@@ -13,6 +13,9 @@
     font-size: 14px;
 }
 
+.categoryList {
+    margin-bottom: 10px;
+}
 
 #notfoundcategory{
     margin-left: 14px;

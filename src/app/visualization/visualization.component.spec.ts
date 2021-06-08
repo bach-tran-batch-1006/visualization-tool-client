@@ -1,5 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterModule } from '@angular/router';
 
 import { VisualizationComponent } from './visualization.component';
 
@@ -10,7 +12,8 @@ describe('VisualizationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ VisualizationComponent ],
-      imports:[ HttpClientModule ]
+      imports:[ RouterModule.forRoot([]), HttpClientModule, HttpClientTestingModule ],
+      providers: [VisualizationComponent]
     })
     .compileComponents();
   });

@@ -190,11 +190,13 @@ export class SkillCategoryEditComponent implements OnInit {
   updateSkill() {
     let skillId = this.selectedSkill.skillId;
     let skillDTO: SkillDTO = {
-      name: this.selectedSkill.skillName,
+      name: this.skillNameUpdate,
       category: (this.selectedCategory) ? this.selectedCategory : this.selectedSkill.category
     }
     this.skillService.updateSkill(skillId, skillDTO).subscribe((response) => {
       this.skillNameUpdate = "";
+      this.getAllSkills();
+      this.clearCategoryRadio();
       console.log(response);
     });
   }

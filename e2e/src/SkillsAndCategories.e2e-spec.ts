@@ -8,20 +8,20 @@ describe('Skills and Categories Edit Page', () => {
         page = new SkillsAndCategoriesPage();
     });
 
-    it('should display welcome message', async () => {
-        await page.navigateTo();
-        expect(await page.getTitleText()).toEqual('Project3Cvt');
-    });
+    // it('should display welcome message', async () => {
+    //     await page.navigateTo();
+    //     expect(await page.getTitleText()).toEqual('Project3Cvt');
+    // });
 
 
 
 
 
-    afterEach(async () => {
-        // Assert that there are no errors emitted from the browser
-        const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-        expect(logs).not.toContain(jasmine.objectContaining({
-            level: logging.Level.SEVERE,
-        } as logging.Entry));
-    });
+    // afterEach(async () => {
+    //     // Assert that there are no errors emitted from the browser
+    //     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    //     expect(logs).not.toContain(jasmine.objectContaining({
+    //         level: logging.Level.SEVERE,
+    //     } as logging.Entry));
+    // });
 });

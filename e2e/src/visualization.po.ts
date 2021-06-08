@@ -9,10 +9,6 @@ export class VisualizationPage {
         return browser.getTitle();
     }
 
-    async getFail(): Promise<string> {
-        return element(by.css('app-root .content span')).getText() as Promise<string>;
-    }
-
     async getCurriculumSelectText(): Promise<string> {
         return element(by.id('CurriculumSelectText')).getText() as Promise<string>;
     }
@@ -53,18 +49,16 @@ export class VisualizationPage {
     }
 
     async findUpdatedAddedVisualization(): Promise<string> {
-        return await element(by.xpath('//*[text()=" ProtractorTestUpdate "]')).getText();
+        return await element(by.xpath('//*[text()=" zProtractorTestUpdate "]')).getText();
     }
 
     async clickUpdatedVisualization(): Promise<void> {
-        await element(by.xpath('//*[text()=" ProtractorTestUpdate "]')).click();
+        await element(by.xpath('//*[text()=" zProtractorTestUpdate "]')).click();
     }
 
-
-
     async visualizationInput2(): Promise<void> {
-
-        await element(by.id('updateVisualBox')).sendKeys("Update");
+        await element(by.id('updateVisualBox')).clear();
+        await element(by.id('updateVisualBox')).sendKeys("zProtractorTestUpdate");
     }
 
     async clickUpdateButton(): Promise<void> {

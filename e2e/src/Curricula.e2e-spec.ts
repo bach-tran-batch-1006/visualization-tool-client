@@ -13,6 +13,26 @@ describe('Curricula Edit Page', () => {
         expect(await page.getTitleText()).toEqual('Project3Cvt');
     });
 
+    it('should click add Curriculum button, textbox and add input', async () => {
+        await page.clickAddButton();
+        await page.clickAddTextBox();
+        await page.clickAddSubmit();
+        expect(await page.findAddedCurriculum()).toEqual('TestAddCurriculum');
+    });
+
+    it('should click update Curriculum button, textbox and update input', async () => {
+        await page.clickUpdateButton();
+        await page.clickUpdateLastCurriculum();
+        await page.clickUpdateTextBox();
+        await page.clickUpdateSubmit();
+        expect(await page.findUpdatedAddedCurriculum()).toEqual('zTestUpdateCurriculum');
+    });
+
+    it('should click delete Curriculum button', async () => {
+        await page.selectUpdatedCurriculum();
+        await page.clickDeleteButton();
+        expect(await page.getLastItem()).not.toEqual('zTestUpdateCurriculum');
+    });
 
 
     afterEach(async () => {

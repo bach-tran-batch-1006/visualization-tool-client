@@ -7,7 +7,7 @@
         <!-- CURRICULUM-EDIT-LIST -->
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Curriculum-Edit</legend>
-            <ul>
+            <ul class="listofcurriculum">
                 <li *ngFor="let curriculum of curriculumList; let i = index">
                     <label class="curriculumLabel" for="curriculum_{{curriculum.curriculumId}}">
                         <input type="radio" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum"  name="curriculumList" [(ngModel)]="selectedCurriculum" (change)="displayCurriculum()"/>
@@ -43,9 +43,9 @@
                     <div class="column">
                         <div class="buttons">
                             <div class="buttons">
-                                <button class="button is-small btn-add" [ngClass]="showAddCurriculum? 'is-active' : ''" (click)="toggleAddCurriculum()">Add Curriculum</button>
-                                <button class="button is-small btn-update" [ngClass]="showUpdateCurriculum? 'is-active' : ''" (click)="toggleUpdateCurriculum()" >Update Curriculum</button>
-                                <button class="button is-small has-background-danger" (click)="deleteCurriculum()">Remove</button>
+                                <button id="addCurriculumButton" class="button is-small btn-add" [ngClass]="showAddCurriculum? 'is-active' : ''" (click)="toggleAddCurriculum()">Add Curriculum</button>
+                                <button id="updateCurriculumButton" class="button is-small btn-update" [ngClass]="showUpdateCurriculum? 'is-active' : ''" (click)="toggleUpdateCurriculum()">Update Curriculum</button>
+                                <button id="deleteCurriculumButton" class="button is-small has-background-danger" (click)="deleteCurriculum()">Remove</button>
                             </div>
                         </div>
                     </div>
@@ -54,15 +54,15 @@
                             <p class="help has-text-danger">Please select a Curriculum to delete.</p>
                         </ng-container>
                         <ng-container *ngIf="showAddCurriculum">
-                            <input class="input add-input mb-1" placeholder="Curriculum Name" [(ngModel)]="curriculumNameAdd"/>
+                            <input id="addCurriculumTextBox" class="input add-input mb-1" placeholder="Curriculum Name" [(ngModel)]="curriculumNameAdd" />
                             <p class="help add-curriculum-help" *ngIf="curriculumNameAdd == '' || curriculumNameAdd == null">Please select a Name for this Curriculum</p>
                             <p class="help add-curriculum-help" *ngIf="selectedSkillList.length==0">Please select a Skill for this Curriculum</p>
-                            <button class="button is-small btn-add" (click)="addCurriculum()">Submit</button>
+                            <button id="submitAdd" class="button is-small btn-add" (click)="addCurriculum()">Submit</button>
                         </ng-container>
                         <ng-container *ngIf="showUpdateCurriculum">
-                            <input class="input update-input mb-1" placeholder="Curriculum Name" [(ngModel)]="curriculumNameUpdate"/>
+                            <input id="updateCurriculumTextBox" class="input update-input mb-1" placeholder="Curriculum Name" [(ngModel)]="curriculumNameUpdate" />
                             <p class="help update-curriculum-help" *ngIf="curriculumNameUpdate == null">Please select a curriculum for update</p>
-                            <button class="button is-small btn-update" (click)="updateCurriculum()">Update</button>
+                            <button id="submitUpdate" class="button is-small btn-update" (click)="updateCurriculum()">Update</button>
                         </ng-container>
                     </div>
                 </div>

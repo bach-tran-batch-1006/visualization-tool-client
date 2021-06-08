@@ -36,7 +36,7 @@ describe('Visualization Edit Page', () => {
         await page.clickAddedVisualization();
         await page.visualizationInput2();
         await page.clickUpdateButton();
-        expect(await page.findUpdatedAddedVisualization()).toEqual('ProtractorTestUpdate');
+        expect(await page.findUpdatedAddedVisualization()).toEqual('zProtractorTestUpdate');
 
     });
 
@@ -45,7 +45,7 @@ describe('Visualization Edit Page', () => {
         await page.clickUpdatedVisualization();
         await page.clickDeleteButton();
 
-        expect(await page.getLastItem()).not.toEqual('ProtractorTestUpdate');
+        expect(await page.getLastItem()).not.toEqual('zProtractorTestUpdate');
 
     });
 
@@ -57,8 +57,4 @@ describe('Visualization Edit Page', () => {
             level: logging.Level.SEVERE,
         } as logging.Entry));
     });
-
-    // afterAll(async () =>{
-    //     page
-    // })
 });

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SkillCategoryEditComponent } from './skill-category-edit.component';
 
 describe('SkillCategoryEditComponent', () => {
@@ -8,7 +9,9 @@ describe('SkillCategoryEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SkillCategoryEditComponent ]
+      declarations: [ SkillCategoryEditComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [SkillCategoryEditComponent],
     })
     .compileComponents();
   });

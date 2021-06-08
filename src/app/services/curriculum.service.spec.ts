@@ -76,7 +76,6 @@ describe('CurriculumService', () => {
     expect(response).toEqual(expected);
   });
 
-
   it('should update curriculum', () => {
     let categoryObj = {
       categoryId: 33,
@@ -114,7 +113,6 @@ describe('CurriculumService', () => {
     });
     expect(response).toEqual(expected);
   });
-
 
   it('should delete curriculum by Id', () => {
     let response;

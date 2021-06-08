@@ -12,7 +12,6 @@ export class CurriculumComponent implements OnInit, OnChanges {
   @Input() currentCurriculumList: Curriculum[];
   curriculumList: Curriculum[] = [];
 
-
   @Output() currentCurriculumId = new EventEmitter<number>();
 
   constructor() { }

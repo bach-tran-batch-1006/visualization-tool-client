@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Category, CategoryDTO } from '../models/Category';
 import { Skill, SkillDTO } from '../models/Skill';
@@ -23,7 +22,6 @@ export class SkillCategoryEditComponent implements OnInit {
   selectedSkill: Skill;
 
   showSkillDeleteFail: boolean = false;
-
 
   categoryList: Category[] = [];
   showAddCategory: boolean = false;

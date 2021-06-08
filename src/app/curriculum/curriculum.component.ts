@@ -11,12 +11,14 @@ export class CurriculumComponent implements OnInit, OnChanges {
   
   @Input() currentCurriculumList: Curriculum[];
   curriculumList: Curriculum[] = [];
+  exist:boolean = true;
 
   @Output() currentCurriculumId = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.currentCurriculumList=[];
   }
 
   ngOnChanges(): void {

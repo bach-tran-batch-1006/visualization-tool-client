@@ -14,11 +14,11 @@ export class SkillCategoryEditComponent implements OnInit {
 
   skillList: Skill[] = [];
 
-  showAddSkill:boolean = false;
+  showAddSkill: boolean = false;
   showUpdateSkill: boolean = false;
 
-  skillNameAdd:string;
-  skillNameUpdate:string;
+  skillNameAdd: string;
+  skillNameUpdate: string;
 
   selectedSkill: Skill;
 
@@ -26,10 +26,10 @@ export class SkillCategoryEditComponent implements OnInit {
 
 
   categoryList: Category[] = [];
-  showAddCategory:boolean = false;
+  showAddCategory: boolean = false;
   showUpdateCategory: boolean = false;
-  categoryNameAdd:string;
-  categoryDescriptionAdd:string;
+  categoryNameAdd: string;
+  categoryDescriptionAdd: string;
   categoryName: string;
   categoryDescription: string;
   selectedCategory: Category;
@@ -82,7 +82,7 @@ export class SkillCategoryEditComponent implements OnInit {
       categoryName: this.categoryName,
       categoryDescription: this.categoryDescription
     }
-    this.categoryService.updateCategory(catId,catDTO).subscribe((response) => {
+    this.categoryService.updateCategory(catId, catDTO).subscribe((response) => {
       this.getAllCategories();
       this.categoryName = "";
       this.categoryDescription = "";
@@ -90,7 +90,7 @@ export class SkillCategoryEditComponent implements OnInit {
   }
 
   deleteCategory() {
-    if(this.selectedCategory == null){
+    if (this.selectedCategory == null) {
       this.showCategoryDeleteFail = true;
     } else {
       let catId = this.selectedCategory.categoryId;
@@ -106,6 +106,7 @@ export class SkillCategoryEditComponent implements OnInit {
     this.categoryName = this.selectedCategory.categoryName;
     this.categoryDescription = this.selectedCategory.categoryDescription;
     this.showUpdateCategory = true;
+    this.showAddCategory = false;
   }
 
   toggleAddCategory() {
@@ -114,21 +115,21 @@ export class SkillCategoryEditComponent implements OnInit {
     this.showUpdateCategory = false;
   }
 
-  toggleUpdateCategory(){
+  toggleUpdateCategory() {
     this.showCategoryDeleteFail = false;
     this.showUpdateCategory = !this.showUpdateCategory;
     this.showAddCategory = false;
   }
 
   clearCategoryRadio() {
-    if(this.selectedCategory){
-      let selectedCategoryRadio = <HTMLInputElement> document.getElementById(`category_${this.selectedCategory.categoryId}`);
+    if (this.selectedCategory) {
+      let selectedCategoryRadio = <HTMLInputElement>document.getElementById(`category_${this.selectedCategory.categoryId}`);
       selectedCategoryRadio.checked = false;
       this.selectedCategory = null;
       this.categoryName = "";
       this.categoryDescription = "";
-    } else if(this.selectedSkill) {
-      let selectedCategoryRadio = <HTMLInputElement> document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
+    } else if (this.selectedSkill) {
+      let selectedCategoryRadio = <HTMLInputElement>document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
       selectedCategoryRadio.checked = false;
     }
   }
@@ -136,9 +137,9 @@ export class SkillCategoryEditComponent implements OnInit {
   //********** SKILL FUNCTIONS **********
 
   clearSkillRadio() {
-    let selectedSkillRadio = <HTMLInputElement> document.getElementById(`skill_${this.selectedSkill.skillId}`);
+    let selectedSkillRadio = <HTMLInputElement>document.getElementById(`skill_${this.selectedSkill.skillId}`);
     selectedSkillRadio.checked = false;
-    let selectedCategoryRadio = <HTMLInputElement> document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
+    let selectedCategoryRadio = <HTMLInputElement>document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
     selectedCategoryRadio.checked = false;
     this.selectedSkill = null;
     this.skillNameUpdate = "";
@@ -158,8 +159,8 @@ export class SkillCategoryEditComponent implements OnInit {
 
   toggleSkill(selectSkillId) {
     let listSize = this.skillList.length;
-    for(let index = 0; index < listSize; index++){
-      if(this.skillList[index].skillId === selectSkillId){
+    for (let index = 0; index < listSize; index++) {
+      if (this.skillList[index].skillId === selectSkillId) {
         this.skillList[index].isActive = !this.skillList[index].isActive;
       }
     }
@@ -167,7 +168,7 @@ export class SkillCategoryEditComponent implements OnInit {
 
   displaySkill() {
     this.skillNameUpdate = this.selectedSkill.skillName;
-    let selectedCategoryRadio = <HTMLInputElement> document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
+    let selectedCategoryRadio = <HTMLInputElement>document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
     selectedCategoryRadio.checked = true;
     this.showAddSkill = false;
     this.showUpdateSkill = true;
@@ -190,33 +191,33 @@ export class SkillCategoryEditComponent implements OnInit {
     let skillId = this.selectedSkill.skillId;
     let skillDTO: SkillDTO = {
       name: this.selectedSkill.skillName,
-      category: (this.selectedCategory)?this.selectedCategory:this.selectedSkill.category
+      category: (this.selectedCategory) ? this.selectedCategory : this.selectedSkill.category
     }
-    this.skillService.updateSkill(skillId,skillDTO).subscribe((response) => {
+    this.skillService.updateSkill(skillId, skillDTO).subscribe((response) => {
       this.skillNameUpdate = "";
       console.log(response);
     });
   }
 
   deleteSkill() {
-    if(this.selectedSkill == null){
+    if (this.selectedSkill == null) {
       this.showSkillDeleteFail = true;
     } else {
       let skillId = this.selectedSkill.skillId;
 
-      let selectedSkillRadio = <HTMLInputElement> document.getElementById(`skill_${this.selectedSkill.skillId}`);
+      let selectedSkillRadio = <HTMLInputElement>document.getElementById(`skill_${this.selectedSkill.skillId}`);
       selectedSkillRadio.checked = false;
-      
-      let selectedCategoryRadio = <HTMLInputElement> document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
+
+      let selectedCategoryRadio = <HTMLInputElement>document.getElementById(`category_${this.selectedSkill.category.categoryId}`);
       selectedCategoryRadio.checked = false;
 
       this.skillService.deleteSkill(skillId).subscribe((response) => {
         this.getAllSkills();
-      }); 
+      });
     }
     this.showAddSkill = false;
     this.showUpdateSkill = false;
-    
+
   }
 
 }

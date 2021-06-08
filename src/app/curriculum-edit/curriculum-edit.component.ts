@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Curriculum, CurriculumDTO } from '../models/Curriculum';
 import { Skill } from '../models/Skill';
 import { CurriculumService } from '../services/curriculum.service';

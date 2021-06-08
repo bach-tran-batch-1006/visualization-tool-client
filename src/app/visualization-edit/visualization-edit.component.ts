@@ -4,7 +4,6 @@ import {Visualization, VisualizationDTO} from '../models/Visualization'
 import {CurriculumService} from "../services/curriculum.service";
 import { Curriculum } from '../models/Curriculum';
 
-
 @Component({
   selector: 'app-visualization-edit',
   templateUrl: './visualization-edit.component.html',

@@ -38,7 +38,6 @@ export class SkillComponent implements OnInit {
 
   highlightSkills() {
     let listLength = this.currentSkillList.length;
-    console.log("active skill list", this.activeSkillList);
     for (let i = 0; i < listLength; i++) {
       if(this.activeSkillList.some(skill => skill.skillId === this.currentSkillList[i].skillId)){
         this.currentSkillList[i].isActive = true;

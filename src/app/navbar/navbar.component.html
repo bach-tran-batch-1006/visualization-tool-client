@@ -1,12 +1,18 @@
-<nav class="is-flex is-justify-content-space-between">
-    <div>
-        <ul>
-            <li><a routerLink="/edit/visualization">Edit Visualization</a></li>
-            <li><a routerLink="/edit/curriculum">Edit Curricula</a></li>
-            <li><a routerLink="/edit/skill-category">Edit Skills/Categories</a></li>
-        </ul>
-    </div>
-    <div class="is-align-self-center">
+<nav class="navbar is-flex is-justify-content-space-between">
+    <div class="navbar-brand">
         <img src="../../assets/images/rev_logo.png" class="brand-logo" alt="Revature Logo">
     </div>
+
+    <div class="navbar-menu navbar-end is-active">
+        <ul class="navbar-item">
+            <li class="navbar-link" routerLinkActive="active-link"><a routerLink="/edit/visualization">Edit
+                    Visualization</a></li>
+            <li class="navbar-link" routerLinkActive="active-link"><a routerLink="/edit/curriculum">Edit
+                    Curricula</a>
+            </li>
+            <li class="navbar-link" routerLinkActive="active-link"><a routerLink="/edit/skill-category">Edit Skills &
+                    Categories</a></li>
+        </ul>
+    </div>
 </nav>
+<hr class="navbar-divider">

@@ -1,9 +1,13 @@
 .brand-logo {
-    max-width: 200px;
+    max-width: 160px;
     width: auto;
     height: auto;
     object-fit: contain;
     margin-top: 5px;
+}
+
+ul {
+    padding-bottom: 0;
 }
 
 li, a {
@@ -11,12 +15,38 @@ li, a {
     font-family: "Futura-Bold";
 }
 
+.active-link {
+    border-bottom: solid 2px #474C55;
+    border-radius: 2px;
+    background-color:  #f2f2f2;
+}
+
+.navbar-link {
+    padding-right: 1.2rem;
+}
+
+.navbar-link::after {
+    border-color: transparent;
+}
+
 @media only screen and (max-width: 1024px) {
-    li, a {
-        font-size: .9rem;
+    li {
+        font-size: .85rem;
+        padding: 3px;
     }
     .brand-logo {
-        max-width: 175px;
+        max-width: 160px;
+    }
+    .navbar-menu {
+        background-color: white;
+        box-shadow: 0 0 0 0;
+        padding: 0;
+    }
+    ul {
+        padding: 0;
+    }
+    nav {
+        margin-bottom: -1.1rem;
     }
 }
 

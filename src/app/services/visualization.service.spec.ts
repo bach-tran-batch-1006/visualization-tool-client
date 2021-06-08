@@ -57,11 +57,6 @@ describe('VisualizationService', () => {
   });
 
   it('should delete visualization by id', () => {
-    let expected = {
-      visualizationId: 40,
-      visualizationName: 'New',
-      curriculumList: [],
-    };
 
     let response;
     spyOn(service, 'deleteVisualization').and.returnValue(of(1));

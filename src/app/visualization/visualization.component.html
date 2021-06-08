@@ -1,15 +1,19 @@
-<div class="container m-5">
-    <div class="columns box">
-        <div class="column box leftColumn mb-0 is-6-desktop">
-            <app-curriculum class="is-full" style="width:85%" [currentCurriculumList]="currentCurriculumList" (currentCurriculumId)="changeCurriculumEvent($event)"></app-curriculum>
-        </div>
-        <div class="column box rightColumn is-6-desktop">
-            <div class="row box rightColumnRows">
+<div class="container m-5 ">
+    <div class="columns">
+        <fieldset class="column  leftColumn is-6-desktop">
+            <legend>Curricula</legend>
+            <app-curriculum class="is-full"  [currentCurriculumList]="currentCurriculumList" (currentCurriculumId)="changeCurriculumEvent($event)"></app-curriculum>
+        </fieldset>
+        <div class="column rightColumn is-6-desktop">
+            <fieldset class="row rightColumnRows">
+                <legend>Skills</legend>
                 <app-skill [currentSkillList]="distinctSkillList" [activeSkillList]="currentSkillList" [currentCategoryList]="distinctCategoryList" [categoryColorList]="categoryColorList"></app-skill>
-            </div>
-            <div class="row box rightColumnRows">
+            </fieldset>
+            <fieldset class="row rightColumnRows">
+                <legend>Categories</legend>
                 <app-category [currentCategoryList]="distinctCategoryList" [categoryColorList]="categoryColorList"></app-category>
-            </div>
+            </fieldset>
         </div>
     </div>
+    
 </div>

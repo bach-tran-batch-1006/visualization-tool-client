@@ -19,7 +19,23 @@
     min-height: 80vh;
 }
 
+
+
 .rightColumnRows {
     height: 50%;
-    margin-bottom: 0;
+    border: 1px solid black;
+
+}
+
+
+.column {
+    padding: 0px 10px 0px 10px;
+}
+
+legend {
+    font-size: 1.1rem;
+    font-family: "Futura-Bold";
+    color: #474C55;
+    margin-left: 20px;
+    padding: 5px;
 }

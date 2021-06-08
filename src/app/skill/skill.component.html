@@ -1,4 +1,13 @@
-<div class="skillList">
+
+
+<div  *ngIf="currentSkillList.length === 0 ; else elseBlock">
+
+    <p id="noskills"> No Skills </p>
+
+</div>
+
+
+<div class="skillList" #elseBlock>
     <ng-container *ngFor="let skill of currentSkillList">
         <button [disabled]="!skill.isActive" [style.background-color]="skill.color">{{ skill.skillName }}</button>
     </ng-container>

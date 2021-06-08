@@ -5,7 +5,7 @@
     margin-top: 20px;
     min-height: 80vh;
      height: auto;
-    
+
 }
 
 .columnheight{
@@ -14,7 +14,7 @@
 }
 
 .borders{
-    border: 1px solid black; 
+    border: 1px solid black;
 }
 
 .boxcolumn{
@@ -54,14 +54,25 @@ legend {
     color: #474C55;
 }
 
+.buttons button, .btn-add {
+    font-family: "Futura-Book";
+    letter-spacing: 1.1px;
+    font-size: 13px;
+    color: white;
+}
+
 .btn-add {
     background-color: #FCB414;
-    color: #474C55;
+    color: white;
+    letter-spacing: 1.1px;
+    font-size: 13px;
 }
 
 .btn-update {
     background-color: #72A4C2;
-    color: #474C55;
+    color: white;
+    letter-spacing: 1.1px;
+    font-size: 13px;
 }
 
 .btn-light-gray {

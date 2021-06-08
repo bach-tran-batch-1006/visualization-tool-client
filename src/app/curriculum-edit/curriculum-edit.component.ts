@@ -81,6 +81,7 @@ export class CurriculumEditComponent implements OnInit {
       skillList: this.selectedSkillList
     }
     this.curriculumService.updateCurriculum(curriculumId,curriculumDTO).subscribe((response) => {
+      this.curriculumNameUpdate = "";
       this.getAllCurriculum();
       this.resetSkillActive();
     });

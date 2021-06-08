@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { Visualization, VisualizationDTO} from '../models/Visualization';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Visualization, VisualizationDTO } from '../models/Visualization';
 import { Skill } from '../models/Skill'
 import { Category } from '../models/Category'
 
@@ -31,10 +31,10 @@ export class VisualizationService {
   }
 
   updateVisualization(id: number, bodyObject: VisualizationDTO): Observable<Visualization> {
-      return this.httpClient.put<Visualization>(`${this.apiURL}${id}`, bodyObject, this.httpOptions);
+    return this.httpClient.put<Visualization>(`${this.apiURL}${id}`, bodyObject, this.httpOptions);
   }
 
-  deleteVisualization(id: number){
+  deleteVisualization(id: number) {
     return this.httpClient.delete(`${this.apiURL}${id}`);
   }
 

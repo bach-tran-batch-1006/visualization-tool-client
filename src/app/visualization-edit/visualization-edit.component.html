@@ -8,7 +8,7 @@
         <!-- Visualization-EDIT-LIST -->
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Visualization-Edit</legend>
-            <ul>
+            <ul class="listOfVisuals">
                 <li *ngFor="let visualization of visualizationList; let i = index">
                     <label class="visualizationLabel" for="visualization_{{visualization.visualizationId}}">
                         <input type="radio" id="visualization_{{visualization.visualizationId}}" [value]="visualization"
@@ -52,10 +52,10 @@
                                 <button id="addVisualizationButton" class="button is-small btn-add"
                                     [ngClass]="showAddVisualization? 'is-active' : ''"
                                     (click)="toggleAddVisualization()">Add Visualization</button>
-                                <button class="button is-small btn-update"
+                                <button id="updateVisualizationButton" class="button is-small btn-update"
                                     [ngClass]="showUpdateVisualization? 'is-active' : ''"
                                     (click)="toggleUpdateVisualization()">Update Visualization</button>
-                                <button class="button is-small has-background-danger"
+                                <button id="removeVisualizationButton" class="button is-small has-background-danger"
                                     (click)="deleteVisualization()">Remove Visualization</button>
                             </div>
                         </div>
@@ -76,11 +76,12 @@
                                 (click)="addVisualization()">Submit</button>
                         </ng-container>
                         <ng-container *ngIf="showUpdateVisualization">
-                            <input class="input update-input mb-1" placeholder="Visualization Name"
+                            <input id="updateVisualBox" class="input update-input mb-1" placeholder="Visualization Name"
                                 [(ngModel)]="visualizationNameUpdate" />
                             <p class="help update-visualization-help" *ngIf="visualizationNameUpdate == null">Please
                                 select a visualization for update</p>
-                            <button class="button is-small btn-update" (click)="updateVisualization()">Update</button>
+                            <button id="visualizationUpdateButton" class="button is-small btn-update"
+                                (click)="updateVisualization()">Update</button>
                         </ng-container>
                     </div>
                 </div>

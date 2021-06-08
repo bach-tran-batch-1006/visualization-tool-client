@@ -32,5 +32,54 @@ export class VisualizationPage {
         await element(by.id('visualizationSubmit')).click();
     }
 
+    async clickFirstCurricula(): Promise<void> {
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('curriculum_1')));
+        await element(by.id('curriculum_1')).click();
+    }
 
+    async clickAddedVisualization(): Promise<void> {
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" ProtractorTest "]')));
+
+        await element(by.xpath("//*[text()=' ProtractorTest ']")).click();
+    }
+
+    async clickUpdateTab(): Promise<void> {
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('updateVisualizationButton')));
+        await element(by.id('updateVisualizationButton')).click();
+    }
+
+    async findAddedVisualization(): Promise<string> {
+        return await element(by.xpath('//*[text()=" ProtractorTest "]')).getText();
+    }
+
+    async findUpdatedAddedVisualization(): Promise<string> {
+        return await element(by.xpath('//*[text()=" ProtractorTestUpdate "]')).getText();
+    }
+
+    async clickUpdatedVisualization(): Promise<void> {
+        await element(by.xpath('//*[text()=" ProtractorTestUpdate "]')).click();
+    }
+
+
+
+    async visualizationInput2(): Promise<void> {
+
+        await element(by.id('updateVisualBox')).sendKeys("Update");
+    }
+
+    async clickUpdateButton(): Promise<void> {
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('visualizationUpdateButton')));
+        await element(by.id('visualizationUpdateButton')).click();
+    }
+
+    async clickDeleteButton(): Promise<void> {
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('removeVisualizationButton')));
+        await element(by.id('removeVisualizationButton')).click();
+    }
+
+    async getLastItem(): Promise<string> {
+        let last = await element.all(by.css('.listOfVisuals li')).last();
+        return last.getText() as Promise<string>;
+
+    }
 }

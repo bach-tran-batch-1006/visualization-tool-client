@@ -65,9 +65,7 @@ describe('SkillService', () => {
     ];
 
     let addSkillDTO = {
-      skillName: "Java",
-        isActive: true,
-        color: '',
+        name: "Java",
         category: categoryObj
     }
 
@@ -101,9 +99,7 @@ describe('SkillService', () => {
     ];
 
     let updateSkillDTO = {
-        skillName: "Java Update",
-        isActive: true,
-        color: '',
+        name: "Java Update",
         category: categoryObj
     }
 

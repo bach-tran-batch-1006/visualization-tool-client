@@ -5,11 +5,11 @@
             <app-curriculum class="is-full" style="min-width:85%;" [currentCurriculumList]="currentCurriculumList" (currentCurriculumId)="changeCurriculumEvent($event)"></app-curriculum>
         </fieldset>
         <div class="column rightColumn is-6-desktop">
-            <fieldset class="row rightColumnRows">
+            <fieldset class="skillSection row rightColumnRows">
                 <legend>Skills</legend>
                 <app-skill [currentSkillList]="distinctSkillList" [activeSkillList]="currentSkillList" [currentCategoryList]="distinctCategoryList" [categoryColorList]="categoryColorList"></app-skill>
             </fieldset>
-            <fieldset class="row rightColumnRows">
+            <fieldset class="categorySection row rightColumnRows">
                 <legend>Categories</legend>
                 <app-category [currentCategoryList]="distinctCategoryList" [categoryColorList]="categoryColorList"></app-category>
             </fieldset>

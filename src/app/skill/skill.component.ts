@@ -26,7 +26,6 @@ export class SkillComponent implements OnChanges {
       this.highlightSkills();
     }
     for (const currentSkill of this.currentSkillList) {
-    // for (let i = 0; i < this.currentSkillList.length; i++) {
       const categoryIdx = this.currentCategoryList.findIndex((category) => {
          return JSON.stringify(category) === JSON.stringify(currentSkill.category);
       });

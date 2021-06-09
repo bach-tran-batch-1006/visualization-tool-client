@@ -45,7 +45,7 @@ describe('CategoryService', () => {
   });
 
   it('should add category', () => {
-    let newCategory = {
+    const newCategory = {
         categoryId: 0,
         categoryName: 'Test Category',
         categoryDescription: 'Programming Languages',
@@ -61,7 +61,7 @@ describe('CategoryService', () => {
   });
 
   it('should update category', () => {
-    let updated = {
+    const updated = {
       categoryId: 1,
       categoryName: 'Updated Language',
       categoryDescription: 'Updated Programming Languages',

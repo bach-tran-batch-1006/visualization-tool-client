@@ -33,8 +33,8 @@ export class VisualizationService {
     return this.httpClient.put<Visualization>(`${this.apiURL}${id}`, bodyObject, this.httpOptions);
   }
 
-  deleteVisualization(id: number) {
-    return this.httpClient.delete(`${this.apiURL}${id}`);
+  deleteVisualization(id: number): Observable<number> {
+    return this.httpClient.delete<number>(`${this.apiURL}${id}`);
   }
 
   getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {

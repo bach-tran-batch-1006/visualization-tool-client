@@ -12,7 +12,7 @@ describe('VisualizationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ VisualizationComponent ],
-      imports:[ RouterModule.forRoot([]), HttpClientModule, HttpClientTestingModule ],
+      imports: [ RouterModule.forRoot([]), HttpClientModule, HttpClientTestingModule ],
       providers: [VisualizationComponent]
     })
     .compileComponents();

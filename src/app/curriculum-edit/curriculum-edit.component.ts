@@ -15,10 +15,10 @@ export class CurriculumEditComponent implements OnInit {
   curriculumList: Curriculum[] = [];
   selectedCurriculum: Curriculum;
 
-  showAddCurriculum: boolean = false;
-  showUpdateCurriculum: boolean = false;
+  showAddCurriculum = false;
+  showUpdateCurriculum = false;
 
-  showCurriculumDeleteFail: boolean = false;
+  showCurriculumDeleteFail = false;
 
   curriculumNameAdd: string;
   curriculumNameUpdate: string;
@@ -33,63 +33,63 @@ export class CurriculumEditComponent implements OnInit {
     this.getAllSkills();
   }
 
-  getAllCurriculum() {
-    this.curriculumService.getAllCurriculum().subscribe((response) =>{
+  getAllCurriculum(): void {
+    this.curriculumService.getAllCurriculum().subscribe((response) => {
       this.curriculumList = response;
     });
   }
 
-  getAllSkills() {
+  getAllSkills(): void {
     this.skillService.getSkills().subscribe((response) => {
       this.skillList = response;
       this.skillList.sort((a, b) => (a.skillName.toLowerCase() > b.skillName.toLowerCase()) ? 1 : -1);
-      let listSize = this.skillList.length;
+      const listSize = this.skillList.length;
       for (let index = 0; index < listSize; index++) {
         this.skillList[index].isActive = false;
       }
     });
   }
 
-  addCurriculum() {
+  addCurriculum(): void {
     this.selectedSkillList = [];
-    let listSize = this.skillList.length;
+    const listSize = this.skillList.length;
     for (let index = 0; index < listSize; index++) {
-      if(this.skillList[index].isActive){
+      if (this.skillList[index].isActive) {
         this.selectedSkillList.push(this.skillList[index]);
       }
     }
-    let curriculumDTO: CurriculumDTO = {
+    const curriculumDTO: CurriculumDTO = {
       name: this.curriculumNameAdd,
       skillList: this.selectedSkillList
-    }
+    };
     this.curriculumService.addCurriculum(curriculumDTO).subscribe((response) => {
       this.getAllCurriculum();
       this.resetSkillActive();
     });
   }
 
-  updateCurriculum() {
+  updateCurriculum(): void {
     this.selectedSkillList = [];
-    let listSize = this.skillList.length;
+    const listSize = this.skillList.length;
     for (let index = 0; index < listSize; index++) {
-      if(this.skillList[index].isActive){
+      if (this.skillList[index].isActive) {
         this.selectedSkillList.push(this.skillList[index]);
       }
     }
-    let curriculumId = this.selectedCurriculum.curriculumId;
-    let curriculumDTO: CurriculumDTO = {
+    const curriculumId = this.selectedCurriculum.curriculumId;
+    const curriculumDTO: CurriculumDTO = {
       name: this.curriculumNameUpdate,
       skillList: this.selectedSkillList
-    }
-    this.curriculumService.updateCurriculum(curriculumId,curriculumDTO).subscribe((response) => {
-      this.curriculumNameUpdate = "";
+    };
+    this.curriculumService.updateCurriculum(curriculumId, curriculumDTO).subscribe((response) => {
+      this.curriculumNameUpdate = '';
       this.getAllCurriculum();
       this.resetSkillActive();
     });
   }
 
-  deleteCurriculum(){
-    if(this.selectedCurriculum){
+  deleteCurriculum(): void {
+    if (this.selectedCurriculum) {
       this.curriculumService.deleteCurriculum(this.selectedCurriculum.curriculumId).subscribe((response) => {
         this.getAllCurriculum();
         this.resetSkillActive();
@@ -99,52 +99,52 @@ export class CurriculumEditComponent implements OnInit {
     }
   }
 
-  displayCurriculum() {
+  displayCurriculum(): void {
     this.showAddCurriculum = false;
     this.showCurriculumDeleteFail = false;
     this.resetSkillActive();
     this.curriculumNameUpdate = this.selectedCurriculum.curriculumName;
     this.showUpdateCurriculum = true;
-    for(let skill of this.selectedCurriculum.skillList){
-      let skillIndex = this.skillList.map(function(s) { return s.skillId; }).indexOf(skill.skillId);
-      if(!this.skillList[skillIndex].isActive){
+    for (const skill of this.selectedCurriculum.skillList) {
+      const skillIndex = this.skillList.map((s) => s.skillId).indexOf(skill.skillId);
+      if (!this.skillList[skillIndex].isActive) {
         this.selectedSkillList.push(this.skillList[skillIndex]);
       } else {
-        this.selectedSkillList = this.selectedSkillList.filter(function(s) { return s.skillId != this.skillList[skillIndex].skillId; });
+        this.selectedSkillList = this.selectedSkillList.filter((s) => s.skillId !== this.skillList[skillIndex].skillId);
       }
       this.skillList[skillIndex].isActive = !this.skillList[skillIndex].isActive;
     }
   }
 
-  toggleSkill(currentSkillId: number) {
-    let listSize = this.skillList.length;
+  toggleSkill(currentSkillId: number): void {
+    const listSize = this.skillList.length;
     for (let index = 0; index < listSize; index++) {
-      if(this.skillList[index].skillId == currentSkillId){
-        if(!this.skillList[index].isActive){
+      if (this.skillList[index].skillId === currentSkillId) {
+        if (!this.skillList[index].isActive) {
           this.selectedSkillList.push(this.skillList[index]);
         } else {
-          this.selectedSkillList = this.selectedSkillList.filter(function(s) { return s.skillId != currentSkillId; });
+          this.selectedSkillList = this.selectedSkillList.filter((s) => s.skillId !== currentSkillId);
         }
         this.skillList[index].isActive = !this.skillList[index].isActive;
       }
     }
   }
 
-  resetSkillActive() {
-    for(let skill of this.skillList) {
+  resetSkillActive(): void {
+    for (const skill of this.skillList) {
       skill.isActive = false;
     }
     this.selectedSkillList = [];
   }
 
-  toggleAddCurriculum() {
+  toggleAddCurriculum(): void {
     this.showCurriculumDeleteFail = false;
     this.showUpdateCurriculum = false;
     this.showAddCurriculum = !this.showAddCurriculum;
 
   }
 
-  toggleUpdateCurriculum() {
+  toggleUpdateCurriculum(): void {
     this.showCurriculumDeleteFail = false;
     this.showAddCurriculum = false;
     this.showUpdateCurriculum = !this.showUpdateCurriculum;

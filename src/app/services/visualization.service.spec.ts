@@ -20,7 +20,7 @@ describe('VisualizationService', () => {
   });
 
   it('should get all visualizations', () => {
-    let expected = [
+    const expected = [
       {
         visualizationId: 40,
         visualizationName: 'New',
@@ -40,7 +40,7 @@ describe('VisualizationService', () => {
   });
 
   it('should get visualization by id', () => {
-    let expected = {
+    const expected = {
       visualizationId: 40,
       visualizationName: 'New',
       curriculumList: [],
@@ -67,7 +67,7 @@ describe('VisualizationService', () => {
   });
 
   it('should add new visualization', () => {
-    let newCurr = [
+    const newCurr = [
       {
         curriculumId: 33,
         curriculumName: 'Java React',
@@ -76,16 +76,16 @@ describe('VisualizationService', () => {
       },
     ];
 
-    let expected = {
+    const expected = {
       visualizationId: 1,
       visualizationName: 'New Vis',
       curriculumList: newCurr,
     };
 
-    let addVisualizationDTo = {
-      title: "New Vis",
+    const addVisualizationDTo = {
+      title: 'New Vis',
       curricula: newCurr
-    }
+    };
 
     let response;
     spyOn(service, 'addVisualization').and.returnValue(of(expected));
@@ -97,7 +97,7 @@ describe('VisualizationService', () => {
   });
 
   it('should update visualization', () => {
-    let updatedCurr = [
+    const updatedCurr = [
       {
         curriculumId: 33,
         curriculumName: 'Java React',
@@ -106,13 +106,13 @@ describe('VisualizationService', () => {
       },
     ];
 
-    let visualizationUpdateReturn = {
+    const visualizationUpdateReturn = {
       visualizationId: 40,
       visualizationName: 'Updated Vis',
       curriculumList: updatedCurr,
     };
 
-    let visualizationUpdateDTO = {
+    const visualizationUpdateDTO = {
       title: 'Updated Vis',
       curricula: updatedCurr,
     };
@@ -130,7 +130,7 @@ describe('VisualizationService', () => {
   });
 
   it('should get all unique skills by visualization', () => {
-    let expectedSkills = [
+    const expectedSkills = [
       {
         skillId: 34,
         skillName: 'Javascript',
@@ -183,7 +183,7 @@ describe('VisualizationService', () => {
   });
 
   it('should get all unique categories by visualization', () => {
-    let expectedCategories = [
+    const expectedCategories = [
       {
         categoryId: 33,
         categoryName: 'Front-End',

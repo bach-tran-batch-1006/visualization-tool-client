@@ -9,7 +9,7 @@ import { Category } from '../models/Category';
 export class CategoryComponent  {
 
   @Input() currentCategoryList: Category[] = [];
-  @Input() categoryColorList: String[] = [];
+  @Input() categoryColorList: string[] = [];
 
   constructor() { }
 }

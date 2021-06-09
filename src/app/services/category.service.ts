@@ -15,19 +15,19 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCategories():Observable<Category[]>{
+  getCategories(): Observable<Category[]>{
     return this.httpClient.get<Category[]>(this.apiURL);
   }
 
-  addCategory(bodyObject: CategoryDTO):Observable<Category>{
-    return this.httpClient.post<Category>(this.apiURL,bodyObject, this.httpOptions);
+  addCategory(bodyObject: CategoryDTO): Observable<Category>{
+    return this.httpClient.post<Category>(this.apiURL, bodyObject, this.httpOptions);
   }
 
-  updateCategory(id: number, bodyObject: object):Observable<Category>{
-    return this.httpClient.put<Category>(this.apiURL+id,bodyObject, this.httpOptions);
+  updateCategory(id: number, bodyObject: object): Observable<Category>{
+    return this.httpClient.put<Category>(this.apiURL + id, bodyObject, this.httpOptions);
   }
 
-  deleteCategory(id: number){
-    return this.httpClient.delete(this.apiURL+id);
+  deleteCategory(id: number): Observable<object>{
+    return this.httpClient.delete(this.apiURL + id);
   }
 }

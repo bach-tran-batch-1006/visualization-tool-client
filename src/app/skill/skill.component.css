@@ -18,3 +18,11 @@
 .skillList button:disabled {
     opacity: 60%;
 }
+
+.skillList {
+    margin-bottom: 10px;
+}
+
+#noskills{
+    margin-left: 14px;
+}

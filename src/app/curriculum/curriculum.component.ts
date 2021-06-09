@@ -17,6 +17,7 @@ export class CurriculumComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
+    this.currentCurriculumList=[];
   }
 
   ngOnChanges(): void {

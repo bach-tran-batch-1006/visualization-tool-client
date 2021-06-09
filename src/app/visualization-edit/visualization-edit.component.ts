@@ -4,7 +4,6 @@ import {Visualization, VisualizationDTO} from '../models/Visualization'
 import {CurriculumService} from "../services/curriculum.service";
 import { Curriculum } from '../models/Curriculum';
 
-
 @Component({
   selector: 'app-visualization-edit',
   templateUrl: './visualization-edit.component.html',
@@ -19,6 +18,7 @@ export class VisualizationEditComponent implements OnInit {
   showUpdateVisualization: boolean = false;
 
   showVisualizationDeleteFail: boolean = false;
+  showViewVisualizationFail: boolean = false;
 
   visualizationNameAdd: string;
   visualizationNameUpdate: string;
@@ -64,6 +64,7 @@ export class VisualizationEditComponent implements OnInit {
     }
     this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
       this.getAllVisualization();
+      this.resetCurriculumActive();
     });
   }
 
@@ -81,6 +82,7 @@ export class VisualizationEditComponent implements OnInit {
       curricula: this.selectedCurriculumList
     }
     this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
+      this.visualizationNameUpdate = "";
       this.getAllVisualization();
       this.resetCurriculumActive();
     });
@@ -94,6 +96,7 @@ export class VisualizationEditComponent implements OnInit {
       });
     } else {
       this.showVisualizationDeleteFail = true;
+      this.showViewVisualizationFail = false;
     }
   }
 
@@ -101,6 +104,7 @@ export class VisualizationEditComponent implements OnInit {
 
     this.showAddVisualization = false;
     this.showVisualizationDeleteFail = false;
+    this.showViewVisualizationFail = false;
     this.resetCurriculumActive();
     this.visualizationNameUpdate = this.selectedVisualization.visualizationName;
     this.showUpdateVisualization = true;
@@ -139,14 +143,26 @@ export class VisualizationEditComponent implements OnInit {
 
   toggleAddVisualization() {
     this.showVisualizationDeleteFail = false;
+    this.showViewVisualizationFail = false;
     this.showUpdateVisualization = false;
     this.showAddVisualization = !this.showAddVisualization;
-
+    this.resetCurriculumActive();
   }
 
   toggleUpdateVisualization() {
     this.showVisualizationDeleteFail = false;
+    this.showViewVisualizationFail = false;
     this.showAddVisualization = false;
     this.showUpdateVisualization = !this.showUpdateVisualization;
   }
+
+  viewVisualization() {
+    if (this.selectedVisualization) {
+      window.open(`/visualization/${this.selectedVisualization.visualizationId}`);
+    } else {
+      this.showViewVisualizationFail = true;
+      this.showVisualizationDeleteFail = false;
+    }
+  }
+
 }

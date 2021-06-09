@@ -1,7 +1,8 @@
-<h1>Categories</h1>
-
 <div class="categoryList">
-    <ng-container *ngFor="let item of currentCategoryList">
+    <div *ngIf="currentCategoryList.length === 0">
+        <p id="notfoundcategory"> No Categories</p>
+    </div>
+    <ng-container *ngFor="let item of currentCategoryList" >
         <button [attr.category-id]="item.id" [ngStyle]="{'background-color': this.categoryColorList[this.currentCategoryList.indexOf(item)]}">
             {{ item.categoryName }}
         </button>

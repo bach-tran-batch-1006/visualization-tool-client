@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Category } from '../models/Category';
 
 @Component({
@@ -6,16 +6,10 @@ import { Category } from '../models/Category';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
-export class CategoryComponent implements OnChanges {
+export class CategoryComponent  {
 
   @Input() currentCategoryList: Category[] = [];
   @Input() categoryColorList: String[] = [];
 
   constructor() { }
-
-  ngOnChanges(): void {
-    console.log("cat component", this.categoryColorList);
-    console.log("cat component", this.currentCategoryList);
-  }
-
 }

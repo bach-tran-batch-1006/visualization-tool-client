@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Curriculum, CurriculumDTO } from '../models/Curriculum';
 import { Skill } from '../models/Skill';
 import { CurriculumService } from '../services/curriculum.service';
@@ -63,6 +64,7 @@ export class CurriculumEditComponent implements OnInit {
     }
     this.curriculumService.addCurriculum(curriculumDTO).subscribe((response) => {
       this.getAllCurriculum();
+      this.resetSkillActive();
     });
   }
 
@@ -80,7 +82,9 @@ export class CurriculumEditComponent implements OnInit {
       skillList: this.selectedSkillList
     }
     this.curriculumService.updateCurriculum(curriculumId,curriculumDTO).subscribe((response) => {
+      this.curriculumNameUpdate = "";
       this.getAllCurriculum();
+      this.resetSkillActive();
     });
   }
 
@@ -88,6 +92,7 @@ export class CurriculumEditComponent implements OnInit {
     if(this.selectedCurriculum){
       this.curriculumService.deleteCurriculum(this.selectedCurriculum.curriculumId).subscribe((response) => {
         this.getAllCurriculum();
+        this.resetSkillActive();
       });
     } else {
       this.showCurriculumDeleteFail = true;

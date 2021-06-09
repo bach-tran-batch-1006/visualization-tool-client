@@ -81,10 +81,4 @@ export class VisualizationPage {
         await protractor.ExpectedConditions.elementToBeClickable(element(by.id('viewVisualizationButton')));
         await element(by.id('viewVisualizationButton')).click();
     }  
-
-    async openVisualizationTab(): Promise<string> {
-        await protractor.ExpectedConditions.elementToBeSelected(element(by.id('viewVisualizationProtector')));
-        let view = await element(by.id('viewVisualizationProtector'));
-        return view.getText() as Promise<string>;
-    }
 }

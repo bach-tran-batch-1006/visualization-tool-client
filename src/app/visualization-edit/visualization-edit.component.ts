@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
-import {Visualization, VisualizationDTO} from '../models/Visualization'
-import {CurriculumService} from "../services/curriculum.service";
+import {Visualization, VisualizationDTO} from '../models/Visualization';
+import {CurriculumService} from '../services/curriculum.service';
 import { Curriculum } from '../models/Curriculum';
 
 @Component({
@@ -14,18 +14,17 @@ export class VisualizationEditComponent implements OnInit {
   visualizationList: Visualization[] = [];
   selectedVisualization: Visualization;
 
-  showAddVisualization: boolean = false;
-  showUpdateVisualization: boolean = false;
+  showAddVisualization = false;
+  showUpdateVisualization = false;
 
-  showVisualizationDeleteFail: boolean = false;
-  showViewVisualizationFail: boolean = false;
+  showVisualizationDeleteFail = false;
+  showViewVisualizationFail = false;
 
   visualizationNameAdd: string;
   visualizationNameUpdate: string;
 
   curriculumList: Curriculum[] = [];
   selectedCurriculumList: Curriculum[] = [];
- 
   constructor(private visualizationService: VisualizationService, private curriculumService: CurriculumService) { }
 
   ngOnInit(): void {
@@ -33,63 +32,63 @@ export class VisualizationEditComponent implements OnInit {
     this.getAllCurriculum();
   }
 
-  getAllVisualization(){
-    this.visualizationService.getAllVisualizations().subscribe((response) =>{
-      this.visualizationList = response;
+  getAllVisualization(): void {
+    this.visualizationService.getAllVisualizations().subscribe((response) => {
+    this.visualizationList = response;
     });
   }
 
-  getAllCurriculum(){
-    this.curriculumService.getAllCurriculum().subscribe((response) => {
-      this.curriculumList = response;
-      this.curriculumList.sort((a, b) => (a.curriculumName.toLowerCase() > b.curriculumName.toLowerCase()) ? 1 : -1);
-      let listSize = this.curriculumList.length;
-      for (let index = 0; index < listSize; index++) {
+  getAllCurriculum(): void{
+     this.curriculumService.getAllCurriculum().subscribe((response) => {
+     this.curriculumList = response;
+     this.curriculumList.sort((a, b) => (a.curriculumName.toLowerCase() > b.curriculumName.toLowerCase()) ? 1 : -1);
+     const listSize = this.curriculumList.length;
+     for (let index = 0; index < listSize; index++) {
         this.curriculumList[index].isActive = false;
       }
     });
   }
 
-  addVisualization(){
+  addVisualization(): void{
     this.selectedCurriculumList = [];
-    let listSize = this.curriculumList.length;
+    const listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
-      if(this.curriculumList[index].isActive){
+      if (this.curriculumList[index].isActive) {
         this.selectedCurriculumList.push(this.curriculumList[index]);
       }
     }
-    let visualizationDTO: VisualizationDTO = {
+    const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameAdd,
       curricula: this.selectedCurriculumList
-    }
+    };
     this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
       this.getAllVisualization();
       this.resetCurriculumActive();
     });
   }
 
-  updateVisualization(){
+  updateVisualization(): void{
     this.selectedCurriculumList = [];
-    let listSize = this.curriculumList.length;
+    const listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
-      if(this.curriculumList[index].isActive){
+      if (this.curriculumList[index].isActive){
         this.selectedCurriculumList.push(this.curriculumList[index]);
       }
     }
-    let visualizationId = this.selectedVisualization.visualizationId;
-    let visualizationDTO: VisualizationDTO = {
+    const visualizationId = this.selectedVisualization.visualizationId;
+    const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameUpdate,
       curricula: this.selectedCurriculumList
-    }
-    this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
-      this.visualizationNameUpdate = "";
-      this.getAllVisualization();
-      this.resetCurriculumActive();
-    });
+    };
+    this.visualizationService.updateVisualization(visualizationId, visualizationDTO).subscribe((response) => {
+    this.visualizationNameUpdate = '';
+    this.getAllVisualization();
+    this.resetCurriculumActive();
+  });
   }
 
-  deleteVisualization(){
-    if(this.selectedVisualization){
+  deleteVisualization(): void{
+    if (this.selectedVisualization){
       this.visualizationService.deleteVisualization(this.selectedVisualization.visualizationId).subscribe((response) => {
         this.getAllVisualization();
         this.getAllCurriculum();
@@ -100,7 +99,7 @@ export class VisualizationEditComponent implements OnInit {
     }
   }
 
-  displayVisualization(){
+  displayVisualization(): void{
 
     this.showAddVisualization = false;
     this.showVisualizationDeleteFail = false;
@@ -108,40 +107,41 @@ export class VisualizationEditComponent implements OnInit {
     this.resetCurriculumActive();
     this.visualizationNameUpdate = this.selectedVisualization.visualizationName;
     this.showUpdateVisualization = true;
-    for(let curriculum of this.selectedVisualization.curriculumList){
-      let curriculumIndex = this.curriculumList.map(function(c) { return c.curriculumId; }).indexOf(curriculum.curriculumId);
-      if(!this.curriculumList[curriculumIndex].isActive){
+    for (const curriculum of this.selectedVisualization.curriculumList){
+      const curriculumIndex = this.curriculumList.map((c) => c.curriculumId).indexOf(curriculum.curriculumId);
+      if (!this.curriculumList[curriculumIndex].isActive){
         this.selectedCurriculumList.push(this.curriculumList[curriculumIndex]);
       } else {
-        this.selectedCurriculumList = this.selectedCurriculumList.filter(function(c) { return c.curriculumId != this.curriculumList[curriculumIndex].curriculumId; });
+        this.selectedCurriculumList = this.selectedCurriculumList.filter((c) =>
+        c.curriculumId !== this.curriculumList[curriculumIndex].curriculumId);
       }
       this.curriculumList[curriculumIndex].isActive = !this.curriculumList[curriculumIndex].isActive;
     }
 
   }
 
-  toggleCurriculum(currentCurriculumId:number){
-    let listSize = this.curriculumList.length;
+  toggleCurriculum(currentCurriculumId: number): void {
+    const listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
-      if(this.curriculumList[index].curriculumId == currentCurriculumId){
-        if(!this.curriculumList[index].isActive){
+      if (this.curriculumList[index].curriculumId === currentCurriculumId){
+        if (!this.curriculumList[index].isActive){
           this.selectedCurriculumList.push(this.curriculumList[index]);
         } else {
-          this.selectedCurriculumList = this.selectedCurriculumList.filter(function(c) { return c.curriculumId != currentCurriculumId; });
+          this.selectedCurriculumList = this.selectedCurriculumList.filter((c) => c.curriculumId !== currentCurriculumId);
         }
         this.curriculumList[index].isActive = !this.curriculumList[index].isActive;
       }
     }
   }
 
-  resetCurriculumActive() {
-    for(let curriculum of this.curriculumList) {
+  resetCurriculumActive(): void {
+    for (const curriculum of this.curriculumList) {
       curriculum.isActive = false;
     }
     this.selectedCurriculumList = [];
   }
 
-  toggleAddVisualization() {
+  toggleAddVisualization(): void {
     this.showVisualizationDeleteFail = false;
     this.showViewVisualizationFail = false;
     this.showUpdateVisualization = false;
@@ -149,14 +149,14 @@ export class VisualizationEditComponent implements OnInit {
     this.resetCurriculumActive();
   }
 
-  toggleUpdateVisualization() {
+  toggleUpdateVisualization(): void {
     this.showVisualizationDeleteFail = false;
     this.showViewVisualizationFail = false;
     this.showAddVisualization = false;
     this.showUpdateVisualization = !this.showUpdateVisualization;
   }
 
-  viewVisualization() {
+  viewVisualization(): void {
     if (this.selectedVisualization) {
       window.open(`/visualization/${this.selectedVisualization.visualizationId}`);
     } else {

@@ -30,10 +30,10 @@ export class VisualizationService {
   }
 
   updateVisualization(id: number, bodyObject: VisualizationDTO): Observable<Visualization> {
-      return this.httpClient.put<Visualization>(`${this.apiURL}${id}`, bodyObject, this.httpOptions);
+    return this.httpClient.put<Visualization>(`${this.apiURL}${id}`, bodyObject, this.httpOptions);
   }
 
-  deleteVisualization(id: number){
+  deleteVisualization(id: number) {
     return this.httpClient.delete(`${this.apiURL}${id}`);
   }
 

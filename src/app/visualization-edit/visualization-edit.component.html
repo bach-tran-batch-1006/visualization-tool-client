@@ -7,10 +7,12 @@
         <!-- Visualization-EDIT-LIST -->
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Visualization-Edit</legend>
-            <ul>
+            <ul class="listOfVisuals">
                 <li *ngFor="let visualization of visualizationList; let i = index">
                     <label class="visualizationLabel" for="visualization_{{visualization.visualizationId}}">
-                        <input type="radio" id="visualization_{{visualization.visualizationId}}" [value]="visualization"  name="visualizationList" [(ngModel)]="selectedVisualization" (change)="displayVisualization()"/>
+                        <input type="radio" id="visualization_{{visualization.visualizationId}}" [value]="visualization"
+                            name="visualizationList" [(ngModel)]="selectedVisualization"
+                            (change)="displayVisualization()" />
                         {{ visualization.visualizationName }}
                     </label>
                 </li>
@@ -20,12 +22,15 @@
 
         <!-- Curriculum-SELECT-LIST -->
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
-            <legend>Curriculum-Select</legend>
+            <legend id="CurriculumSelectText">Curriculum-Select</legend>
             <ul>
-                <button class="button is-small btn-light-gray" (click)="resetCurriculumActive()">Clear Selection</button>
+                <button class="button is-small btn-light-gray" (click)="resetCurriculumActive()">Clear
+                    Selection</button>
                 <li *ngFor="let curriculum of curriculumList; let i = index">
                     <label class="curriculumLabel" for="curriculum_{{curriculum.curriculumId}}">
-                        <input type="checkbox" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum" [checked]="curriculum.isActive" name="curriculumList" (change)="toggleCurriculum(curriculum.curriculumId)"/>
+                        <input type="checkbox" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum"
+                            [checked]="curriculum.isActive" name="curriculumList"
+                            (change)="toggleCurriculum(curriculum.curriculumId)" />
                         {{ curriculum.curriculumName }}
                     </label>
                 </li>
@@ -43,10 +48,16 @@
                     <div class="column">
                         <div class="buttons">
                             <div class="buttons">
-                                <button class="button is-small btn-add" [ngClass]="showAddVisualization? 'is-active' : ''" (click)="toggleAddVisualization()">Add Visualization</button>
-                                <button class="button is-small btn-update" [ngClass]="showUpdateVisualization? 'is-active' : ''" (click)="toggleUpdateVisualization()">Update Visualization</button>
-                                <button class="button is-small has-background-danger" (click)="deleteVisualization()">Remove Visualization</button>
-                                <button class="button is-small" style="color:black;" (click)="viewVisualization()">View Visualization</button>
+                                <button id="addVisualizationButton" class="button is-small btn-add"
+                                    [ngClass]="showAddVisualization? 'is-active' : ''"
+                                    (click)="toggleAddVisualization()">Add Visualization</button>
+                                <button id="updateVisualizationButton" class="button is-small btn-update"
+                                    [ngClass]="showUpdateVisualization? 'is-active' : ''"
+                                    (click)="toggleUpdateVisualization()">Update Visualization</button>
+                                <button id="removeVisualizationButton" class="button is-small has-background-danger"
+                                    (click)="deleteVisualization()">Remove Visualization</button>
+                                <button id="viewVisualizationButton" class="button is-small" style="color:black;"
+                                    (click)="viewVisualization()">View Visualization</button>
                             </div>
                         </div>
                     </div>
@@ -58,15 +69,23 @@
                             <p class="help has-text-danger">Please select a Visualization to view.</p>
                         </ng-container>
                         <ng-container *ngIf="showAddVisualization">
-                            <input class="input add-input mb-1" placeholder="Visualization Name" [(ngModel)]="visualizationNameAdd" />
-                            <p class="help add-visualization-help" *ngIf="visualizationNameAdd == '' || visualizationNameAdd == null">Please select a Name for this Visualization</p>
-                            <p class="help add-visualization-help" *ngIf="selectedCurriculumList.length==0">Please select a Curriculum for this Visualization</p>
-                            <button class="button is-small btn-add" (click)="addVisualization()">Submit</button>
+                            <input id="addVisualBox" class="input add-input mb-1" placeholder="Visualization Name"
+                                [(ngModel)]="visualizationNameAdd" />
+                            <p class="help add-visualization-help"
+                                *ngIf="visualizationNameAdd == '' || visualizationNameAdd == null">Please select a Name
+                                for this Visualization</p>
+                            <p class="help add-visualization-help" *ngIf="selectedCurriculumList.length==0">Please
+                                select a Curriculum for this Visualization</p>
+                            <button id="visualizationSubmit" class="button is-small btn-add"
+                                (click)="addVisualization()">Submit</button>
                         </ng-container>
                         <ng-container *ngIf="showUpdateVisualization">
-                            <input class="input update-input mb-1" placeholder="Visualization Name" [(ngModel)]="visualizationNameUpdate" />
-                            <p class="help update-visualization-help" *ngIf="visualizationNameUpdate == null">Please select a visualization for update</p>
-                            <button class="button is-small btn-update" (click)="updateVisualization()">Update</button>
+                            <input id="updateVisualBox" class="input update-input mb-1" placeholder="Visualization Name"
+                                [(ngModel)]="visualizationNameUpdate" />
+                            <p class="help update-visualization-help" *ngIf="visualizationNameUpdate == null">Please
+                                select a visualization for update</p>
+                            <button id="visualizationUpdateButton" class="button is-small btn-update"
+                                (click)="updateVisualization()">Update</button>
                         </ng-container>
                     </div>
                 </div>

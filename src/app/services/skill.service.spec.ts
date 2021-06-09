@@ -18,17 +18,17 @@ describe('SkillService', () => {
   });
 
   it('should get all skills', () => {
-    let categoryObj = {
+    const categoryObj = {
       categoryId: 33,
       categoryName: 'Front-End',
       categoryDescription: null,
       categoryColor: ''
     };
 
-    let expected =[
+    const expected = [
       {
         skillId: 1,
-        skillName: "Java",
+        skillName: 'Java',
         isActive: true,
         color: '',
         category: categoryObj
@@ -41,33 +41,33 @@ describe('SkillService', () => {
     service.getSkills().subscribe((res) => {
       response = res;
       console.log('');
-    })
+    });
 
     expect(response).toEqual(expected);
   });
 
   it('should Add skill', () => {
-    let categoryObj = {
+    const categoryObj = {
       categoryId: 33,
       categoryName: 'Front-End',
       categoryDescription: null,
       categoryColor: ''
     };
 
-    let expected =[
+    const expected = [
       {
         skillId: 1,
-        skillName: "Java",
+        skillName: 'Java',
         isActive: true,
         color: '',
         category: categoryObj
       },
     ];
 
-    let addSkillDTO = {
-        name: "Java",
+    const addSkillDTO = {
+        name: 'Java',
         category: categoryObj
-    }
+    };
 
     let response;
     spyOn(service, 'addSkill').and.returnValue(of(expected));
@@ -75,33 +75,33 @@ describe('SkillService', () => {
     service.addSkill(addSkillDTO).subscribe((res) => {
       response = res;
       console.log('Add new Skill', response);
-    })
+    });
 
     expect(response).toEqual(expected);
   });
 
   it('should update skill', () => {
-    let categoryObj = {
+    const categoryObj = {
       categoryId: 33,
       categoryName: 'Front-End',
       categoryDescription: null,
       categoryColor: ''
     };
 
-    let expected =[
+    const expected = [
       {
         skillId: 1,
-        skillName: "Java Update",
+        skillName: 'Java Update',
         isActive: true,
         color: '',
         category: categoryObj
       },
     ];
 
-    let updateSkillDTO = {
-        name: "Java Update",
+    const updateSkillDTO = {
+        name: 'Java Update',
         category: categoryObj
-    }
+    };
 
     let response;
     spyOn(service, 'updateSkill').and.returnValue(of(expected));
@@ -109,7 +109,7 @@ describe('SkillService', () => {
     service.updateSkill(1, updateSkillDTO).subscribe((res) => {
       response = res;
       console.log('Update new Skill', response);
-    })
+    });
 
     expect(response).toEqual(expected);
   });

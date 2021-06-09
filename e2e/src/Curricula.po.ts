@@ -2,7 +2,7 @@ import { browser, by, element, protractor, ProtractorExpectedConditions } from '
 
 export class CurriculaPage {
     async navigateTo(): Promise<unknown> {
-        return browser.get("http://localhost:4200/edit/curriculum");
+        return browser.get('http://localhost:4200/edit/curriculum');
     }
 
     async getTitleText(): Promise<string> {
@@ -16,7 +16,7 @@ export class CurriculaPage {
 
     async clickAddTextBox(): Promise<void>{
         await protractor.ExpectedConditions.elementToBeClickable(element(by.id('addCurriculumTextBox')));
-        await element(by.id('addCurriculumTextBox')).sendKeys("TestAddCurriculum");
+        await element(by.id('addCurriculumTextBox')).sendKeys('TestAddCurriculum');
     }
 
     async clickAddSubmit(): Promise<void>{
@@ -32,12 +32,12 @@ export class CurriculaPage {
     async clickUpdateTextBox(): Promise<void>{
         await protractor.ExpectedConditions.elementToBeClickable(element(by.id('updateCurriculumTextBox')));
         await element(by.id('updateCurriculumTextBox')).clear();
-        await element(by.id('updateCurriculumTextBox')).sendKeys("zTestUpdateCurriculum");
+        await element(by.id('updateCurriculumTextBox')).sendKeys('zTestUpdateCurriculum');
     }
 
     async clickUpdateLastCurriculum(): Promise<void>{
         await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" TestAddCurriculum "]')));
-        await element(by.xpath("//*[text()=' TestAddCurriculum ']")).click();
+        await element(by.xpath('//*[text()=" TestAddCurriculum "]')).click();
     }
 
     async clickUpdateSubmit(): Promise<void>{
@@ -47,7 +47,7 @@ export class CurriculaPage {
 
     async selectUpdatedCurriculum(): Promise<void>{
         await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" zTestUpdateCurriculum "]')));
-        await element(by.xpath("//*[text()=' zTestUpdateCurriculum ']")).click();
+        await element(by.xpath('//*[text()=" zTestUpdateCurriculum "]')).click();
     }
 
     async clickDeleteButton(): Promise<void> {
@@ -62,9 +62,9 @@ export class CurriculaPage {
     async findUpdatedAddedCurriculum(): Promise<string> {
         return await element(by.xpath('//*[text()=" zTestUpdateCurriculum "]')).getText();
     }
-    
+
     async getLastItem(): Promise<string> {
-        let last = await element.all(by.css('.listofcurriculum li')).last();
+        const last = await element.all(by.css('.listofcurriculum li')).last();
         return last.getText() as Promise<string>;
 
     }

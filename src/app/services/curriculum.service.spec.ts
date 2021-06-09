@@ -20,7 +20,7 @@ describe('CurriculumService', () => {
   });
 
   it('get all curriculum', () => {
-    let expected = [
+    const expected = [
       {
         curriculumId: 33,
         curriculumName: 'Java React',
@@ -34,39 +34,39 @@ describe('CurriculumService', () => {
     let result;
     service.getAllCurriculum().subscribe((res) => {
       result = res;
-    })
+    });
     expect(result).toEqual(expected);
   });
 
   it('should add new curriculum', () => {
-    let categoryObj = {
+    const categoryObj = {
       categoryId: 33,
       categoryName: 'Front-End',
       categoryDescription: null,
       categoryColor: ''
     };
 
-    let skill =[
+    const skill = [
       {
         skillId: 1,
-        skillName: "Java Update",
+        skillName: 'Java Update',
         isActive: true,
         color: '',
         category: categoryObj
       },
     ];
-  
-    let expected = {
+
+    const expected = {
       curriculumId: 1,
       curriculumName: 'Full Stack Developer',
       skillList: skill,
       isActive: true
     };
 
-    let addCurriculumDTO = {
-      name: "Full Stack Developer",
+    const addCurriculumDTO = {
+      name: 'Full Stack Developer',
       skillList: skill
-    }
+    };
     let response;
     spyOn(service, 'addCurriculum').and.returnValue(of(expected));
     service.addCurriculum(addCurriculumDTO).subscribe((res) => {
@@ -77,34 +77,34 @@ describe('CurriculumService', () => {
   });
 
   it('should update curriculum', () => {
-    let categoryObj = {
+    const categoryObj = {
       categoryId: 33,
       categoryName: 'Front-End',
       categoryDescription: null,
       categoryColor: ''
     };
 
-    let skill =[
+    const skill = [
       {
         skillId: 1,
-        skillName: "Java Update",
+        skillName: 'Java Update',
         isActive: true,
         color: '',
         category: categoryObj
       },
     ];
-  
-    let expected = {
+
+    const expected = {
       curriculumId: 1,
       curriculumName: 'Full Stack Developer v2',
       skillList: skill,
       isActive: true
     };
 
-    let addCurriculumDTO = {
-      name: "Full Stack Developer v2",
+    const addCurriculumDTO = {
+      name: 'Full Stack Developer v2',
       skillList: skill
-    }
+    };
     let response;
     spyOn(service, 'updateCurriculum').and.returnValue(of(expected));
     service.updateCurriculum(1, addCurriculumDTO).subscribe((res) => {
@@ -122,5 +122,5 @@ describe('CurriculumService', () => {
     });
     expect(response).toEqual(1);
   });
-  
+
 });

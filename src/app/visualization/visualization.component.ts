@@ -14,11 +14,11 @@ import { VisualizationService } from '../services/visualization.service';
 })
 export class VisualizationComponent implements OnInit {
 
-  visualizationId: number = 0;
+  visualizationId = 0;
 
   currentVisualization: Visualization;
   currentCurriculumList: Curriculum[] = null;
-  selected: number = 0;
+  selected = 0;
 
   distinctSkillList: Skill[] = [];
   distinctCategoryList: Category[] = [];
@@ -26,12 +26,12 @@ export class VisualizationComponent implements OnInit {
   currentCurriculumId: number;
   currentSkillList: Skill[] = [];
 
-  categoryColorList: String[] = [];
+  categoryColorList: string[] = [];
 
   constructor(private visualizationService: VisualizationService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.visualizationId = Number(this.route.snapshot.paramMap.get("id"));
+    this.visualizationId = Number(this.route.snapshot.paramMap.get('id'));
     this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
       this.currentVisualization = response;
       this.currentCurriculumList = response.curriculumList;
@@ -44,23 +44,23 @@ export class VisualizationComponent implements OnInit {
     });
     this.visualizationService.getAllUniqueCategoriesByVisualization(this.visualizationId).subscribe((response) => {
       this.distinctCategoryList = response;
-      let total = Math.floor(360 / this.distinctCategoryList.length);
+      const total = Math.floor(360 / this.distinctCategoryList.length);
       for (let idx = 0; idx < this.distinctCategoryList.length; idx++) {
         this.categoryColorList.push(this.randColor(idx, total));
       }
     });
   }
 
-  changeCurriculumEvent(currentCurriculumId: number) {
-    for (let curriculum of this.currentVisualization.curriculumList){
-      if( currentCurriculumId === curriculum.curriculumId){
+  changeCurriculumEvent(currentCurriculumId: number): void {
+    for (const curriculum of this.currentVisualization.curriculumList){
+      if (currentCurriculumId === curriculum.curriculumId){
         this.currentSkillList = curriculum.skillList;
       }
     }
   }
 
-  randColor(i: number, total: number){
-    return "hsl(" + i * total + ", 50%, 75%)";
+  randColor(i: number, total: number): string {
+    return 'hsl(' + i * total + ', 50%, 75%)';
   }
 
 }

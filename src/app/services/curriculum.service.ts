@@ -19,16 +19,16 @@ export class CurriculumService {
     return this.httpClient.get<Curriculum[]>(`${this.apiURL}`);
   }
 
-  addCurriculum(bodyObject: CurriculumDTO):Observable<Curriculum>{
-    return this.httpClient.post<Curriculum>(this.apiURL,bodyObject, this.httpOptions);
+  addCurriculum(bodyObject: CurriculumDTO): Observable<Curriculum>{
+    return this.httpClient.post<Curriculum>(this.apiURL, bodyObject, this.httpOptions);
   }
 
-  updateCurriculum(id: number, bodyObject: CurriculumDTO):Observable<Curriculum>{
-    return this.httpClient.put<Curriculum>(this.apiURL+id,bodyObject, this.httpOptions);
+  updateCurriculum(id: number, bodyObject: CurriculumDTO): Observable<Curriculum>{
+    return this.httpClient.put<Curriculum>(this.apiURL + id, bodyObject, this.httpOptions);
   }
 
-  deleteCurriculum(id: number){
-    return this.httpClient.delete(this.apiURL+id);
+  deleteCurriculum(id: number): Observable<number>{
+    return this.httpClient.delete<number>(this.apiURL + id);
   }
 
 }

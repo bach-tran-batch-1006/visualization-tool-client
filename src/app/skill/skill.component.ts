@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { Skill } from 'src/app/models/Skill';
 import { Category } from '../models/Category';
@@ -8,13 +8,13 @@ import { Category } from '../models/Category';
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent {
-  
+export class SkillComponent implements OnChanges {
+
   @Input() visualizationId: number;
   @Input() curriculumId: number;
   @Input() currentSkillList: Skill[] = [];
   @Input() activeSkillList: Skill[] = [];
-  @Input() categoryColorList: String[] = [];
+  @Input() categoryColorList: string[] = [];
   @Input() currentCategoryList: Category[] = [];
 
   skillList: Skill[] = [];
@@ -22,21 +22,21 @@ export class SkillComponent {
   constructor() { }
 
   ngOnChanges(): void {
-    if(this.activeSkillList.length > 0){
+    if (this.activeSkillList.length > 0) {
       this.highlightSkills();
     }
-    for (let i = 0; i < this.currentSkillList.length; i++) {
-      let categoryIdx = this.currentCategoryList.findIndex((category) => {
-         return JSON.stringify(category) === JSON.stringify(this.currentSkillList[i].category);
+    for (const currentSkill of this.currentSkillList) {
+      const categoryIdx = this.currentCategoryList.findIndex((category) => {
+         return JSON.stringify(category) === JSON.stringify(currentSkill.category);
       });
-      this.currentSkillList[i].color = this.categoryColorList[categoryIdx];
+      currentSkill.color = this.categoryColorList[categoryIdx];
     }
   }
 
-  highlightSkills() {
-    let listLength = this.currentSkillList.length;
+  highlightSkills(): void {
+    const listLength = this.currentSkillList.length;
     for (let i = 0; i < listLength; i++) {
-      if(this.activeSkillList.some(skill => skill.skillId === this.currentSkillList[i].skillId)){
+      if (this.activeSkillList.some(skill => skill.skillId === this.currentSkillList[i].skillId)) {
         this.currentSkillList[i].isActive = true;
       } else {
         this.currentSkillList[i].isActive = false;

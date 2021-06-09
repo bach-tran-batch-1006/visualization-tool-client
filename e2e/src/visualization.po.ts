@@ -20,7 +20,7 @@ export class VisualizationPage {
 
     async visualizationInput(): Promise<void> {
 
-        await element(by.id('addVisualBox')).sendKeys("ProtractorTest");
+        await element(by.id('addVisualBox')).sendKeys('ProtractorTest');
     }
 
     async clickSubmitVisualizationButton(): Promise<void> {
@@ -36,7 +36,7 @@ export class VisualizationPage {
     async clickAddedVisualization(): Promise<void> {
         await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" ProtractorTest "]')));
 
-        await element(by.xpath("//*[text()=' ProtractorTest ']")).click();
+        await element(by.xpath('//*[text()=" ProtractorTest "]')).click();
     }
 
     async clickUpdateTab(): Promise<void> {
@@ -58,7 +58,7 @@ export class VisualizationPage {
 
     async visualizationInput2(): Promise<void> {
         await element(by.id('updateVisualBox')).clear();
-        await element(by.id('updateVisualBox')).sendKeys("zProtractorTestUpdate");
+        await element(by.id('updateVisualBox')).sendKeys('zProtractorTestUpdate');
     }
 
     async clickUpdateButton(): Promise<void> {
@@ -72,7 +72,7 @@ export class VisualizationPage {
     }
 
     async getLastItem(): Promise<string> {
-        let last = await element.all(by.css('.listOfVisuals li')).last();
+        const last = await element.all(by.css('.listOfVisuals li')).last();
         return last.getText() as Promise<string>;
 
     }
@@ -80,5 +80,5 @@ export class VisualizationPage {
     async clickViewButton(): Promise<void> {
         await protractor.ExpectedConditions.elementToBeClickable(element(by.id('viewVisualizationButton')));
         await element(by.id('viewVisualizationButton')).click();
-    }  
+    }
 }

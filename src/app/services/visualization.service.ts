@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Visualization, VisualizationDTO } from '../models/Visualization';
-import { Skill } from '../models/Skill'
-import { Category } from '../models/Category'
+import { Skill } from '../models/Skill';
+import { Category } from '../models/Category';
 
 
 @Injectable({
@@ -34,8 +34,8 @@ export class VisualizationService {
     return this.httpClient.put<Visualization>(`${this.apiURL}${id}`, bodyObject, this.httpOptions);
   }
 
-  deleteVisualization(id: number) {
-    return this.httpClient.delete(`${this.apiURL}${id}`);
+  deleteVisualization(id: number): Observable<number> {
+    return this.httpClient.delete<number>(`${this.apiURL}${id}`);
   }
 
   getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {

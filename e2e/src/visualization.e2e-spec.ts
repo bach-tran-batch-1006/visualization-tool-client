@@ -40,10 +40,10 @@ describe('Visualization Edit Page', () => {
         await browser.get('http://localhost:4200/edit/visualization');
         await page.clickUpdatedVisualization();
         await page.clickViewButton();
-        let browswerID = await browser.getAllWindowHandles();
-        let currentBrowserId = browser.getWindowHandle();
+        const browswerID = await browser.getAllWindowHandles();
+        const currentBrowserId = browser.getWindowHandle();
         browser.switchTo().window(browswerID[1]);
-        let currentAfterBrowserId = browser.getWindowHandle();
+        const currentAfterBrowserId = browser.getWindowHandle();
         expect(currentBrowserId).not.toEqual(currentAfterBrowserId);
     });
 

@@ -76,6 +76,10 @@
      color: #474C55;
  }
 
+ .btn-view {
+    background-color: #F26925;
+ }
+
  .column button {
      border-radius: 4px;
  }

@@ -15,7 +15,7 @@ describe('Skills and Categories Edit Page', () => {
         await page.newCategoryTextarea();
         await page.clickSubmitAddCategoryButton();
 
-        expect(await page.getNewCategoryRadioText()).toEqual("ZZZ-Category");
+        expect(await page.getNewCategoryRadioText()).toEqual('ZZZ-Category');
     });
 
     it('should add a new skill and click submit and verify it was added', async () => {
@@ -33,7 +33,7 @@ describe('Skills and Categories Edit Page', () => {
         await page.checkSkillToDelete();
         await page.clickDeleteSkillButton();
 
-        expect(await page.getLastSkillRadioText()).not.toEqual("ZZZ-Testing");
+        expect(await page.getLastSkillRadioText()).not.toEqual('ZZZ-Testing');
     });
 
     it('should select, click delete and remove last added category "ZZZ-Category"', async () => {
@@ -41,7 +41,7 @@ describe('Skills and Categories Edit Page', () => {
         await page.checkCategoryToDelete();
         await page.clickDeleteCategoryButton();
 
-        expect(await page.getLastCategoryRadioText()).not.toEqual("ZZZ-Category");
+        expect(await page.getLastCategoryRadioText()).not.toEqual('ZZZ-Category');
     });
 
 

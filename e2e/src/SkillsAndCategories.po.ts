@@ -4,21 +4,21 @@ export class SkillsAndCategoriesPage {
 
     // Add skill functions
     async clickShowAddSkillButton(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.id("addSkillButton")));
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('addSkillButton')));
         await element(by.id('addSkillButton')).click();
     }
 
     async newSkillInput(): Promise<void> {
-        await element(by.id("addSkillInput")).sendKeys("ZZZ-Testing");
+        await element(by.id('addSkillInput')).sendKeys('ZZZ-Testing');
     }
 
     async checkCategory(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.id("category_38")));
-        await element(by.id("category_38")).click();
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('category_38')));
+        await element(by.id('category_38')).click();
     }
 
     async getNewSkillRadioText(): Promise<string> {
-        let last = await element.all(by.css('.showSkillList li')).last();
+        const last = await element.all(by.css('.showSkillList li')).last();
         return last.getText() as Promise<string>;
     }
 
@@ -29,33 +29,33 @@ export class SkillsAndCategoriesPage {
 
     // Delete skill functions
     async checkSkillToDelete(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" ZZZ-Testing "]')));
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()="ZZZ-Testing "]')));
         await element(by.xpath('//*[text()=" ZZZ-Testing "]')).click();
     }
 
     async clickDeleteSkillButton(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.id("deleteSkillButton")));
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('deleteSkillButton')));
         await element(by.id('deleteSkillButton')).click();
     }
 
     async getLastSkillRadioText(): Promise<string> {
-        let last = await element.all(by.css('.showSkillList li')).last();
+        const last = await element.all(by.css('.showSkillList li')).last();
         return last.getText() as Promise<string>;
     }
 
     // Add Category
     async clickShowAddCategoryButton(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.id("addCategoryButton")));
-        await element(by.id("addCategoryButton")).click();
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('addCategoryButton')));
+        await element(by.id('addCategoryButton')).click();
     }
 
     async newCategoryInput(): Promise<void> {
-        await element(by.id("addCategoryInput")).click();
-        await element(by.id("addCategoryInput")).sendKeys("ZZZ-Category");
+        await element(by.id('addCategoryInput')).click();
+        await element(by.id('addCategoryInput')).sendKeys('ZZZ-Category');
     }
 
     async newCategoryTextarea(): Promise<void> {
-        await element(by.id("addCategoryTextarea")).sendKeys("Description for ZZZ-category");
+        await element(by.id('addCategoryTextarea')).sendKeys('Description for ZZZ-category');
     }
 
     async clickSubmitAddCategoryButton(): Promise<void> {
@@ -64,7 +64,7 @@ export class SkillsAndCategoriesPage {
     }
 
     async getNewCategoryRadioText(): Promise<string> {
-        let last = await element.all(by.css('.showCategoryList li')).last();
+        const last = await element.all(by.css('.showCategoryList li')).last();
         return last.getText() as Promise<string>;
     }
 
@@ -75,12 +75,12 @@ export class SkillsAndCategoriesPage {
     }
 
     async clickDeleteCategoryButton(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.id("deleteCategoryButton")));
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('deleteCategoryButton')));
         await element(by.id('deleteCategoryButton')).click();
     }
 
     async getLastCategoryRadioText(): Promise<string> {
-        let last = await element.all(by.css('.showCategoryList li')).last();
+        const last = await element.all(by.css('.showCategoryList li')).last();
         return last.getText() as Promise<string>;
     }
 

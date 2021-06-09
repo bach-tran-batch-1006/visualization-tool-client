@@ -10,7 +10,7 @@ describe('CategoryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CategoryComponent ],
-      imports:[ HttpClientModule ]
+      imports: [ HttpClientModule ]
     })
     .compileComponents();
   });

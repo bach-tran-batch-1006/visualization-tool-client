@@ -41,7 +41,7 @@ describe('SkillService', () => {
     expect(service).toBeTruthy();
   });
 
-  it(' should add new skill',
+  it('should add new skill',
   inject([HttpTestingController, SkillService],
     (httpMock: HttpTestingController,  service1: SkillService) => {
     const  expected = {

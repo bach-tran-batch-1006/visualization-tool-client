@@ -8,7 +8,7 @@ import { Curriculum } from 'src/app/models/Curriculum';
   styleUrls: ['./curriculum.component.css']
 })
 export class CurriculumComponent implements OnInit, OnChanges {
-  
+
   @Input() currentCurriculumList: Curriculum[];
   curriculumList: Curriculum[] = [];
 
@@ -17,14 +17,14 @@ export class CurriculumComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    this.currentCurriculumList=[];
+    this.currentCurriculumList = [];
   }
 
   ngOnChanges(): void {
     this.curriculumList = this.currentCurriculumList;
   }
 
-  changeCurrentCurriculum(curriculumId: number) {
+  changeCurrentCurriculum(curriculumId: number): void {
     this.currentCurriculumId.emit(curriculumId);
   }
 

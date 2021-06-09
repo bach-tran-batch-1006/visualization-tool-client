@@ -4,7 +4,6 @@ import {Visualization, VisualizationDTO} from '../models/Visualization'
 import {CurriculumService} from "../services/curriculum.service";
 import { Curriculum } from '../models/Curriculum';
 
-
 @Component({
   selector: 'app-visualization-edit',
   templateUrl: './visualization-edit.component.html',
@@ -65,6 +64,7 @@ export class VisualizationEditComponent implements OnInit {
     }
     this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
       this.getAllVisualization();
+      this.resetCurriculumActive();
     });
   }
 
@@ -82,6 +82,7 @@ export class VisualizationEditComponent implements OnInit {
       curricula: this.selectedCurriculumList
     }
     this.visualizationService.updateVisualization(visualizationId,visualizationDTO).subscribe((response) => {
+      this.visualizationNameUpdate = "";
       this.getAllVisualization();
       this.resetCurriculumActive();
     });
@@ -145,7 +146,7 @@ export class VisualizationEditComponent implements OnInit {
     this.showViewVisualizationFail = false;
     this.showUpdateVisualization = false;
     this.showAddVisualization = !this.showAddVisualization;
-
+    this.resetCurriculumActive();
   }
 
   toggleUpdateVisualization() {

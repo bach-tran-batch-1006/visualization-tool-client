@@ -96,12 +96,6 @@
      transition: 0.25s;
  }
 
- /* .buttons button:hover,
- .buttons button:focus {
-     box-shadow: 0 0.6em 0.75em -0.4em #474C55;
-     transform: translateY(-0.10em);
- } */
-
  .buttons button:hover, .btn-add:hover, .btn-update:hover {
     box-shadow: 0 0.6em 0.75em -0.4em #474C55;
     transform: translateY(-0.10em);

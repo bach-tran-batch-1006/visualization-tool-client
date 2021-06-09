@@ -1,16 +1,11 @@
-
-
 .containerflex{
-
     margin-top: 20px;
     min-height: 80vh;
-     height: auto;
-
+    height: auto;
 }
 
 .columnheight{
     min-height: 100%;
-
 }
 
 .borders{
@@ -18,10 +13,10 @@
 }
 
 .boxcolumn{
-margin-top: 10px;
- height: auto;
- margin-right: 1px;
- margin-left: 1px;
+    margin-top: 10px;
+    height: auto;
+    margin-right: 1px;
+    margin-left: 1px;
 }
 
 .editbottom{

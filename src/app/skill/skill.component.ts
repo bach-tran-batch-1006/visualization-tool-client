@@ -8,7 +8,7 @@ import { Category } from '../models/Category';
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.css']
 })
-export class SkillComponent implements OnInit {
+export class SkillComponent {
   
   @Input() visualizationId: number;
   @Input() curriculumId: number;
@@ -20,9 +20,6 @@ export class SkillComponent implements OnInit {
   skillList: Skill[] = [];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   ngOnChanges(): void {
     if(this.activeSkillList.length > 0){

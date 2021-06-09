@@ -3,12 +3,16 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CurriculumService } from './curriculum.service';
 import { of } from 'rxjs';
+import { AppComponent } from '../app.component';
+import { CurriculumEditComponent } from '../curriculum-edit/curriculum-edit.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 describe('CurriculumService', () => {
   let service: CurriculumService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [ AppComponent, CurriculumEditComponent, NavbarComponent ],
       imports: [ HttpClientTestingModule ],
       providers: [CurriculumService]
     });

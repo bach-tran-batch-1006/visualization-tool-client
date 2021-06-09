@@ -3,12 +3,17 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { VisualizationService } from './visualization.service';
 import { of } from 'rxjs';
+import { AppComponent } from '../app.component';
+import { VisualizationComponent } from '../visualization/visualization.component';
+import { VisualizationEditComponent } from '../visualization-edit/visualization-edit.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 describe('VisualizationService', () => {
   let service: VisualizationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [ AppComponent, VisualizationComponent, VisualizationEditComponent, NavbarComponent ],
       imports: [HttpClientTestingModule],
       providers: [VisualizationService],
     });

@@ -3,11 +3,17 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { SkillService } from './skill.service';
 import { of } from 'rxjs';
+import { AppComponent } from '../app.component';
+import { CurriculumEditComponent } from '../curriculum-edit/curriculum-edit.component';
+import { SkillCategoryEditComponent } from '../skill-category-edit/skill-category-edit.component';
+import { SkillComponent } from '../skill/skill.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 describe('SkillService', () => {
   let service: SkillService;
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [ AppComponent, CurriculumEditComponent, SkillCategoryEditComponent, SkillComponent, NavbarComponent ],
       imports: [ HttpClientTestingModule ]
     });
     service = TestBed.inject(SkillService);

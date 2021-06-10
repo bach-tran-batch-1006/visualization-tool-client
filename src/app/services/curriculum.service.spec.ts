@@ -1,6 +1,9 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CurriculumService } from './curriculum.service';
+import { AppComponent } from '../app.component';
+import { CurriculumEditComponent } from '../curriculum-edit/curriculum-edit.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { CurriculumDTO } from '../models/Curriculum';
 
 describe('CurriculumService', () => {
@@ -10,6 +13,7 @@ describe('CurriculumService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [ AppComponent, CurriculumEditComponent, NavbarComponent ],
       imports: [ HttpClientTestingModule ],
       providers: [CurriculumService],
     });

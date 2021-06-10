@@ -2,9 +2,11 @@ import { inject, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { VisualizationService } from './visualization.service';
+import { AppComponent } from '../app.component';
+import { VisualizationComponent } from '../visualization/visualization.component';
+import { VisualizationEditComponent } from '../visualization-edit/visualization-edit.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { Visualization, VisualizationDTO } from '../models/Visualization';
-import { Skill } from '../models/Skill';
-import { Category } from '../models/Category';
 
 describe('VisualizationService', () => {
   let service: VisualizationService;
@@ -13,6 +15,7 @@ describe('VisualizationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [ AppComponent, VisualizationComponent, VisualizationEditComponent, NavbarComponent ],
       imports: [HttpClientTestingModule],
       providers: [VisualizationService],
     });

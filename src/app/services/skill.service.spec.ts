@@ -2,9 +2,11 @@ import { inject, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { SkillService } from './skill.service';
-import { of } from 'rxjs';
-import { stringify } from '@angular/compiler/src/util';
-import { Skill } from '../models/Skill';
+import { AppComponent } from '../app.component';
+import { CurriculumEditComponent } from '../curriculum-edit/curriculum-edit.component';
+import { SkillCategoryEditComponent } from '../skill-category-edit/skill-category-edit.component';
+import { SkillComponent } from '../skill/skill.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 describe('SkillService', () => {
   let service: SkillService;
@@ -21,10 +23,11 @@ describe('SkillService', () => {
   };
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [ AppComponent, CurriculumEditComponent, SkillCategoryEditComponent, SkillComponent, NavbarComponent ],
       providers: [SkillService],
       imports: [
         HttpClientTestingModule
-      ],
+      ]
     });
 
     service = TestBed.inject(SkillService);
@@ -32,12 +35,11 @@ describe('SkillService', () => {
 
   afterEach (inject ([HttpTestingController], (httpmock: HttpTestingController) => {
     httpmock.verify();
-}));
+  }));
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
 
   it(' should add new skill',
   inject([HttpTestingController, SkillService],
@@ -60,9 +62,6 @@ describe('SkillService', () => {
     expect(req.request.method).toEqual('POST');
         // Then we set the fake data to be returned by the mock
     req.flush(expected);
-
-
-
     })
 );
 

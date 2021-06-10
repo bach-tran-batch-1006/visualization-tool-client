@@ -21,7 +21,7 @@ describe('Skills and Categories Edit Page', () => {
     it('should add a new skill and click submit and verify it was added', async () => {
         await browser.get('http://localhost:4200/edit/skill-category');
         await page.clickShowAddSkillButton();
-        await page.checkCategory();
+        await page.checkNewCategory();
         await page.newSkillInput();
         await page.clickSubmitAddSkillButton();
 

@@ -63,4 +63,18 @@ describe('SkillCategoryEditComponent', () => {
 
     expect(component.skillList).toEqual(expectedSkills);
   });
+
+  it('should add a category', () => {
+    spyOnProperty(component, 'categoryNameAdd', 'set').and.returnValue('Added Category');
+    spyOnProperty(component, 'categoryDescriptionAdd', 'set').and.returnValue('Some description');
+    let eCat = { categoryId: 1, categoryName: 'Added Category', categoryDescription: 'Some description', categoryColor: '#FF5733' };
+
+    spyOn(mockCategoryService, 'addCategory').and.returnValue(of(eCat));
+    // spyOnProperty(component, 'categoryList', 'get').and.returnValue(expectedCategories);
+    // spyOn(component, 'getAllCategories').and.returnValue(of(expectedCategories));
+    
+    let aCat = component.addCategory();
+
+    expect(aCat).toEqual(eCat);
+  });
 });

@@ -35,6 +35,26 @@ export class SkillCategoryEditComponent implements OnInit {
 
   constructor(private skillService: SkillService, private categoryService: CategoryService) { }
 
+  setCategoryNameAdd(name: string): void {
+    this.categoryNameAdd = name;
+  }
+
+  setCategoryDescriptionAdd(description: string): void {
+    this.categoryDescriptionAdd = description;
+  }
+
+  getCategoryNameAdd(): string {
+    return this.categoryNameAdd;
+  }
+
+  getCategoryDescriptionAdd(): string {
+    return this.categoryDescriptionAdd;
+  }
+
+  getCategoryList() : Category[] {
+    return this.categoryList;
+  }
+
   ngOnInit(): void {
     this.getAllCategories();
     this.getAllSkills();
@@ -61,17 +81,20 @@ export class SkillCategoryEditComponent implements OnInit {
 
   // ********** CATEGORY FUNCTIONS **********
 
-  addCategory(): void {
+  addCategory(): Category {
     const catDTO: CategoryDTO = {
       categoryName: this.categoryNameAdd,
       categoryDescription: this.categoryDescriptionAdd
     };
     console.log(catDTO);
+    let newCat;
     this.categoryService.addCategory(catDTO).subscribe((response) => {
+      newCat = response;
       this.getAllCategories();
     });
     this.categoryName = '';
     this.categoryDescription = '';
+    return newCat;
   }
 
   updateCategory(): void {

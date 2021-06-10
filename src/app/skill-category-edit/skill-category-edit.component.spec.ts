@@ -63,18 +63,4 @@ describe('SkillCategoryEditComponent', () => {
 
     expect(component.skillList).toEqual(expectedSkills);
   });
-
-  it('should add a category', () => {
-    let expected: Category;
-    expected = { categoryId: 4, categoryName: 'Input Name', categoryDescription: 'Input Description', categoryColor: '#665433' };
-    expectedCategories.push(expected);
-
-    component.categoryNameAdd = 'Input Name';
-    component.categoryDescriptionAdd = 'Input Description';
-    spyOn(mockCategoryService, 'addCategory').and.returnValue(of(expected));
-
-    component.addCategory();
-
-    expect(component.categoryList).toEqual(expectedCategories);
-  });
 });

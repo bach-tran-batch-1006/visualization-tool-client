@@ -57,4 +57,13 @@ describe('CategoryComponent', () => {
     const actual = component.activeSkillList;
     expect(actual).toEqual(expected);
   });
+  
+  it('should contain a list of "active" skills after ngChanges', () => {
+    let expected = [
+      {skillId: 2, skillName: 'TestSkill2', category: currentCategory, isActive: true, color: 'FF5733'},
+      {skillId: 3, skillName: 'TestSkill3', category: currentCategory, isActive: true, color: 'FF5733'}
+    ];
+    let actual = component.activeSkillList
+    expect(actual).toEqual(expected); 
+  })
 });

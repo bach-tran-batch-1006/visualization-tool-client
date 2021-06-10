@@ -46,4 +46,8 @@ describe('CategoryComponent', () => {
   it('should contain a list of colors for the Categories', () => {
     expect(component.categoryColorList).toEqual(COLORS);
   });
+  
+  it('should contain a list of colors for the Categories', () => {
+    expect(component.categoryColorList).toEqual(COLORS); 
+  })
 });

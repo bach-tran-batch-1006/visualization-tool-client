@@ -13,8 +13,6 @@ export class SkillsAndCategoriesPage {
     }
 
     async checkNewCategory(): Promise<void> {
-        // await protractor.ExpectedConditions.elementToBeClickable(element(by.id('category_2')));
-        // await element(by.id('category_2')).click();
         await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" ZZZ-Category "]')));
         await element(by.xpath('//*[text()=" ZZZ-Category "]')).click();
     }

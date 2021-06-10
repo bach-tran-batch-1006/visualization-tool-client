@@ -28,11 +28,6 @@ export class VisualizationPage {
         await element(by.id('visualizationSubmit')).click();
     }
 
-    async clickFirstCurricula(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('curriculum_1')));
-        await element(by.id('curriculum_1')).click();
-    }
-
     async clickAddedVisualization(): Promise<void> {
         await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" ProtractorTest "]')));
 

@@ -12,9 +12,9 @@ export class SkillsAndCategoriesPage {
         await element(by.id('addSkillInput')).sendKeys('ZZZ-Testing');
     }
 
-    async checkCategory(): Promise<void> {
-        await protractor.ExpectedConditions.elementToBeClickable(element(by.id('category_38')));
-        await element(by.id('category_38')).click();
+    async checkNewCategory(): Promise<void> {
+        await protractor.ExpectedConditions.elementToBeClickable(element(by.xpath('//*[text()=" ZZZ-Category "]')));
+        await element(by.xpath('//*[text()=" ZZZ-Category "]')).click();
     }
 
     async getNewSkillRadioText(): Promise<string> {

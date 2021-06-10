@@ -26,7 +26,7 @@ describe('SkillCategoryEditComponent', () => {
       { skillId: 1, skillName: 'TestSkill1', category: expectedCategories[0], isActive: false, color: '#FF5733' },
       { skillId: 1, skillName: 'TestSkill1', category: expectedCategories[1], isActive: false, color: '#FF5733' },
       { skillId: 1, skillName: 'TestSkill1', category: expectedCategories[2], isActive: false, color: '#FF5733' }
-    ]
+    ];
     await TestBed.configureTestingModule({
       declarations: [SkillCategoryEditComponent],
       imports: [HttpClientTestingModule],
@@ -54,7 +54,7 @@ describe('SkillCategoryEditComponent', () => {
     component.getAllCategories();
 
     expect(component.categoryList).toEqual(expectedCategories);
-  })
+  });
 
   it('should get all skills', () => {
     spyOn(mockSkillService, 'getSkills').and.returnValue(of(expectedSkills));
@@ -62,7 +62,7 @@ describe('SkillCategoryEditComponent', () => {
     component.getAllSkills();
 
     expect(component.skillList).toEqual(expectedSkills);
-  })
+  });
 
   it('should add a category', () => {
     let expected: Category;
@@ -76,5 +76,5 @@ describe('SkillCategoryEditComponent', () => {
     component.addCategory();
 
     expect(component.categoryList).toEqual(expectedCategories);
-  })
+  });
 });

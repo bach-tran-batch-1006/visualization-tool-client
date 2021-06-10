@@ -1,125 +1,131 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { inject, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { SkillService } from './skill.service';
 import { of } from 'rxjs';
+import { stringify } from '@angular/compiler/src/util';
+import { Skill } from '../models/Skill';
 
 describe('SkillService', () => {
   let service: SkillService;
+  const apiUrl = 'http://3.226.243.38:8081/skill';
+
+  const skilldto = {
+      name: 'Skilltest' ,
+      category : {
+      categoryId: 39,
+      categoryName: 'Web Framework',
+      categoryDescription: 'A web framework is a software framework that is designed to support the development of web applications including web services, web resources, and web APIs.',
+      categoryColor: ''
+    }
+  };
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ]
+      providers: [SkillService],
+      imports: [
+        HttpClientTestingModule
+      ],
     });
+
     service = TestBed.inject(SkillService);
   });
+
+  afterEach (inject ([HttpTestingController], (httpmock: HttpTestingController) => {
+    httpmock.verify();
+}));
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get all skills', () => {
-    const categoryObj = {
-      categoryId: 33,
-      categoryName: 'Front-End',
-      categoryDescription: null,
-      categoryColor: ''
-    };
 
-    const expected = [
-      {
+  it(' should add new skill',
+  inject([HttpTestingController, SkillService],
+    (httpMock: HttpTestingController,  service1: SkillService) => {
+    const  expected = {
         skillId: 1,
-        skillName: 'Java',
-        isActive: true,
-        color: '',
-        category: categoryObj
-      },
-    ];
+        skillName: 'Skilltest',
+        category: {
+            categoryId: 39,
+            categoryName: 'Web Framework',
+            categoryDescription: 'A web framework is a software framework that is designed to support the development of web applications including web services, web resources, and web APIs.'
+        }
+      };
+      // We call the service
+    service1.addSkill(skilldto).subscribe(data => {
+        expect(data).toEqual(expected);
+        });
+        // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(apiUrl);
+    expect(req.request.method).toEqual('POST');
+        // Then we set the fake data to be returned by the mock
+    req.flush(expected);
 
-    let response;
-    spyOn(service, 'getSkills').and.returnValue(of(expected));
 
-    service.getSkills().subscribe((res) => {
-      response = res;
-      console.log('');
-    });
 
-    expect(response).toEqual(expected);
-  });
+    })
+);
 
-  it('should Add skill', () => {
-    const categoryObj = {
-      categoryId: 33,
-      categoryName: 'Front-End',
-      categoryDescription: null,
-      categoryColor: ''
-    };
+//
+  it('should get all skill',
+    inject([HttpTestingController, SkillService],
+      (httpMock: HttpTestingController, service2: SkillService) => {
+        const listofskills = [];
+        const expected = {
+            skillId: 1,
+            skillName: 'Skilltest',
+            category: {
+                categoryId: 39,
+                categoryName: 'Web Framework',
+                categoryDescription: 'A web framework is a software framework that is designed to support the development of web applications including web services, web resources, and web APIs.'
+            }
+          };
+        listofskills.push(expected);
+        service2.getSkills().subscribe(data => {
+        expect(data[0].skillId).toBe(1);
+        expect(data[0].skillName).toEqual(expected.skillName);
+        });
+        const req = httpMock.expectOne('http://3.226.243.38:8081/allSkills');
+        expect(req.request.method).toEqual('GET');
+        req.flush(listofskills);
 
-    const expected = [
-      {
-        skillId: 1,
-        skillName: 'Java',
-        isActive: true,
-        color: '',
-        category: categoryObj
-      },
-    ];
+      })
+  );
+//
+  it('should update skill',
+    inject([HttpTestingController, SkillService],
+      (httpMock: HttpTestingController, service3: SkillService) => {
+      const expected = {
+          skillId: 1,
+          skillName: 'Skilltest',
+          category: {
+              categoryId: 39,
+              categoryName: 'Web Framework',
+              categoryDescription: 'A web framework is a software framework that is designed to support the development of web applications including web services, web resources, and web APIs.'
+          },
+        };
+      service3.updateSkill(1, skilldto).subscribe(data => {
+      expect(data).toEqual(expected);
+        });
+      const req = httpMock.expectOne('http://3.226.243.38:8081/skill/1');
+      expect(req.request.method).toEqual('PUT');
+      req.flush(expected);
+      })
+  );
 
-    const addSkillDTO = {
-        name: 'Java',
-        category: categoryObj
-    };
+//
 
-    let response;
-    spyOn(service, 'addSkill').and.returnValue(of(expected));
+  it('should delete skill',
+    inject([HttpTestingController, SkillService],
+      (httpMock: HttpTestingController, service4: SkillService) => {
+        const expected = 1;
+        service4.deleteSkill(1).subscribe(data => {
+        expect(data).toBe(1);
+        });
+        const req = httpMock.expectOne('http://3.226.243.38:8081/skill/1');
+        expect(req.request.method).toEqual('DELETE');
+        req.flush(expected);
 
-    service.addSkill(addSkillDTO).subscribe((res) => {
-      response = res;
-      console.log('Add new Skill', response);
-    });
-
-    expect(response).toEqual(expected);
-  });
-
-  it('should update skill', () => {
-    const categoryObj = {
-      categoryId: 33,
-      categoryName: 'Front-End',
-      categoryDescription: null,
-      categoryColor: ''
-    };
-
-    const expected = [
-      {
-        skillId: 1,
-        skillName: 'Java Update',
-        isActive: true,
-        color: '',
-        category: categoryObj
-      },
-    ];
-
-    const updateSkillDTO = {
-        name: 'Java Update',
-        category: categoryObj
-    };
-
-    let response;
-    spyOn(service, 'updateSkill').and.returnValue(of(expected));
-
-    service.updateSkill(1, updateSkillDTO).subscribe((res) => {
-      response = res;
-      console.log('Update new Skill', response);
-    });
-
-    expect(response).toEqual(expected);
-  });
-
-  it('should delete skill by ID', () => {
-    let response;
-    spyOn(service, 'deleteSkill').and.returnValue(of(1));
-    service.deleteSkill(1).subscribe((res) => {
-      response = res;
-    });
-    expect(response).toEqual(1);
-  });
+      })
+  );
 });

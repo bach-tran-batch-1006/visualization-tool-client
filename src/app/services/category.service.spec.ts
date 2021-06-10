@@ -1,25 +1,14 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { inject, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CategoryService } from './category.service';
+import { Category, CategoryDTO } from '../models/Category';
 import { of } from 'rxjs';
 
 describe('CategoryService', () => {
   let service: CategoryService;
-  const expected = [
-    {
-      categoryId: 1,
-      categoryName: 'Server-Side Technologies',
-      categoryDescription: 'Tools for building out the back-end of an application.',
-      categoryColor: ''
-    },
-    {
-      categoryId: 33,
-      categoryName: 'Front-End',
-      categoryDescription: null,
-      categoryColor: ''
-    },
-  ];
+
+  const apiURL = 'http://3.226.243.38:8081/category/';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -29,58 +18,114 @@ describe('CategoryService', () => {
     service = TestBed.inject(CategoryService);
   });
 
+  afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
+    httpMock.verify();
+  }));
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get all categories', () => {
-    let response;
-    spyOn(service, 'getCategories').and.returnValue(of(expected));
+  it('should get all categories',
+    inject([HttpTestingController, CategoryService],
+      (httpMock: HttpTestingController, categoryService: CategoryService) => {
+        categoryService.getCategories().subscribe((response) => {
+          expect(response[0].categoryId).toBe(1);
+          expect(response[0].categoryName).toBe('Server-Side Technologies');
+          expect(response[0].categoryDescription).toBe('Tools for building out the back-end of an application.');
+          expect(response[0].categoryColor).toBe('');
+        });
 
-    service.getCategories().subscribe((res) => {
-      response = res;
-    });
+        const req = httpMock.expectOne(apiURL);
+        expect(req.request.method).toEqual('GET');
 
-    expect(response).toEqual(expected);
-  });
+        const mockResponse: Category[] = [];
+        const mockResponseOne: Category = {
+          categoryId: 1,
+          categoryName: 'Server-Side Technologies',
+          categoryDescription: 'Tools for building out the back-end of an application.',
+          categoryColor: ''
+        };
+        mockResponse.push(mockResponseOne);
 
-  it('should add category', () => {
-    const newCategory = {
-        categoryId: 0,
-        categoryName: 'Test Category',
-        categoryDescription: 'Programming Languages',
-        categoryColor: ''
-      };
+        req.flush(mockResponse);
+      })
+  );
 
-    let response;
-    spyOn(service, 'addCategory').and.returnValue(of(newCategory));
-    service.addCategory(newCategory).subscribe((res) => {
-      response = res;
-    });
-    expect(response).toEqual(newCategory);
-  });
+  it('should add one category',
+    inject([HttpTestingController, CategoryService],
+      (httpMock: HttpTestingController, categoryService: CategoryService) => {
 
-  it('should update category', () => {
-    const updated = {
-      categoryId: 1,
-      categoryName: 'Updated Language',
-      categoryDescription: 'Updated Programming Languages',
-      categoryColor: ''
-    };
-    let response;
-    spyOn(service, 'updateCategory').and.returnValue(of(updated));
-    service.updateCategory(1, updated).subscribe((res) => {
-      response = res;
-    });
-    expect(response).toEqual(updated);
-  });
+        const mockDTO: CategoryDTO = {
+          categoryName: 'Test Category',
+          categoryDescription: 'Programming Languages'
+        };
 
-  it('should delete category', () => {
-    let response;
-    spyOn(service, 'deleteCategory').and.returnValue(of(null));
-    service.deleteCategory(1).subscribe((res) => {
-      response = res;
-    });
-    expect(response).toEqual(null);
-  });
+        categoryService.addCategory(mockDTO).subscribe((response) => {
+          expect(response.categoryId).toBe(0);
+          expect(response.categoryName).toBe('Test Category');
+          expect(response.categoryDescription).toBe('Programming Languages');
+          expect(response.categoryColor).toBe('');
+        });
+
+        const req = httpMock.expectOne(`${apiURL}`);
+        expect(req.request.method).toEqual('POST');
+
+        const mockResponse: Category = {
+          categoryId: 0,
+          categoryName: 'Test Category',
+          categoryDescription: 'Programming Languages',
+          categoryColor: ''
+        };
+
+        req.flush(mockResponse);
+      })
+  );
+
+  it('should update one category name',
+    inject([HttpTestingController, CategoryService],
+      (httpMock: HttpTestingController, categoryService: CategoryService) => {
+
+        const mockDTO: CategoryDTO = {
+          categoryName: 'Updated Language',
+          categoryDescription: 'Updated Programming Languages'
+        };
+
+        categoryService.updateCategory(1, mockDTO).subscribe((response) => {
+          expect(response.categoryId).toBe(1);
+          expect(response.categoryName).toBe('Updated Language');
+          expect(response.categoryDescription).toBe('Updated Programming Languages');
+          expect(response.categoryColor).toBe('');
+        });
+
+        const req = httpMock.expectOne(`${apiURL}1`);
+        expect(req.request.method).toEqual('PUT');
+
+        const mockResponse: Category = {
+          categoryId: 1,
+          categoryName: 'Updated Language',
+          categoryDescription: 'Updated Programming Languages',
+          categoryColor: ''
+        };
+
+        req.flush(mockResponse);
+      })
+  );
+
+  it('should delete one category',
+    inject([HttpTestingController, CategoryService],
+      (httpMock: HttpTestingController, categoryService: CategoryService) => {
+
+        categoryService.deleteCategory(1).subscribe((response) => {
+          expect(response).toBe(1);
+        });
+
+        const req = httpMock.expectOne(`${apiURL}1`);
+        expect(req.request.method).toEqual('DELETE');
+
+        const mockResponse = 1;
+
+        req.flush(mockResponse);
+      })
+  );
 });

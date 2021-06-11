@@ -1,5 +1,8 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { doesNotReject } from 'assert';
+import { emit } from 'process';
+import { By } from 'protractor';
 
 import { CurriculumComponent } from './curriculum.component';
 
@@ -32,11 +35,18 @@ describe('CurriculumComponent', () => {
     ];
 
     fixture = TestBed.createComponent(CurriculumComponent);
+    fixture.detectChanges();
     component = new CurriculumComponent();
     mockCurriculumService = jasmine.createSpyObj('curriculumService', ['getAllCurriculum', 'addCurriculum', 'updateCurriculum', 'deleteCurriculum']);
 
     component.currentCurriculumList = Curricula;
-    component.currentCurriculumId.emit(1);
+  });
+
+  it('should load the page with an empty list -> `onInit()`', () => {
+    component.ngOnInit();
+    const expected = [];
+    const actual = component.currentCurriculumList;
+    expect(actual).toEqual(expected);
   });
 
   it('should contain a list of Curricula', () => {
@@ -50,5 +60,13 @@ describe('CurriculumComponent', () => {
     component.ngOnChanges();
     const actual = component.currentCurriculumList;
     expect(actual).toEqual(expectedCurriculaList);
+  });
+
+  it('should change the `currentCurriculumId` should be emitted after loading the page', () => {
+    const expected = 2;
+    const actual = 2;
+    spyOn(component.currentCurriculumId, 'emit');
+    component.changeCurrentCurriculum(expected);
+    expect(actual).toEqual(expected);
   });
 });

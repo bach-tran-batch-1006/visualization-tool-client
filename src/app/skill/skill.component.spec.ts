@@ -63,6 +63,7 @@ describe('CategoryComponent', () => {
       {skillId: 2, skillName: 'TestSkill2', category: currentCategory, isActive: true, color: 'FF5733'},
       {skillId: 3, skillName: 'TestSkill3', category: currentCategory, isActive: true, color: 'FF5733'}
     ];
+    component.ngOnChanges();
     const actual = component.activeSkillList;
     expect(actual).toEqual(expected);
   });

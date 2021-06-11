@@ -21,7 +21,7 @@ describe('VisualizationComponent', () => {
     categoryName: 'mock category',
     categoryDescription: 'mock desc',
     categoryColor: ''
-  }
+  };
   mockCategoryList.push(mockCategory);
 
   const mockSkillList: Skill[] = [];
@@ -31,7 +31,7 @@ describe('VisualizationComponent', () => {
     category: mockCategory,
     isActive: false,
     color: ''
-  }
+  };
   mockSkillList.push(mockSkill1);
 
   const mockCurriculumList: Curriculum[] = [];
@@ -47,7 +47,7 @@ describe('VisualizationComponent', () => {
     visualizationId: 1,
     visualizationName: 'Mock Visualization',
     curriculumList: mockCurriculumList
-  }
+  };
 
   beforeEach(async () => {
 

@@ -12,7 +12,7 @@ ul {
 
 li, a {
     color: #F26925;
-    font-family: "Futura-Bold", "Arial", "Verdana", "Tahoma", "sans-serif";
+    font-family: Futura-Bold, sans-serif;
 }
 
 .active-link {

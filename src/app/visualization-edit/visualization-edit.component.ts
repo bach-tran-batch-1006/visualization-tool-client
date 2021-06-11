@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { VisualizationService } from '../services/visualization.service';
 import { Visualization, VisualizationDTO } from '../models/Visualization';
 import { CurriculumService } from '../services/curriculum.service';

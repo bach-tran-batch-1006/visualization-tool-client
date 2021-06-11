@@ -1,4 +1,3 @@
-import { compileDeclareDirectiveFromMetadata } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Category, CategoryDTO } from '../models/Category';
 import { Skill, SkillDTO } from '../models/Skill';
@@ -35,26 +34,6 @@ export class SkillCategoryEditComponent implements OnInit {
   showCategoryDeleteFail = false;
 
   constructor(private skillService: SkillService, private categoryService: CategoryService) { }
-
-  setCategoryNameAdd(name: string): void {
-    this.categoryNameAdd = name;
-  }
-
-  setCategoryDescriptionAdd(description: string): void {
-    this.categoryDescriptionAdd = description;
-  }
-
-  getCategoryNameAdd(): string {
-    return this.categoryNameAdd;
-  }
-
-  getCategoryDescriptionAdd(): string {
-    return this.categoryDescriptionAdd;
-  }
-
-  getCategoryList(): Category[] {
-    return this.categoryList;
-  }
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -98,20 +77,24 @@ export class SkillCategoryEditComponent implements OnInit {
     return newCat;
   }
 
-  updateCategory(): void {
+  updateCategory(): Category {
     const catId = this.selectedCategory.categoryId;
     const catDTO: CategoryDTO = {
       categoryName: this.categoryName,
       categoryDescription: this.categoryDescription
     };
+    let newCat;
     this.categoryService.updateCategory(catId, catDTO).subscribe((response) => {
       this.getAllCategories();
       this.categoryName = '';
       this.categoryDescription = '';
+      newCat = response;
     });
+    return newCat;
   }
 
-  deleteCategory(): void {
+  deleteCategory(): number {
+    let newCat;
     if (this.selectedCategory == null) {
       this.showCategoryDeleteFail = true;
     } else {
@@ -119,8 +102,10 @@ export class SkillCategoryEditComponent implements OnInit {
       this.selectedCategory.categoryId = 0;
       this.categoryService.deleteCategory(catId).subscribe((response) => {
         this.getAllCategories();
+        newCat = response;
       });
     }
+    return newCat;
   }
 
   displayCategory(): void {

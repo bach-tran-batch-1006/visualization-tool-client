@@ -50,7 +50,8 @@ export class CurriculumEditComponent implements OnInit {
     });
   }
 
-  addCurriculum(): void {
+  addCurriculum(): Curriculum {
+    let curriculum;
     this.selectedSkillList = [];
     const listSize = this.skillList.length;
     for (let index = 0; index < listSize; index++) {
@@ -63,12 +64,15 @@ export class CurriculumEditComponent implements OnInit {
       skillList: this.selectedSkillList
     };
     this.curriculumService.addCurriculum(curriculumDTO).subscribe((response) => {
+      curriculum = response;
       this.getAllCurriculum();
       this.resetSkillActive();
     });
+    return curriculum;
   }
 
-  updateCurriculum(): void {
+  updateCurriculum(): Curriculum {
+    let curriculum;
     this.selectedSkillList = [];
     const listSize = this.skillList.length;
     for (let index = 0; index < listSize; index++) {
@@ -82,21 +86,26 @@ export class CurriculumEditComponent implements OnInit {
       skillList: this.selectedSkillList
     };
     this.curriculumService.updateCurriculum(curriculumId, curriculumDTO).subscribe((response) => {
+      curriculum = response;
       this.curriculumNameUpdate = '';
       this.getAllCurriculum();
       this.resetSkillActive();
     });
+    return curriculum;
   }
 
-  deleteCurriculum(): void {
+  deleteCurriculum(): number {
+    let result;
     if (this.selectedCurriculum) {
       this.curriculumService.deleteCurriculum(this.selectedCurriculum.curriculumId).subscribe((response) => {
+        result = response;
         this.getAllCurriculum();
         this.resetSkillActive();
       });
     } else {
       this.showCurriculumDeleteFail = true;
     }
+    return result;
   }
 
   displayCurriculum(): void {

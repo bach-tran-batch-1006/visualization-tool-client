@@ -44,8 +44,6 @@ describe('Skills and Categories Edit Page', () => {
         expect(await page.getLastCategoryRadioText()).not.toEqual('ZZZ-Category');
     });
 
-
-
     afterEach(async () => {
         // Assert that there are no errors emitted from the browser
         const logs = await browser.manage().logs().get(logging.Type.BROWSER);

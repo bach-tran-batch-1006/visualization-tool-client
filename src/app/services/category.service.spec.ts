@@ -3,7 +3,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { CategoryService } from './category.service';
 import { Category, CategoryDTO } from '../models/Category';
-import { of } from 'rxjs';
 import { AppComponent } from '../app.component';
 import { SkillCategoryEditComponent } from '../skill-category-edit/skill-category-edit.component';
 import { CategoryComponent } from '../category/category.component';

@@ -49,7 +49,8 @@ export class VisualizationEditComponent implements OnInit {
     });
   }
 
-  addVisualization(): void{
+  addVisualization(): Visualization{
+    let visualization;
     this.selectedCurriculumList = [];
     const listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
@@ -62,12 +63,16 @@ export class VisualizationEditComponent implements OnInit {
       curricula: this.selectedCurriculumList
     };
     this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
+      visualization =response;
       this.getAllVisualization();
       this.resetCurriculumActive();
     });
+    
+    return visualization;
   }
 
-  updateVisualization(): void{
+  updateVisualization(): Visualization{
+    let visualization;
     this.selectedCurriculumList = [];
     const listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
@@ -81,15 +86,20 @@ export class VisualizationEditComponent implements OnInit {
       curricula: this.selectedCurriculumList
     };
     this.visualizationService.updateVisualization(visualizationId, visualizationDTO).subscribe((response) => {
-    this.visualizationNameUpdate = '';
-    this.getAllVisualization();
-    this.resetCurriculumActive();
+      visualization = response;
+      console.log("response ",  response);
+      this.visualizationNameUpdate = '';
+      this.getAllVisualization();
+      this.resetCurriculumActive();
   });
+  return visualization;
   }
 
-  deleteVisualization(): void{
+  deleteVisualization(): number{
+    let result;
     if (this.selectedVisualization){
       this.visualizationService.deleteVisualization(this.selectedVisualization.visualizationId).subscribe((response) => {
+        result = response;
         this.getAllVisualization();
         this.getAllCurriculum();
       });
@@ -97,6 +107,7 @@ export class VisualizationEditComponent implements OnInit {
       this.showVisualizationDeleteFail = true;
       this.showViewVisualizationFail = false;
     }
+   return result;
   }
 
   displayVisualization(): void{

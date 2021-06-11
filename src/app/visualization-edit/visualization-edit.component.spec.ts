@@ -13,26 +13,32 @@ describe('VisualizationEditComponent', () => {
   let fixture: ComponentFixture<VisualizationEditComponent>;
 
   const testCurriculumList: Curriculum[] = [];
-  const testCurriculum1 : Curriculum = {
+  const testCurriculum1: Curriculum = {
     curriculumId: 1,
     curriculumName: 'TestCurriculum 1',
     skillList: [],
     isActive: true
   };
-  const testCurriculum2 : Curriculum = {
+  const testCurriculum2: Curriculum = {
     curriculumId: 2,
     curriculumName: 'TestCurriculum 2',
     skillList: [],
     isActive: true
   };
+  const testCurriculum3: Curriculum = {
+    curriculumId: 1,
+    curriculumName: 'TestCurriculum 1',
+    skillList: [],
+    isActive: false
+  };
   testCurriculumList.push(testCurriculum1);
   testCurriculumList.push(testCurriculum2);
-
+  testCurriculumList.push(testCurriculum3);
   const list: Visualization[] = [];
   const testVisualization: Visualization = {
     visualizationId: 1,
     visualizationName: 'Microsoft Azure',
-    curriculumList: [],
+    curriculumList: testCurriculumList
   };
   list.push(testVisualization);
 
@@ -40,17 +46,12 @@ describe('VisualizationEditComponent', () => {
     title: 'Microsoft Azure',
     curricula: []
   };
-    
-
   beforeEach(async () => {
     const vsService = jasmine.createSpyObj('VisualizationService', [
-      'getAllVisualizations', 'getVisualizationById', ' addVisualization', 'updateVisualization', 'deleteVisualization' 
+      'getAllVisualizations', 'getVisualizationById', 'addVisualization', 'updateVisualization', 'deleteVisualization' 
       , 'getAllUniqueSkillsByVisualization', 'getAllUniqueCategoriesByVisualization'
   ]);
-
-
   const csService = jasmine.createSpyObj('CurriculumService', ['getAllCurriculum']);
-
     await TestBed.configureTestingModule({
       declarations: [ VisualizationEditComponent ],
       imports: [HttpClientTestingModule],
@@ -59,8 +60,13 @@ describe('VisualizationEditComponent', () => {
     })
     .compileComponents();
     vsService.getAllVisualizations.and.returnValue(of(list));
+    vsService.updateVisualization.and.returnValue(of(list));
     csService.getAllCurriculum.and.returnValue(of(testCurriculumList));
-    vsService.addVisualization(testVisualizationDTO).and.returnValue(of(testVisualization));
+    vsService.addVisualization.and.returnValue(of(testVisualization));
+    vsService.deleteVisualization.and.returnValue(of(1));
+  //  vsService.addVisualization.withArgs(testVisualizationDTO).and.returnValue(of(testVisualization));
+  //spyOn(vsService, 'updateVisualization').withArgs(1, testVisualizationDTO).and.returnValue(of(testVisualization));
+ // vsService.addVisualization.withArgs(testVisualizationDTO).and.returnValue(of(testVisualization));
   });
 
   beforeEach(() => {
@@ -94,17 +100,101 @@ describe('VisualizationEditComponent', () => {
     component.getAllCurriculum();
     fixture.detectChanges();
     component.curriculumList[0].isActive = true;
-    component.addVisualization();
+    component.visualizationNameUpdate= testVisualizationDTO.title;
+    component.selectedCurriculumList= testVisualizationDTO.curricula;
+    //component.selectedCurriculumList= testCurriculumList;
+    let  returnvs= component.addVisualization();
+    expect(returnvs).toEqual(testVisualization);
+    
+    //expect(component.visualizationList[0]).toEqual(testVisualization.visualizationId)
 
     // fixture.detectChanges();
     // expect(component.curriculumList).toEqual(testCurriculumList);
-    expect(component.getAllVisualization()).toHaveBeenCalled();
+   // expect(component.getAllVisualization()).toHaveBeenCalled();
     // expect(component.resetCurriculumActive()).toHaveBeenCalled();
 
   });
 
+  it('should update visualization', () => {
+    component.getAllCurriculum();
+    component.selectedVisualization= testVisualization;
+    fixture.detectChanges();
+    component.curriculumList[0].isActive = true;
+    let returnvs = component.updateVisualization();
+    console.log( "test response ", returnvs);
+    expect(returnvs[0].visualizationId).toEqual(testVisualization.visualizationId);
+    
+  });
 
 
+  it('should display visualization', () => {
+    component.getAllVisualization();
+    component.getAllCurriculum();
+    component.selectedVisualization = testVisualization;
+    component.curriculumList= testCurriculumList;
+    fixture.detectChanges();
+    component.curriculumList[0].isActive = true;
+   component.displayVisualization();
+   expect(component.visualizationNameUpdate).toEqual(testVisualization.visualizationName);
+  });
+//
+  it('should toggle curriculum', () => {
+    component.getAllVisualization();
+    component.getAllCurriculum();
+    fixture.detectChanges();
+    component.curriculumList[0].isActive = true; 
+    component.toggleCurriculum(component.curriculumList[0].curriculumId);
+  });
+
+  it('should reset curriculum', () => {
+    component.getAllVisualization();
+    component.getAllCurriculum();
+    fixture.detectChanges();
+    component.resetCurriculumActive();
+    expect(component.selectedCurriculumList).toEqual([]); 
+  });
+
+  it('should toggle visualization', () => {
+    component.getAllVisualization();
+    component.getAllCurriculum();
+    fixture.detectChanges();
+    component.toggleAddVisualization();
+    expect(component.selectedCurriculumList).toEqual([]);
+  });
+//
+  it('should toggle updatevisualization', () => {
+    component.getAllVisualization();
+    component.getAllCurriculum();
+    component.curriculumList= testCurriculumList;
+    fixture.detectChanges();
+   component.toggleUpdateVisualization();
+    expect(component.showViewVisualizationFail).toEqual(false);
+  });
+  //
+
+  it('should view edit visualization', () => {
+    component.getAllVisualization();
+    fixture.detectChanges();
+    component.viewVisualization();
+  
+  });
+
+  it('should delete visualization', () => {
+    component.getAllVisualization();
+    component.selectedVisualization= testVisualization;
+    fixture.detectChanges();
+     const result=component.deleteVisualization();
+    expect(result).toEqual(1);
+  
+  });
+
+  it('should delete visualization invalid', () => {
+    component.getAllVisualization();
+    fixture.detectChanges();
+    const result= component.deleteVisualization();
+     expect(result).toEqual(undefined);
+  
+  });
 
 });
 

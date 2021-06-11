@@ -1,3 +1,4 @@
+import { compileDeclareDirectiveFromMetadata } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Category, CategoryDTO } from '../models/Category';
 import { Skill, SkillDTO } from '../models/Skill';
@@ -196,33 +197,38 @@ export class SkillCategoryEditComponent implements OnInit {
     this.showSkillDeleteFail = false;
   }
 
-  addSkill(): void {
+  addSkill(): Skill {
     const skillDTO: SkillDTO = {
       name: this.skillNameAdd,
       category: this.selectedCategory
     };
+    let newSkill;
     this.skillService.addSkill(skillDTO).subscribe((response) => {
-      console.log(response);
+      newSkill = response;
       this.getAllSkills();
     });
     this.skillNameAdd = '';
+    return newSkill;
   }
 
-  updateSkill(): void {
+  updateSkill(): Skill {
     const skillId = this.selectedSkill.skillId;
     const skillDTO: SkillDTO = {
       name: this.skillNameUpdate,
       category: (this.selectedCategory) ? this.selectedCategory : this.selectedSkill.category
     };
+    let updatedSkill;
     this.skillService.updateSkill(skillId, skillDTO).subscribe((response) => {
-      this.skillNameUpdate = '';
+      updatedSkill = response;
       this.getAllSkills();
       this.clearCategoryRadio();
-      console.log(response);
+      this.skillNameUpdate = '';
     });
+    return updatedSkill;
   }
 
-  deleteSkill(): void {
+  deleteSkill(): number {
+    let deleteID;
     if (this.selectedSkill == null) {
       this.showSkillDeleteFail = true;
     } else {
@@ -235,12 +241,14 @@ export class SkillCategoryEditComponent implements OnInit {
       selectedCategoryRadio.checked = false;
 
       this.skillService.deleteSkill(skillId).subscribe((response) => {
+        deleteID = response;
         this.getAllSkills();
       });
     }
     this.showAddSkill = false;
     this.showUpdateSkill = false;
 
+    return deleteID;
   }
 
 }

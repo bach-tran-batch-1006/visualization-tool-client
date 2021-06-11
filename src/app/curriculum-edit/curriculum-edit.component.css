@@ -45,12 +45,12 @@
 
 legend {
     font-size: 1.1rem;
-    font-family: "Futura-Bold", "Arial", "Verdana", "Tahoma", "sans-serif";;
+    font-family: "Futura-Bold", "Arial", "Verdana", "Tahoma", "sans-serif";
     color: #474C55;
 }
 
 .buttons button, .btn-add {
-    font-family: "Futura-Book", "Arial", "Verdana", "Tahoma", "sans-serif";;
+    font-family: "Futura-Book", "Arial", "Verdana", "Tahoma", "sans-serif";
     letter-spacing: 1.1px;
     font-size: 13px;
     color: white;

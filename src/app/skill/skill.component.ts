@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { Skill } from 'src/app/models/Skill';
 import { Category } from '../models/Category';

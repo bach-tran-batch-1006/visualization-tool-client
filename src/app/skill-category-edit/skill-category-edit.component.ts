@@ -61,33 +61,40 @@ export class SkillCategoryEditComponent implements OnInit {
 
   // ********** CATEGORY FUNCTIONS **********
 
-  addCategory(): void {
+  addCategory(): Category {
     const catDTO: CategoryDTO = {
       categoryName: this.categoryNameAdd,
       categoryDescription: this.categoryDescriptionAdd
     };
     console.log(catDTO);
+    let newCat;
     this.categoryService.addCategory(catDTO).subscribe((response) => {
+      newCat = response;
       this.getAllCategories();
     });
     this.categoryName = '';
     this.categoryDescription = '';
+    return newCat;
   }
 
-  updateCategory(): void {
+  updateCategory(): Category {
     const catId = this.selectedCategory.categoryId;
     const catDTO: CategoryDTO = {
       categoryName: this.categoryName,
       categoryDescription: this.categoryDescription
     };
+    let newCat;
     this.categoryService.updateCategory(catId, catDTO).subscribe((response) => {
       this.getAllCategories();
       this.categoryName = '';
       this.categoryDescription = '';
+      newCat = response;
     });
+    return newCat;
   }
 
-  deleteCategory(): void {
+  deleteCategory(): number {
+    let newCat;
     if (this.selectedCategory == null) {
       this.showCategoryDeleteFail = true;
     } else {
@@ -95,8 +102,10 @@ export class SkillCategoryEditComponent implements OnInit {
       this.selectedCategory.categoryId = 0;
       this.categoryService.deleteCategory(catId).subscribe((response) => {
         this.getAllCategories();
+        newCat = response;
       });
     }
+    return newCat;
   }
 
   displayCategory(): void {
@@ -173,33 +182,38 @@ export class SkillCategoryEditComponent implements OnInit {
     this.showSkillDeleteFail = false;
   }
 
-  addSkill(): void {
+  addSkill(): Skill {
     const skillDTO: SkillDTO = {
       name: this.skillNameAdd,
       category: this.selectedCategory
     };
+    let newSkill;
     this.skillService.addSkill(skillDTO).subscribe((response) => {
-      console.log(response);
+      newSkill = response;
       this.getAllSkills();
     });
     this.skillNameAdd = '';
+    return newSkill;
   }
 
-  updateSkill(): void {
+  updateSkill(): Skill {
     const skillId = this.selectedSkill.skillId;
     const skillDTO: SkillDTO = {
       name: this.skillNameUpdate,
       category: (this.selectedCategory) ? this.selectedCategory : this.selectedSkill.category
     };
+    let updatedSkill;
     this.skillService.updateSkill(skillId, skillDTO).subscribe((response) => {
-      this.skillNameUpdate = '';
+      updatedSkill = response;
       this.getAllSkills();
       this.clearCategoryRadio();
-      console.log(response);
+      this.skillNameUpdate = '';
     });
+    return updatedSkill;
   }
 
-  deleteSkill(): void {
+  deleteSkill(): number {
+    let deleteID;
     if (this.selectedSkill == null) {
       this.showSkillDeleteFail = true;
     } else {
@@ -212,12 +226,14 @@ export class SkillCategoryEditComponent implements OnInit {
       selectedCategoryRadio.checked = false;
 
       this.skillService.deleteSkill(skillId).subscribe((response) => {
+        deleteID = response;
         this.getAllSkills();
       });
     }
     this.showAddSkill = false;
     this.showUpdateSkill = false;
 
+    return deleteID;
   }
 
 }

@@ -1,15 +1,15 @@
 .categoryList button {
     display: inline;
     list-style-type: none;
+    padding: 3px 10px;
     padding-right: 20px;
     border-style: solid;
     border-width: 1px;
     margin: 5px;
-    padding: 3px 10px;
     text-align: center;
     overflow-wrap: break-word;
     width: auto;
-    font-family: "Futura-Medium";
+    font-family: "Futura-Medium", "Arial", "Verdana", "Tahoma", "sans-serif";
     font-size: 14px;
 }
 

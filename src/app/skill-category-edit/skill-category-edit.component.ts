@@ -52,7 +52,7 @@ export class SkillCategoryEditComponent implements OnInit {
     return this.categoryDescriptionAdd;
   }
 
-  getCategoryList() : Category[] {
+  getCategoryList(): Category[] {
     return this.categoryList;
   }
 

@@ -13,6 +13,7 @@ import { CategoryComponent } from './category/category.component';
 import { CurriculumEditComponent } from './curriculum-edit/curriculum-edit.component';
 import { SkillCategoryEditComponent } from './skill-category-edit/skill-category-edit.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -28,9 +29,11 @@ import { ProfileComponent } from './profile/profile.component';
     CurriculumEditComponent,
     SkillCategoryEditComponent,
     NavbarComponent,
+    IndexComponent,
     LoginComponent,
     RegisterComponent,
     ProfileComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div>
+    <p id = "intro"> Welcome to the Revature visualization tool.<br>
+    To get started, select one of the create buttons above.<br>
+    Register or sign in if you wish to save your work.</p>
+    </div>
+
+    <button id="curriculum" class="myButton" (click)="toggleCurriculum()">Curriculum</button>&nbsp;
+    <button id= "visualization" class="myButton" (click)="toggleVisualization()">Visualization</button>&nbsp;
+    <button id="skills" class="myButton" (click)="toggleSkill()">Skills</button>
+    
+<Fieldset class="container is-fluid containerflex borders">
+    <legend></legend>
+        <div *ngIf="showVisualization">
+            <app-visualization-edit></app-visualization-edit>
+        </div>
+</Fieldset>
+
+<div>
+<Fieldset class="container is-fluid containerflex borders">
+    <legend></legend>
+        <div *ngIf="showCurriculum">
+            <app-curriculum-edit></app-curriculum-edit>
+        </div>
+</Fieldset>
+
+<div>
+    <Fieldset class="container is-fluid containerflex borders">
+        <legend></legend>
+            <div *ngIf="showSkill">
+                <app-skill-category-edit></app-skill-category-edit>
+            </div>
+    </Fieldset>
+
+
+
+

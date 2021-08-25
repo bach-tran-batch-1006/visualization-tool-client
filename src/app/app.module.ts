@@ -13,6 +13,8 @@ import { CategoryComponent } from './category/category.component';
 import { CurriculumEditComponent } from './curriculum-edit/curriculum-edit.component';
 import { SkillCategoryEditComponent } from './skill-category-edit/skill-category-edit.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { IndexComponent } from './index/index.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     CategoryComponent,
     CurriculumEditComponent,
     SkillCategoryEditComponent,
-    NavbarComponent
+    NavbarComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,

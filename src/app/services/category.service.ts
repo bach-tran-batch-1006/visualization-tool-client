@@ -8,7 +8,8 @@ import { Category, CategoryDTO } from '../models/Category';
 })
 export class CategoryService {
 
-  apiURL = 'http://3.226.243.38:8081/category/';
+  // apiURL = 'http://3.226.243.38:8081/category/';
+  apiURL = 'http://localhost:8081/category/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

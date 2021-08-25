@@ -14,7 +14,9 @@ import { CurriculumEditComponent } from './curriculum-edit/curriculum-edit.compo
 import { SkillCategoryEditComponent } from './skill-category-edit/skill-category-edit.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
-
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,10 @@ import { IndexComponent } from './index/index.component';
     SkillCategoryEditComponent,
     NavbarComponent,
     IndexComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent
+
   ],
   imports: [
     BrowserModule,

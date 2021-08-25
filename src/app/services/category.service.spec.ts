@@ -13,6 +13,7 @@ describe('CategoryService', () => {
 
   const apiURL = 'http://localhost:8081/category/';
 
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ AppComponent, SkillCategoryEditComponent, CategoryComponent, NavbarComponent ],

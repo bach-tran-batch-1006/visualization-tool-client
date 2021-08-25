@@ -14,6 +14,7 @@ import { CurriculumEditComponent } from './curriculum-edit/curriculum-edit.compo
 import { SkillCategoryEditComponent } from './skill-category-edit/skill-category-edit.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoginComponent } from './login/login.component';
     CurriculumEditComponent,
     SkillCategoryEditComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

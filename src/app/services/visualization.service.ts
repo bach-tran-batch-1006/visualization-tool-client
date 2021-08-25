@@ -10,7 +10,8 @@ import { Category } from '../models/Category';
 })
 export class VisualizationService {
 
-  apiURL = 'http://3.226.243.38:8081/visualization/';
+  // apiURL = 'http://3.226.243.38:8081/visualization/';
+  apiURL = 'http://localhost:8081/visualization/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

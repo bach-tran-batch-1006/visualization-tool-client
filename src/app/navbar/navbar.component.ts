@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  logout():void{
+    alert("Logout Button Clicked");
+    //logic for logout here
+  }
 
   constructor() { }
 

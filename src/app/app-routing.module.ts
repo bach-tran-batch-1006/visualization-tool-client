@@ -6,6 +6,7 @@ import { VisualizationEditComponent } from './visualization-edit/visualization-e
 import { VisualizationComponent } from './visualization/visualization.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/edit/visualization', pathMatch: 'full' },
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'edit/visualization', component: VisualizationEditComponent },
   { path: 'visualization/:id', component: VisualizationComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+
 ];
 
 @NgModule({

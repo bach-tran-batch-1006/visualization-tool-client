@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     if(this.password === this.confirmPass){
 
     }
-//=======================================================================================================
+//======================================================================================================
     // this.customerService.register(this.firstName,this.lastName,this.address,this.city,this.state,this.zipcode,this.email,this.password)
     //   .subscribe(data=>{this.customerService.customer = {
     //     custId: data.custId,

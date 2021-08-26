@@ -1,0 +1,19 @@
+<div class="primerList">
+    <div *ngIf="currentPrimerList.length === 0">
+        <p id="noprimers">No Primers </p>
+    </div>
+    <ng-container *ngFor="let primer of primerList; let idx = index">
+        <label (click)="changeCurrentPrimer(primer.primerId)">
+            <input
+                class="primer-button"
+                type="radio"
+                name="primer-input"
+                value="{{ primer.primerName }}"
+                [checked]="(idx === 0)"
+            >
+            <div class="button primer-button-input column leftColumn mb-0 is-full">
+                <p>{{ primer.primerName }}</p>
+            </div>
+        </label>
+    </ng-container>
+</div>

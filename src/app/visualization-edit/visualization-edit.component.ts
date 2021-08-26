@@ -3,6 +3,9 @@ import { VisualizationService } from '../services/visualization.service';
 import { Visualization, VisualizationDTO } from '../models/Visualization';
 import { CurriculumService } from '../services/curriculum.service';
 import { Curriculum } from '../models/Curriculum';
+import { Primer } from '../models/Primer';
+import { PrimerService } from '../services/primer.service';
+
 
 @Component({
   selector: 'app-visualization-edit',
@@ -23,8 +26,14 @@ export class VisualizationEditComponent implements OnInit {
   visualizationNameAdd: string;
   visualizationNameUpdate: string;
 
+
   curriculumList: Curriculum[] = [];
   selectedCurriculumList: Curriculum[] = [];
+
+  primerList: Primer[] = [];
+  selectedPrimerList: Primer[] = [];
+
+
   constructor(private visualizationService: VisualizationService, private curriculumService: CurriculumService) { }
 
   ngOnInit(): void {
@@ -60,7 +69,8 @@ export class VisualizationEditComponent implements OnInit {
     }
     const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameAdd,
-      curricula: this.selectedCurriculumList
+      curricula: this.selectedCurriculumList,
+      primer: this.selectedPrimerList
     };
     this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
       visualization = response;
@@ -83,7 +93,8 @@ export class VisualizationEditComponent implements OnInit {
     const visualizationId = this.selectedVisualization.visualizationId;
     const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameUpdate,
-      curricula: this.selectedCurriculumList
+      curricula: this.selectedCurriculumList,
+      primer: this.selectedPrimerList
     };
     this.visualizationService.updateVisualization(visualizationId, visualizationDTO).subscribe((response) => {
       visualization = response;
@@ -151,6 +162,13 @@ export class VisualizationEditComponent implements OnInit {
     this.selectedCurriculumList = [];
   }
 
+  resetPrimerActive(): void {
+    for (const primer of this.primerList) {
+      primer.isActive = false;
+    }
+    this.selectedPrimerList = [];
+  }
+
   toggleAddVisualization(): void {
     this.showVisualizationDeleteFail = false;
     this.showViewVisualizationFail = false;
@@ -174,5 +192,6 @@ export class VisualizationEditComponent implements OnInit {
       this.showVisualizationDeleteFail = false;
     }
   }
+
 
 }

@@ -1,0 +1,101 @@
+.containerflex{
+    margin-top: 20px;
+    min-height: 80vh;
+    height: auto;
+}
+
+.columnheight{
+    min-height: 100%;
+}
+
+.borders{
+    border: 1px solid black;
+}
+
+.boxcolumn{
+    margin-top: 10px;
+    height: auto;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.editbottom{
+    width: 100%;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-family: Futura-Book, sans-serif;
+    color: #474C55;
+}
+
+.skillLabel{
+    margin-right: 4px;
+}
+/* .categoryLabel{
+    margin-left: 4px;
+} */
+
+.add-input {
+   border-color: #FCB414;
+}
+
+.update-input {
+    border-color: #72A4C2;
+}
+
+legend {
+    font-size: 1.1rem;
+    font-family: Futura-Bold, sans-serif;
+    color: #474C55;
+}
+
+.buttons button, .btn-add {
+    font-family: Futura-Book, sans-serif;
+    letter-spacing: 1.1px;
+    font-size: 13px;
+    color: white;
+}
+
+.btn-add {
+    background-color: #FCB414;
+    color: white;
+    letter-spacing: 1.1px;
+    font-size: 13px;
+}
+
+.btn-update {
+    background-color: #72A4C2;
+    color: white;
+    letter-spacing: 1.1px;
+    font-size: 13px;
+}
+
+.btn-light-gray {
+    background-color: #B9B9BA;
+    color: #474C55;
+}
+
+.column button {
+    border-radius: 4px;
+}
+
+.editbottom button {
+    border-radius: 4px;
+}
+
+.add-primer-help {
+    color: #FCB414;
+}
+
+.update-primer-help {
+    color: #72A4C2;
+}
+
+button {
+    transition: 0.25s;
+}
+
+.buttons button:hover, .buttons button:focus {
+    box-shadow: 0 0.6em 0.75em -0.4em #474C55;
+    transform: translateY(-0.10em);
+}

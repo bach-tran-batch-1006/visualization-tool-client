@@ -7,6 +7,8 @@ import { VisualizationComponent } from './visualization/visualization.component'
 import { NavbarComponent } from './navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
+import { PrimerComponent } from './primer/primer.component';
+import { PrimerEditComponent } from './primer-edit/primer-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -17,6 +19,9 @@ const routes: Routes = [
   { path: 'edit/visualization', component: VisualizationEditComponent },
   { path: 'visualization/:id', component: VisualizationComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'visualization/:id', component: VisualizationComponent },
+  { path: 'primer', component: PrimerComponent},
+  { path: 'edit/primer', component: PrimerEditComponent}
 ];
 
 @NgModule({

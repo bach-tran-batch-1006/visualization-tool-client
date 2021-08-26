@@ -17,6 +17,8 @@ import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PrimerComponent } from './primer/primer.component';
+import { PrimerEditComponent } from './primer-edit/primer-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ProfileComponent } from './profile/profile.component';
     IndexComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    PrimerComponent,
+    PrimerEditComponent
 
   ],
   imports: [

@@ -55,4 +55,8 @@ export class IndexComponent implements OnInit {
     this.showSkill=!this.showSkill;
   }
 
+
+ 
+
+
 }

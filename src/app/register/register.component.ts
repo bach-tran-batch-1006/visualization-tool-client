@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 //private (customerService:CustomerService, private router:Router)
   constructor() {}
 
-  register():void{
+  signUp():void{
     alert("New Registration Submission Clicked")
     if(this.password === this.confirmPass){
 

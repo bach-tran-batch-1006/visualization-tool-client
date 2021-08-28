@@ -7,9 +7,16 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   logout():void{
-    alert("Logout Button Clicked");
+    localStorage.clear();
+    sessionStorage.clear();
+    alert("You have been logged out");
     //logic for logout here
   }
+
+  // test_login():void{
+  //   localStorage.setItem('name', 'tescaseMcGee');
+  // }
+
 
   constructor() { }
 

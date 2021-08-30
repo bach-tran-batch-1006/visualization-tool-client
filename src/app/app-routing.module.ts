@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'visualization/:id', component: VisualizationComponent },
   { path: 'primer', component: PrimerComponent},
-  { path: 'edit/primer', component: PrimerEditComponent}
+  { path: 'edit/primer', component: PrimerEditComponent},
+  { path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({

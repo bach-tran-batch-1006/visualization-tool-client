@@ -1,0 +1,94 @@
+<app-navbar></app-navbar>
+
+<fieldset class="container is-fluid containerflex borders">
+    <legend>Primer</legend>
+    <div class="columns columnheight row ">
+
+ <!-- Primer-EDIT-LIST -->
+ <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+    <legend>Primer-Edit</legend>
+    <ul class="listofprimer">
+        <li *ngFor="let primer of primerList; let i = index">
+            <label class="primerLabel" for="primer_{{primer.primerId}}">
+                <input type="radio" id="primer_{{primer.primerId}}" [value]="primer" 
+                    name="primerList" [(ngModel)]="selectedPrimer"
+                    (change)="displayPrimer()" />
+                {{ primer.primerName }}
+            </label>
+        </li>
+    </ul>
+</fieldset>
+<!-- Primer-EDIT-LIST -->
+
+
+ <!-- Skill-SELECT-LIST -->
+ <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+    <legend>Skill-Select</legend>
+    <ul>
+        <button class="button is-small btn-light-gray" (click)="resetSkillActive()">Clear
+            Selection</button>
+        <li *ngFor="let skill of skillList; let i = index">
+            <label class="skillLabel" for="skill_{{skill.skillId}}">
+                <input type="checkbox" id="skill_{{skill.skillId}}" [value]="skill"
+                    [checked]="skill.isActive" name="skillList"
+                    (change)="toggleSkill(skill.skillId)" />
+                {{ skill.skillName }}
+            </label>
+        </li>
+    </ul>
+</fieldset>
+<!-- Skill-SELECT-LIST -->
+    </div>
+<div class="columns row">
+
+
+<!-- Primer-EDIT-BUTTONS -->
+<div class="column">
+    <div class="editbottom">
+        <div class="columns">
+            <div class="column">
+                <div class="buttons">
+                    <div class="buttons">
+                        <button id="addPrimerButton" class="button is-small btn-add"
+                            [ngClass]="showAddPrimer? 'is-active' : ''"
+                            (click)="toggleAddPrimer()">Add Primer</button>
+                        <button id="updatePrimerButton" class="button is-small btn-update"
+                            [ngClass]="showUpdatePrimer? 'is-active' : ''"
+                            (click)="toggleUpdatePrimer()">Update Primer</button>
+                        <button id="deletePrimerButton" class="button is-small has-background-danger"
+                            (click)="deletePrimer()">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <ng-container *ngIf="showPrimerDeleteFail">
+                    <p class="help has-text-danger">Please select a Primer to delete.</p>
+                </ng-container>
+                <ng-container *ngIf="showAddPrimer">
+                    <input id="addPrimerTextBox" class="input add-input mb-1" placeholder="Primer Name"
+                        [(ngModel)]="primerNameAdd" />
+                    <p class="help add-primer-help"
+                        *ngIf="primerNameAdd == '' || primerNameAdd == null">Please select a Name
+                        for this Primer</p>
+                    <p class="help add-primer-help" *ngIf="selectedSkillList.length==0">Please
+                        select Skills for this Primer</p>
+                    <button id="submitAdd" class="button is-small btn-add"
+                        (click)="addPrimer()">Submit</button>
+                </ng-container>
+                <ng-container *ngIf="showUpdatePrimer">
+                    <input id="updatePrimerTextBox" class="input update-input mb-1" placeholder="Primer Name"
+                        [(ngModel)]="primerNameUpdate" />
+                    <p class="help update-primer-help" *ngIf="primerNameUpdate == null">Please
+                        select a primer for update</p>
+                    <button id="submitUpdate" class="button is-small btn-update"
+                        (click)="updatePrimer()">Update</button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Primer-EDIT-BUTTONS -->
+
+</div>
+</fieldset>

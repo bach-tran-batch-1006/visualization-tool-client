@@ -1,0 +1,92 @@
+
+
+
+
+
+
+<app-navbar></app-navbar>
+<header class="header">
+    <div>
+        <button id="curriculum" class="myButton" (click)="toggleCurriculum()">Curriculum</button>&nbsp;
+        <button id= "visualization" class="myButton" (click)="toggleVisualization()">Visualization</button>&nbsp;
+        <button id="skills" class="myButton" (click)="toggleSkill()">Skills</button>
+    </div>
+</header>
+<div>
+
+    <p id = "intro"> Welcome to the Revature visualization tool.<br>
+    To get started, select one of the create buttons above.<br>
+    Register or sign in if you wish to save your work.</p>
+    </div>
+    
+<Fieldset class="container is-fluid containerflex borders">
+    <legend></legend>
+        <div *ngIf="showVisualization">
+            <app-visualization-edit></app-visualization-edit>
+        </div>
+</Fieldset>
+
+<div>
+<Fieldset class="container is-fluid containerflex borders">
+    <legend></legend>
+        <div *ngIf="showCurriculum">
+            <app-curriculum-edit></app-curriculum-edit>
+        </div>
+</Fieldset>
+
+<div>
+    <Fieldset class="container is-fluid containerflex borders">
+        <legend></legend>
+            <div *ngIf="showSkill">
+                <app-skill-category-edit></app-skill-category-edit>
+            </div>
+    </Fieldset>
+
+<hr>
+  <form>
+    <fieldset>
+    <label for="name">Please enter a name for your Visualization</label>
+    <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+  </fieldset>
+<fieldset id="hideMe" class="infobox">
+     <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
+      <input type="checkbox" name="primary key" value="true">dummy
+</fieldset>
+<input type="submit" id="submit" class="myButton" value="submit"> 
+  </form>
+<hr>
+  <form>
+    <fieldset>
+      <label for="name">Please enter a name for your Curriculum</label>
+      <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+    </fieldset>
+  <fieldset id="hideMe" class="infobox">
+       <legend> Would you like to associate your new Curriculum with any of these Skills?</legend><br>
+       <button id="newSkill" class="myButton" >Create a new skill</button><br>
+        <input type="checkbox" name="primary key" value="true">dummy
+  </fieldset>
+  <input type="submit" id="submit" class="myButton"  value="submit"> 
+  </form>
+<hr>
+  <form>
+    <fieldset>
+      <label for="name">Please enter a name for your Skill</label>
+      <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+    </fieldset>
+  <fieldset id="hideMe" class="infobox">
+       <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
+       <button id="newSkill" class="myButton" >Create a new category</button><br>
+        <input type="checkbox" name="primary key" value="true">dummy
+  </fieldset>
+  <input type="submit" id="submit" class="myButton"  value="submit"> 
+  </form>
+  <hr>
+  <form>
+    <fieldset> <label for="name">Please enter a name for a new Category</label>
+      <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+    </fieldset>
+    <input type="submit" id="submit" class="myButton"  value="submit"> 
+</form>
+
+
+

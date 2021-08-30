@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VisualizationComponent } from './visualization/visualization.component';
@@ -15,6 +16,9 @@ import { SkillCategoryEditComponent } from './skill-category-edit/skill-category
 import { NavbarComponent } from './navbar/navbar.component';
 import { PrimerComponent } from './primer/primer.component';
 import { PrimerEditComponent } from './primer-edit/primer-edit.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationDialogService } from './services/confirmation-dialog.service';
 
 @NgModule({
   declarations: [
@@ -28,15 +32,19 @@ import { PrimerEditComponent } from './primer-edit/primer-edit.component';
     SkillCategoryEditComponent,
     NavbarComponent,
     PrimerComponent,
-    PrimerEditComponent
+    PrimerEditComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
+    
   ],
-  providers: [],
+  providers: [ ConfirmationDialogService],
+  entryComponents: [ ConfirmationDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

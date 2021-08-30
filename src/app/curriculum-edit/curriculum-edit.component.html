@@ -35,7 +35,7 @@
 
     </div>
     <div class="columns row">
-
+<!-- ) -->
         <!-- CURRICULUM-EDIT-BUTTONS -->
         <div class="column">
             <div class="editbottom">
@@ -45,8 +45,10 @@
                             <div class="buttons">
                                 <button id="addCurriculumButton" class="button is-small btn-add" [ngClass]="showAddCurriculum? 'is-active' : ''" (click)="toggleAddCurriculum()">Add Curriculum</button>
                                 <button id="updateCurriculumButton" class="button is-small btn-update" [ngClass]="showUpdateCurriculum? 'is-active' : ''" (click)="toggleUpdateCurriculum()">Update Curriculum</button>
-                                <button id="deleteCurriculumButton" class="button is-small has-background-danger" (click)="deleteCurriculum()">Remove</button>
-                            </div>
+                              
+                                <button id="deleteCurriculumButton" class="button is-small has-background-danger" data-toggle="modal" data-target="#myModal" data-backdrop="false"
+                                    (click)="openConfirmationDialog()">Remove</button>
+                            </div> 
                         </div>
                     </div>
                     <div class="column">

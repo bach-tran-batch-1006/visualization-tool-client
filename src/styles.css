@@ -1,2 +1,8 @@
 @import 'bulma/css/bulma.css';
 @import '../src/assets/font-style.css';
+
+.modal {
+
+    position: fixed;
+    z-index: 1060!important;
+  }

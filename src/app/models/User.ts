@@ -1,5 +1,5 @@
 export interface User {
-userId: number;
+    id: number;
     first: string;
     last: string;
     email: string;
@@ -7,6 +7,6 @@ userId: number;
 }
 
 export interface UserDTO {
-    userId: number;
+    id: number;
     email: string;
 }

@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
     //console.log(this.email, this.password);
     this.userService.login(this.email,this.password)
       .subscribe(data=>{this.userService.user = {
-        userId: data.userId,
+        id: data.id,
         email: this.email
         //localStorage.setItem("")
       }
-      localStorage.setItem('userId',`${data.userId}`)
+      localStorage.setItem('userId',`${data.id}`)
       localStorage.setItem('email',`${this.email}`);
       this.error=false;
       this.router.navigateByUrl('/index');

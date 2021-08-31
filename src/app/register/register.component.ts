@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
       this.userService.register(this.first, this.last, this.email, this.pass)
       .subscribe(data=>{this.userService.user = {
-        userId: data.userId,
+        id: data.id,
         email:this.email
       }
       this.error=false;

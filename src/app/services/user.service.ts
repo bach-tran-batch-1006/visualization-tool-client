@@ -9,7 +9,7 @@ import { User, UserDTO } from '../models/User';
 export class UserService {
 
   user:UserDTO = {
-    userId: 0,
+    id: 0,
     email: ''
   }
 

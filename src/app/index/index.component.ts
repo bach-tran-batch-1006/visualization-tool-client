@@ -441,6 +441,8 @@ this.visibleCatego =true;
     this.showCategory=!this.showCategory;
     this.showSkill=false;
   }
+
+  
 }
 
  

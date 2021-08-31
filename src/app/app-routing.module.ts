@@ -7,6 +7,7 @@ import { VisualizationComponent } from './visualization/visualization.component'
 import { NavbarComponent } from './navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { PrimerComponent } from './primer/primer.component';
 import { PrimerEditComponent } from './primer-edit/primer-edit.component';
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'visualization/:id', component: VisualizationComponent },
   { path: 'primer', component: PrimerComponent},
-  { path: 'edit/primer', component: PrimerEditComponent}
+  { path: 'edit/primer', component: PrimerEditComponent},
+  { path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({

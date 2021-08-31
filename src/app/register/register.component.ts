@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -6,22 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  
 
-  firstName: string = ""
-  lastName: string = ""
-  password: string = ""
+  first: string = ""
+  last: string = ""
+  pass: string = ""
   confirmPass: string = ""
   email: string = ""
   error: boolean=false;
 //private (customerService:CustomerService, private router:Router)
-  constructor() {}
+  constructor(private userService:UserService, private router:Router) {}
 
-  register():void{
+  signUp():void{
     alert("New Registration Submission Clicked")
-    if(this.password === this.confirmPass){
+    if(this.pass === this.confirmPass){
+
+      this.userService.register(this.first, this.last, this.email, this.pass)
+      .subscribe(data=>{this.userService.user = {
+        id: data.id,
+        email:this.email
+      }
+      this.error=false;
+      this.router.navigateByUrl('/index');
+    },
+     (error)=>this.error=true);
 
     }
-//=======================================================================================================
+    
+//======================================================================================================
     // this.customerService.register(this.firstName,this.lastName,this.address,this.city,this.state,this.zipcode,this.email,this.password)
     //   .subscribe(data=>{this.customerService.customer = {
     //     custId: data.custId,
@@ -34,9 +48,9 @@ export class RegisterComponent implements OnInit {
    //=========================================================================================================
 
 
-    this.firstName = ""
-    this.lastName = ""
-    this.password = ""
+    this.first = ""
+    this.last = ""
+    this.pass = ""
     this.confirmPass = ""
     this.email = ""
   

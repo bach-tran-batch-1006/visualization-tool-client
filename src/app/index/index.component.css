@@ -27,3 +27,9 @@
 	left:79%;
 	display:flex;
 }
+
+.infobox {
+	float:left;
+	width:50%;
+	display:flex;
+}

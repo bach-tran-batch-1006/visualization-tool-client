@@ -1,26 +1,92 @@
 <app-navbar></app-navbar>
 
-<div class="container">
+<form action="" method="post" class="container" style="max-width: 500px;">
+    <div class="field">
+        <label class="label">First Name</label>
+        <div class="control">
+          <input type="text" class="input add-input" placeholder="First Name" aria-label="First-Name"
+            aria-describedby="basic-addon1">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Last Name</label>
+        <div class="control">
+          <input type="text" class="input add-input" placeholder="Last Name" aria-label="Last-Name"
+            aria-describedby="basic-addon1">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            <input type="text" class="form-control input add-input" placeholder="E-Mail" aria-label="email"
+            aria-describedby="basic-addon1">          
+        </div>
+        <p class="help is-danger" style="display: none;">This email is invalid</p>
+      </div>
+
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            <input type="password" class="form-control input add-input" placeholder="Password" aria-label="Password"
+            aria-describedby="basic-addon1">         
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Confirm Password</label>
+        <div class="control">
+            <input type="password" class="form-control input add-input" placeholder="Confirm Password"
+            aria-label="Confirm" aria-describedby="basic-addon1">          
+        </div>
+        <p class="help is-success" style="display: none;">Password Matches</p>
+      </div>
+      
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox">
+            I agree to the <a href="#">terms and conditions</a>
+          </label>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button btn-add" (click)="signUp()">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button btn-add has-background-danger">Cancel</button>
+        </div>
+      </div>
+</form>
+
+
+
+
+
+<!-- <div class="container login_form">
     <form action="" method="post">
-        <input type="text" class="form-control input add-input mb-1" placeholder="First Name" aria-label="First-Name"
+        <input type="text" class="form-control input add-input" placeholder="First Name" aria-label="First-Name"
             aria-describedby="basic-addon1">
         <br>
-        <input type="text" class="form-control input add-input mb-1" placeholder="Last Name" aria-label="Last-Name"
-            aria-describedby="basic-addon1">
-        <br>
-
-        <input type="text" class="form-control input add-input mb-1" placeholder="E-Mail" aria-label="email"
+        <input type="text" class="form-control input add-input" placeholder="Last Name" aria-label="Last-Name"
             aria-describedby="basic-addon1">
         <br>
 
-        <input type="password" class="form-control input add-input mb-1" placeholder="Password" aria-label="Password"
+        <input type="text" class="form-control input add-input" placeholder="E-Mail" aria-label="email"
             aria-describedby="basic-addon1">
         <br>
 
-        <input type="password" class="form-control input add-input mb-1" placeholder="Confirm Password"
+        <input type="password" class="form-control input add-input" placeholder="Password" aria-label="Password"
+            aria-describedby="basic-addon1">
+        <br>
+
+        <input type="password" class="form-control input add-input" placeholder="Confirm Password"
             aria-label="Confirm" aria-describedby="basic-addon1">
         <br>
         <button type="button" class="button" id="register">Submit</button>
 
     </form>
-</div>
+</div> -->

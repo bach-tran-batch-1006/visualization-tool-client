@@ -1,16 +1,16 @@
 
 <app-navbar></app-navbar>
-<header class="header">
+<!--<header class="header">
     <div>
         <button id="curriculum" class="myButton" (click)="toggleCurriculum()">Curriculum</button>&nbsp;
         <button id= "visualization" class="myButton" (click)="toggleVisualization()">Visualization</button>&nbsp;
         <button id="skills" class="myButton" (click)="toggleSkill()">Skills</button>&nbsp;
         <button id="primer" class="myButton" (click)="togglePrimer()">Primer</button>
     </div>
-</header>
+</header>-->
 
     
-<Fieldset class="container is-fluid containerflex borders">
+<!--<Fieldset class="container is-fluid containerflex borders">
     <legend></legend>
         <div *ngIf="showVisualization">
             <app-visualization-edit></app-visualization-edit>
@@ -38,7 +38,7 @@
             <div *ngIf="showPrimer">
                 <app-primer-edit></app-primer-edit>
             </div>
-    </Fieldset>
+    </Fieldset>-->
 <button type="button" (click)="showVisual()">Visualization</button>
 <button type="button" (click)="showCurric()">Curriculum</button>
 <button type="button" (click)="showProject()">Projects</button>
@@ -88,7 +88,7 @@
       <button type="button" (click)="showDVisual2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDVisual2" class="infobox">
-      <label for="name">Are you sure you want to delete?</label>
+      <strong><label for="name">Are you sure you want to delete?</label></strong>
       <input type="submit" id="delete" value="Yes, delete">
       <input type="button" id="cancel" (click)="visualReset()"value="Cancel">
     </fieldset>
@@ -133,7 +133,7 @@
       <button type="button" (click)="showDCurric2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDCurric2" id="hideMe" class="infobox">
-      <label for="name">Are you sure you want to delete?</label>
+      <strong><label for="name">Are you sure you want to delete?</label></strong>
       <input type="submit" id="delete" value="Yes, delete">
       <input type="button" id="cancel" (click)="visualReset()"value="Cancel">
     </fieldset>
@@ -178,7 +178,7 @@
       <button type="button" (click)="showDProject2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDProject2" id="hideMe" class="infobox"> 
-      <label for="name">Are you sure you want to delete?</label>
+      <strong><label for="name">Are you sure you want to delete?</label></strong>
       <input type="submit" id="delete" value="Yes, delete">
       <input type="button" id="cancel" (click)="visualReset()"value="Cancel"> 
     </fieldset>
@@ -225,7 +225,7 @@
       <button type="button" (click)="showDSkills2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
-      <label for="name">Are you sure you want to delete?</label>
+      <strong><label for="name">Are you sure you want to delete?</label></strong>
       <input type="submit" id="delete" value="Yes, delete">
       <input type="button" id="cancel" (click)="visualReset()"value="Cancel">
     </fieldset>

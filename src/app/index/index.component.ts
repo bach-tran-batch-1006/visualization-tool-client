@@ -90,9 +90,40 @@ visualReset(){
 showVisual(){
   this.intro =false;
   this.visibleVisual =true;
-  this.visibleCurric =false;
-  this.visibleProject =false;
-  this.visibleSkills =false;
+
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleCurric=false;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+
+  this.visibleProject=false;
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
+
+
+
+
+
 }
 showVisual2(){
   this.visibleVisual2 = true;
@@ -123,10 +154,37 @@ showDVisual2(){
 //Curriculum Manipulators
 showCurric(){
   this.intro =false;
-  this.visibleVisual =false;
   this.visibleCurric =true;
-  this.visibleProject =false;
-  this.visibleSkills =false;
+
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+
+  this.visibleProject=false;
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
+
 }
 showCurric2(){
 this.visibleCurric2 =true;
@@ -158,10 +216,36 @@ this.visibleDCurric2 =true;
 //Project Manipulators
 showProject(){
   this.intro =false;
-  this.visibleVisual =false;
-  this.visibleCurric =false;
   this.visibleProject =true;
-  this.visibleSkills =false;
+  
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleCurric=false;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
 }
 showProject2(){
 this.visibleProject2 =true;
@@ -193,20 +277,66 @@ this.visibleDProject2 =true;
 //Skills Manipulators
 showSkills(){
   this.intro =false;
-  this.visibleVisual =false;
-  this.visibleCurric =false;
-  this.visibleProject =false;
   this.visibleSkills =true;
+
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleCurric=false;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+
+  this.visibleProject=false;
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
 }
 showSkills2(){
 this.visibleSkills2 =true;
 this.visibleCatego =true;
 }
-
-showCatego(){
+showMSkills(){
   this.intro =false;
-  this.visibleCatego =true;
+  this.visibleVisual =false;
+  this.visibleCurric =false;
+  this.visibleProject =false;
+  this.visibleSkills =false;
+  this.visibleMSkills =true;
 }
+showMSkills2(){
+this.visibleMSkills2 =true;
+this.visibleCatego =true;
+}
+showDSkills(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visibleCurric =false;
+  this.visibleProject =false;
+  this.visibleSkills =false;
+  this.visibleDSkills =true;
+}
+showDSkills2(){
+this.visibleDSkills2 =true;
+this.visibleCatego =true;
+}
+
 
 
 

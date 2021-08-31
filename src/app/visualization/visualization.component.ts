@@ -7,14 +7,12 @@ import { Skill } from '../models/Skill';
 import { Visualization } from '../models/Visualization';
 
 import { VisualizationService } from '../services/visualization.service';
-
 @Component({
   selector: 'app-visualization',
   templateUrl: './visualization.component.html',
   styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent implements OnInit {
-
   visualizationId = 0;
 
   currentVisualization: Visualization;
@@ -24,17 +22,15 @@ export class VisualizationComponent implements OnInit {
 
   distinctSkillList: Skill[] = [];
   distinctCategoryList: Category[] = [];
-
   currentCurriculumId: number;
   currentSkillList: Skill[] = [];
 
   currentPrimerId: number;
-  
+
 
   categoryColorList: string[] = [];
 
   constructor(private visualizationService: VisualizationService, private route: ActivatedRoute) { }
-
   ngOnInit(): void {
     this.visualizationId = Number(this.route.snapshot.paramMap.get('id'));
     this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
@@ -56,7 +52,6 @@ export class VisualizationComponent implements OnInit {
       }
     });
   }
-
   changeCurriculumEvent(currentCurriculumId: number): void {
     for (const curriculum of this.currentVisualization.curriculumList){
       if (currentCurriculumId === curriculum.curriculumId){
@@ -76,5 +71,4 @@ export class VisualizationComponent implements OnInit {
   randColor(i: number, total: number): string {
     return 'hsl(' + i * total + ', 50%, 75%)';
   }
-
 }

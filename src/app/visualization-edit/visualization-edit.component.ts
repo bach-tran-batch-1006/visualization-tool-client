@@ -13,16 +13,12 @@ import { PrimerService } from '../services/primer.service';
   styleUrls: ['./visualization-edit.component.css']
 })
 export class VisualizationEditComponent implements OnInit {
-
   visualizationList: Visualization[] = [];
   selectedVisualization: Visualization;
-
   showAddVisualization = false;
   showUpdateVisualization = false;
-
   showVisualizationDeleteFail = false;
   showViewVisualizationFail = false;
-
   visualizationNameAdd: string;
   visualizationNameUpdate: string;
 
@@ -40,13 +36,11 @@ export class VisualizationEditComponent implements OnInit {
     this.getAllVisualization();
     this.getAllCurriculum();
   }
-
   getAllVisualization(): void {
     this.visualizationService.getAllVisualizations().subscribe((response) => {
       this.visualizationList = response;
     });
   }
-
   getAllCurriculum(): void {
     this.curriculumService.getAllCurriculum().subscribe((response) => {
       this.curriculumList = response;
@@ -57,7 +51,6 @@ export class VisualizationEditComponent implements OnInit {
       }
     });
   }
-
   addVisualization(): Visualization {
     let visualization;
     this.selectedCurriculumList = [];
@@ -77,10 +70,8 @@ export class VisualizationEditComponent implements OnInit {
       this.getAllVisualization();
       this.resetCurriculumActive();
     });
-
     return visualization;
   }
-
   updateVisualization(): Visualization {
     let visualization;
     this.selectedCurriculumList = [];
@@ -104,7 +95,6 @@ export class VisualizationEditComponent implements OnInit {
     });
     return visualization;
   }
-
   deleteVisualization(): number {
     let result;
     if (this.selectedVisualization) {
@@ -119,9 +109,7 @@ export class VisualizationEditComponent implements OnInit {
     }
     return result;
   }
-
   displayVisualization(): void {
-
     this.showAddVisualization = false;
     this.showVisualizationDeleteFail = false;
     this.showViewVisualizationFail = false;
@@ -138,9 +126,7 @@ export class VisualizationEditComponent implements OnInit {
       }
       this.curriculumList[curriculumIndex].isActive = !this.curriculumList[curriculumIndex].isActive;
     }
-
   }
-
   toggleCurriculum(currentCurriculumId: number): void {
     const listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
@@ -154,7 +140,6 @@ export class VisualizationEditComponent implements OnInit {
       }
     }
   }
-
   resetCurriculumActive(): void {
     for (const curriculum of this.curriculumList) {
       curriculum.isActive = false;
@@ -176,14 +161,12 @@ export class VisualizationEditComponent implements OnInit {
     this.showAddVisualization = !this.showAddVisualization;
     this.resetCurriculumActive();
   }
-
   toggleUpdateVisualization(): void {
     this.showVisualizationDeleteFail = false;
     this.showViewVisualizationFail = false;
     this.showAddVisualization = false;
     this.showUpdateVisualization = !this.showUpdateVisualization;
   }
-
   viewVisualization(): void {
     if (this.selectedVisualization) {
       window.open(`/visualization/${this.selectedVisualization.visualizationId}`);

@@ -11,7 +11,7 @@ import { Visualization, VisualizationDTO } from '../models/Visualization';
 describe('VisualizationService', () => {
   let service: VisualizationService;
 
-  const apiURL = 'http://3.226.243.38:8081/visualization/';
+  const apiURL = 'http://localhost:8081/visualization/';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -47,7 +47,7 @@ describe('VisualizationService', () => {
           visualizationId: 40,
           visualizationName: 'New',
           curriculumList: [],
-          primerList: []
+          primerList:[]
         };
         mockResponse.push(mockResponseOne);
 
@@ -71,7 +71,7 @@ describe('VisualizationService', () => {
           visualizationId: 40,
           visualizationName: 'New',
           curriculumList: [],
-          primerList: []
+          primerList:[]
         };
 
         req.flush(mockResponse);
@@ -102,7 +102,6 @@ describe('VisualizationService', () => {
           visualizationName: 'New1',
           curriculumList: [],
           primerList: []
-
         };
 
         req.flush(mockResponse);
@@ -116,7 +115,7 @@ describe('VisualizationService', () => {
         const mockDTO: VisualizationDTO = {
           title: 'New-changed',
           curricula: [],
-          primer: []
+          primer:[]
         };
 
         visualizationService.updateVisualization(41, mockDTO).subscribe(response => {

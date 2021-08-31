@@ -25,7 +25,7 @@ export class PrimerEditComponent implements OnInit {
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
 
-  
+
   constructor(private primerService: PrimerService, private skillService: SkillService) { }
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class PrimerEditComponent implements OnInit {
     });
   }
 
-  
+
 //EDIT VIS FOR PRIMER
   addPrimer(): Primer {
     let primer;
@@ -108,11 +108,11 @@ export class PrimerEditComponent implements OnInit {
         result = response;
         this.getAllPrimer();
         this.resetSkillActive();
-        
+
       });
     } else {
       this.showPrimerDeleteFail = true;
-      
+
     }
     return result;
   }
@@ -162,7 +162,7 @@ export class PrimerEditComponent implements OnInit {
     this.showPrimerDeleteFail = false;
     this.showUpdatePrimer = false;
     this.showAddPrimer = !this.showAddPrimer;
-  
+
   }
 
   toggleUpdatePrimer(): void {
@@ -171,6 +171,5 @@ export class PrimerEditComponent implements OnInit {
     this.showUpdatePrimer = !this.showUpdatePrimer;
   }
 
-  
-}
 
+}

@@ -4,12 +4,12 @@ import { CurriculumService } from './curriculum.service';
 import { AppComponent } from '../app.component';
 import { CurriculumEditComponent } from '../curriculum-edit/curriculum-edit.component';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { CurriculumDTO } from '../models/Curriculum';
+import { CurriculumDTO } from '../models/Curriculum'; 
 
 describe('CurriculumService', () => {
   let service: CurriculumService;
 
-  const apiURL = 'http://3.226.243.38:8081/curriculum/';
+  const apiURL = 'http://localhost:8081/curriculum/';
 
   beforeEach(() => {
     TestBed.configureTestingModule({

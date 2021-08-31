@@ -32,8 +32,8 @@ export class PrimerService {
     return this.httpClient.delete<number>(`${this.apiURL}${id}`);
   }
 
- 
 
-  
+
+
 
 }

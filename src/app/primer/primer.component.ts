@@ -18,7 +18,7 @@ primerList: Primer[] = [];
   // primerId = 0;
 
   // currentPrimer: Primer;
-  
+
   // selected = 0;
 
   // distinctSkillList: Skill[] = [];
@@ -26,7 +26,7 @@ primerList: Primer[] = [];
   // //Might not need
   // distinctCategoryList: Category[] = [];
 
-  
+
   // currentSkillList: Skill[] = [];
 
   // //Might not need
@@ -39,7 +39,7 @@ primerList: Primer[] = [];
 
   ngOnInit(): void {
     this.currentPrimerList = [];
-      
+
     }
 
     changeCurrentPrimer(primerId: number): void {
@@ -48,6 +48,3 @@ primerList: Primer[] = [];
 
 
   }
-   
-
-    

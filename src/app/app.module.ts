@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VisualizationComponent } from './visualization/visualization.component';
@@ -14,11 +13,12 @@ import { CategoryComponent } from './category/category.component';
 import { CurriculumEditComponent } from './curriculum-edit/curriculum-edit.component';
 import { SkillCategoryEditComponent } from './skill-category-edit/skill-category-edit.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { IndexComponent } from './index/index.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 import { PrimerComponent } from './primer/primer.component';
 import { PrimerEditComponent } from './primer-edit/primer-edit.component';
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationDialogService } from './services/confirmation-dialog.service';
 
 @NgModule({
   declarations: [
@@ -31,20 +31,21 @@ import { ConfirmationDialogService } from './services/confirmation-dialog.servic
     CurriculumEditComponent,
     SkillCategoryEditComponent,
     NavbarComponent,
+    IndexComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
     PrimerComponent,
-    PrimerEditComponent,
-    ConfirmationDialogComponent
+    PrimerEditComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    NgbModule
-    
+    FormsModule
   ],
-  providers: [ ConfirmationDialogService],
-  entryComponents: [ ConfirmationDialogComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

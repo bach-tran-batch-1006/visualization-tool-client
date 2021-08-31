@@ -7,10 +7,10 @@
         <button id="skills" class="myButton" (click)="toggleSkill()">Skills</button>&nbsp;
         <button id="primer" class="myButton" (click)="togglePrimer()">Primer</button>
     </div>
-</header>-->
+</header>
 
     
-<!--<Fieldset class="container is-fluid containerflex borders">
+<Fieldset class="container is-fluid containerflex borders">
     <legend></legend>
         <div *ngIf="showVisualization">
             <app-visualization-edit></app-visualization-edit>
@@ -39,11 +39,12 @@
                 <app-primer-edit></app-primer-edit>
             </div>
     </Fieldset>-->
-<button type="button" (click)="showVisual()">Visualization</button>
-<button type="button" (click)="showCurric()">Curriculum</button>
-<button type="button" (click)="showProject()">Projects</button>
-<button type="button" (click)="showSkills()">Skills</button>
-
+    <div class="floatright">
+<button type="button" class="myButton" (click)="showVisual()">Visualization</button>
+<button type="button" class="myButton" (click)="showCurric()">Curriculum</button>
+<button type="button" class="myButton" (click)="showProject()">Projects</button>
+<button type="button" class="myButton" (click)="showSkills()">Skills</button>
+</div>
 <div>
   <p id = "intro" class="infobox" *ngIf ="intro"> Welcome to the Revature visualization tool.<br>
   To get started, select one of the create buttons above.<br>
@@ -54,10 +55,10 @@
     <fieldset *ngIf="visibleVisual" class="infobox">
       <label for="name">Please enter a name for your Visualization </label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showVisual2()">OK</button>
+      <button type="button" class="myButton" (click)="showVisual2()">OK</button>
       <label for="show">Or, select one of the options below</label>
-      <button type="button" (click)="showMVisual()">Modify Visualization</button>
-      <button type="button" (click)="showDVisual()">Delete Visualization</button>
+      <button type="button" class="myButton" (click)="showMVisual()">Modify Visualization</button>
+      <button type="button" class="myButton" (click)="showDVisual()">Delete Visualization</button>
     </fieldset>
     <fieldset *ngIf="visibleVisual2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
@@ -71,7 +72,7 @@
     <fieldset *ngIf="visibleMVisual" class="infobox">
       <label for="name">What Visualization do you want to modify?</label>
       --Visualization list--
-      <button type="button" (click)="showMVisual2()">OK</button>
+      <button type="button" class="myButton" (click)="showMVisual2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMVisual2" id="hideMe" class="infobox">
       <legend> Would you like to associate your Visualization with any of these curriculum?</legend><br>
@@ -85,12 +86,12 @@
     <fieldset *ngIf="visibleDVisual" class="infobox">
       <label for="name">What Visualization do you want to delete?</label>
       --Visualization list--
-      <button type="button" (click)="showDVisual2()">OK</button>
+      <button type="button" class="myButton" (click)="showDVisual2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDVisual2" class="infobox">
       <strong><label for="name">Are you sure you want to delete?</label></strong>
-      <input type="submit" id="delete" value="Yes, delete">
-      <input type="button" id="cancel" (click)="visualReset()"value="Cancel">
+      <input type="submit" class="myButton" id="delete" value="Yes, delete">
+      <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel">
     </fieldset>
   </form>
 </div>
@@ -99,10 +100,10 @@
     <fieldset *ngIf="visibleCurric" class="infobox">
       <label for="name">Please enter a name for your Curriculum </label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showCurric2()">OK</button>
+      <button type="button" class="myButton" (click)="showCurric2()">OK</button>
       <label for="show">Or, select one of the options below</label>
-      <button type="button" (click)="showMCurric()">Modify Curriculum</button>
-      <button type="button" (click)="showDCurric()">Delete Curriculum</button>
+      <button type="button" class="myButton" (click)="showMCurric()">Modify Curriculum</button>
+      <button type="button" class="myButton" (click)="showDCurric()">Delete Curriculum</button>
     </fieldset>
     <fieldset *ngIf="visibleCurric2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Curriculum with any of these Projects?</legend><br>
@@ -116,7 +117,7 @@
     <fieldset *ngIf="visibleMCurric" class="infobox">
       <label for="name">Which Curriculum do you want to modify?</label>
       <\List here>\
-      <button type="button" (click)="showMCurric2()">OK</button>
+      <button type="button" class="myButton" (click)="showMCurric2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMCurric2" id="hideMe" class="infobox">
       <legend> Would you like to associate your Curriculum with any of these Skills?</legend><br>
@@ -130,12 +131,12 @@
     <fieldset *ngIf="visibleDCurric" class="infobox">
       <label for="name">Which Curriculum do you want to delete?</label>
       --Curriculum List--
-      <button type="button" (click)="showDCurric2()">OK</button>
+      <button type="button" class="myButton" (click)="showDCurric2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDCurric2" id="hideMe" class="infobox">
       <strong><label for="name">Are you sure you want to delete?</label></strong>
-      <input type="submit" id="delete" value="Yes, delete">
-      <input type="button" id="cancel" (click)="visualReset()"value="Cancel">
+      <input type="submit" id="delete" class="myButton" value="Yes, delete">
+      <input type="button" id="cancel" class="myButton" (click)="visualReset()"value="Cancel">
     </fieldset>
   </form>
 </div>
@@ -144,10 +145,10 @@
     <fieldset *ngIf="visibleProject" class="infobox">
       <label for="name">Please enter a name for your Project </label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showProject2()">OK</button>
+      <button type="button" class="myButton" (click)="showProject2()">OK</button>
       <label for="show">Or, select one of the options below</label>
-      <button type="button" (click)="showMProject()">Modify Project</button>      
-      <button type="button" (click)="showDProject()">Delete Project</button>
+      <button type="button" class="myButton" (click)="showMProject()">Modify Project</button>      
+      <button type="button" class="myButton" (click)="showDProject()">Delete Project</button>
     </fieldset>
     <fieldset *ngIf="visibleProject2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
@@ -161,7 +162,7 @@
     <fieldset *ngIf="visibleMProject" class="infobox">
       <label for="name">What project do you want to Modify?</label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showDProject2()">OK</button>
+      <button type="button" class="myButton" (click)="showDProject2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMProject2" id="hideMe" class="infobox"> 
       <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
@@ -175,12 +176,12 @@
     <fieldset *ngIf="visibleDProject" class="infobox">
       <label for="name">What project do you want to Delete?</label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showDProject2()">OK</button>
+      <button type="button" class="myButton" (click)="showDProject2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDProject2" id="hideMe" class="infobox"> 
       <strong><label for="name">Are you sure you want to delete?</label></strong>
-      <input type="submit" id="delete" value="Yes, delete">
-      <input type="button" id="cancel" (click)="visualReset()"value="Cancel"> 
+      <input type="submit" class="myButton" id="delete" value="Yes, delete">
+      <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel"> 
     </fieldset>
   </form>
 </div>
@@ -189,10 +190,10 @@
     <fieldset *ngIf="visibleSkills" class="infobox">
       <label for="name">Please enter a name for your Skill </label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showSkills2()">OK</button>
+      <button type="button" class="myButton" (click)="showSkills2()">OK</button>
       <label for="show">Or, select one of the options below</label>
-      <button type="button" (click)="showMSkills()">Modify Skill</button>
-      <button type="button" (click)="showDSkills()">Delete Skill</button>
+      <button type="button" class="myButton" (click)="showMSkills()">Modify Skill</button>
+      <button type="button" class="myButton" (click)="showDSkills()">Delete Skill</button>
     </fieldset>
     <fieldset *ngIf="visibleSkills2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
@@ -207,7 +208,7 @@
     <fieldset *ngIf="visibleMSkills" class="infobox">
       <label for="name">What skill do you want to modify? </label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showMSkills2()">OK</button>
+      <button type="button" class="myButton" (click)="showMSkills2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMSkills2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
@@ -222,18 +223,19 @@
     <fieldset *ngIf="visibleDSkills" class="infobox">
       <label for="name">What skill do you want to delete?  </label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" (click)="showDSkills2()">OK</button>
+      <button type="button" class="myButton" (click)="showDSkills2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
       <strong><label for="name">Are you sure you want to delete?</label></strong>
-      <input type="submit" id="delete" value="Yes, delete">
-      <input type="button" id="cancel" (click)="visualReset()"value="Cancel">
+      <input type="submit" class="myButton" id="delete" value="Yes, delete">
+      <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel">
     </fieldset>
   </form>
 </div>
 <div>
   <form>
-    <fieldset *ngIf="visibleCatego" class="infobox"> <label for="name">Please enter a name for a new Category </label>
+    <fieldset *ngIf="visibleCatego" class="infobox"> 
+      <label for="name">Please enter a name for a new Category </label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
       <input type="submit" id="submit" class="myButton"  value="submit"> 
     </fieldset>

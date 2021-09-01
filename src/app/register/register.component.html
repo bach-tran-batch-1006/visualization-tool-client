@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
-
-<form action="" method="post" class="container" style="max-width: 500px;">
+<div class="columns is-mobile is-centered">
+  <form action="" method="post" class="column is-narrow">
     <div class="field">
         <label class="label">First Name</label>
         <div class="control">
@@ -54,13 +54,15 @@
 
       <div class="field is-grouped">
         <div class="control">
-          <button class="button btn-add" (click)="signUp()">Submit</button>
+          <button class="button is-primary is-outlined is-rounded is-inverted" (click)="signUp()">Submit</button>
         </div>
         <div class="control">
-          <button class="button btn-add has-background-danger">Cancel</button>
+          <button class="button is-danger is-outlined is-rounded">Cancel</button>
         </div>
       </div>
 </form>
+</div>
+
 
 
 

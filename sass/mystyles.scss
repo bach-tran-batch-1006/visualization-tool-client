@@ -1,0 +1,23 @@
+// 1. Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+@import "../node_modules/bulma/sass/utilities/functions";
+
+// Primary Colors
+$orange:#F26925;
+$white: #FFF;
+$dark-gray: #474C55;
+
+// Secondary Colors
+$blue: #72A4C2;
+$yellow: #FCB414;
+$light-gray: #B9B9BA;
+
+// Update Bulma's global variables
+$danger:$orange;
+$primary:$white;
+$info:$blue;
+$warning:$yellow;
+
+
+@import "../node_modules/bulma/bulma.sass";
+

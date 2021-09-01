@@ -27,7 +27,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/custom-theme.scss",
+              "./css/mystyles.css"
             ],
             "scripts": []
           },
@@ -91,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./css/mystyles.css"
             ],
             "scripts": []
           }

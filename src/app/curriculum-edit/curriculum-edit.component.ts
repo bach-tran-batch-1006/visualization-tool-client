@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Curriculum, CurriculumDTO } from '../models/Curriculum';
 import { Skill } from '../models/Skill';
+import { ConfirmationDialogService } from '../services/confirmation-dialog.service';
 import { CurriculumService } from '../services/curriculum.service';
 import { SkillService } from '../services/skill.service';
 
@@ -26,7 +27,7 @@ export class CurriculumEditComponent implements OnInit {
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
 
-  constructor(private curriculumService: CurriculumService, private skillService: SkillService ) { }
+  constructor(private curriculumService: CurriculumService, private skillService: SkillService, private confirmationDialogService: ConfirmationDialogService ) { }
 
   ngOnInit(): void {
     this.getAllCurriculum();
@@ -96,6 +97,7 @@ export class CurriculumEditComponent implements OnInit {
 
   deleteCurriculum(): number {
     let result;
+    
     if (this.selectedCurriculum) {
       this.curriculumService.deleteCurriculum(this.selectedCurriculum.curriculumId).subscribe((response) => {
         result = response;
@@ -106,6 +108,12 @@ export class CurriculumEditComponent implements OnInit {
       this.showCurriculumDeleteFail = true;
     }
     return result;
+  }
+
+  openConfirmationDialog() {
+    this.confirmationDialogService.confirm('Please confirm', 'Do you really want to delete this curriculumn ?')
+    .then((confirmed) => ( confirmed))
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
   displayCurriculum(): void {
@@ -159,3 +167,7 @@ export class CurriculumEditComponent implements OnInit {
     this.showUpdateCurriculum = !this.showUpdateCurriculum;
   }
 }
+function openConfirmationDialog() {
+  throw new Error('Function not implemented.');
+}
+

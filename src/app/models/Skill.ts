@@ -10,5 +10,5 @@ export interface Skill {
 
 export interface SkillDTO {
     name: string;
-    category: Category;
+    category?: Category;
 }

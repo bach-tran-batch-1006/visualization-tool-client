@@ -273,6 +273,14 @@ showDProject(){
 showDProject2(){
 this.visibleDProject2 =true;
 }
+hideProject() {
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+  this.visibleSkills =false;
+}
 
 //Skills Manipulators
 showSkills(){
@@ -334,9 +342,12 @@ showDSkills(){
 }
 showDSkills2(){
 this.visibleDSkills2 =true;
-this.visibleCatego =true;
 }
+hideSkills(){
+  this.visibleSkills2 =false;
+  this.visibleCatego =false;
 
+}
 
 
 

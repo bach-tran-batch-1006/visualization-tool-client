@@ -19,7 +19,6 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PrimerComponent } from './primer/primer.component';
 import { PrimerEditComponent } from './primer-edit/primer-edit.component';
-import { AlertsComponent } from './alerts/alerts.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,7 @@ import { AlertsComponent } from './alerts/alerts.component';
     RegisterComponent,
     ProfileComponent,
     PrimerComponent,
-    PrimerEditComponent,
-    AlertsComponent
+    PrimerEditComponent
 
   ],
   imports: [

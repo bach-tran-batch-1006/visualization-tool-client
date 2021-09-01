@@ -1,10 +1,60 @@
 
+<div>
+    <form>
+  
+      <fieldset class="infobox" >
+        
+          <label for="name"><legend>Please enter a name for your Visualization </legend></label>
+          <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+          <button type="button" class="myButton" (click)="showVisual2()">OK</button>
+        
+          <label for="show"><legend>Or, select one of the options below</legend></label>
+          <button type="button" class="myButton" (click)="showMVisual()">Modify Visualization</button>
+          <button type="button" class="myButton" (click)="showDVisual()" >Delete Visualization</button>
+   
+      </fieldset>
+      <fieldset *ngIf="visibleVisual2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
+        --Curriculum List--
+        <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="addVisualization()" value="submit"> 
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMVisual" class="infobox">
+        <label for="name"><legend>What Visualization do you want to modify?</legend></label>
+        --Visualization list--
+        <button type="button" class="myButton" (click)="showMVisual2()">OK</button>
+      </fieldset>
+      <fieldset *ngIf="visibleMVisual2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your Visualization with any of these curriculum?</legend><br>
+        --Curriculum List--
+        <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="updateVisualization()" value="submit"> 
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDVisual" class="infobox">
+        <label for="name"><legend>What Visualization do you want to delete?</legend></label>
+        --Visualization list--
+        <button type="button" class="myButton" (click)="showDVisual2()">OK</button>
+      </fieldset>
+      <fieldset *ngIf="visibleDVisual2" class="infobox">
+        <strong><label for="name"><legend>Are you sure you want to delete?</legend></label></strong>
+        <input type="submit" class="myButton" id="delete" value="Yes, delete" (click)="deleteVisualization()">
+        <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel">
+      </fieldset>
+    </form>
+  </div>
 
+<!--  
 <fieldset class="container is-fluid containerflex borders">
     <legend>Visualization</legend>
     <div class="columns columnheight row ">
-
-        <!-- Visualization-EDIT-LIST -->
+-->
+        <!-- Visualization-EDIT-LIST 
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Visualization-Edit</legend>
             <ul class="listOfVisuals">
@@ -17,10 +67,10 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
+        </fieldset>-->
         <!-- Visualization-EDIT-LIST -->
 
-        <!-- Curriculum-SELECT-LIST -->
+        <!-- Curriculum-SELECT-LIST 
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend id="CurriculumSelectText">Curriculum-Select</legend>
             <ul>
@@ -35,13 +85,13 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
-        <!-- Curriculum-SELECT-LIST -->
+        </fieldset>-->
+        <!-- Curriculum-SELECT-LIST 
 
     </div>
     <div class="columns row">
-
-        <!-- Visualization-EDIT-BUTTONS -->
+-->
+        <!-- Visualization-EDIT-BUTTONS 
         <div class="column">
             <div class="editbottom">
                 <div class="columns">
@@ -90,10 +140,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Visualization-EDIT-BUTTONS -->
 
-         <!-- Primer-SELECT-LIST -->
+         <!-- Primer-SELECT-LIST 
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend id="PrimerSelectText">Primer-Select</legend>
             <ul>
@@ -107,7 +157,8 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
-<!-- Primer-SELECT-LIST -->
+        </fieldset>-->
+<!-- Primer-SELECT-LIST 
     </div>
 </fieldset>
+-->

@@ -40,7 +40,7 @@
             </div>
     </Fieldset>-->
     <div class="floatright">
-<button type="button" class="myButton" (click)="showVisual()">Visualization</button>
+<button type="button" class="myButton" (click)="showVisual()" >Visualization</button>
 <button type="button" class="myButton" (click)="showCurric()">Curriculum</button>
 <button type="button" class="myButton" (click)="showProject()">Projects</button>
 <button type="button" class="myButton" (click)="showSkills()">Skills</button>
@@ -50,6 +50,8 @@
   To get started, select one of the create buttons above.<br>
   Register or sign in if you wish to save your work.</legend></p>
 </div>
+<app-visualization-edit *ngIf="visibleVisual"></app-visualization-edit>
+ <!-- VISUALIZATION HTML
 <div>
   <form>
 
@@ -61,13 +63,13 @@
       
         <label for="show"><legend>Or, select one of the options below</legend></label>
         <button type="button" class="myButton" (click)="showMVisual()">Modify Visualization</button>
-        <button type="button" class="myButton" (click)="showDVisual()">Delete Visualization</button>
-      
+        <button type="button" class="myButton" (click)="showDVisual()" >Delete Visualization</button>
+ 
     </fieldset>
     <fieldset *ngIf="visibleVisual2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
       --Curriculum List--
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="addVisualization()" value="submit"> 
     </fieldset>
   </form>
 </div>
@@ -81,7 +83,7 @@
     <fieldset *ngIf="visibleMVisual2" id="hideMe" class="infobox">
       <legend> Would you like to associate your Visualization with any of these curriculum?</legend><br>
       --Curriculum List--
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="updateVisualization()" value="submit"> 
     </fieldset>
   </form>
 </div>
@@ -94,12 +96,12 @@
     </fieldset>
     <fieldset *ngIf="visibleDVisual2" class="infobox">
       <strong><label for="name"><legend>Are you sure you want to delete?</legend></label></strong>
-      <input type="submit" class="myButton" id="delete" value="Yes, delete">
+      <input type="submit" class="myButton" id="delete" value="Yes, delete" (click)="deleteVisualization()">
       <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel">
     </fieldset>
   </form>
-</div>
-<div>
+</div>-->
+<div> 
   <form>
     <fieldset *ngIf="visibleCurric" class="infobox">
       <label for="name"><legend>Please enter a name for your Curriculum</legend> </label>
@@ -122,7 +124,7 @@
   <form>
     <fieldset *ngIf="visibleMCurric" class="infobox">
       <label for="name"><legend>Which Curriculum do you want to modify?</legend></label>
-      <\List here>\
+      
       <button type="button" class="myButton" (click)="showMCurric2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMCurric2" id="hideMe" class="infobox">

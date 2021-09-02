@@ -11,7 +11,7 @@
           <label class="label">Username</label>
           <div class="control">
             <input class="input" type="text" placeholder="Please Enter your Username" aria-label="Username"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1"[(ngModel)]="email"[ngModelOptions]="{standalone: true}">
           </div>
         </div>
 
@@ -19,7 +19,7 @@
           <label class="label">Password</label>
           <div class="control">
             <input class="input" type="password" placeholder="Enter your password" aria-label="Password"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1"[(ngModel)]="password"[ngModelOptions]="{standalone: true}">
           </div>
           <p class="help is-danger" style="display: none;">This password is invalid</p>
         </div>

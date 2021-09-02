@@ -4,13 +4,19 @@
 
 // Primary Colors
 $orange:#F26925;
+$orange-invert: findColorInvert($orange);
 $white: #FFF;
+$white-invert: findColorInvert($white);
 $dark-gray: #474C55;
+$dark-gray-invert: findColorInvert($dark-gray);
 
 // Secondary Colors
 $blue: #72A4C2;
+$blue-invert: findColorInvert($blue);
 $yellow: #FCB414;
+$yellow-invert: findColorInvert($yellow);
 $light-gray: #B9B9BA;
+$light-gray-invert: findColorInvert($light-gray);
 
 // Update Bulma's global variables
 $danger:$orange;
@@ -18,6 +24,7 @@ $primary:$white;
 $info:$blue;
 $warning:$yellow;
 
+$background: white;
+
 
 @import "../node_modules/bulma/bulma.sass";
-

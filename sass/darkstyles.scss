@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+$orange:#F26925;
+$orange-invert: findColorInvert($orange);
+$white: #FFF;
+$white-invert: findColorInvert($white);
+$dark-gray: #474C55;
+$dark-gray-invert: findColorInvert($dark-gray);
+
+// Secondary Colors
+$blue: #72A4C2;
+$blue-invert: findColorInvert($blue);
+$yellow: #FCB414;
+$yellow-invert: findColorInvert($yellow);
+$light-gray: #B9B9BA;
+$light-gray-invert: findColorInvert($light-gray);
+
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+$danger:$orange-invert;
+$primary:$white-invert;
+$info:$blue-invert;
+$warning:$yellow-invert;
+
+
+$body-background-color: $dark-gray;
+$body-color: $beige-lighter;
+
+
+$text-strong: $white;
+$background: black;
+$background-color: black;
+
+@import "../node_modules/bulma/bulma.sass"
+

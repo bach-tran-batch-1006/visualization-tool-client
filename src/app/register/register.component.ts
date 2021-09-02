@@ -21,7 +21,9 @@ export class RegisterComponent implements OnInit {
 
   signUp():void{
     alert("New Registration Submission Clicked")
-    if(this.pass === this.confirmPass){
+    console.log()
+    //if(this.pass === this.confirmPass){
+      console.log(this.first, this.last, this.email, this.pass)
 
       this.userService.register(this.first, this.last, this.email, this.pass)
       .subscribe(data=>{this.userService.user = {
@@ -33,7 +35,7 @@ export class RegisterComponent implements OnInit {
     },
      (error)=>this.error=true);
 
-    }
+   // }
     
 //======================================================================================================
     // this.customerService.register(this.firstName,this.lastName,this.address,this.city,this.state,this.zipcode,this.email,this.password)
@@ -48,11 +50,11 @@ export class RegisterComponent implements OnInit {
    //=========================================================================================================
 
 
-    this.first = ""
-    this.last = ""
-    this.pass = ""
-    this.confirmPass = ""
-    this.email = ""
+    // this.first = ""
+    // this.last = ""
+    // this.pass = ""
+    // this.confirmPass = ""
+    // this.email = ""
   
   }
   

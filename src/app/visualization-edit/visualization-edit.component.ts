@@ -50,7 +50,7 @@ export class VisualizationEditComponent implements OnInit {
     //this.visualReset();
   }
 
-//Visual Manipulators
+// ********** VISUAL MANIPULATORS **********
   visualReset(){
     this.intro=true;
   

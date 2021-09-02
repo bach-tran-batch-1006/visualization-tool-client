@@ -1,0 +1,106 @@
+<div>
+    <form>
+      <fieldset *ngIf="visibleProject" class="infobox">
+        <label for="name"><legend>Please enter a name for your Project.</legend></label>
+        <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+        <button type="button" class="myButton" (click)="showProject2()">OK</button>
+        <label for="show"><legend>Or, select one of the options below</legend></label>
+        <button type="button" class="myButton" (click)="showMProject()">Modify Project</button>      
+        <button type="button" class="myButton" (click)="showDProject()">Delete Project</button>
+      </fieldset>
+      <fieldset *ngIf="visibleProject2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
+          --Skill List--
+        <input type="submit" id="submit" class="myButton" (click)="hideProject()" value="Add Project">
+        <legend>Or, you can make a new skill.</legend> 
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMProject" class="infobox">
+        <label for="name"><legend>What project do you want to Modify?</legend></label>
+        <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+        <button type="button" class="myButton" (click)="showDProject2()">OK</button>
+      </fieldset>
+      <fieldset *ngIf="visibleMProject2" id="hideMe" class="infobox"> 
+        <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
+        --Skill List--
+        <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDProject" class="infobox">
+        <label for="name"><legend>What project do you want to Delete?</legend></label>
+        <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+        <button type="button" class="myButton" (click)="showDProject2()">OK</button>
+      </fieldset>
+      <fieldset *ngIf="visibleDProject2" id="hideMe" class="infobox"> 
+        <strong><label for="name"><legend>Are you sure you want to delete?</legend></label></strong>
+        <input type="submit" class="myButton" id="delete" value="Yes, delete">
+        <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel"> 
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <!-- SKILL/CATEGORY HTML FLOW -->
+    <form>
+      <fieldset *ngIf="visibleSkills" class="infobox">
+        <label for="name"><legend>Please enter a name for your Skill </legend></label>
+        <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+        <button type="button" class="myButton" (click)="showSkills2()">OK</button>
+        <label for="show"><legend>Or, select one of the options below</legend></label>
+        <button type="button" class="myButton" (click)="showMSkills()">Modify Skill</button>
+        <button type="button" class="myButton" (click)="showDSkills()">Delete Skill</button>
+      </fieldset>
+      <fieldset *ngIf="visibleSkills2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
+        --Category List--
+        <input type="checkbox" id="box" name="primary key" value="true">dummy
+        <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="addSkill()" value="Add Skill"> 
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMSkills" class="infobox">
+        <label for="name"><legend>What skill do you want to modify? </legend></label>
+        <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+        <button type="button" class="myButton" (click)="showMSkills2()">OK</button>
+      </fieldset>
+      <fieldset *ngIf="visibleMSkills2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
+        --Category List--
+        <input type="checkbox" id="box" name="primary key" value="true">dummy
+        <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="updateSkill()" value="Add New Skill"> 
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDSkills" class="infobox">
+        <label for="name"><legend>What skill do you want to delete?</legend></label>
+        <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+        <button type="button" class="myButton" (click)="showDSkills2()">OK</button>
+      </fieldset>
+      <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
+        <strong><label for="name"><legend>Are you sure you want to delete?</legend></label></strong>
+        <input type="submit" class="myButton" id="delete" value="Yes, delete" (click)="deleteSkill()">
+        <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel">
+      </fieldset>
+    </form>
+  </div>
+  <div>
+    <form>
+      <fieldset *ngIf="visibleCatego" class="infobox"> 
+        <label for="name"><legend>Please enter a name for a new Category </legend></label>
+        <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+        <input type="submit" id="submit" class="myButton"  value="Add Category" (click)="addCategory()" > 
+      </fieldset>
+    </form>
+  </div>
+  
+  
+  

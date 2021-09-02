@@ -26,7 +26,90 @@ export class CurriculumEditComponent implements OnInit {
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
 
+  visible:boolean = true;
+  intro:boolean = true;
+
+
+  visibleVisual:boolean =false;
+  visibleVisual2:boolean =false;
+  visibleMVisual:boolean=false;
+  visibleMVisual2:boolean=false;
+  visibleDVisual:boolean=false;
+  visibleDVisual2:boolean=false;
+
+  visibleCurric:boolean =false;
+  visibleCurric2:boolean =false;
+  visibleMCurric:boolean=false;
+  visibleMCurric2:boolean=false;
+  visibleDCurric:boolean=false;
+  visibleDCurric2:boolean=false;
+
+  visibleProject:boolean =false;
+  visibleProject2:boolean =false;
+  visibleMProject:boolean=false;
+  visibleMProject2:boolean=false;
+  visibleDProject:boolean=false;
+  visibleDProject2:boolean=false;
+
+  visibleSkills:boolean =false;
+  visibleSkills2:boolean =false;
+  visibleMSkills:boolean=false;
+  visibleMSkills2:boolean=false;
+  visibleDSkills:boolean=false;
+  visibleDSkills2:boolean=false;
+
+  visibleCatego:boolean =false;
+
   constructor(private curriculumService: CurriculumService, private skillService: SkillService ) { }
+
+//Visual Manipulators
+
+visualReset(){
+  this.intro=true;
+
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+  
+}  
+
+showVisual(){
+  this.intro =false;
+  this.visibleVisual =true;
+
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+}
+
+showVisual2(){
+  this.visibleVisual2 = true;
+}
+
+showMVisual(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visibleMVisual =true;
+
+}
+
+showMVisual2(){
+  this.visibleMVisual2 = true;
+}
+showDVisual(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visibleDVisual =true;
+
+}
+showDVisual2(){
+  this.visibleDVisual2 = true;
+}
 
   ngOnInit(): void {
     this.getAllCurriculum();

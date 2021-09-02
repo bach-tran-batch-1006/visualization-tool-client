@@ -17,15 +17,15 @@ export class LoginComponent implements OnInit {
   constructor(private userService:UserService, private router:Router) { }
 
   login(): void{
-    //console.log(this.email, this.password);
+    console.log(this.email, this.password);
     this.userService.login(this.email,this.password)
       .subscribe(data=>{this.userService.user = {
         id: data.id,
-        email: this.email
+        email: data.email
         //localStorage.setItem("")
       }
       localStorage.setItem('userId',`${data.id}`)
-      localStorage.setItem('email',`${this.email}`);
+      localStorage.setItem('email',`${data.email}`);
       this.error=false;
       this.router.navigateByUrl('/index');
       console.log(data);

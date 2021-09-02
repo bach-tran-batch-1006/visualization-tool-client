@@ -15,7 +15,7 @@ export class UserService {
 
 
   // apiURL = 'http://3.226.243.38:8081/category/';
-  apiURL = 'http://localhost:8081/user';
+  apiURL = 'http://localhost:8080/user';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

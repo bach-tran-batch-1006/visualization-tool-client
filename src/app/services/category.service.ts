@@ -8,7 +8,7 @@ import { Category, CategoryDTO } from '../models/Category';
 })
 export class CategoryService {
 
-  apiURL = 'http://localhost:8081/category/';
+  apiURL = 'http://localhost:8080/visualization-tool/category';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PrimerComponent } from './primer/primer.component';
 import { PrimerEditComponent } from './primer-edit/primer-edit.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PrimerEditComponent } from './primer-edit/primer-edit.component';
     RegisterComponent,
     ProfileComponent,
     PrimerComponent,
-    PrimerEditComponent
+    PrimerEditComponent,
+    ProjectEditComponent
 
   ],
   imports: [

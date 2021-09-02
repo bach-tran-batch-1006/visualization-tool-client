@@ -29,7 +29,6 @@ export class CurriculumEditComponent implements OnInit {
   visible:boolean = true;
   intro:boolean = true;
 
-
   visibleVisual:boolean =false;
   visibleVisual2:boolean =false;
   visibleMVisual:boolean=false;
@@ -62,10 +61,22 @@ export class CurriculumEditComponent implements OnInit {
 
   constructor(private curriculumService: CurriculumService, private skillService: SkillService ) { }
 
-//Visual Manipulators
+// ********** CURRICULUM MANIPULATORS **********
 
 visualReset(){
   this.intro=true;
+
+  this.visibleCurric=false;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+  
+}  
+showCurric(){
+  this.intro =false;
+  this.visibleCurric =true;
 
   this.visibleVisual=false;
   this.visibleVisual2=false;  
@@ -73,47 +84,61 @@ visualReset(){
   this.visibleMVisual2=false;
   this.visibleDVisual=false;
   this.visibleDVisual2=false;
-  
-}  
 
-showVisual(){
-  this.intro =false;
-  this.visibleVisual =true;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
 
-  this.visibleVisual2=false;  
-  this.visibleMVisual=false;
-  this.visibleMVisual2=false;
-  this.visibleDVisual=false;
-  this.visibleDVisual2=false;
+  this.visibleProject=false;
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
+
 }
-
-showVisual2(){
-  this.visibleVisual2 = true;
+showCurric2(){
+this.visibleCurric2 =true;
+this.visibleProject =true;
 }
-
-showMVisual(){
+showMCurric(){
   this.intro =false;
   this.visibleVisual =false;
-  this.visibleMVisual =true;
-
+  this.visibleCurric =false;
+  this.visibleMCurric =true;
+  this.visibleProject =false;
+  this.visibleSkills =false;
 }
-
-showMVisual2(){
-  this.visibleMVisual2 = true;
+showMCurric2(){
+this.visibleMCurric2 =true;
 }
-showDVisual(){
+showDCurric(){
   this.intro =false;
   this.visibleVisual =false;
-  this.visibleDVisual =true;
-
+  this.visibleCurric =false;
+  this.visibleDCurric =true;
+  this.visibleProject =false;
+  this.visibleSkills =false;
 }
-showDVisual2(){
-  this.visibleDVisual2 = true;
+showDCurric2(){
+this.visibleDCurric2 =true;
 }
 
   ngOnInit(): void {
     this.getAllCurriculum();
     this.getAllSkills();
+    this.visualReset();
   }
 
   getAllCurriculum(): void {

@@ -37,20 +37,12 @@ export class ProjectEditComponent implements OnInit {
   visible:boolean = true;
   intro:boolean = true;
 
-
   visibleVisual:boolean =false;
   visibleVisual2:boolean =false;
   visibleMVisual:boolean=false;
   visibleMVisual2:boolean=false;
   visibleDVisual:boolean=false;
   visibleDVisual2:boolean=false;
-
-  visibleCurric:boolean =false;
-  visibleCurric2:boolean =false;
-  visibleMCurric:boolean=false;
-  visibleMCurric2:boolean=false;
-  visibleDCurric:boolean=false;
-  visibleDCurric2:boolean=false;
 
   visibleProject:boolean =false;
   visibleProject2:boolean =false;
@@ -59,12 +51,20 @@ export class ProjectEditComponent implements OnInit {
   visibleDProject:boolean=false;
   visibleDProject2:boolean=false;
 
+  visibleCurric:boolean =false;
+  visibleCurric2:boolean =false;
+  visibleMCurric:boolean=false;
+  visibleMCurric2:boolean=false;
+  visibleDCurric:boolean=false;
+  visibleDCurric2:boolean=false;
+
   visibleSkills:boolean =false;
   visibleSkills2:boolean =false;
   visibleMSkills:boolean=false;
   visibleMSkills2:boolean=false;
   visibleDSkills:boolean=false;
   visibleDSkills2:boolean=false;
+
 
   visibleCatego:boolean =false;
 
@@ -73,55 +73,89 @@ export class ProjectEditComponent implements OnInit {
   constructor(private skillService: SkillService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.visualReset();
   }
 
-  // ********** VISUAL MANIPULATORS **********
-  visualReset(){
-    this.intro=true;
+  // ********** PROJECT VISUAL MANIPULATORS **********
   
-    this.visibleVisual=false;
-    this.visibleVisual2=false;  
-    this.visibleMVisual=false;
-    this.visibleMVisual2=false;
-    this.visibleDVisual=false;
-    this.visibleDVisual2=false;
-    
-  }  
-  
-  showVisual(){
-    this.intro =false;
-    this.visibleVisual =true;
-  
-    this.visibleVisual2=false;  
-    this.visibleMVisual=false;
-    this.visibleMVisual2=false;
-    this.visibleDVisual=false;
-    this.visibleDVisual2=false;
-  }
-  
-  showVisual2(){
-    this.visibleVisual2 = true;
-  }
-  
-  showMVisual(){
-    this.intro =false;
-    this.visibleVisual =false;
-    this.visibleMVisual =true;
-  
-  }
-  
-  showMVisual2(){
-    this.visibleMVisual2 = true;
-  }
-  showDVisual(){
-    this.intro =false;
-    this.visibleVisual =false;
-    this.visibleDVisual =true;
-  
-  }
-  showDVisual2(){
-    this.visibleDVisual2 = true;
-  }
+visualReset(){
+  this.intro=true;
+
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleCurric=false;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+
+  this.visibleProject=false;
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
+}
+
+showProject(){
+  this.intro =false;
+  this.visibleProject =true;
+
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+}
+showProject2(){
+this.visibleProject2 =true;
+
+}
+showMProject(){
+  this.intro =false;
+
+  this.visibleProject =false;
+  this.visibleMProject =true;
+  this.visibleSkills =false;
+}
+showMProject2(){
+this.visibleMProject2 =true;
+}
+showDProject(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visibleCurric =false;
+  this.visibleProject =false;
+  this.visibleDProject =true;
+  this.visibleSkills =false;
+}
+showDProject2(){
+this.visibleDProject2 =true;
+}
+hideProject() {
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+  this.visibleSkills =false;
+}
 
 // ********** PROJECT FUNCTIONS **********
 

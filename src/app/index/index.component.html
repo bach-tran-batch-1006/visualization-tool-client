@@ -51,6 +51,9 @@
   Register or sign in if you wish to save your work.</legend></p>
 </div>
 <app-visualization-edit *ngIf="visibleVisual"></app-visualization-edit>
+<app-curriculum-edit *ngIf="visibleCurric"></app-curriculum-edit>
+<app-project-edit *ngIf="visibleProject"></app-project-edit>
+<app-skill-category-edit *ngIf="visibleSkills"></app-skill-category-edit>
  <!-- VISUALIZATION HTML FLOW
 <div>
   <form>
@@ -101,7 +104,7 @@
     </fieldset>
   </form>
 </div>-->
-<!-- CURRICULUM/PROJECT HTML FLOW -->
+<!-- CURRICULUM/PROJECT HTML FLOW 
 <div> 
   <form>
     <fieldset *ngIf="visibleCurric" class="infobox">
@@ -195,8 +198,9 @@
     </fieldset>
   </form>
 </div>
-<div>
+<div>-->
   <!-- SKILL/CATEGORY HTML FLOW -->
+  <!--  
   <form>
     <fieldset *ngIf="visibleSkills" class="infobox">
       <label for="name"><legend>Please enter a name for your Skill </legend></label>
@@ -251,6 +255,6 @@
       <input type="submit" id="submit" class="myButton"  value="Add Category" (click)="addCategory()" > 
     </fieldset>
   </form>
-</div>
+</div>-->
 
 

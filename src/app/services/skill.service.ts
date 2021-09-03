@@ -8,7 +8,7 @@ import { Skill, SkillDTO } from '../models/Skill';
 })
 export class SkillService {
 
-  apiURL = 'http://localhost:8080';
+  apiURL = 'http://localhost:8080/visualization-tool';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

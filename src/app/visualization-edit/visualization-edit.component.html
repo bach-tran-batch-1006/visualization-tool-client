@@ -16,7 +16,7 @@
       <fieldset *ngIf="visibleVisual2" id="hideMe" class="infobox">
         <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
         --Curriculum List--
-        <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="addVisualization()" value="Add Visualization"> 
+        <input type="submit" id="submit" [ngClass]="showAddVisualization? 'is-active' : ''" (click)="toggleAddVisualization()" class="myButton" (click)="visualReset()" (click)="addVisualization()" value="Add Visualization"> 
       </fieldset>
     </form>
   </div>
@@ -48,6 +48,25 @@
       </fieldset>
     </form>
   </div>
+
+  <fieldset class="container is-fluid containerflex borders">
+    <legend>Visualization</legend>
+    <div class="columns columnheight row ">
+
+        <!-- Visualization-EDIT-LIST  -->
+        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <legend>Visualization-Edit</legend>
+            <ul class="listOfVisuals">
+                <li *ngFor="let visualization of visualizationList; let i = index">
+                    <label class="visualizationLabel" for="visualization_{{visualization.visualizationId}}">
+                        <input type="radio" id="visualization_{{visualization.visualizationId}}" [value]="visualization"
+                            name="visualizationList" [(ngModel)]="selectedVisualization"
+                            (change)="displayVisualization()" />
+                        {{ visualization.visualizationName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
 
 
 <!--  

@@ -7,11 +7,13 @@ import { VisualizationService } from '../services/visualization.service';
 import { of } from 'rxjs';
 import { CurriculumService } from '../services/curriculum.service';
 import { Curriculum } from '../models/Curriculum';
+import { Primer } from '../models/Primer';
 
 describe('VisualizationEditComponent', () => {
   let component: VisualizationEditComponent;
   let fixture: ComponentFixture<VisualizationEditComponent>;
 
+  const testPrimerList: Primer[] =[];
   const testCurriculumList: Curriculum[] = [];
   const testCurriculum1: Curriculum = {
     curriculumId: 1,
@@ -38,13 +40,15 @@ describe('VisualizationEditComponent', () => {
   const testVisualization: Visualization = {
     visualizationId: 1,
     visualizationName: 'Microsoft Azure',
-    curriculumList: testCurriculumList
+    curriculumList: testCurriculumList, 
+    primerList: testPrimerList
   };
   list.push(testVisualization);
 
   const testVisualizationDTO: VisualizationDTO = {
     title: 'Microsoft Azure',
-    curricula: []
+    curricula: [], 
+    primer: []
   };
   beforeEach(async () => {
     const vsService = jasmine.createSpyObj('VisualizationService', [

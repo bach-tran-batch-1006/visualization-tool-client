@@ -7,7 +7,7 @@ import { SkillService } from '../services/skill.service';
 @Component({
   selector: 'app-skill-category-edit',
   templateUrl: './skill-category-edit.component.html',
-  styleUrls: ['./skill-category-edit.component.css']
+  //styleUrls: ['./skill-category-edit.component.css']
 })
 export class SkillCategoryEditComponent implements OnInit {
 

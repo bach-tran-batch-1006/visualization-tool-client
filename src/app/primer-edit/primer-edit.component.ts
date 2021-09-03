@@ -7,7 +7,7 @@ import { PrimerService } from '../services/primer.service';
 @Component({
   selector: 'app-primer-edit',
   templateUrl: './primer-edit.component.html',
-  styleUrls: ['./primer-edit.component.css']
+  //styleUrls: ['./primer-edit.component.css']
 })
 export class PrimerEditComponent implements OnInit {
 

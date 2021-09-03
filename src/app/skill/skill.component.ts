@@ -6,7 +6,7 @@ import { Category } from '../models/Category';
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
-  styleUrls: ['./skill.component.css']
+  //styleUrls: ['./skill.component.css']
 })
 export class SkillComponent implements OnChanges {
 

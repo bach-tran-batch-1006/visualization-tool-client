@@ -10,7 +10,7 @@ import { VisualizationService } from '../services/visualization.service';
 @Component({
   selector: 'app-visualization',
   templateUrl: './visualization.component.html',
-  styleUrls: ['./visualization.component.css']
+  //styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent implements OnInit {
   visualizationId = 0;

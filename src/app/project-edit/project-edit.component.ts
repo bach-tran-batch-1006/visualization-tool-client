@@ -7,7 +7,7 @@ import { SkillService } from '../services/skill.service';
 @Component({
   selector: 'app-project-edit',
   templateUrl: './project-edit.component.html',
-  styleUrls: ['./project-edit.component.css']
+  //styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent implements OnInit {
 

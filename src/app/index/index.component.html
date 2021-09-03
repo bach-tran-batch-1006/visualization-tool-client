@@ -1,5 +1,5 @@
 
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 <!--<header class="header">
     <div>
         <button id="curriculum" class="myButton" (click)="toggleCurriculum()">Curriculum</button>&nbsp;
@@ -39,7 +39,21 @@
                 <app-primer-edit></app-primer-edit>
             </div>
     </Fieldset>-->
-    <div class="floatright">
+    <div class="columns">
+      <div class="column">
+        First column
+      </div>
+      <div class="column">
+        Second column
+      </div>
+      <div class="column">
+        Third column
+      </div>
+      <div class="column">
+        Fourth column
+      </div>
+    </div>
+<!-- <div class="floatright">
 <button type="button" class="myButton" (click)="showVisual()">Visualization</button>
 <button type="button" class="myButton" (click)="showCurric()">Curriculum</button>
 <button type="button" class="myButton" (click)="showProject()">Projects</button>
@@ -67,7 +81,7 @@
     <fieldset *ngIf="visibleVisual2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
       --Curriculum List--
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="Add new Visualization"> 
     </fieldset>
   </form>
 </div>
@@ -79,9 +93,11 @@
       <button type="button" class="myButton" (click)="showMVisual2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMVisual2" id="hideMe" class="infobox">
+    <legend> If you would like to rename the Curriculum, type in a new name below.</legend>
+      <input type="text" id="name" width="400px" maxlength="32" minlength="3">
       <legend> Would you like to associate your Visualization with any of these curriculum?</legend><br>
       --Curriculum List--
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="Modify Visualization"> 
     </fieldset>
   </form>
 </div>
@@ -112,7 +128,7 @@
     <fieldset *ngIf="visibleCurric2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Curriculum with any of these Projects?</legend><br>
         --Project list--
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit">
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="Add new Curriculum">
       <br>
       <legend>Or, you can make a new project. </legend>
     </fieldset>
@@ -122,13 +138,15 @@
   <form>
     <fieldset *ngIf="visibleMCurric" class="infobox">
       <label for="name"><legend>Which Curriculum do you want to modify?</legend></label>
-      <\List here>\
+      --Curriculum List--
       <button type="button" class="myButton" (click)="showMCurric2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMCurric2" id="hideMe" class="infobox">
+    <legend> If you would like to rename the Curriculum, type in a new name below.</legend>
+      <input type="text" id="name" width="400px" maxlength="32" minlength="3">
       <legend> Would you like to associate your Curriculum with any of these Skills?</legend><br>
         --Project List--
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="Modify Curriculum"> 
     </fieldset>
   </form>
 </div>
@@ -159,7 +177,7 @@
     <fieldset *ngIf="visibleProject2" id="hideMe" class="infobox">
       <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
         --Skill List--
-      <input type="submit" id="submit" class="myButton" (click)="hideProject()" value="submit">
+      <input type="submit" id="submit" class="myButton" (click)="hideProject()" value="Add new Project">
       <legend>Or, you can make a new skill.</legend> 
     </fieldset>
   </form>
@@ -167,22 +185,24 @@
 <div>
   <form>
     <fieldset *ngIf="visibleMProject" class="infobox">
-      <label for="name"><legend>What project do you want to Modify?</legend></label>
-      <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <button type="button" class="myButton" (click)="showDProject2()">OK</button>
+      <label for="name"><legend>What project do you want to Modify?</legend></label>      
+      --Project List--
+      <button type="button" class="myButton" (click)="showMProject2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMProject2" id="hideMe" class="infobox"> 
+    <legend> If you would like to rename the Project, type in a new name below.</legend>
+      <input type="text" id="name" width="400px" maxlength="32" minlength="3">
       <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
       --Skill List--
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="Modify Project"> 
     </fieldset>
   </form>
 </div>
 <div>
   <form>
     <fieldset *ngIf="visibleDProject" class="infobox">
-      <label for="name"><legend>What project do you want to Delete?</legend></label>
-      <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+      <label for="name"><legend>What project do you want to Delete?</legend></label>      
+      --Project List--
       <button type="button" class="myButton" (click)="showDProject2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDProject2" id="hideMe" class="infobox"> 
@@ -206,7 +226,7 @@
       <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
       --Category List--
       <input type="checkbox" id="box" name="primary key" value="true">dummy
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="hideSkills()" value="Add new Skill"> 
     </fieldset>
   </form>
 </div>
@@ -214,22 +234,24 @@
   <form>
     <fieldset *ngIf="visibleMSkills" class="infobox">
       <label for="name"><legend>What skill do you want to modify? </legend></label>
-      <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+      --Skill List--
       <button type="button" class="myButton" (click)="showMSkills2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleMSkills2" id="hideMe" class="infobox">
+    <legend> If you would like to rename the skill, type in a new name below.</legend>
+     <input type="text" id="name" width="400px" maxlength="32" minlength="3">
       <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
       --Category List--
       <input type="checkbox" id="box" name="primary key" value="true">dummy
-      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="submit"> 
+      <input type="submit" id="submit" class="myButton" (click)="visualReset()" value="Modify Skill"> 
     </fieldset>
   </form>
 </div>
 <div>
   <form>
     <fieldset *ngIf="visibleDSkills" class="infobox">
-      <label for="name"><legend>What skill do you want to delete?</legend></label>
-      <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
+      <label for="name"><legend>What skill do you want to delete?</legend></label>      
+      --Skill List--
       <button type="button" class="myButton" (click)="showDSkills2()">OK</button>
     </fieldset>
     <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
@@ -244,9 +266,9 @@
     <fieldset *ngIf="visibleCatego" class="infobox"> 
       <label for="name"><legend>Please enter a name for a new Category </legend></label>
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-      <input type="submit" id="submit" class="myButton"  value="submit"> 
+      <input type="submit" id="submit" class="myButton"  value="Add new Category"> 
     </fieldset>
   </form>
-</div>
+</div> -->
 
 

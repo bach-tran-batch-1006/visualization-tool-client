@@ -1,4 +1,4 @@
-/* .myButton {
+.myButton {
 	box-shadow:inset 0px 1px 0px 0px #54a3f7;
 	background:linear-gradient(to bottom, #72a3c2 5%, #6293b2 100%);
 	background-color:#72a3c2;
@@ -54,4 +54,4 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-} */
+}

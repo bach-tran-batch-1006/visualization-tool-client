@@ -9,7 +9,7 @@ import { Primer, PrimerDTO} from '../models/Primer';
   providedIn: 'root'
 })
 export class PrimerService {
-  apiURL = 'http://localhost:8081/primer/';
+  apiURL = 'http://localhost:8080/primer/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

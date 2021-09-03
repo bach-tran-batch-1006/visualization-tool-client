@@ -10,9 +10,21 @@ import { PrimerService } from '../services/primer.service';
 @Component({
   selector: 'app-visualization-edit',
   templateUrl: './visualization-edit.component.html',
-  styleUrls: ['./visualization-edit.component.css']
+  //styleUrls: ['./visualization-edit.component.css']
 })
 export class VisualizationEditComponent implements OnInit {
+
+  visible:boolean = true;
+  intro:boolean = true;
+
+  visibleVisual:boolean =false;
+  visibleVisual2:boolean =false;
+  visibleMVisual:boolean=false;
+  visibleMVisual2:boolean=false;
+  visibleDVisual:boolean=false;
+  visibleDVisual2:boolean=false;
+
+
   visualizationList: Visualization[] = [];
   selectedVisualization: Visualization;
   showAddVisualization = false;
@@ -35,7 +47,58 @@ export class VisualizationEditComponent implements OnInit {
   ngOnInit(): void {
     this.getAllVisualization();
     this.getAllCurriculum();
+    //this.visualReset();
   }
+
+// ********** VISUAL MANIPULATORS **********
+  visualReset(){
+    this.intro=true;
+  
+    this.visibleVisual=false;
+    this.visibleVisual2=false;  
+    this.visibleMVisual=false;
+    this.visibleMVisual2=false;
+    this.visibleDVisual=false;
+    this.visibleDVisual2=false;
+    
+  }  
+
+  showVisual(){
+    this.intro =false;
+    this.visibleVisual =true;
+  
+    this.visibleVisual2=false;  
+    this.visibleMVisual=false;
+    this.visibleMVisual2=false;
+    this.visibleDVisual=false;
+    this.visibleDVisual2=false;
+  }
+
+  showVisual2(){
+    this.visibleVisual2 = true;
+  }
+ 
+
+  showMVisual(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleMVisual =true;
+
+  }
+
+  showMVisual2(){
+    this.visibleMVisual2 = true;
+  }
+  showDVisual(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleDVisual =true;
+
+  }
+  showDVisual2(){
+    this.visibleDVisual2 = true;
+  }
+
   getAllVisualization(): void {
     this.visualizationService.getAllVisualizations().subscribe((response) => {
       this.visualizationList = response;

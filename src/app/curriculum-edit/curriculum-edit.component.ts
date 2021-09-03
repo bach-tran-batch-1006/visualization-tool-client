@@ -26,11 +26,119 @@ export class CurriculumEditComponent implements OnInit {
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
 
+  visible:boolean = true;
+  intro:boolean = true;
+
+  visibleVisual:boolean =false;
+  visibleVisual2:boolean =false;
+  visibleMVisual:boolean=false;
+  visibleMVisual2:boolean=false;
+  visibleDVisual:boolean=false;
+  visibleDVisual2:boolean=false;
+
+  visibleCurric:boolean =false;
+  visibleCurric2:boolean =false;
+  visibleMCurric:boolean=false;
+  visibleMCurric2:boolean=false;
+  visibleDCurric:boolean=false;
+  visibleDCurric2:boolean=false;
+
+  visibleProject:boolean =false;
+  visibleProject2:boolean =false;
+  visibleMProject:boolean=false;
+  visibleMProject2:boolean=false;
+  visibleDProject:boolean=false;
+  visibleDProject2:boolean=false;
+
+  visibleSkills:boolean =false;
+  visibleSkills2:boolean =false;
+  visibleMSkills:boolean=false;
+  visibleMSkills2:boolean=false;
+  visibleDSkills:boolean=false;
+  visibleDSkills2:boolean=false;
+
+  visibleCatego:boolean =false;
+
   constructor(private curriculumService: CurriculumService, private skillService: SkillService ) { }
+
+// ********** CURRICULUM MANIPULATORS **********
+
+visualReset(){
+  this.intro=true;
+
+  this.visibleCurric=false;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+  
+}  
+showCurric(){
+  this.intro =false;
+  this.visibleCurric =true;
+
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
+
+  this.visibleProject=false;
+  this.visibleProject2 =false;
+  this.visibleMProject=false;
+  this.visibleMProject2=false;
+  this.visibleDProject=false;
+  this.visibleDProject2=false;
+
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
+
+}
+showCurric2(){
+this.visibleCurric2 =true;
+this.visibleProject =true;
+}
+showMCurric(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visibleCurric =false;
+  this.visibleMCurric =true;
+  this.visibleProject =false;
+  this.visibleSkills =false;
+}
+showMCurric2(){
+this.visibleMCurric2 =true;
+}
+showDCurric(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visibleCurric =false;
+  this.visibleDCurric =true;
+  this.visibleProject =false;
+  this.visibleSkills =false;
+}
+showDCurric2(){
+this.visibleDCurric2 =true;
+}
 
   ngOnInit(): void {
     this.getAllCurriculum();
     this.getAllSkills();
+    this.visualReset();
   }
 
   getAllCurriculum(): void {

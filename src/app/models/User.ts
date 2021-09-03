@@ -7,6 +7,6 @@ export interface User {
 }
 
 export interface UserDTO {
-    id: number;
+    id?: number;
     email: string;
 }

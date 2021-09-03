@@ -1,3 +1,0 @@
-@charset "utf-8";
-@import "../sass/darkstyles.css" (prefers-color-scheme: dark);
-@import "../sass/lightstyles.css" (prefers-color-scheme: light)

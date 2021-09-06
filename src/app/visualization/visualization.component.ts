@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '../models/Category';
 import { Curriculum } from '../models/Curriculum';
+import { Primer } from '../models/Primer';
 import { Skill } from '../models/Skill';
 import { Visualization } from '../models/Visualization';
 
 import { VisualizationService } from '../services/visualization.service';
-
 @Component({
   selector: 'app-visualization',
   templateUrl: './visualization.component.html',
@@ -36,6 +36,7 @@ export class VisualizationComponent implements OnInit {
     this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
       this.currentVisualization = response;
       this.currentCurriculumList = response.curriculumList;
+      this.currentPrimerList = response.primerList;
       if (this.currentCurriculumList.length !== 0) {
         this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
       }

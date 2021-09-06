@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PrimerComponent } from './primer/primer.component';
 import { PrimerEditComponent } from './primer-edit/primer-edit.component';
+import {  ProjectComponent} from "./project/project.component";
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'primer', component: PrimerComponent},
   { path: 'edit/primer', component: PrimerEditComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'project', component: ProjectComponent}
   { path: 'profile', component: ProfileComponent}
 ];
 

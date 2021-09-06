@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VisualizationEditComponent } from '../visualization-edit/visualization-edit.component';
 
 @Component({
   selector: 'app-index',
@@ -13,40 +14,40 @@ export class IndexComponent implements OnInit {
   visible:boolean = true;
   intro:boolean = true;
 
-  visibleVisual:boolean =false;
-  visibleVisual2:boolean =false;
-  visibleMVisual:boolean=false;
-  visibleMVisual2:boolean=false;
-  visibleDVisual:boolean=false;
-  visibleDVisual2:boolean=false;
+  visibleVisual:boolean =true;
+  visibleVisual2:boolean =true;
+  visibleMVisual:boolean=true;
+  visibleMVisual2:boolean=true;
+  visibleDVisual:boolean=true;
+  visibleDVisual2:boolean=true;
 
-  visibleCurric:boolean =false;
-  visibleCurric2:boolean =false;
-  visibleMCurric:boolean=false;
-  visibleMCurric2:boolean=false;
-  visibleDCurric:boolean=false;
-  visibleDCurric2:boolean=false;
+  visibleCurric:boolean =true;
+  visibleCurric2:boolean =true;
+  visibleMCurric:boolean=true;
+  visibleMCurric2:boolean=true;
+  visibleDCurric:boolean=true;
+  visibleDCurric2:boolean=true;
 
-  visibleProject:boolean =false;
-  visibleProject2:boolean =false;
-  visibleMProject:boolean=false;
-  visibleMProject2:boolean=false;
-  visibleDProject:boolean=false;
-  visibleDProject2:boolean=false;
+  visibleProject:boolean =true;
+  visibleProject2:boolean =true;
+  visibleMProject:boolean=true;
+  visibleMProject2:boolean=true;
+  visibleDProject:boolean=true;
+  visibleDProject2:boolean=true;
 
-  visibleSkills:boolean =false;
-  visibleSkills2:boolean =false;
-  visibleMSkills:boolean=false;
-  visibleMSkills2:boolean=false;
-  visibleDSkills:boolean=false;
-  visibleDSkills2:boolean=false;
+  visibleSkills:boolean =true;
+  visibleSkills2:boolean =true;
+  visibleMSkills:boolean=true;
+  visibleMSkills2:boolean=true;
+  visibleDSkills:boolean=true;
+  visibleDSkills2:boolean=true;
 
-  visibleCatego:boolean =false;
+  visibleCatego:boolean =true;
 
-  showhideUtility(){
-    this.visible = this.visible?false:true;
-    this.buttonTitle = this.visible?"Hide":"Show";
-  }
+  // showhideUtility(){
+  //   this.visible = this.visible?false:true;
+  //   this.buttonTitle = this.visible?"Hide":"Show";
+  // }
 
 ngOnInit(){
 this.visualReset();
@@ -89,7 +90,7 @@ visualReset(){
 //Visual Manipulators
 showVisual(){
   this.intro =false;
-  this.visibleVisual =true;
+ this.visibleVisual = !this.visibleVisual;
 
   this.visibleVisual2=false;  
   this.visibleMVisual=false;
@@ -352,106 +353,106 @@ hideSkills(){
 
 
 
-  showVisualization = false;
-  showPrimer =false;
-  showCurriculum = false;
-  showCategory = false;
-  showSkill = false;
- // showProject=false;
+//   showVisualization = false;
+//   showPrimer =false;
+//   showCurriculum = false;
+//   showCategory = false;
+//   showSkill = false;
+//  // showProject=false;
 
-  showVisualizationForm=false;
-  showcurriculumForm=false;
-  showCategoryForm=false;
-  showSkillForm=false;
-  showProjectForm=false;
+//   showVisualizationForm=false;
+//   showcurriculumForm=false;
+//   showCategoryForm=false;
+//   showSkillForm=false;
+//   showProjectForm=false;
   
 
   constructor() { }
 
 
 
-  toggleVisualization(){
-    this.showVisualization=!this.showVisualization;
-    this.showPrimer=false;
-    this.showCurriculum=false;
-  //  this.showProject=false;
-    this.showCategory=false;
-    this.showSkill=false;
-  }
+  // toggleVisualization(){
+  //   this.showVisualization=!this.showVisualization;
+  //   this.showPrimer=false;
+  //   this.showCurriculum=false;
+  // //  this.showProject=false;
+  //   this.showCategory=false;
+  //   this.showSkill=false;
+  // }
 
-  togglePrimer(){
-    this.showVisualization=false;
-    this.showPrimer=!this.showPrimer;
-    this.showCurriculum=false;
-    //this.showProject=false;
-    this.showCategory=false;
-    this.showSkill=false;
-  }
-  toggleCurriculum(){
-    this.showVisualization=false;
-    this.showPrimer=false;
-    this.showCurriculum=!this.showCurriculum;
-   // this.showProject=false;
-    this.showCategory=false;
-    this.showSkill=false;
-  }
-  toggleCategory(){
-    this.showVisualization=false;
-    this.showPrimer=false;
-    this.showCurriculum=false;
-  //  this.showProject=false;
-    this.showCategory=!this.showCategory;
-    this.showSkill=false;
-  }
-  toggleSkill(){
-    this.showVisualization=false;
-    this.showPrimer=false;
-    this.showCurriculum=false;
-  //  this.showProject=false;
-    this.showCategory=false;
-    this.showSkill=!this.showSkill;
-  }
+  // togglePrimer(){
+  //   this.showVisualization=false;
+  //   this.showPrimer=!this.showPrimer;
+  //   this.showCurriculum=false;
+  //   //this.showProject=false;
+  //   this.showCategory=false;
+  //   this.showSkill=false;
+  // }
+  // toggleCurriculum(){
+  //   this.showVisualization=false;
+  //   this.showPrimer=false;
+  //   this.showCurriculum=!this.showCurriculum;
+  //  // this.showProject=false;
+  //   this.showCategory=false;
+  //   this.showSkill=false;
+  // }
+  // toggleCategory(){
+  //   this.showVisualization=false;
+  //   this.showPrimer=false;
+  //   this.showCurriculum=false;
+  // //  this.showProject=false;
+  //   this.showCategory=!this.showCategory;
+  //   this.showSkill=false;
+  // }
+  // toggleSkill(){
+  //   this.showVisualization=false;
+  //   this.showPrimer=false;
+  //   this.showCurriculum=false;
+  // //  this.showProject=false;
+  //   this.showCategory=false;
+  //   this.showSkill=!this.showSkill;
+  // }
 
-  toggleProject(){
-    this.showVisualization=false;
-    this.showPrimer=false;
-    this.showCurriculum=false;
-  //  this.showProject=!this.showProject;
-    this.showCategory=false;
-    this.showSkill=false;
-  }
+  // toggleProject(){
+  //   this.showVisualization=false;
+  //   this.showPrimer=false;
+  //   this.showCurriculum=false;
+  // //  this.showProject=!this.showProject;
+  //   this.showCategory=false;
+  //   this.showSkill=false;
+  // }
 
-  toggleVisualizationForm(){
-    this.showVisualizationForm=!this.showVisualizationForm;
-    this.showcurriculumForm=false;
-  //  this.showProject=false;
-    this.showCategory=false;
-    this.showSkill=false;
-  }
+  // toggleVisualizationForm(){
+  //   this.showVisualizationForm=!this.showVisualizationForm;
+  //   this.showcurriculumForm=false;
+  // //  this.showProject=false;
+  //   this.showCategory=false;
+  //   this.showSkill=false;
+  // }
 
-  toggleCirriculumForm(){
-    this.showVisualization=!this.showVisualizationForm;
-    this.showCurriculum=!this.showcurriculumForm;
-  //  this.showProject=false;
-    this.showCategory=false;
-    this.showSkill=false;
-  }
+  // toggleCirriculumForm(){
+  //   this.showVisualization=!this.showVisualizationForm;
+  //   this.showCurriculum=!this.showcurriculumForm;
+  // //  this.showProject=false;
+  //   this.showCategory=false;
+  //   this.showSkill=false;
+  // }
 
-  toggleProjectForm(){
-    this.showVisualization=!this.showVisualizationForm;
-    this.showCurriculum=!this.showcurriculumForm;
-  //  this.showProject=!this.showProject;
-    this.showCategory=false;
-    this.showSkill=false;
-  }
+  // toggleProjectForm(){
+  //   this.showVisualization=!this.showVisualizationForm;
+  //   this.showCurriculum=!this.showcurriculumForm;
+  // //  this.showProject=!this.showProject;
+  //   this.showCategory=false;
+  //   this.showSkill=false;
+  // }
 
-  toggleCategoryForm(){
-    this.showVisualization=!this.showVisualizationForm;
-    this.showCurriculum=!this.showcurriculumForm;
-  //  this.showProject=!this.showProject;
-    this.showCategory=!this.showCategory;
-    this.showSkill=false;
-  }
+  // toggleCategoryForm(){
+  //   this.showVisualization=!this.showVisualizationForm;
+  //   this.showCurriculum=!this.showcurriculumForm;
+  // //  this.showProject=!this.showProject;
+  //   this.showCategory=!this.showCategory;
+  //   this.showSkill=false;
+  // }
 
   
 }

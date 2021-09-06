@@ -1,18 +1,19 @@
 <nav class="navbar is-flex is-justify-content-space-between">
     <div class="navbar-brand">
-        <img src="../../assets/images/rev_logo.png" class="brand-logo" alt="Revature Logo">
+        <img src="../../assets/images/rev_logo.png" id="brand" class="brand-logo" alt="Revature Logo" style="padding: 5%;">
     </div>
 
-    <div class="navbar-menu navbar-end is-active">
-       
-            <div class="buttons">
-                <button id='login' class="button is-primary is-outlined is-rounded is-inverted"
-                        routerLink="/login">Login</button>
-                <button id="logout" class="button is-danger is-outlined is-rounded"
-                        (click)="logout()">Logout</button>
-            </div>
+    <div class="navbar-end is-active">
 
-        
+        <div class="buttons">
+            <button id='login' class="button is-primary is-outlined is-rounded is-inverted"
+                routerLink="/login">Login</button>
+            <button id='profile' class="button is-warning is-outlined is-rounded"
+                routerLink="/profile">Profile</button>
+            <button id="logout" class="button is-danger is-outlined is-rounded" (click)="logout()">Logout</button>
+        </div>
+
+
     </div>
 </nav>
 <hr class="navbar-divider">

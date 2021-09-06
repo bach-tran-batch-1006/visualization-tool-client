@@ -6,7 +6,7 @@ import { Primer } from '../models/Primer';
 @Component({
   selector: 'app-primer',
   templateUrl: './primer.component.html',
-  styleUrls: ['./primer.component.css']
+  //styleUrls: ['./primer.component.css']
 })
 export class PrimerComponent implements OnInit, OnChanges {
 

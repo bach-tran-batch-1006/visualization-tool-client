@@ -1,4 +1,43 @@
-<p>profile works!</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Account</title>
+</head>
+
+<body>
+    <!-- CSS center this card -->
+    <div class="card" style="width: 18rem;">
+        <img src="https://www.gocsucougars.com/images/2016/10/30/Hunt-Web.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{first}} {{last}}</h5>
+            <p class="card-text">Account Information</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li> <input type="text" class="form-control" placeholder="First" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="first" value="{{first}}"></li>
+            <br>
+            <li><input type="text" class="form-control" placeholder="Last" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="last"value="{{last}}"></li>
+            <br>
+            <li><input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="email" value="{{email}}"></li>
+            <br>
+            <li><input type="password" class="form-control" placeholder="New Password" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="pass" value="{{pass}}"></li>
+            <br>
+            <li><input type="password" class="form-control" placeholder="Confirm Password" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="confirmPass" value="{{confirmPass}}"></li>
+            <br>
+
+
+        </ul>
+        <div class="card-body">
+            <button type="button" class="btn btn-secondary" routerLink="/index">Cancel</button>
+            <button type="button" class="btn btn-primary"(click)="updateProfile()">Save</button>
+        </div>
+    </div>
+</body>
 
 <!-- 
     profile photo
@@ -10,4 +49,6 @@
         -password
     }
     update profile
- -->
+-->
+
+</html>

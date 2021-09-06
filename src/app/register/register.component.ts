@@ -5,7 +5,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  //styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
   
@@ -21,19 +21,21 @@ export class RegisterComponent implements OnInit {
 
   signUp():void{
     alert("New Registration Submission Clicked")
-    if(this.pass === this.confirmPass){
+    console.log()
+    //if(this.pass === this.confirmPass){
+      console.log(this.first, this.last, this.email, this.pass)
 
       this.userService.register(this.first, this.last, this.email, this.pass)
       .subscribe(data=>{this.userService.user = {
         id: data.id,
-        email:this.email
+        email:data.email
       }
       this.error=false;
       this.router.navigateByUrl('/index');
     },
      (error)=>this.error=true);
 
-    }
+   // }
     
 //======================================================================================================
     // this.customerService.register(this.firstName,this.lastName,this.address,this.city,this.state,this.zipcode,this.email,this.password)
@@ -48,11 +50,11 @@ export class RegisterComponent implements OnInit {
    //=========================================================================================================
 
 
-    this.first = ""
-    this.last = ""
-    this.pass = ""
-    this.confirmPass = ""
-    this.email = ""
+    // this.first = ""
+    // this.last = ""
+    // this.pass = ""
+    // this.confirmPass = ""
+    // this.email = ""
   
   }
   

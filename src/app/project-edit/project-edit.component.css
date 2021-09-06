@@ -40,6 +40,18 @@
 .floatright {
 	float:right;
 }
-.container{
-	margin-top: 30px;
+
+.input-btn{
+	display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mod-del-btn{
+	display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }

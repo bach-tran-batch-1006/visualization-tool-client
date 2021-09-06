@@ -10,14 +10,14 @@ import { VisualizationService } from '../services/visualization.service';
 @Component({
   selector: 'app-visualization',
   templateUrl: './visualization.component.html',
-  styleUrls: ['./visualization.component.css']
+  //styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent implements OnInit {
   visualizationId = 0;
 
   currentVisualization: Visualization;
   currentCurriculumList: Curriculum[] = null;
-  currentPrimerList: Primer[] = null;
+  // currentPrimerList: Primer[] = null;
   selected = 0;
 
   distinctSkillList: Skill[] = [];
@@ -25,7 +25,7 @@ export class VisualizationComponent implements OnInit {
   currentCurriculumId: number;
   currentSkillList: Skill[] = [];
 
-  currentPrimerId: number;
+  // currentPrimerId: number;
 
 
   categoryColorList: string[] = [];
@@ -60,13 +60,13 @@ export class VisualizationComponent implements OnInit {
     }
   }
 
-  changePrimerEvent(currentPrimerId: number): void {
-    for (const primer of this.currentVisualization.primerList){
-      if (currentPrimerId === primer.primerId){
-        this.currentSkillList = primer.skillList;
-      }
-    }
-  }
+  // changePrimerEvent(currentPrimerId: number): void {
+  //   for (const primer of this.currentVisualization.primerList){
+  //     if (currentPrimerId === primer.primerId){
+  //       this.currentSkillList = primer.skillList;
+  //     }
+  //   }
+  // }
 
   randColor(i: number, total: number): string {
     return 'hsl(' + i * total + ', 50%, 75%)';

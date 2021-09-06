@@ -8,7 +8,7 @@ import { Curriculum, CurriculumDTO } from '../models/Curriculum';
 })
 export class CurriculumService {
 
-  apiURL = 'http://localhost:8081/curriculum/';
+  apiURL = 'http://54.221.159.251:8090/visualization/curriculum';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

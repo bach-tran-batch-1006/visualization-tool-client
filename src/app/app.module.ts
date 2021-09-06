@@ -21,6 +21,7 @@ import { PrimerComponent } from './primer/primer.component';
 import { PrimerEditComponent } from './primer-edit/primer-edit.component';
 import { AddProjectToCurriculaComponent } from './add-project-to-curricula/add-project-to-curricula.component';
 import { ProjectComponent } from './project/project.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ProjectComponent } from './project/project.component';
     PrimerComponent,
     PrimerEditComponent,
     AddProjectToCurriculaComponent,
-    ProjectComponent
+    ProjectComponent,
+    ProjectEditComponent
 
   ],
   imports: [

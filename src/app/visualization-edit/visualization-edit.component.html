@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+
 
 <fieldset class="container is-fluid containerflex borders">
     <legend>Visualization</legend>
@@ -93,5 +93,21 @@
         </div>
         <!-- Visualization-EDIT-BUTTONS -->
 
+         <!-- Primer-SELECT-LIST -->
+        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <legend id="PrimerSelectText">Primer-Select</legend>
+            <ul>
+                <button class="button is-small btn-light-gray" (click)="resetPrimerActive()">Clear
+                    Selection</button>
+                <li *ngFor="let primer of primerList; let i = index">
+                    <label class="primerLabel" for="primer_{{primer.primerId}}">
+                        <input type="checkbox" id="primer_{{primer.primerId}}" [value]="primer" [checked]="primer.isActive"
+                            name="primerList" (change)="togglePrimer(primer.primerId)" />
+                        {{ primer.primerName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
+<!-- Primer-SELECT-LIST -->
     </div>
 </fieldset>

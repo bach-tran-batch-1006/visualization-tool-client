@@ -3,6 +3,9 @@ import { VisualizationService } from '../services/visualization.service';
 import { Visualization, VisualizationDTO } from '../models/Visualization';
 import { CurriculumService } from '../services/curriculum.service';
 import { Curriculum } from '../models/Curriculum';
+import { Primer } from '../models/Primer';
+import { PrimerService } from '../services/primer.service';
+
 
 @Component({
   selector: 'app-visualization-edit',
@@ -10,34 +13,34 @@ import { Curriculum } from '../models/Curriculum';
   styleUrls: ['./visualization-edit.component.css']
 })
 export class VisualizationEditComponent implements OnInit {
-
   visualizationList: Visualization[] = [];
   selectedVisualization: Visualization;
-
   showAddVisualization = false;
   showUpdateVisualization = false;
-
   showVisualizationDeleteFail = false;
   showViewVisualizationFail = false;
-
   visualizationNameAdd: string;
   visualizationNameUpdate: string;
 
+
   curriculumList: Curriculum[] = [];
   selectedCurriculumList: Curriculum[] = [];
+
+  primerList: Primer[] = [];
+  selectedPrimerList: Primer[] = [];
+
+
   constructor(private visualizationService: VisualizationService, private curriculumService: CurriculumService) { }
 
   ngOnInit(): void {
     this.getAllVisualization();
     this.getAllCurriculum();
   }
-
   getAllVisualization(): void {
     this.visualizationService.getAllVisualizations().subscribe((response) => {
       this.visualizationList = response;
     });
   }
-
   getAllCurriculum(): void {
     this.curriculumService.getAllCurriculum().subscribe((response) => {
       this.curriculumList = response;
@@ -48,7 +51,6 @@ export class VisualizationEditComponent implements OnInit {
       }
     });
   }
-
   addVisualization(): Visualization {
     let visualization;
     this.selectedCurriculumList = [];
@@ -60,17 +62,16 @@ export class VisualizationEditComponent implements OnInit {
     }
     const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameAdd,
-      curricula: this.selectedCurriculumList
+      curricula: this.selectedCurriculumList,
+      primer: this.selectedPrimerList
     };
     this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
       visualization = response;
       this.getAllVisualization();
       this.resetCurriculumActive();
     });
-
     return visualization;
   }
-
   updateVisualization(): Visualization {
     let visualization;
     this.selectedCurriculumList = [];
@@ -83,7 +84,8 @@ export class VisualizationEditComponent implements OnInit {
     const visualizationId = this.selectedVisualization.visualizationId;
     const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameUpdate,
-      curricula: this.selectedCurriculumList
+      curricula: this.selectedCurriculumList,
+      primer: this.selectedPrimerList
     };
     this.visualizationService.updateVisualization(visualizationId, visualizationDTO).subscribe((response) => {
       visualization = response;
@@ -93,7 +95,6 @@ export class VisualizationEditComponent implements OnInit {
     });
     return visualization;
   }
-
   deleteVisualization(): number {
     let result;
     if (this.selectedVisualization) {
@@ -108,9 +109,7 @@ export class VisualizationEditComponent implements OnInit {
     }
     return result;
   }
-
   displayVisualization(): void {
-
     this.showAddVisualization = false;
     this.showVisualizationDeleteFail = false;
     this.showViewVisualizationFail = false;
@@ -127,9 +126,7 @@ export class VisualizationEditComponent implements OnInit {
       }
       this.curriculumList[curriculumIndex].isActive = !this.curriculumList[curriculumIndex].isActive;
     }
-
   }
-
   toggleCurriculum(currentCurriculumId: number): void {
     const listSize = this.curriculumList.length;
     for (let index = 0; index < listSize; index++) {
@@ -143,12 +140,18 @@ export class VisualizationEditComponent implements OnInit {
       }
     }
   }
-
   resetCurriculumActive(): void {
     for (const curriculum of this.curriculumList) {
       curriculum.isActive = false;
     }
     this.selectedCurriculumList = [];
+  }
+
+  resetPrimerActive(): void {
+    for (const primer of this.primerList) {
+      primer.isActive = false;
+    }
+    this.selectedPrimerList = [];
   }
 
   toggleAddVisualization(): void {
@@ -158,14 +161,12 @@ export class VisualizationEditComponent implements OnInit {
     this.showAddVisualization = !this.showAddVisualization;
     this.resetCurriculumActive();
   }
-
   toggleUpdateVisualization(): void {
     this.showVisualizationDeleteFail = false;
     this.showViewVisualizationFail = false;
     this.showAddVisualization = false;
     this.showUpdateVisualization = !this.showUpdateVisualization;
   }
-
   viewVisualization(): void {
     if (this.selectedVisualization) {
       window.open(`/visualization/${this.selectedVisualization.visualizationId}`);
@@ -174,5 +175,6 @@ export class VisualizationEditComponent implements OnInit {
       this.showVisualizationDeleteFail = false;
     }
   }
+
 
 }

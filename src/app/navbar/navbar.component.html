@@ -4,15 +4,15 @@
     </div>
 
     <div class="navbar-menu navbar-end is-active">
-        <ul class="navbar-item">
-            <li class="navbar-link" routerLinkActive="active-link"><a routerLink="/edit/visualization">Edit
-                    Visualization</a></li>
-            <li class="navbar-link" routerLinkActive="active-link"><a routerLink="/edit/curriculum">Edit
-                    Curricula</a>
-            </li>
-            <li class="navbar-link" routerLinkActive="active-link"><a routerLink="/edit/skill-category">Edit Skills &
-                    Categories</a></li>
-        </ul>
+       
+            <div class="buttons">
+                <button id='login' class="button is-primary is-outlined is-rounded is-inverted"
+                        routerLink="/login">Login</button>
+                <button id="logout" class="button is-danger is-outlined is-rounded"
+                        (click)="logout()">Logout</button>
+            </div>
+
+        
     </div>
 </nav>
 <hr class="navbar-divider">

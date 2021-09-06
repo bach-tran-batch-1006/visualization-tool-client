@@ -12,7 +12,7 @@
 
 <body>
     <!-- CSS center this card -->
-    <div class="card text-center" style="width: 18rem;">
+    <div class="card" style="width: 18rem;">
         <img src="https://www.gocsucougars.com/images/2016/10/30/Hunt-Web.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{first}} {{last}}</h5>
@@ -33,6 +33,7 @@
 
         </ul>
         <div class="card-body">
+            <button type="button" class="btn btn-secondary" routerLink="/index">Cancel</button>
             <button type="button" class="btn btn-primary"(click)="updateProfile()">Save</button>
         </div>
     </div>

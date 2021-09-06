@@ -34,6 +34,10 @@ export class UserService {
     return this.httpClient.post<User>(this.apiURL + 
       '/register', JSON.stringify({first,last,email,pass}), this.httpOptions);
   }
+
+  getUserById(userId:number): Observable<User>{
+    return this.httpClient.get<User>(`/${this.apiURL}/id/${userId}`);
+  }
   //MAKE SURE MATCHING ENDPOINTS FROM BACKEND
 
   login(email:string, pass:string): Observable<User> {

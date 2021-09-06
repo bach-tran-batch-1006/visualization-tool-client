@@ -1,43 +1,110 @@
-<!doctype html>
-<html lang="en">
+<app-navbar></app-navbar>
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://www.gocsucougars.com/images/2016/10/30/Hunt-Web.jpg" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://www.gocsucougars.com/images/2016/10/30/Hunt-Web.jpg"
+                                alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">{{first}} {{last}}</p>
+                        <p class="card-text">Account Information</p>
+                    </div>
+                </div>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+                <div class="content">
+                    
+                    <br>
+                    <div class="field">
+                        <label class="label">First Name</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="First" aria-label="Recipient's first"
+                                aria-describedby="basic-addon2" [(ngModel)]="first" value="{{first}}">
+                        </div>
+                        <label class="label">Last Name</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="Last" aria-label="Recipient's last name"
+                                aria-describedby="basic-addon2" [(ngModel)]="last" value="{{last}}">
+                        </div>
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="email@email.com"
+                                aria-label="Recipient's email" aria-describedby="basic-addon2" [(ngModel)]="email"
+                                value="{{email}}">
+                        </div>
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input type="password" class="input" placeholder="*****" aria-label="Recipient's password"
+                                aria-describedby="basic-addon2" [(ngModel)]="pass" value="{{pass}}">
+                        </div>
+                        <label class="label">Confirm Password</label>
+                        <div class="control">
+                            <input type="password" class="input" placeholder="*****" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2" [(ngModel)]="confirmPass" value="{{confirmPass}}">
+                        </div>
+                        <div class="buttons">
+                            <button type="button" class="button is-warning is-outlined is-rounded" routerLink="/index">Cancel</button>
+                            <button type="button" class="button is-danger is-outlined is-rounded" (click)="updateProfile()">Save</button>
+                        </div>
+                    </div>
 
-    <title>Account</title>
-</head>
+                </div>
+            </div>
+        </div>
 
-<body>
-    <!-- CSS center this card -->
-    <div class="card" style="width: 18rem;">
-        <img src="https://www.gocsucougars.com/images/2016/10/30/Hunt-Web.jpg" class="card-img-top" alt="...">
+
+
+
+
+
+
+
+
+        <!-- <figure class="image is-300x300"></figure>
+        <img src="https://www.gocsucougars.com/images/2016/10/30/Hunt-Web.jpg" class="image is-300x300" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{first}} {{last}}</h5>
             <p class="card-text">Account Information</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li> <input type="text" class="form-control" placeholder="First" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="first" value="{{first}}"></li>
+            <li> <input type="text" class="form-control" placeholder="First" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="first" value="{{first}}"></li>
             <br>
-            <li><input type="text" class="form-control" placeholder="Last" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="last"value="{{last}}"></li>
+            <li><input type="text" class="form-control" placeholder="Last" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="last" value="{{last}}"></li>
             <br>
-            <li><input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="email" value="{{email}}"></li>
+            <li><input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="email" value="{{email}}"></li>
             <br>
-            <li><input type="password" class="form-control" placeholder="New Password" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="pass" value="{{pass}}"></li>
+            <li><input type="password" class="form-control" placeholder="New Password" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="pass" value="{{pass}}"></li>
             <br>
-            <li><input type="password" class="form-control" placeholder="Confirm Password" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="confirmPass" value="{{confirmPass}}"></li>
+            <li><input type="password" class="form-control" placeholder="Confirm Password"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="confirmPass"
+                    value="{{confirmPass}}"></li>
             <br>
 
 
         </ul>
         <div class="card-body">
             <button type="button" class="btn btn-secondary" routerLink="/index">Cancel</button>
-            <button type="button" class="btn btn-primary"(click)="updateProfile()">Save</button>
+            <button type="button" class="btn btn-primary" (click)="updateProfile()">Save</button>
         </div>
     </div>
-</body>
+
+</div> -->
+
+
+
 
 <!-- 
     profile photo
@@ -49,6 +116,5 @@
         -password
     }
     update profile
--->
 
-</html>
+-->

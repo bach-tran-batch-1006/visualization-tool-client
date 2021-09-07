@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Primer, PrimerDTO } from '../models/Primer';
-import { Skill, SkillDTO } from '../models/Skill';
+import { Skill } from '../models/Skill';
 import { SkillService } from '../services/skill.service';
 import { PrimerService } from '../services/primer.service';
 
@@ -10,6 +10,9 @@ import { PrimerService } from '../services/primer.service';
   //styleUrls: ['./primer-edit.component.css']
 })
 export class PrimerEditComponent implements OnInit {
+
+  visible:boolean = true;
+  intro:boolean = true;
 
   primerList: Primer[] = [];
   selectedPrimer: Primer;
@@ -25,19 +28,6 @@ export class PrimerEditComponent implements OnInit {
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
 
-  showAddSkill = false;
-  showUpdateSkill = false;
-
-  skillNameAdd: string;
-  skillNameUpdate: string;
-
-  selectedSkill: Skill;
-
-  showSkillDeleteFail = false;
-
-  visible:boolean = true;
-  intro:boolean = true;
-
   visibleVisual:boolean =false;
   visibleVisual2:boolean =false;
   visibleMVisual:boolean=false;
@@ -52,19 +42,19 @@ export class PrimerEditComponent implements OnInit {
   visibleDSkills:boolean=false;
   visibleDSkills2:boolean=false;
 
-  visiblePrimers:boolean =false;
-  visiblePrimers2:boolean =false;
-  visibleMPrimers:boolean=false;
-  visibleMPrimers2:boolean=false;
-  visibleDPrimers:boolean=false;
-  visibleDPrimers2:boolean=false;
+  visiblePrimers:boolean =true;
+  visiblePrimers2:boolean =true;
+  visibleMPrimers:boolean=true;
+  visibleMPrimers2:boolean=true;
+  visibleDPrimers:boolean=true;
+  visibleDPrimers2:boolean=true;
 
 
   constructor(private primerService: PrimerService, private skillService: SkillService) { }
 
   ngOnInit(): void {
-    // this.getAllPrimer();
-    // this.getAllSkills();
+    this.getAllPrimer();
+    this.getAllSkills();
     this.visualReset();
   }
 
@@ -77,13 +67,6 @@ export class PrimerEditComponent implements OnInit {
     this.visibleMVisual2=false;
     this.visibleDVisual=false;
     this.visibleDVisual2=false;
-
-    this.visiblePrimers =true;
-    this.visiblePrimers2 =false;
-    this.visibleMPrimers=false;
-    this.visibleMPrimers2=false;
-    this.visibleDPrimers=false;
-    this.visibleDPrimers=false;
   
     this.visibleSkills=false;
     this.visibleSkills2 =false;
@@ -92,12 +75,18 @@ export class PrimerEditComponent implements OnInit {
     this.visibleDSkills=false;
     this.visibleDSkills2=false;
   
+    this.visiblePrimers =false;
+    this.visiblePrimers2 =false;
+    this.visibleMPrimers=false;
+    this.visibleMPrimers2=false;
+    this.visibleDPrimers=false;
+    this.visibleDPrimers=false;
   }
 
 
 showPrimers(){
   this.intro =false;
-  this.visiblePrimers = true;
+  this.visiblePrimers = !this.visiblePrimers;
   
   this.visibleVisual=false;
   this.visibleVisual2=false;  
@@ -187,8 +176,7 @@ hidePrimer() {
   }
 
 
-  // ********** SKILL FUNCTIONS **********
-  //Removed category association 
+
   getAllSkills(): void {
     this.skillService.getSkills().subscribe((response) => {
       this.skillList = response;
@@ -198,64 +186,6 @@ hidePrimer() {
         this.skillList[index].isActive = false;
       }
     });
-  }
-
-  displaySkill(): void {
-    this.skillNameUpdate = this.selectedSkill.skillName;
-    const selectedCategoryRadio = document.getElementById(`category_${this.selectedSkill.category.categoryId}`) as HTMLInputElement;
-    selectedCategoryRadio.checked = true;
-    this.showAddSkill = false;
-    this.showUpdateSkill = true;
-    this.showSkillDeleteFail = false;
-  }
-
-  addSkill(): Skill {
-    const skillDTO: SkillDTO = {
-      name: this.skillNameAdd,
-      userId: Number(localStorage.getItem('userId'))
-    };
-    let newSkill;
-    this.skillService.addSkill(skillDTO).subscribe((response) => {
-      newSkill = response;
-      this.getAllSkills();
-    });
-    this.skillNameAdd = '';
-    return newSkill;
-  }
-
-  updateSkill(): Skill {
-    const skillId = this.selectedSkill.skillId;
-    const skillDTO: SkillDTO = {
-      name: this.skillNameUpdate
-    };
-    let updatedSkill;
-    this.skillService.updateSkill(skillId, skillDTO).subscribe((response) => {
-      updatedSkill = response;
-      this.getAllSkills();
-      this.skillNameUpdate = '';
-    });
-    return updatedSkill;
-  }
-
-  deleteSkill(): number {
-    let deleteID;
-    if (this.selectedSkill == null) {
-      this.showSkillDeleteFail = true;
-    } else {
-      const skillId = this.selectedSkill.skillId;
-
-      const selectedSkillRadio = document.getElementById(`skill_${this.selectedSkill.skillId}`) as HTMLInputElement;
-      selectedSkillRadio.checked = false;
-
-      this.skillService.deleteSkill(skillId).subscribe((response) => {
-        deleteID = response;
-        this.getAllSkills();
-      });
-    }
-    this.showAddSkill = false;
-    this.showUpdateSkill = false;
-
-    return deleteID;
   }
 
 

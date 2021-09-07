@@ -332,13 +332,6 @@ showSkills(){
   this.visibleDSkills=false;
   this.visibleDSkills2=false;
 
-  this.visiblePrimers =false;
-  this.visiblePrimers2 =false;
-  this.visibleMPrimers=false;
-  this.visibleMPrimers2=false;
-  this.visibleDPrimers=false;
-  this.visibleDPrimers=false;
-
   this.visibleCatego=false;
 }
 showSkills2(){
@@ -393,45 +386,13 @@ showPrimers(){
   this.visibleDSkills=false;
   this.visibleDSkills2=false;
 
+  this.visiblePrimers =false;
   this.visiblePrimers2 =false;
   this.visibleMPrimers=false;
   this.visibleMPrimers2=false;
   this.visibleDPrimers=false;
   this.visibleDPrimers=false;
 }
-
-showPrimer2(){
-  this.visiblePrimers2 =true;
-  this.visibleSkills =true;
-  }
-  showMPrimer(){
-    this.intro =false;
-    this.visibleVisual =false;
-    this.visiblePrimers=false;
-    this.visibleMPrimers =true;
-    this.visibleSkills =false;
-  }
-  showMPrimer2(){
-  this.visibleMPrimers2 =true;
-  }
-  showDPrimer(){
-    this.intro =false;
-    this.visibleVisual =false;
-    this.visiblePrimers =false;
-    this.visibleDPrimers =true;
-    this.visibleSkills =false;
-  }
-  showDPrimer2(){
-  this.visibleDPrimers2 =true;
-  }
-  hidePrimer() {
-    this.visiblePrimers2 =false;
-    this.visibleMPrimers=false;
-    this.visibleMPrimers2=false;
-    this.visibleDPrimers=false;
-    this.visibleDPrimers2=false;
-    this.visibleSkills =false;
-  }
 
 
 

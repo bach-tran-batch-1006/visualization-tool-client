@@ -5,6 +5,17 @@
       <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
       <button type="button" class="myButton" (click)="showSkills2()">OK</button>
       <label for="show"><legend>Or, select one of the options below</legend></label>
+      <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+        <ul class="showSkillList">
+            <li *ngFor="let skill of skillList; let i = index">
+                <label class="skillLabel" for="skill_{{skill.skillId}}">
+                    <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                        [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                    {{ skill.skillName }}
+                </label>
+            </li>
+        </ul>
+    </fieldset>
       <button type="button" class="myButton" (click)="showMSkills()">Modify Skill</button>
       <button type="button" class="myButton" (click)="showDSkills()">Delete Skill</button>
     </fieldset>
@@ -60,7 +71,7 @@
     <legend>Skill-Category</legend>
     <div class="columns columnheight row ">-->
 
-        <!-- Skill-Edit-LIST 
+        <!-- Skill-Edit-LIST -->
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Skill-Edit</legend>
             <ul class="showSkillList">
@@ -72,7 +83,7 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>-->
+        </fieldset>
         <!-- Skill-Edit-LIST -->
 
         <!-- Category-Edit-LIST 

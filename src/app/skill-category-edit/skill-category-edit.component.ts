@@ -299,7 +299,8 @@ export class SkillCategoryEditComponent implements OnInit {
   addSkill(): Skill {
     const skillDTO: SkillDTO = {
       name: this.skillNameAdd,
-      category: this.selectedCategory
+      category: this.selectedCategory,
+      userId: Number(localStorage.getItem('userId'))
     };
     let newSkill;
     this.skillService.addSkill(skillDTO).subscribe((response) => {

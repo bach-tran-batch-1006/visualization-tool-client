@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'primer', component: PrimerComponent},
   { path: 'edit/primer', component: PrimerEditComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'project', component: ProjectComponent}
+  { path: 'project', component: ProjectComponent},
   { path: 'profile', component: ProfileComponent}
 ];
 

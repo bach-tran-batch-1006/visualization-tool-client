@@ -16,20 +16,7 @@ export class NavbarComponent {
   // test_login():void{
   //   localStorage.setItem('name', 'tescaseMcGee');
   // }
-
-
-  
-  logout():void{
-    localStorage.clear();
-    sessionStorage.clear();
-    alert("You have been logged out");
-    //logic for logout here
-  }
-
-  // test_login():void{
-  //   localStorage.setItem('name', 'tescaseMcGee');
-  // }
-
+  //sup
 
   constructor() { }
 

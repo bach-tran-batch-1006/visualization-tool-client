@@ -17,7 +17,7 @@ export class VisualizationComponent implements OnInit {
 
   currentVisualization: Visualization;
   currentCurriculumList: Curriculum[] = null;
-  // currentPrimerList: Primer[] = null;
+  currentPrimerList: Primer[] = null;
   selected = 0;
 
   distinctSkillList: Skill[] = [];

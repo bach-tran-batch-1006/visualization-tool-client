@@ -155,7 +155,7 @@ showDVisual2(){
 //Curriculum Manipulators
 showCurric(){
   this.intro =false;
-  this.visibleCurric =true;
+  this.visibleCurric = !this.visibleCurric;
 
   this.visibleVisual=false;
   this.visibleVisual2=false;  
@@ -217,7 +217,7 @@ this.visibleDCurric2 =true;
 //Project Manipulators
 showProject(){
   this.intro =false;
-  this.visibleProject =true;
+  this.visibleProject = !this.visibleProject;
   
   this.visibleVisual=false;
   this.visibleVisual2=false;  
@@ -286,7 +286,7 @@ hideProject() {
 //Skills Manipulators
 showSkills(){
   this.intro =false;
-  this.visibleSkills =true;
+  this.visibleSkills = !this.visibleSkills;
 
   this.visibleVisual=false;
   this.visibleVisual2=false;  

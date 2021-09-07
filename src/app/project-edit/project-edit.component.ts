@@ -114,7 +114,21 @@ visualReset(){
 
 showProject(){
   this.intro =false;
-  this.visibleProject =true;
+  this.visibleProject = !this.visibleProject;
+  
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleCurric=false;
+  this.visibleCurric2=false;
+  this.visibleMCurric=false;
+  this.visibleMCurric2=false;
+  this.visibleDCurric=false;
+  this.visibleDCurric2=false;
 
   this.visibleProject2 =false;
   this.visibleMProject=false;
@@ -122,14 +136,23 @@ showProject(){
   this.visibleDProject=false;
   this.visibleDProject2=false;
 
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visibleCatego=false;
 }
 showProject2(){
 this.visibleProject2 =true;
-
+this.visibleSkills =true;
 }
 showMProject(){
   this.intro =false;
-
+  this.visibleVisual =false;
+  this.visibleCurric =false;
   this.visibleProject =false;
   this.visibleMProject =true;
   this.visibleSkills =false;
@@ -156,6 +179,41 @@ hideProject() {
   this.visibleDProject2=false;
   this.visibleSkills =false;
 }
+
+// ********** SKILLS MANIPULATORS **********
+
+showSkills2(){
+  this.visibleSkills2 =true;
+  this.visibleCatego =true;
+  }
+  showMSkills(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleCurric =false;
+    this.visibleProject =false;
+    this.visibleSkills =false;
+    this.visibleMSkills =true;
+  }
+  showMSkills2(){
+  this.visibleMSkills2 =true;
+  this.visibleCatego =true;
+  }
+  showDSkills(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleCurric =false;
+    this.visibleProject =false;
+    this.visibleSkills =false;
+    this.visibleDSkills =true;
+  }
+  showDSkills2(){
+  this.visibleDSkills2 =true;
+  }
+  hideSkills(){
+    this.visibleSkills2 =false;
+    this.visibleCatego =false;
+  
+  }    
 
 // ********** PROJECT FUNCTIONS **********
 

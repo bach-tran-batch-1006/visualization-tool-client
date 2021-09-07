@@ -9,7 +9,7 @@ import { PrimerService } from '../services/primer.service';
 
 @Component({
   selector: 'app-visualization-edit',
-  templateUrl: './visualization-edit.component.html',
+  templateUrl: './visualization-edit.component.html'
   //styleUrls: ['./visualization-edit.component.css']
 })
 export class VisualizationEditComponent implements OnInit {

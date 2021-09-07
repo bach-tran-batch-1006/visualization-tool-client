@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
-  
   logout():void{
     localStorage.clear();
     sessionStorage.clear();
@@ -18,7 +16,7 @@ export class NavbarComponent {
   // test_login():void{
   //   localStorage.setItem('name', 'tescaseMcGee');
   // }
-
+  //sup
 
   constructor() { }
 

@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   updateProfile() {
     if(this.pass === this.confirmPass && this.pass != null){
     // console.log(this.userId, this.email)
-    this.userService.updateUser(this.userId, this.email, this.pass)
+    this.userService.updateUser(this.userId, this.email, this.pass, this.first, this.last)
       .subscribe(data => {
         alert('User Successfully Updated')
        },

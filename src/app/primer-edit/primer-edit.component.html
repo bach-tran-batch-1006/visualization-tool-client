@@ -64,7 +64,7 @@
                   --Skill List--
           </div>
         <div class="column is-narrow">
-        <input type="submit" id="submit" class="utton is-info is-outlined is-rounded" (click)="visualReset()" value="New Primer"> 
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()" value="New Primer"> 
           </div>
         </div>
       </fieldset>
@@ -87,7 +87,7 @@
         </div>
       </fieldset>
   
-      <fieldset *ngIf="visibleDPrimers2" id="hideMe" class="infobox"> 
+      <!-- <fieldset *ngIf="visibleDPrimers2" id="hideMe" class="infobox"> 
         <strong><label for="name">
           <legend>Are you sure you want to delete?</legend>
         </label></strong>
@@ -96,7 +96,7 @@
         <input type="submit" class="button is-info is-danger is-rounded" id="delete" value="Yes, delete">
         <input type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel"> 
         </div>
-      </fieldset>
+      </fieldset> -->
     </form>
   </div>
   
@@ -126,8 +126,15 @@
         <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDSkills()">Delete Skill</button>
         </div>
       </fieldset>
-    </form>
-  </div>
+
+      <fieldset *ngIf="visibleSkills2" id="hideMe" class="infobox">
+        <div class="column is-narrow">
+         <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()" (click)="addSkill()" value="Add Skill"> 
+           </div>
+       </fieldset>
+     </form>
+   </div>
+
   
   <div>
     <form>
@@ -141,7 +148,7 @@
         </div>
         <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
         <div class="column is-narrow">
-        <button type="button" class="utton is-info is-outlined is-rounded" (click)="showMSkills2()">OK</button>
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showMSkills2()">OK</button>
           </div>
         </div>
       </fieldset>
@@ -163,7 +170,7 @@
             --Skill List--
           </div>
         <div class="column is-narrow">
-        <button type="button" class="button is-info is-outlined is-rounded" (click)="showDSkills2()">OK</button>
+        <button type="button" class="button is-info is-outlined is-rounded" (click) = "updatePrimer()" (click)="showDSkills2()">OK</button>
           </div>
         </div>
       </fieldset>

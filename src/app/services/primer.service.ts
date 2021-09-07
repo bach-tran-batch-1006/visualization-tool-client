@@ -11,7 +11,9 @@ import { Primer, PrimerDTO} from '../models/Primer';
 export class PrimerService {
   apiURL = 'http://54.221.159.251:8090/primer/';
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' 
+    // 'Access-Control-Allow-Origin' : '*'
+  })
   };
   constructor(private httpClient: HttpClient) { }
 

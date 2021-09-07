@@ -13,8 +13,8 @@ export class UserService {
     email: ''
   }
 
-
-  // apiURL = 'http://3.226.243.38:8081/category/';
+  //apiURL = 'http://localhost:8090/user';
+  //apiURL = 'http://3.226.243.38:8081/category/';
   // http://localhost:4200/index
   apiURL = 'http://54.221.159.251:8090/user';
 
@@ -42,8 +42,8 @@ export class UserService {
   }
 
   //MAKE SURE MATCHING ENDPOINTS FROM BACKEND
-  updateUser(id: number, email:string, pass:string): Observable<User> {
-    return this.httpClient.put<User>(this.apiURL + '/update',JSON.stringify({ id, email, pass }), this.httpOptions);
+  updateUser(id: number, email:string, pass:string, first:string, last:string): Observable<User> {
+    return this.httpClient.post<User>(this.apiURL + '/update',JSON.stringify({ id, email, pass, first, last }), this.httpOptions);
   }
 
   // deleteCategory(id: number): Observable<number>{

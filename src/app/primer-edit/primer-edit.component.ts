@@ -6,10 +6,13 @@ import { PrimerService } from '../services/primer.service';
 
 @Component({
   selector: 'app-primer-edit',
-  templateUrl: './primer-edit.component.html',
+  templateUrl: './primer-edit.component.html'
   //styleUrls: ['./primer-edit.component.css']
 })
 export class PrimerEditComponent implements OnInit {
+
+  visible:boolean = true;
+  intro:boolean = true;
 
   primerList: Primer[] = [];
   selectedPrimer: Primer;
@@ -25,13 +28,146 @@ export class PrimerEditComponent implements OnInit {
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
 
+  visibleVisual:boolean =false;
+  visibleVisual2:boolean =false;
+  visibleMVisual:boolean=false;
+  visibleMVisual2:boolean=false;
+  visibleDVisual:boolean=false;
+  visibleDVisual2:boolean=false;
+
+  visibleSkills:boolean =false;
+  visibleSkills2:boolean =false;
+  visibleMSkills:boolean=false;
+  visibleMSkills2:boolean=false;
+  visibleDSkills:boolean=false;
+  visibleDSkills2:boolean=false;
+
+  visiblePrimers:boolean =true;
+  visiblePrimers2:boolean =true;
+  visibleMPrimers:boolean=true;
+  visibleMPrimers2:boolean=true;
+  visibleDPrimers:boolean=true;
+  visibleDPrimers2:boolean=true;
+
 
   constructor(private primerService: PrimerService, private skillService: SkillService) { }
 
   ngOnInit(): void {
     this.getAllPrimer();
     this.getAllSkills();
+    this.visualReset();
   }
+
+  visualReset(){
+    this.intro=true;
+  
+    this.visibleVisual=false;
+    this.visibleVisual2=false;  
+    this.visibleMVisual=false;
+    this.visibleMVisual2=false;
+    this.visibleDVisual=false;
+    this.visibleDVisual2=false;
+  
+    this.visibleSkills=false;
+    this.visibleSkills2 =false;
+    this.visibleMSkills=false;
+    this.visibleMSkills2=false;
+    this.visibleDSkills=false;
+    this.visibleDSkills2=false;
+  
+    this.visiblePrimers =false;
+    this.visiblePrimers2 =false;
+    this.visibleMPrimers=false;
+    this.visibleMPrimers2=false;
+    this.visibleDPrimers=false;
+    this.visibleDPrimers=false;
+  }
+
+
+showPrimers(){
+  this.intro =false;
+  this.visiblePrimers = !this.visiblePrimers;
+  
+  this.visibleVisual=false;
+  this.visibleVisual2=false;  
+  this.visibleMVisual=false;
+  this.visibleMVisual2=false;
+  this.visibleDVisual=false;
+  this.visibleDVisual2=false;
+
+  this.visibleSkills=false;
+  this.visibleSkills2 =false;
+  this.visibleMSkills=false;
+  this.visibleMSkills2=false;
+  this.visibleDSkills=false;
+  this.visibleDSkills2=false;
+
+  this.visiblePrimers =false;
+  this.visiblePrimers2 =false;
+  this.visibleMPrimers=false;
+  this.visibleMPrimers2=false;
+  this.visibleDPrimers=false;
+  this.visibleDPrimers=false;
+}
+showPrimer2(){
+this.visiblePrimers2 =true;
+this.visibleSkills =true;
+}
+showMPrimer(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visiblePrimers=false;
+  this.visibleMPrimers =true;
+  this.visibleSkills =false;
+}
+showMPrimer2(){
+this.visibleMPrimers2 =true;
+}
+showDPrimer(){
+  this.intro =false;
+  this.visibleVisual =false;
+  this.visiblePrimers =false;
+  this.visibleDPrimers =true;
+  this.visibleSkills =false;
+}
+showDPrimer2(){
+this.visibleDPrimers2 =true;
+}
+hidePrimer() {
+  this.visiblePrimers2 =false;
+  this.visibleMPrimers=false;
+  this.visibleMPrimers2=false;
+  this.visibleDPrimers=false;
+  this.visibleDPrimers2=false;
+  this.visibleSkills =false;
+}
+
+  // ********** SKILLS MANIPULATORS **********
+  showSkills2(){
+  this.visibleSkills2 =true;
+  }
+  showMSkills(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleSkills =false;
+    this.visibleMSkills =true;
+  }
+  showMSkills2(){
+  this.visibleMSkills2 =true;
+  }
+  showDSkills(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleSkills =false;
+    this.visibleDSkills =true;
+  }
+  showDSkills2(){
+  this.visibleDSkills2 =true;
+  }
+  hideSkills(){
+    this.visibleSkills2 =false;
+  
+  }   
 
   getAllPrimer(): void {
     this.primerService.getAllPrimers().subscribe((response) => {

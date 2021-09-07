@@ -1,8 +1,193 @@
-<fieldset class="container is-fluid containerflex borders">
-    <legend>Primer</legend>
-    <div class="columns columnheight row ">
+<div>
+    <form>
+      <fieldset class="infobox">
+        <label for="name">
+          <legend>Please enter a name for your Primer.</legend>
+        </label>
+  
+        <div class="columns">
+          <div class="column">
+        <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-rounded" (click)="showPrimer2()">OK</button>
+          </div>
+        </div>
+  
+        <label for="show"><legend>Or, select one of the options below</legend>
+        </label>
+      <div class="buttons">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMPrimer()">Modify Primer</button>      
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDPrimer()">Delete Primer</button>
+      </div>
+      </fieldset>
+  
+      <fieldset *ngIf="visiblePrimers2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Primer with any of these Skills?</legend><br>
+           
+        <div class="columns">
+          <div class="column">
+            --Skill List--
+        </div>
+       <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="hidePrimer()" value="Add Primer">
+          </div>
+        </div>
+        <legend>Or, you can make a new skill.</legend> 
+      </fieldset>
+    </form>
+  </div>
+  
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMPrimers" class="infobox">
+        <label for="name">
+          <legend>What primer do you want to Modify?</legend>
+        </label>
+        <div class="columns">
+          <div class="column">
+            --Primer List--
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showDPrimer2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+  
+      <fieldset *ngIf="visibleMPrimers2" id="hideMe" class="infobox"> 
+        <legend> Would you like to associate your new Primer with any of these Skills?</legend><br>
+  
+        <div class="columns">
+                <div class="column">
+                  --Skill List--
+          </div>
+        <div class="column is-narrow">
+        <input type="submit" id="submit" class="utton is-info is-outlined is-rounded" (click)="visualReset()" value="New Primer"> 
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDPrimers" class="infobox">
+        <label for="name"><legend>What primer do you want to Delete?</legend>
+        </label>
+        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+        <div class="columns">
+          <div class="column">
+            --Primer List--
+         </div>
+         <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showDPrimer2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+      <fieldset *ngIf="visibleDPrimers2" id="hideMe" class="infobox"> 
+        <strong><label for="name">
+          <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+  
+        <div class="buttons">
+        <input type="submit" class="button is-info is-danger is-rounded" id="delete" value="Yes, delete">
+        <input type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel"> 
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  
+    <!-- SKILL HTML FLOW -->
+  <div>
+    <form>
+      <fieldset *ngIf="visibleSkills" class="infobox">
+        <label for="name">
+          <legend>Please enter a name for your Skill </legend>
+        </label>
+  
+        <div class="columns">
+           <div class="column">
+        <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+       </div>
+       <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showSkills2()">OK</button>
+        </div>
+      </div>
+        <label for="show">
+          <legend>Or, select one of the options below</legend>
+        </label>
+  
+        <div class="buttons">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMSkills()">Modify Skill</button>
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDSkills()">Delete Skill</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMSkills" class="infobox">
+        <label for="name">
+          <legend>What skill do you want to modify? </legend>
+        </label>
+        <div class="columns">
+          <div class="column">
+            --Skill List--
+        </div>
+        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+        <div class="column is-narrow">
+        <button type="button" class="utton is-info is-outlined is-rounded" (click)="showMSkills2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+    </form>
+  </div>
+  
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDSkills" class="infobox">
+        <label for="name">
+          <legend>What skill do you want to delete?</legend>
+        </label>
+        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+  
+        <div class="columns">
+          <div class="column">
+            --Skill List--
+          </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showDSkills2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+  
+      <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
+        <strong><label for="name">
+          <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+  
+        <div class="buttons">
+        <input type="submit" class="button is-danger is-outlined is-rounded" id="delete" value="Yes, delete" (click)="deleteSkill()">
+        <input type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel">
+       </div>
+      </fieldset>
+    </form>
+  </div>
 
- <!-- Primer-EDIT-LIST -->
+
+<!-- <fieldset class="container is-fluid containerflex borders">
+    <legend>Primer</legend>
+    <div class="columns columnheight row "> -->
+
+ <!-- Primer-EDIT-LIST 
  <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
     <legend>Primer-Edit</legend>
     <ul class="listofprimer">
@@ -15,11 +200,11 @@
             </label>
         </li>
     </ul>
-</fieldset>
+</fieldset>-->
 <!-- Primer-EDIT-LIST -->
 
 
- <!-- Skill-SELECT-LIST -->
+ <!-- Skill-SELECT-LIST 
  <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
     <legend>Skill-Select</legend>
     <ul>
@@ -34,13 +219,13 @@
             </label>
         </li>
     </ul>
-</fieldset>
-<!-- Skill-SELECT-LIST -->
+</fieldset>-->
+<!-- Skill-SELECT-LIST 
     </div>
-<div class="columns row">
+<div class="columns row">-->
 
 
-<!-- Primer-EDIT-BUTTONS -->
+<!-- Primer-EDIT-BUTTONS 
 <div class="column">
     <div class="editbottom">
         <div class="columns">
@@ -84,9 +269,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<!-- Primer-EDIT-BUTTONS -->
+<!-- Primer-EDIT-BUTTONS 
 
 </div>
-</fieldset>
+</fieldset>-->

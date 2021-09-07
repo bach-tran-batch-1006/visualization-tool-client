@@ -86,7 +86,7 @@ export class PrimerEditComponent implements OnInit {
 
 showPrimers(){
   this.intro =false;
-  this.visiblePrimers = !this.visiblePrimers;
+  this.visiblePrimers = true;
   
   this.visibleVisual=false;
   this.visibleVisual2=false;  

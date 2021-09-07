@@ -42,14 +42,14 @@
 
   <div class="columns">
     <div class="column">
+
+    </div>
+    <div class="column is-four-fifths">
       <app-visualization-edit *ngIf="visibleVisual"></app-visualization-edit>
       <app-curriculum-edit *ngIf="visibleCurric"></app-curriculum-edit>
       <app-project-edit *ngIf="visibleProject"></app-project-edit>
       <app-skill-category-edit *ngIf="visibleSkills"></app-skill-category-edit>
       <app-primer-edit *ngIf="visiblePrimers"></app-primer-edit>
-    </div>
-    <div class="column">
-  
       <!-- Welcome Text -->
       <p id="intro" class="infobox" *ngIf="intro">
         <legend> Welcome to the Revature visualization tool.<br>
@@ -57,8 +57,8 @@
           Register or sign in if you wish to save your work.
         </legend>
       </p>
-  
-  
+
+
       <!-- VISUALIZATION HTML FLOW-->
       <!-- <form>
         <fieldset class="infobox">
@@ -170,7 +170,7 @@
           </fieldset>
         </form>
       </div> -->
-  
+
       <!-- CURRICULUM HTML FLOW
       <div>
         <form>
@@ -290,8 +290,8 @@
           </fieldset>
         </form>
       </div>-->
-  
-   <!-- CURRICULUM/PROJECT HTML FLOW
+
+      <!-- CURRICULUM/PROJECT HTML FLOW
       <div>
         <form>
           <fieldset *ngIf="visibleProject" class="infobox">
@@ -411,8 +411,8 @@
           </fieldset>
         </form>
       </div>-->
-  
-   <!-- CURRICULUM/SKILL HTML FLOW
+
+      <!-- CURRICULUM/SKILL HTML FLOW
       <div>
         <form>
           <fieldset *ngIf="visibleSkills" class="infobox">
@@ -560,32 +560,22 @@
       </div>
     </div>
   -->
-    
-  </div>
-  <div class="column is-narrow is-mobile">
-    <div class="field is-grouped">
-      <p class="control">
-        <button type="button" class="button is-link is-rounded" (click)="showVisual()">Visualization</button>
-      </p>
-      <p class="control">
-        <button type="button" class="button is-danger is-rounded" (click)="showCurric()">Curriculum</button>
-      </p>
-      <p class="control">
-        <button type="button" class="button is-warning is-rounded" (click)="showProject()">Projects</button>
-      </p>
-      <p class="control">
-        <button type="button" class="button is-link is-rounded" (click)="showSkills()">Skills</button>
-      </p>
-      <p class="control">
-        <button type="button" class="button is-danger is-rounded" (click)="showPrimers()">Primer</button>
-      </p>
+
 
     </div>
-  </div>
-</div>
+    <div class="column">
+      <div class="buttons">
+        
+          <button type="button" class="button is-link is-rounded is-fullwidth" (click)="showVisual()">Visualization</button>        
+          <button type="button" class="button is-danger is-rounded is-fullwidth" (click)="showCurric()">Curriculum</button>
+          <button type="button" class="button is-warning is-rounded is-fullwidth" (click)="showProject()">Projects</button>
+          <button type="button" class="button is-link is-rounded is-fullwidth" (click)="showSkills()">Skills</button>
+          <button type="button" class="button is-danger is-rounded is-fullwidth" (click)="showPrimers()">Primer</button>
+      </div>
+    </div>
 
 
-<!-- 
+    <!-- 
 <div>
   <form>
 

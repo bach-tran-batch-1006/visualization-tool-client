@@ -8,7 +8,7 @@ import { Category, CategoryDTO } from '../models/Category';
 })
 export class CategoryService {
 
-  apiURL = 'http://54.221.159.251:8090//visualization-tool/category';
+  apiURL = 'http://54.221.159.251:8090/category';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -16,18 +16,22 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) { }
 
   getCategories(): Observable<Category[]>{
-    return this.httpClient.get<Category[]>(this.apiURL);
+    if(Number(localStorage.getItem('userId')) === 0){
+      return this.httpClient.get<Category[]>(this.apiURL+"/user/0");
+    }else{
+      return this.httpClient.get<Category[]>(this.apiURL+"/user/"+localStorage.getItem('userId'));//needs to be fixed to local storage userId
+    }
   }
 
   addCategory(bodyObject: CategoryDTO): Observable<Category>{
-    return this.httpClient.post<Category>(this.apiURL, bodyObject, this.httpOptions);
+    return this.httpClient.post<Category>(this.apiURL+"/add", bodyObject, this.httpOptions);
   }
 
   updateCategory(id: number, bodyObject: object): Observable<Category>{
-    return this.httpClient.put<Category>(this.apiURL + id, bodyObject, this.httpOptions);
+    return this.httpClient.put<Category>(this.apiURL + '/' +id, bodyObject, this.httpOptions);
   }
 
   deleteCategory(id: number): Observable<number>{
-    return this.httpClient.delete<number>(this.apiURL + id);
+    return this.httpClient.delete<number>(this.apiURL + '/' + id);
   }
 }

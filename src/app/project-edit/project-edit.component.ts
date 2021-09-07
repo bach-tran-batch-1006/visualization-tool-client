@@ -257,7 +257,8 @@ getAllCategories(): void {
 addCategory(): Category {
   const catDTO: CategoryDTO = {
     categoryName: this.categoryNameAdd,
-    categoryDescription: this.categoryDescriptionAdd
+    categoryDescription: this.categoryDescriptionAdd,
+    userid: Number(localStorage.getItem('userId'))
   };
   console.log(catDTO);
   let newCat;

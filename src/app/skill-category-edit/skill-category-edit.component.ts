@@ -16,7 +16,7 @@ export class SkillCategoryEditComponent implements OnInit {
   showAddSkill = false;
   showUpdateSkill = false;
 
-  skillNameAdd: string;
+  skillNameAdd: string = " ";
   skillNameUpdate: string;
 
   selectedSkill: Skill;
@@ -26,7 +26,7 @@ export class SkillCategoryEditComponent implements OnInit {
   categoryList: Category[] = [];
   showAddCategory = false;
   showUpdateCategory = false;
-  categoryNameAdd: string;
+  categoryNameAdd: string =" ";
   categoryDescriptionAdd: string;
   categoryName: string;
   categoryDescription: string;
@@ -178,7 +178,8 @@ export class SkillCategoryEditComponent implements OnInit {
   addCategory(): Category {
     const catDTO: CategoryDTO = {
       categoryName: this.categoryNameAdd,
-      categoryDescription: this.categoryDescriptionAdd
+      categoryDescription: null,
+      userid: Number(localStorage.getItem('userId'))
     };
     console.log(catDTO);
     let newCat;
@@ -188,6 +189,7 @@ export class SkillCategoryEditComponent implements OnInit {
     });
     this.categoryName = '';
     this.categoryDescription = '';
+    //console.log(newCat);
     return newCat;
   }
 
@@ -195,7 +197,8 @@ export class SkillCategoryEditComponent implements OnInit {
     const catId = this.selectedCategory.categoryId;
     const catDTO: CategoryDTO = {
       categoryName: this.categoryName,
-      categoryDescription: this.categoryDescription
+      categoryDescription: this.categoryDescription,
+      userid: Number(localStorage.getItem('userId'))
     };
     let newCat;
     this.categoryService.updateCategory(catId, catDTO).subscribe((response) => {

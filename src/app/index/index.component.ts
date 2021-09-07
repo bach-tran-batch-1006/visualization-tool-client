@@ -350,6 +350,9 @@ hideSkills(){
 
 }
 
+showPrimer(){
+  
+}
 
 
 

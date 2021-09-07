@@ -7,8 +7,8 @@ import { SkillService } from '../services/skill.service';
 
 @Component({
   selector: 'app-curriculum-edit',
-  templateUrl: './curriculum-edit.component.html',
-  styleUrls: ['./curriculum-edit.component.css']
+  templateUrl: './curriculum-edit.component.html'
+  // styleUrls: ['./curriculum-edit.component.css']
 })
 export class CurriculumEditComponent implements OnInit {
 
@@ -134,6 +134,78 @@ showDCurric(){
 showDCurric2(){
 this.visibleDCurric2 =true;
 }
+
+// ********** PROJECT MANIPULATORS **********
+
+showProject2(){
+  this.visibleProject2 =true;
+  this.visibleSkills =true;
+  }
+  showMProject(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleCurric =false;
+    this.visibleProject =false;
+    this.visibleMProject =true;
+    this.visibleSkills =false;
+  }
+  showMProject2(){
+  this.visibleMProject2 =true;
+  }
+  showDProject(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleCurric =false;
+    this.visibleProject =false;
+    this.visibleDProject =true;
+    this.visibleSkills =false;
+  }
+  showDProject2(){
+  this.visibleDProject2 =true;
+  }
+  hideProject() {
+    this.visibleProject2 =false;
+    this.visibleMProject=false;
+    this.visibleMProject2=false;
+    this.visibleDProject=false;
+    this.visibleDProject2=false;
+    this.visibleSkills =false;
+  }
+
+  // ********** SKILLS MANIPULATORS **********
+
+  showSkills2(){
+    this.visibleSkills2 =true;
+    this.visibleCatego =true;
+    }
+    showMSkills(){
+      this.intro =false;
+      this.visibleVisual =false;
+      this.visibleCurric =false;
+      this.visibleProject =false;
+      this.visibleSkills =false;
+      this.visibleMSkills =true;
+    }
+    showMSkills2(){
+    this.visibleMSkills2 =true;
+    this.visibleCatego =true;
+    }
+    showDSkills(){
+      this.intro =false;
+      this.visibleVisual =false;
+      this.visibleCurric =false;
+      this.visibleProject =false;
+      this.visibleSkills =false;
+      this.visibleDSkills =true;
+    }
+    showDSkills2(){
+    this.visibleDSkills2 =true;
+    }
+    hideSkills(){
+      this.visibleSkills2 =false;
+      this.visibleCatego =false;
+    
+    }    
 
   ngOnInit(): void {
     this.getAllCurriculum();

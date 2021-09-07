@@ -11,7 +11,7 @@
     
 <Fieldset class="container is-fluid containerflex borders">
     <legend></legend>
-        <div *ngIf="showVisualization">
+        <div *ngIf="visibleVisual">
             <app-visualization-edit></app-visualization-edit>
         </div>
 </Fieldset>
@@ -19,7 +19,7 @@
 <div>
 <Fieldset class="container is-fluid containerflex borders">
     <legend></legend>
-        <div *ngIf="showCurriculum">
+        <div *ngIf="visibleCurric">
             <app-curriculum-edit></app-curriculum-edit>
         </div>
 </Fieldset>
@@ -27,7 +27,7 @@
 <div>
     <Fieldset class="container is-fluid containerflex borders">
         <legend></legend>
-            <div *ngIf="showSkill">
+            <div *ngIf="visibleSkills"">
                 <app-skill-category-edit></app-skill-category-edit>
             </div>
     </Fieldset>
@@ -41,7 +41,12 @@
 <div class="container">
 
   <div class="columns">
-    <div class="column"></div>
+    <div class="column">
+      <app-visualization-edit *ngIf="visibleVisual"></app-visualization-edit>
+      <app-curriculum-edit *ngIf="visibleCurric"></app-curriculum-edit>
+      <app-project-edit *ngIf="visibleProject"></app-project-edit>
+      <app-skill-category-edit *ngIf="visibleSkills"></app-skill-category-edit>
+    </div>
     <div class="column">
   
       <!-- Welcome Text -->
@@ -53,9 +58,9 @@
       </p>
   
   
-      <!-- Visulation -->
-      <form>
-        <fieldset *ngIf="visibleVisual" class="infobox">
+      <!-- VISUALIZATION HTML FLOW-->
+      <!-- <form>
+        <fieldset class="infobox">
           <label for="name">
             Please enter a name for your Visualization
           </label>
@@ -131,10 +136,10 @@
           </fieldset>
         </form>
       </div>
+    
   
   
-  
-      <!-- Delete Visualization -->
+      Delete Visualization 
       <div>
         <form>
           <fieldset *ngIf="visibleDVisual" class="infobox">
@@ -163,12 +168,12 @@
             </div>
           </fieldset>
         </form>
-      </div>
+      </div> -->
   
-      <!-- Curriculum -->
+      <!-- CURRICULUM HTML FLOW
       <div>
         <form>
-          <fieldset *ngIf="visibleCurric" class="infobox">
+          <fieldset class="infobox">
   
             <label for="name">
               <legend>Please enter a name for your Curriculum</legend>
@@ -197,7 +202,7 @@
           </fieldset>
   
   
-  
+
           <fieldset *ngIf="visibleCurric2" id="hideMe" class="infobox">
             <legend> Would you like to associate your new Curriculum with any of these Projects?</legend><br>
   
@@ -283,9 +288,9 @@
             </div>
           </fieldset>
         </form>
-      </div>
+      </div>-->
   
-  
+   <!-- CURRICULUM/PROJECT HTML FLOW
       <div>
         <form>
           <fieldset *ngIf="visibleProject" class="infobox">
@@ -404,9 +409,9 @@
             </div>
           </fieldset>
         </form>
-      </div>
+      </div>-->
   
-  
+   <!-- CURRICULUM/SKILL HTML FLOW
       <div>
         <form>
           <fieldset *ngIf="visibleSkills" class="infobox">
@@ -553,7 +558,7 @@
         </form>
       </div>
     </div>
-  
+  -->
     <div class="column is-narrow">
       <div class="field is-grouped">
         <p class="control">

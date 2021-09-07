@@ -1,59 +1,110 @@
-
-<div>
     <form>
-  
       <fieldset class="infobox" >
-        
-          <label for="name"><legend>Please enter a name for your Visualization </legend></label>
-          <input type="text" id="name" width="400px" maxlength="32" minlength="3" required>
-          <button type="button" class="myButton" (click)="showVisual2()">OK</button>
-        
-          <label for="show"><legend>Or, select one of the options below</legend></label>
-          <button type="button" class="myButton" (click)="showMVisual()">Modify Visualization</button>
-          <button type="button" class="myButton" (click)="showDVisual()" >Delete Visualization</button>
-   
-      </fieldset>
+          <label for="name">
+              Please enter a name for your Visualization 
+         </label>
+         <div class="columns">
+            <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="myButton button is-primary is-outlined is-rounded is-inverted" (click)="showVisual2()">OK</button>
+        </div>
+        </div>
+          <!-- <label for="show"><legend>Or, select one of the options below</legend></label> -->
+    <p>Or, select one of the options below</p>
+    <div class="buttons">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMVisual()">Modify Visualization</button>
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDVisual()">Delete Visualization</button>
+    </div>
+ </fieldset>
+
+
       <fieldset *ngIf="visibleVisual2" id="hideMe" class="infobox">
         <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
+
+        <div class="columns">
+            <div class="column">
         --Curriculum List--
-        <input type="submit" id="submit" [ngClass]="showAddVisualization? 'is-active' : ''" (click)="toggleAddVisualization()" class="myButton" (click)="visualReset()" (click)="addVisualization()" value="Add Visualization"> 
+        </div>  
+        <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" [ngClass]="showAddVisualization? 'is-active' : ''" 
+        (click)="toggleAddVisualization()" 
+        (click)="visualReset()" 
+        (click)="addVisualization()" 
+        value="Add Visualization"> 
+            </div>
+        </div>
       </fieldset>
     </form>
-  </div>
+
+ <!-- Modify Visualization -->
   <div>
     <form>
       <fieldset *ngIf="visibleMVisual" class="infobox">
-        <label for="name"><legend>What Visualization do you want to modify?</legend></label>
-        --Visualization list--
-        <button type="button" class="myButton" (click)="showMVisual2()">OK</button>
+        <label for="name">
+            <legend>What Visualization do you want to modify?</legend>
+        </label>
+        <div class="columns">
+            <div class="column">
+              --Visualization list--
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMVisual2()">OK</button>
+        </div>  
+        </div>
       </fieldset>
+    
       <fieldset *ngIf="visibleMVisual2" id="hideMe" class="infobox">
         <legend> Would you like to associate your Visualization with any of these curriculum?</legend><br>
-        --Curriculum List--
-        <input type="submit" id="submit" class="myButton" (click)="visualReset()" (click)="updateVisualization()" value="submit"> 
+        
+        <div class="columns">
+            <div class="column">
+              --Curriculum List--
+       </div>
+       <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-warning is-outlined is-rounded" (click)="visualReset()" (click)="updateVisualization()" value="submit"> 
+            </div>
+        </div>
       </fieldset>
     </form>
   </div>
+
+    <!-- Delete Visualization -->
   <div>
     <form>
       <fieldset *ngIf="visibleDVisual" class="infobox">
-        <label for="name"><legend>What Visualization do you want to delete?</legend></label>
-        --Visualization list--
-        <button type="button" class="myButton" (click)="showDVisual2()">OK</button>
+        <label for="name">
+            <legend>What Visualization do you want to delete?</legend>
+        </label>
+        
+        <div class="columns">
+            <div class="column">
+              --Visualization list--
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDVisual2()">OK</button>
+            </div>
+        </div>
       </fieldset>
+
       <fieldset *ngIf="visibleDVisual2" class="infobox">
-        <strong><label for="name"><legend>Are you sure you want to delete?</legend></label></strong>
-        <input type="submit" class="myButton" id="delete" value="Yes, delete" (click)="deleteVisualization()">
-        <input type="button" class="myButton" id="cancel" (click)="visualReset()"value="Cancel">
+        <strong><label for="name">
+            <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+        <div class="buttons">
+        <input type="submit" class="button is-warning is-outlined is-rounded" id="delete" value="Yes, delete" (click)="deleteVisualization()">
+        <input type="button" class="button is-danger is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel">
+        </div>  
       </fieldset>
     </form>
   </div>
 
-  <fieldset class="container is-fluid containerflex borders">
+ <!-- <fieldset class="container is-fluid containerflex borders">
     <legend>Visualization</legend>
     <div class="columns columnheight row ">
 
-        <!-- Visualization-EDIT-LIST  -->
+        Visualization-EDIT-LIST  
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Visualization-Edit</legend>
             <ul class="listOfVisuals">
@@ -66,7 +117,7 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
+        </fieldset>-->
 
 
 <!--  

@@ -1,0 +1,116 @@
+<app-navbar></app-navbar>
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://www.nicepng.com/png/detail/799-7998295_profile-placeholder-woman-720-profile-photo-placeholder-png.png"
+                                alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">{{first}} {{last}}</p>
+                        <p class="card-text">Account Information</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    
+                    <br>
+                    <div class="field">
+                        <label class="label">First Name</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="First" aria-label="Recipient's first"
+                                aria-describedby="basic-addon2" [(ngModel)]="first" value="{{first}}">
+                        </div>
+                        <label class="label">Last Name</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="Last" aria-label="Recipient's last name"
+                                aria-describedby="basic-addon2" [(ngModel)]="last" value="{{last}}">
+                        </div>
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="email@email.com"
+                                aria-label="Recipient's email" aria-describedby="basic-addon2" [(ngModel)]="email"
+                                value="{{email}}">
+                        </div>
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input type="password" class="input" placeholder="*****" aria-label="Recipient's password"
+                                aria-describedby="basic-addon2" [(ngModel)]="pass" value="{{pass}}">
+                        </div>
+                        <label class="label">Confirm Password</label>
+                        <div class="control">
+                            <input type="password" class="input" placeholder="*****" aria-label="Recipient's username"
+                                aria-describedby="basic-addon2" [(ngModel)]="confirmPass" value="{{confirmPass}}">
+                        </div>
+                        <br>
+                        <div class="buttons">
+                            <button type="button" class="button is-warning is-outlined is-rounded" routerLink="/index">Cancel</button>
+                            <button type="button" class="button is-danger is-outlined is-rounded" (click)="updateProfile()">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- <figure class="image is-300x300"></figure>
+        <img src="https://www.gocsucougars.com/images/2016/10/30/Hunt-Web.jpg" class="image is-300x300" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{first}} {{last}}</h5>
+            <p class="card-text">Account Information</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li> <input type="text" class="form-control" placeholder="First" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="first" value="{{first}}"></li>
+            <br>
+            <li><input type="text" class="form-control" placeholder="Last" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="last" value="{{last}}"></li>
+            <br>
+            <li><input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="email" value="{{email}}"></li>
+            <br>
+            <li><input type="password" class="form-control" placeholder="New Password" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" [(ngModel)]="pass" value="{{pass}}"></li>
+            <br>
+            <li><input type="password" class="form-control" placeholder="Confirm Password"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="confirmPass"
+                    value="{{confirmPass}}"></li>
+            <br>
+
+
+        </ul>
+        <div class="card-body">
+            <button type="button" class="btn btn-secondary" routerLink="/index">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="updateProfile()">Save</button>
+        </div>
+    </div>
+
+</div> -->
+
+
+
+
+<!-- 
+    profile photo
+    profile info{
+        -name
+        -username
+        -email
+        -birthday
+        -password
+    }
+    update profile
+
+-->

@@ -1,10 +1,131 @@
-<app-navbar></app-navbar>
+    <form>
+      <fieldset class="infobox" >
+          <label for="name">
+              Please enter a name for your Visualization 
+         </label>
+         <div class="columns">
+            <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="button is-info is-outlined is-rounded" (click)="showVisual2()">OK</button>
+        </div>
+        </div>
+          <!-- <label for="show"><legend>Or, select one of the options below</legend></label> -->
+    <p>Or, select one of the options below</p>
+    <div class="buttons">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMVisual()">Modify Visualization</button>
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDVisual()">Delete Visualization</button>
+    </div>
+ </fieldset>
 
-<fieldset class="container is-fluid containerflex borders">
+
+      <fieldset *ngIf="visibleVisual2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Visualization with any of these curriculum?</legend><br>
+
+        <div class="columns">
+            <div class="column">
+        --Curriculum List--
+        </div>  
+        <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" [ngClass]="showAddVisualization? 'is-active' : ''" 
+        (click)="toggleAddVisualization()" 
+        (click)="visualReset()" 
+        (click)="addVisualization()" 
+        value="Add Visualization"> 
+            </div>
+        </div>
+      </fieldset>
+    </form>
+
+ <!-- Modify Visualization -->
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMVisual" class="infobox">
+        <label for="name">
+            <legend>What Visualization do you want to modify?</legend>
+        </label>
+        <div class="columns">
+            <div class="column">
+              --Visualization list--
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showMVisual2()">OK</button>
+        </div>  
+        </div>
+      </fieldset>
+    
+      <fieldset *ngIf="visibleMVisual2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your Visualization with any of these curriculum?</legend><br>
+        
+        <div class="columns">
+            <div class="column">
+              --Curriculum List--
+       </div>
+       <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-warning is-outlined is-rounded" (click)="visualReset()" (click)="updateVisualization()" value="submit"> 
+            </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+    <!-- Delete Visualization -->
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDVisual" class="infobox">
+        <label for="name">
+            <legend>What Visualization do you want to delete?</legend>
+        </label>
+        
+        <div class="columns">
+            <div class="column">
+              --Visualization list--
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDVisual2()">OK</button>
+            </div>
+        </div>
+      </fieldset>
+
+      <fieldset *ngIf="visibleDVisual2" class="infobox">
+        <strong><label for="name">
+            <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+        <div class="buttons">
+        <input type="submit" class="button is-warning is-outlined is-rounded" id="delete" value="Yes, delete" (click)="deleteVisualization()">
+        <input type="button" class="button is-danger is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel">
+        </div>  
+      </fieldset>
+    </form>
+  </div>
+
+  <fieldset class="container is-fluid containerflex borders">
     <legend>Visualization</legend>
     <div class="columns columnheight row ">
 
-        <!-- Visualization-EDIT-LIST -->
+        
+        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <!--<legend>Visualization-Edit</legend>-->
+            <ul class="listOfVisuals">
+                <li *ngFor="let visualization of visualizationList; let i = index">
+                    <label class="visualizationLabel" for="visualization_{{visualization.visualizationId}}">
+                        <input type="radio" id="visualization_{{visualization.visualizationId}}" [value]="visualization"
+                            name="visualizationList" [(ngModel)]="selectedVisualization"
+                            (change)="displayVisualization()" />
+                        {{ visualization.visualizationName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
+
+
+<!--  
+<fieldset class="container is-fluid containerflex borders">
+    <legend>Visualization</legend>
+    <div class="columns columnheight row ">
+-->
+        <!-- Visualization-EDIT-LIST 
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Visualization-Edit</legend>
             <ul class="listOfVisuals">
@@ -17,10 +138,10 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
+        </fieldset>-->
         <!-- Visualization-EDIT-LIST -->
 
-        <!-- Curriculum-SELECT-LIST -->
+        <!-- Curriculum-SELECT-LIST 
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend id="CurriculumSelectText">Curriculum-Select</legend>
             <ul>
@@ -35,13 +156,13 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
-        <!-- Curriculum-SELECT-LIST -->
-
+        </fieldset>-->
+        <!-- Curriculum-SELECT-LIST 
+    
     </div>
     <div class="columns row">
-
-        <!-- Visualization-EDIT-BUTTONS -->
+-->
+        <!-- Visualization-EDIT-BUTTONS 
         <div class="column">
             <div class="editbottom">
                 <div class="columns">
@@ -90,8 +211,25 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Visualization-EDIT-BUTTONS -->
 
+         <!-- Primer-SELECT-LIST 
+        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <legend id="PrimerSelectText">Primer-Select</legend>
+            <ul>
+                <button class="button is-small btn-light-gray" (click)="resetPrimerActive()">Clear
+                    Selection</button>
+                <li *ngFor="let primer of primerList; let i = index">
+                    <label class="primerLabel" for="primer_{{primer.primerId}}">
+                        <input type="checkbox" id="primer_{{primer.primerId}}" [value]="primer" [checked]="primer.isActive"
+                            name="primerList" (change)="togglePrimer(primer.primerId)" />
+                        {{ primer.primerName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>-->
+<!-- Primer-SELECT-LIST 
     </div>
 </fieldset>
+-->

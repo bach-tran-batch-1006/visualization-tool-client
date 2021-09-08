@@ -8,7 +8,7 @@ import { Curriculum, CurriculumDTO } from '../models/Curriculum';
 })
 export class CurriculumService {
 
-  apiURL = 'http://3.226.243.38:8081/curriculum/';
+  apiURL = 'http://54.221.159.251:8090/visualization/curriculum';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -24,11 +24,11 @@ export class CurriculumService {
   }
 
   updateCurriculum(id: number, bodyObject: CurriculumDTO): Observable<Curriculum>{
-    return this.httpClient.put<Curriculum>(this.apiURL + id, bodyObject, this.httpOptions);
+    return this.httpClient.put<Curriculum>(this.apiURL +'/'+ id, bodyObject, this.httpOptions);
   }
 
   deleteCurriculum(id: number): Observable<number>{
-    return this.httpClient.delete<number>(this.apiURL + id);
+    return this.httpClient.delete<number>(this.apiURL + '/' + id);
   }
 
 }

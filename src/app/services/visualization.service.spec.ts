@@ -11,7 +11,7 @@ import { Visualization, VisualizationDTO } from '../models/Visualization';
 describe('VisualizationService', () => {
   let service: VisualizationService;
 
-  const apiURL = 'http://3.226.243.38:8081/visualization/';
+  const apiURL = 'http://localhost:8081/visualization/';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -46,7 +46,8 @@ describe('VisualizationService', () => {
         const mockResponseOne: Visualization = {
           visualizationId: 40,
           visualizationName: 'New',
-          curriculumList: []
+          curriculumList: [],
+          primerList:[]
         };
         mockResponse.push(mockResponseOne);
 
@@ -69,7 +70,8 @@ describe('VisualizationService', () => {
         const mockResponse: Visualization = {
           visualizationId: 40,
           visualizationName: 'New',
-          curriculumList: []
+          curriculumList: [],
+          primerList:[]
         };
 
         req.flush(mockResponse);
@@ -82,7 +84,8 @@ describe('VisualizationService', () => {
 
         const mockDTO: VisualizationDTO = {
           title: 'New1',
-          curricula: []
+          curricula: [],
+          primer: []
         };
 
         visualizationService.addVisualization(mockDTO).subscribe(response => {
@@ -97,7 +100,8 @@ describe('VisualizationService', () => {
         const mockResponse: Visualization = {
           visualizationId: 41,
           visualizationName: 'New1',
-          curriculumList: []
+          curriculumList: [],
+          primerList: []
         };
 
         req.flush(mockResponse);
@@ -110,7 +114,8 @@ describe('VisualizationService', () => {
 
         const mockDTO: VisualizationDTO = {
           title: 'New-changed',
-          curricula: []
+          curricula: [],
+          primer:[]
         };
 
         visualizationService.updateVisualization(41, mockDTO).subscribe(response => {
@@ -125,7 +130,8 @@ describe('VisualizationService', () => {
         const mockResponse: Visualization = {
           visualizationId: 41,
           visualizationName: 'New-changed',
-          curriculumList: []
+          curriculumList: [],
+          primerList: []
         };
 
         req.flush(mockResponse);

@@ -43,7 +43,7 @@ export class UserService {
 
   //MAKE SURE MATCHING ENDPOINTS FROM BACKEND
   updateUser(id: number, email:string, pass:string, first:string, last:string): Observable<User> {
-    return this.httpClient.post<User>(this.apiURL + '/update',JSON.stringify({ id, email, pass, first, last }), this.httpOptions);
+    return this.httpClient.patch<User>(this.apiURL + '/update',JSON.stringify({ id, email, pass, first, last }), this.httpOptions);
   }
 
   // deleteCategory(id: number): Observable<number>{

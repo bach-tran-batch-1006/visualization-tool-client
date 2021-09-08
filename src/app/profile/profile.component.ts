@@ -30,6 +30,8 @@ export class ProfileComponent implements OnInit {
         alert('User Successfully Updated')
        },
         (error) => this.error = true);
+        this.router.navigateByUrl('/index');
+
 
   }
 }
@@ -45,6 +47,7 @@ export class ProfileComponent implements OnInit {
         this.last = data.last
       },
         (error) => this.error = true);
+
   }
 
 

@@ -8,7 +8,7 @@ import { Project, ProjectDTO } from '../models/Project';
 })
 export class ProjectSaveService {
 
-  apiURL = 'http://localhost:8081/project/';
+  apiURL = 'http://localhost:8081/project';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

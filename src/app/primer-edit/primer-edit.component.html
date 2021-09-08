@@ -34,6 +34,7 @@
           </div>
         </div>
         <legend>Or, you can make a new skill.</legend> 
+        <!--<app-skill-category-edit></app-skill-category-edit>-->
       </fieldset>
     </form>
   </div>
@@ -63,6 +64,7 @@
                 <div class="column">
                   --Skill List--
           </div>
+          <!--<app-skill-category-edit></app-skill-category-edit>-->
         <div class="column is-narrow">
         <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()" value="New Primer"> 
           </div>
@@ -102,7 +104,8 @@
   
   
     <!-- SKILL HTML FLOW -->
-  <div>
+    <app-skill-category-edit></app-skill-category-edit>
+  <!--<div>
     <form>
       <fieldset *ngIf="visibleSkills" class="infobox">
         <label for="name">
@@ -146,7 +149,7 @@
           <div class="column">
             --Skill List--
         </div>
-        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+         <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> 
         <div class="column is-narrow">
         <button type="button" class="button is-info is-outlined is-rounded" (click)="showMSkills2()">OK</button>
           </div>
@@ -163,7 +166,7 @@
         <label for="name">
           <legend>What skill do you want to delete?</legend>
         </label>
-        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+         <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> 
   
         <div class="columns">
           <div class="column">
@@ -187,7 +190,7 @@
        </div>
       </fieldset>
     </form>
-  </div>
+  </div>-->
 
 
 <!-- <fieldset class="container is-fluid containerflex borders">

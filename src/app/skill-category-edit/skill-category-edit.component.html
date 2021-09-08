@@ -29,6 +29,17 @@
         <div class="columns">
           <div class="column">
             --Category List--
+            <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+              <ul class="showCategoryList">
+                  <li *ngFor="let category of categoryList; let i = index">
+                      <label class="categoryLabel" for="category_{{category.categoryId}}">
+                          <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
+                              [(ngModel)]="selectedCategory" (change)="displayCategory()" />
+                          {{ category.categoryName }}
+                      </label>
+                  </li>
+              </ul>
+          </fieldset>
         </div>
         <div class="column is-narrow">
         <!--<input type="checkbox" id="box" name="primary key" value="true">dummy-->
@@ -50,6 +61,17 @@
         <div class="columns">
           <div class="column">
             --Skill List--
+            <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+              <ul class="showSkillList">
+                  <li *ngFor="let skill of skillList; let i = index">
+                      <label class="skillLabel" for="skill_{{skill.skillId}}">
+                          <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                              [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                          {{ skill.skillName }}
+                      </label>
+                  </li>
+              </ul>
+          </fieldset>
         </div>
         <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
         <div class="column is-narrow">
@@ -65,10 +87,21 @@
         <div class="columns">
             <div class="column">
             --Category List--
+            <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+              <ul class="showCategoryList">
+                  <li *ngFor="let category of categoryList; let i = index">
+                      <label class="categoryLabel" for="category_{{category.categoryId}}">
+                          <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
+                              [(ngModel)]="selectedCategory" (change)="displayCategory()" />
+                          {{ category.categoryName }}
+                      </label>
+                  </li>
+              </ul>
+          </fieldset>
           </div>
-        <div class="column is-narrow"> 
+        <!--<div class="column is-narrow"> 
         <input type="checkbox" id="box" name="primary key" value="true">dummy
-        </div>
+        </div>-->
         <div class="column is-narrow">
         <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()" (click)="updateSkill()" value="Add New Skill"> 
           </div>
@@ -89,6 +122,17 @@
         <div class="columns">
           <div class="column">
             --Skill List--
+            <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+              <ul class="showSkillList">
+                  <li *ngFor="let skill of skillList; let i = index">
+                      <label class="skillLabel" for="skill_{{skill.skillId}}">
+                          <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                              [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                          {{ skill.skillName }}
+                      </label>
+                  </li>
+              </ul>
+          </fieldset>
           </div>
         <div class="column is-narrow">
         <button type="button" class="button is-info is-outlined is-rounded" (click)="showDSkills2()">OK</button>
@@ -135,7 +179,7 @@
     <div class="columns columnheight row ">-->
 
         <!-- Skill-Edit-LIST -->
-        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+        <!--<fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Skill-Edit</legend>
             <ul class="showSkillList">
                 <li *ngFor="let skill of skillList; let i = index">
@@ -146,11 +190,11 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
+        </fieldset>-->
         <!-- Skill-Edit-LIST -->
 
-        <!-- Category-Edit-LIST 
-        <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+        <!-- Category-Edit-LIST -->
+        <!--<fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Category-Edit</legend>
             <ul class="showCategoryList">
                 <li *ngFor="let category of categoryList; let i = index">

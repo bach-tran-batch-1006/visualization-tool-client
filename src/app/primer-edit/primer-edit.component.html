@@ -27,7 +27,18 @@
            
         <div class="columns">
           <div class="column">
-            --Skill List--
+            <!-- --Skill List-- -->
+            <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+              <ul class="showSkillList">
+                  <li *ngFor="let skill of skillList; let i = index">
+                      <label class="skillLabel" for="skill_{{skill.skillId}}">
+                          <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                              [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                          {{ skill.skillName }}
+                      </label>
+                  </li>
+              </ul>
+          </fieldset>
         </div>
        <div class="column is-narrow">
         <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="hidePrimer()" value="Add Primer">
@@ -104,8 +115,7 @@
   
   
     <!-- SKILL HTML FLOW -->
-    <app-skill-category-edit></app-skill-category-edit>
-  <!--<div>
+  <div>
     <form>
       <fieldset *ngIf="visibleSkills" class="infobox">
         <label for="name">
@@ -190,7 +200,7 @@
        </div>
       </fieldset>
     </form>
-  </div>-->
+  </div>
 
 
 <!-- <fieldset class="container is-fluid containerflex borders">

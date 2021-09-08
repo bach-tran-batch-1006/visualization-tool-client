@@ -9,7 +9,7 @@ import { Primer, PrimerDTO} from '../models/Primer';
   providedIn: 'root'
 })
 export class PrimerService {
-  apiURL = 'http://54.221.159.251:8090/primer/';
+  apiURL = 'http://54.221.159.251:8090/visualization/primer/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' 
     // 'Access-Control-Allow-Origin' : '*'

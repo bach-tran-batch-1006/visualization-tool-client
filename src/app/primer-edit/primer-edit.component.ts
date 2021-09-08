@@ -28,6 +28,16 @@ export class PrimerEditComponent implements OnInit {
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
 
+  showAddSkill = false;
+  showUpdateSkill = false;
+
+  skillNameAdd: string = " ";
+  skillNameUpdate: string;
+
+  selectedSkill: Skill;
+
+  showSkillDeleteFail = false;
+
   visibleVisual:boolean =false;
   visibleVisual2:boolean =false;
   visibleMVisual:boolean=false;
@@ -169,22 +179,11 @@ hidePrimer() {
   
   }   
 
+// ********** PRIMER METHODS **********
+
   getAllPrimer(): void {
     this.primerService.getAllPrimers().subscribe((response) => {
       this.primerList = response;
-    });
-  }
-
-
-
-  getAllSkills(): void {
-    this.skillService.getSkills().subscribe((response) => {
-      this.skillList = response;
-      this.skillList.sort((a, b) => (a.skillName.toLowerCase() > b.skillName.toLowerCase()) ? 1 : -1);
-      const listSize = this.skillList.length;
-      for (let index = 0; index < listSize; index++) {
-        this.skillList[index].isActive = false;
-      }
     });
   }
 
@@ -272,6 +271,42 @@ hidePrimer() {
 
   }
 
+  toggleAddPrimer(): void {
+    this.showPrimerDeleteFail = false;
+    this.showUpdatePrimer = false;
+    this.showAddPrimer = !this.showAddPrimer;
+
+  }
+
+  toggleUpdatePrimer(): void {
+    this.showPrimerDeleteFail = false;
+    this.showAddPrimer = false;
+    this.showUpdatePrimer = !this.showUpdatePrimer;
+  }
+
+  // ********** SKILL METHODS **********
+
+  getAllSkills(): void {
+    this.skillService.getSkills().subscribe((response) => {
+      this.skillList = response;
+      this.skillList.sort((a, b) => (a.skillName.toLowerCase() > b.skillName.toLowerCase()) ? 1 : -1);
+      const listSize = this.skillList.length;
+      for (let index = 0; index < listSize; index++) {
+        this.skillList[index].isActive = false;
+      }
+    });
+  }
+
+
+  displaySkill(): void {
+    this.skillNameUpdate = this.selectedSkill.skillName;
+    // const selectedCategoryRadio = document.getElementById(`category_${this.selectedSkill.category.categoryId}`) as HTMLInputElement;
+    // selectedCategoryRadio.checked = true;
+    this.showAddSkill = false;
+    this.showUpdateSkill = true;
+    this.showSkillDeleteFail = false;
+  }
+
   toggleSkill(currentSkillId: number): void {
     const listSize = this.skillList.length;
     for (let index = 0; index < listSize; index++) {
@@ -291,20 +326,6 @@ hidePrimer() {
       skill.isActive = false;
     }
     this.selectedSkillList = [];
-  }
-
-
-  toggleAddPrimer(): void {
-    this.showPrimerDeleteFail = false;
-    this.showUpdatePrimer = false;
-    this.showAddPrimer = !this.showAddPrimer;
-
-  }
-
-  toggleUpdatePrimer(): void {
-    this.showPrimerDeleteFail = false;
-    this.showAddPrimer = false;
-    this.showUpdatePrimer = !this.showUpdatePrimer;
   }
 
 

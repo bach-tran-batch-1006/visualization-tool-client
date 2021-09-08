@@ -30,6 +30,17 @@
       <div class="columns">
         <div class="column">
           --Skill List--
+          <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <ul class="showSkillList">
+                <li *ngFor="let skill of skillList; let i = index">
+                    <label class="skillLabel" for="skill_{{skill.skillId}}">
+                        <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                            [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                        {{ skill.skillName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
         </div>
         <div class="column is-narrow">
           <button type="button" id="submit" class="button is-info is-outlined is-rounded" (click)="addProject()" (click)="hideProject()">Add
@@ -65,6 +76,17 @@
       <div class="columns">
         <div class="column">
           --Skill List--
+          <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <ul class="showSkillList">
+                <li *ngFor="let skill of skillList; let i = index">
+                    <label class="skillLabel" for="skill_{{skill.skillId}}">
+                        <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                            [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                        {{ skill.skillName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
         </div>
         <div class="column is-narrow">
           <button type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()">Submit</button>
@@ -137,6 +159,17 @@
       <div class="columns">
         <div class="column">
           --Category List--
+          <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <ul class="showCategoryList">
+                <li *ngFor="let category of categoryList; let i = index">
+                    <label class="categoryLabel" for="category_{{category.categoryId}}">
+                        <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
+                            [(ngModel)]="selectedCategory" (change)="displayCategory()" />
+                        {{ category.categoryName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
         </div>
         <div class="column is-narrow">
           <input type="checkbox" id="box" name="primary key" value="true">dummy
@@ -175,6 +208,17 @@
       <div class="columns">
         <div class="column">
           --Category List--
+          <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <ul class="showCategoryList">
+                <li *ngFor="let category of categoryList; let i = index">
+                    <label class="categoryLabel" for="category_{{category.categoryId}}">
+                        <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
+                            [(ngModel)]="selectedCategory" (change)="displayCategory()" />
+                        {{ category.categoryName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
         </div>
         <div class="column is-narrow">
           <input type="checkbox" id="box" name="primary key" value="true">dummy

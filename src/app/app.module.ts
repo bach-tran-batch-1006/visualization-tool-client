@@ -13,6 +13,15 @@ import { CategoryComponent } from './category/category.component';
 import { CurriculumEditComponent } from './curriculum-edit/curriculum-edit.component';
 import { SkillCategoryEditComponent } from './skill-category-edit/skill-category-edit.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { IndexComponent } from './index/index.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PrimerComponent } from './primer/primer.component';
+import { PrimerEditComponent } from './primer-edit/primer-edit.component';
+import { AddProjectToCurriculaComponent } from './add-project-to-curricula/add-project-to-curricula.component';
+import { ProjectComponent } from './project/project.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +33,17 @@ import { NavbarComponent } from './navbar/navbar.component';
     CategoryComponent,
     CurriculumEditComponent,
     SkillCategoryEditComponent,
-    NavbarComponent
+    NavbarComponent,
+    IndexComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    PrimerComponent,
+    PrimerEditComponent,
+    AddProjectToCurriculaComponent,
+    ProjectComponent,
+    ProjectEditComponent
+
   ],
   imports: [
     BrowserModule,

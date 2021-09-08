@@ -3,9 +3,12 @@
 export interface Project{
     projectId?: number;
     projectName: string;
-    isActive: boolean;
+    // projectDesc?:string;
+    // isActive: boolean;
 }
 
 export interface ProjectDTO {
-    name: string;
+    // projectId?: any;
+    projectName: string;
+    // projectDesc?:string;
 }

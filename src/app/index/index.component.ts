@@ -386,7 +386,6 @@ showPrimers(){
   this.visibleDSkills=false;
   this.visibleDSkills2=false;
 
-  this.visiblePrimers =false;
   this.visiblePrimers2 =false;
   this.visibleMPrimers=false;
   this.visibleMPrimers2=false;

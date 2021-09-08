@@ -24,11 +24,11 @@ export class CurriculumService {
   }
 
   updateCurriculum(id: number, bodyObject: CurriculumDTO): Observable<Curriculum>{
-    return this.httpClient.put<Curriculum>(this.apiURL + id, bodyObject, this.httpOptions);
+    return this.httpClient.put<Curriculum>(this.apiURL +'/'+ id, bodyObject, this.httpOptions);
   }
 
   deleteCurriculum(id: number): Observable<number>{
-    return this.httpClient.delete<number>(this.apiURL + id);
+    return this.httpClient.delete<number>(this.apiURL + '/' + id);
   }
 
 }

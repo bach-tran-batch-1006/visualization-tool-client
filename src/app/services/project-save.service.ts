@@ -18,18 +18,18 @@ export class ProjectSaveService {
     return this.httpClient.get<Project[]>(`${this.apiURL}`);
   }
 
-  addProject(bodyObject: ProjectDTO): Observable<Project>{
-    return this.httpClient.post<Project>(this.apiURL, bodyObject, this.httpOptions);
-  }
+  // addProject(bodyObject: ProjectDTO): Observable<Project>{
+  //   return this.httpClient.post<Project>(this.apiURL, bodyObject, this.httpOptions);
+  // }
 
-  register(projectName:string, projectId?:number ): Observable<Project> {
+  save(projectName:string ): Observable<Project> {
     return this.httpClient.post<Project>(this.apiURL + 
-      '/project', JSON.stringify({projectId,projectName}), this.httpOptions);
+      '/project', JSON.stringify({projectName}), this.httpOptions);
   }
 
-  updateProject(id: number, bodyObject: ProjectDTO): Observable<Project>{
-    return this.httpClient.put<Project>(this.apiURL + id, bodyObject, this.httpOptions);
-  }
+  // updateProject(id: number, bodyObject: ProjectDTO): Observable<Project>{
+  //   return this.httpClient.put<Project>(this.apiURL + id, bodyObject, this.httpOptions);
+  // }
 
   deleteProject(id: number): Observable<number>{
     return this.httpClient.delete<number>(this.apiURL + id);

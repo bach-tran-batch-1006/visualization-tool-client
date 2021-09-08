@@ -3,7 +3,8 @@ import { Category, CategoryDTO } from '../models/Category';
 import { Skill, SkillDTO } from '../models/Skill';
 import { CategoryService } from '../services/category.service';
 import { SkillService } from '../services/skill.service';
-
+import {  Project, ProjectDTO} from "../models/Project";
+import { ProjectSaveService} from"../services/project-save.service";
 @Component({
   selector: 'app-project-edit',
   templateUrl: './project-edit.component.html',
@@ -70,7 +71,7 @@ export class ProjectEditComponent implements OnInit {
 
 
 
-  constructor(private skillService: SkillService, private categoryService: CategoryService) { }
+  constructor(private skillService: SkillService, private categoryService: CategoryService, private projectSaveService:ProjectSaveService) { }
 
   ngOnInit(): void {
     this.visualReset();
@@ -257,7 +258,8 @@ getAllCategories(): void {
 addCategory(): Category {
   const catDTO: CategoryDTO = {
     categoryName: this.categoryNameAdd,
-    categoryDescription: this.categoryDescriptionAdd
+    categoryDescription: this.categoryDescriptionAdd,
+    userid: Number(localStorage.getItem('userId'))
   };
   console.log(catDTO);
   let newCat;
@@ -268,5 +270,26 @@ addCategory(): Category {
   this.categoryName = '';
   this.categoryDescription = '';
   return newCat;
+}
+
+projectName:string;
+projectDesc:string;
+projectId:number;
+addProject():Project{
+  const proDTO: ProjectDTO = {
+    projectName: this.projectName,
+    // projectDesc: this.projectDesc
+    // projectId:this.projectId
+  };
+  console.log(proDTO);
+  let newPro;
+  this.projectSaveService.save(this.projectName).subscribe((response) => {
+    newPro = response;
+    this.addProject;
+  });
+  this.projectName = '';
+  this.projectDesc = '';
+  // this.projectId
+  return newPro;
 }
 }

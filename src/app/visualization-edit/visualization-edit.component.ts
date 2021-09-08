@@ -42,12 +42,13 @@ export class VisualizationEditComponent implements OnInit {
    selectedPrimerList: Primer[] = [];
 
 
-  constructor(private visualizationService: VisualizationService, private curriculumService: CurriculumService) { }
+  constructor(private visualizationService: VisualizationService, private curriculumService: CurriculumService, private primerService: PrimerService) { }
 
   ngOnInit(): void {
     this.getAllVisualization();
     this.getAllCurriculum();
     //this.visualReset();
+    this.getAllPrimer();
   }
 
 // ********** VISUAL MANIPULATORS **********
@@ -114,6 +115,16 @@ export class VisualizationEditComponent implements OnInit {
       const listSize = this.curriculumList.length;
       for (let index = 0; index < listSize; index++) {
         this.curriculumList[index].isActive = false;
+      }
+    });
+  }
+  getAllPrimer(): void {
+    this.primerService.getAllPrimers().subscribe((response) => {
+      this.primerList = response;
+      this.primerList.sort((a, b) => (a.primerName.toLowerCase() > b.primerName.toLowerCase()) ? 1 : -1);
+      const listSize = this.primerList.length;
+      for (let index = 0; index < listSize; index++) {
+        this.primerList[index].isActive = false;
       }
     });
   }
@@ -206,6 +217,19 @@ export class VisualizationEditComponent implements OnInit {
       }
     }
   }
+  togglePrimer(currentPrimerId: number): void {
+    const listSize = this.primerList.length;
+    for (let index = 0; index < listSize; index++) {
+      if (this.primerList[index].primerId === currentPrimerId) {
+        if (!this.primerList[index].isActive) {
+          this.selectedPrimerList.push(this.primerList[index]);
+        } else {
+          this.selectedPrimerList = this.selectedPrimerList.filter((p) => p.primerId !== currentPrimerId);
+        }
+        this.primerList[index].isActive = !this.primerList[index].isActive;
+      }
+    }
+  }
   resetCurriculumActive(): void {
     for (const curriculum of this.curriculumList) {
       curriculum.isActive = false;
@@ -213,12 +237,12 @@ export class VisualizationEditComponent implements OnInit {
     this.selectedCurriculumList = [];
   }
 
-  // resetPrimerActive(): void {
-  //   for (const primer of this.primerList) {
-  //     primer.isActive = false;
-  //   }
-  //   this.selectedPrimerList = [];
-  // }
+   resetPrimerActive(): void {
+     for (const primer of this.primerList) {
+       primer.isActive = false;
+     }
+     this.selectedPrimerList = [];
+   }
 
   toggleAddVisualization(): void {
     this.showVisualizationDeleteFail = false;

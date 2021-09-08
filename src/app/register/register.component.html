@@ -1,0 +1,94 @@
+<app-navbar></app-navbar>
+<div class="columns is-mobile is-centered">
+  <form action="" method="post" class="column is-narrow">
+    <div class="field">
+      <label class="label">First Name</label>
+      <div class="control">
+        <input type="text" class="input add-input" placeholder="First Name" aria-label="First-Name"
+          aria-describedby="basic-addon1" [(ngModel)]="first"[ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Last Name</label>
+      <div class="control">
+        <input type="text" class="input add-input" placeholder="Last Name" aria-label="Last-Name"
+          aria-describedby="basic-addon1" [(ngModel)]="last"[ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input type="text" class="form-control input add-input" placeholder="E-Mail" aria-label="email"
+          aria-describedby="basic-addon1" [(ngModel)]="email"[ngModelOptions]="{standalone: true}">
+      </div>
+      <p class="help is-danger" style="display: none;">This email is invalid</p>
+    </div>
+
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input type="password" class="form-control input add-input" placeholder="Password" aria-label="Password"
+          aria-describedby="basic-addon1" [(ngModel)]="pass"[ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Confirm Password</label>
+      <div class="control">
+        <input type="password" class="form-control input add-input" placeholder="Confirm Password" aria-label="Confirm"
+          aria-describedby="basic-addon1">
+      </div>
+      <p class="help is-success" style="display: none;">Password Matches</p>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox">
+          I agree to the <a href="#">terms and conditions</a>
+        </label>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-primary is-outlined is-rounded is-inverted" (click)="signUp()">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-danger is-outlined is-rounded">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+<!-- <div class="container login_form">
+    <form action="" method="post">
+        <input type="text" class="form-control input add-input" placeholder="First Name" aria-label="First-Name"
+            aria-describedby="basic-addon1">
+        <br>
+        <input type="text" class="form-control input add-input" placeholder="Last Name" aria-label="Last-Name"
+            aria-describedby="basic-addon1">
+        <br>
+
+        <input type="text" class="form-control input add-input" placeholder="E-Mail" aria-label="email"
+            aria-describedby="basic-addon1">
+        <br>
+
+        <input type="password" class="form-control input add-input" placeholder="Password" aria-label="Password"
+            aria-describedby="basic-addon1">
+        <br>
+
+        <input type="password" class="form-control input add-input" placeholder="Confirm Password"
+            aria-label="Confirm" aria-describedby="basic-addon1">
+        <br>
+        <button type="button" class="button" id="register">Submit</button>
+
+    </form>
+</div> -->

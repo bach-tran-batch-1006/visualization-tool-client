@@ -1,0 +1,242 @@
+<div>
+  <form>
+    <fieldset class="infobox">
+      <label for="name">
+        <legend>Please enter a name for your Project.</legend>
+      </label>
+
+      <div class="columns">
+        <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="button is-info is-rounded" (click)="showProject2()">OK</button>
+        </div>
+      </div>
+      <label for="show">
+        <legend>Or, select one of the options below</legend>
+      </label>
+
+      <div class="buttons">
+        <button type="button" class="button is-warning is-rounded" (click)="showMProject()">Modify Project</button>
+        <button type="button" class="button is-danger is-rounded" (click)="showDProject()">Delete Project</button>
+      </div>
+    </fieldset>
+
+
+    <fieldset *ngIf="visibleProject2" id="hideMe" class="infobox">
+      <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
+
+      <div class="columns">
+        <div class="column">
+          --Skill List--
+        </div>
+        <div class="column is-narrow">
+          <button type="button" id="submit" class="button is-link is-rounded" (click)="hideProject()">Add
+            Project</button>
+        </div>
+      </div>
+      <legend>Or, you can make a new skill.</legend>
+    </fieldset>
+
+  </form>
+</div>
+<div>
+  <form>
+    <fieldset *ngIf="visibleMProject" class="infobox">
+      <label for="name">
+        <legend>What project do you want to Modify?</legend>
+      </label>
+
+      <div class="columns">
+        <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="button is-link is-rounded" (click)="showDProject2()">OK</button>
+        </div>
+      </div>
+    </fieldset>
+
+
+    <fieldset *ngIf="visibleMProject2" id="hideMe" class="infobox">
+      <legend> Would you like to associate your new Project with any of these Skills?</legend><br>
+
+      <div class="columns">
+        <div class="column">
+          --Skill List--
+        </div>
+        <div class="column is-narrow">
+          <button type="submit" id="submit" class="button is-link is-rounded" (click)="visualReset()">submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div>
+  <form>
+    <fieldset *ngIf="visibleDProject" class="infobox">
+      <label for="name">
+        <legend>What project do you want to Delete?</legend>
+      </label>
+
+      <div class="columns">
+        <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="button is-link is-rounded" (click)="showDProject2()">OK</button>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset *ngIf="visibleDProject2" id="hideMe" class="infobox">
+      <strong><label for="name">
+          <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+
+      <div class="buttons">
+        <button type="button" class="button is-danger is-rounded" id="delete">Yes, delete</button>
+        <button type="button" class="button is-warning is-rounded" id="cancel" (click)="visualReset()">Cancel</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div>
+  <!-- SKILL/CATEGORY HTML FLOW   -->
+  <form>
+    <fieldset *ngIf="visibleSkills" class="infobox">
+      <label for="name">
+        <legend>Please enter a name for your Skill </legend>
+      </label>
+
+      <div class="columns">
+        <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="button is-link is-rounded" (click)="showSkills2()">OK</button>
+        </div>
+      </div>
+      <label for="show">
+        <legend>Or, select one of the options below</legend>
+      </label>
+
+      <div class="buttons">
+        <button type="button" class="button is-warning is-rounded" (click)="showMSkills()">Modify Skill</button>
+        <button type="button" class="button is-danger is-rounded" (click)="showDSkills()">Delete Skill</button>
+      </div>
+    </fieldset>
+
+
+    <fieldset *ngIf="visibleSkills2" id="hideMe" class="infobox">
+      <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
+
+      <div class="columns">
+        <div class="column">
+          --Category List--
+        </div>
+        <div class="column is-narrow">
+          <input type="checkbox" id="box" name="primary key" value="true">dummy
+        </div>
+        <div class="column is-narrow">
+          <button type="button" id="submit" class="button is-link is-rounded" (click)="visualReset()"
+            (click)="addSkill()">Add Skill</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div>
+  <form>
+    <fieldset *ngIf="visibleMSkills" class="infobox">
+      <label for="name">
+        <legend>What skill do you want to modify? </legend>
+      </label>
+
+      <div class="columns">
+        <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="button is-link is-rounded" (click)="showMSkills2()">OK</button>
+        </div>
+      </div>
+    </fieldset>
+
+
+    <fieldset *ngIf="visibleMSkills2" id="hideMe" class="infobox">
+      <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
+
+      <div class="columns">
+        <div class="column">
+          --Category List--
+        </div>
+        <div class="column is-narrow">
+          <input type="checkbox" id="box" name="primary key" value="true">dummy
+        </div>
+        <div class="column is-narrow">
+          <button type="button" id="submit" class="button is-link is-rounded" (click)="visualReset()"
+            (click)="updateSkill()">Add New Skill</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div>
+  <form>
+    <fieldset *ngIf="visibleDSkills" class="infobox">
+      <label for="name">
+        <legend>What skill do you want to delete?</legend>
+      </label>
+
+      <div class="columns">
+        <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" class="button is-link is-rounded" (click)="showDSkills2()">OK</button>
+        </div>
+      </div>
+    </fieldset>
+
+
+    <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
+      <strong><label for="name">
+          <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+      <div class="buttons">
+        <button type="button" class="button is-danger is-rounded" id="delete" (click)="deleteSkill()">Yes,
+          delete</button>
+        <button type="button" class="button is-warning is-rounded" id="cancel" (click)="visualReset()">Cancel</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+
+<div>
+  <form>
+    <fieldset *ngIf="visibleCatego" class="infobox">
+      <label for="name">
+        <legend>Please enter a name for a new Category </legend>
+      </label>
+
+      <div class="columns">
+        <div class="column">
+          <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+          <button type="button" id="submit" class="button is-link is-rounded" (click)="addCategory()">Add
+            Category</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

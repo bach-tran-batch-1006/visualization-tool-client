@@ -1,8 +1,138 @@
-<app-navbar></app-navbar>
+<div>
+    <form>
+      <fieldset class="infobox">
+        <label for="name">
+          <legend>Please enter a name for your Skill </legend>
+        </label>
+  
+        <div class="columns">
+           <div class="column">
+        <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required [(ngModel)]="skillNameAdd" name="skillNameAdd">
+       </div>
+       <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showSkills2()">OK</button>
+        </div>
+      </div>
+        <label for="show">
+          <legend>Or, select one of the options below</legend>
+        </label>
+  
+        <div class="buttons">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMSkills()">Modify Skill</button>
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDSkills()">Delete Skill</button>
+        </div>
+      </fieldset>
+  
+      <fieldset *ngIf="visibleSkills2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
+        
+        <div class="columns">
+          <div class="column">
+            --Category List--
+        </div>
+        <div class="column is-narrow">
+        <!--<input type="checkbox" id="box" name="primary key" value="true">dummy-->
+       </div>
+       <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="addSkill()" (click)="visualReset()" value="Add Skill"> 
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMSkills" class="infobox">
+        <label for="name">
+          <legend>What skill do you want to modify? </legend>
+        </label>
+        <div class="columns">
+          <div class="column">
+            --Skill List--
+        </div>
+        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+        <div class="column is-narrow">
+        <button type="button" class="utton is-info is-outlined is-rounded" (click)="showMSkills2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+  
+      <fieldset *ngIf="visibleMSkills2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Skill with any of these Categories?</legend><br>
+  
+        <div class="columns">
+            <div class="column">
+            --Category List--
+          </div>
+        <div class="column is-narrow"> 
+        <input type="checkbox" id="box" name="primary key" value="true">dummy
+        </div>
+        <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()" (click)="updateSkill()" value="Add New Skill"> 
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDSkills" class="infobox">
+        <label for="name">
+          <legend>What skill do you want to delete?</legend>
+        </label>
+        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+  
+        <div class="columns">
+          <div class="column">
+            --Skill List--
+          </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showDSkills2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+  
+      <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
+        <strong><label for="name">
+          <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+  
+        <div class="buttons">
+        <input type="submit" class="button is-danger is-outlined is-rounded" id="delete" value="Yes, delete" (click)="deleteSkill()">
+        <input type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel">
+       </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleCatego" class="infobox"> 
+        <label for="name">
+          <legend>Please enter a name for a new Category </legend>
+        </label>
+        <div class="columns">
+          <div class="column">
+        <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required [(ngModel)]="categoryNameAdd" name="categoryNameAdd">
+      </div>
+      <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded"  value="Add Category" (click)="addCategory()" > 
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
 
+<!--  
 <fieldset class="container is-fluid containerflex borders">
     <legend>Skill-Category</legend>
-    <div class="columns columnheight row ">
+    <div class="columns columnheight row ">-->
 
         <!-- Skill-Edit-LIST -->
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
@@ -19,7 +149,7 @@
         </fieldset>
         <!-- Skill-Edit-LIST -->
 
-        <!-- Category-Edit-LIST -->
+        <!-- Category-Edit-LIST 
         <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <legend>Category-Edit</legend>
             <ul class="showCategoryList">
@@ -31,13 +161,13 @@
                     </label>
                 </li>
             </ul>
-        </fieldset>
-        <!-- Category-Edit-LIST -->
+        </fieldset>-->
+        <!-- Category-Edit-LIST 
 
     </div>
-    <div class="row columns">
+    <div class="row columns">-->
 
-        <!-- SKILL EDIT BUTTONS -->
+        <!-- SKILL EDIT BUTTONS 
         <div class="column">
             <div class="editbottom">
                 Skill Edit
@@ -67,10 +197,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- SKILL EDIT BUTTONS -->
 
-        <!-- CATEGORY EDIT BUTTONS -->
+        <!-- CATEGORY EDIT BUTTONS 
         <div class="column">
             <div class="editbottom">
                 Category Edit
@@ -100,8 +230,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- CATEGORY EDIT BUTTONS -->
+        </div>-->
+        <!-- CATEGORY EDIT BUTTONS 
 
     </div>
-</fieldset>
+</fieldset>-->

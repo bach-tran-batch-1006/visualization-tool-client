@@ -10,6 +10,7 @@ import { Visualization } from '../models/Visualization';
 import { Skill } from '../models/Skill';
 import { Category } from '../models/Category';
 import { Curriculum } from '../models/Curriculum';
+import { Primer } from '../models/Primer';
 
 describe('VisualizationComponent', () => {
   let component: VisualizationComponent;
@@ -43,10 +44,13 @@ describe('VisualizationComponent', () => {
   };
   mockCurriculumList.push(mockCurriculum);
 
+  const mockPrimerList: Primer[] = [];
+
   const mockVisualization: Visualization = {
     visualizationId: 1,
     visualizationName: 'Mock Visualization',
-    curriculumList: mockCurriculumList
+    curriculumList: mockCurriculumList,
+    primerList: mockPrimerList
   };
 
   beforeEach(async () => {

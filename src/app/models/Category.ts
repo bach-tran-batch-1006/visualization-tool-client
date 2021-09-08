@@ -8,4 +8,5 @@ export interface Category {
 export interface CategoryDTO {
     categoryName: string;
     categoryDescription: string;
+    userid: Number;
 }

@@ -8,7 +8,7 @@ import { Skill, SkillDTO } from '../models/Skill';
 })
 export class SkillService {
 
-  apiURL = 'http://54.221.159.251:8090/visualization-tool';
+  apiURL = 'http://54.221.159.251:8090/skill';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -16,19 +16,23 @@ export class SkillService {
   constructor(private httpClient: HttpClient) { }
 
   getSkills(): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(this.apiURL + '/allSkills');
+    if(Number(localStorage.getItem('userId')) === 0 ){
+      return this.httpClient.get<Skill[]>(this.apiURL + '/user/0');
+    }else{
+      return this.httpClient.get<Skill[]>(this.apiURL + '/user/' + localStorage.getItem('userId'));
+    }
   }
 
   addSkill(bodyObject: SkillDTO): Observable<Skill> {
-    return this.httpClient.post<Skill>(this.apiURL + '/skill', bodyObject, this.httpOptions);
+    return this.httpClient.post<Skill>(this.apiURL + '/add', bodyObject, this.httpOptions);
   }
 
   updateSkill(id: number, bodyObject: SkillDTO): Observable<Skill> {
-    return this.httpClient.put<Skill>(this.apiURL + '/skill/' + id, bodyObject, this.httpOptions);
+    return this.httpClient.put<Skill>(this.apiURL + '/' + id, bodyObject, this.httpOptions);
   }
 
   deleteSkill(id: number): Observable<number> {
-    return this.httpClient.delete<number>(this.apiURL + '/skill/' + id);
+    return this.httpClient.delete<number>(this.apiURL + '/' + id);
   }
 
 }

@@ -6,7 +6,7 @@ import { Category } from '../models/Category';
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
-  styleUrls: ['./skill.component.css']
+  //styleUrls: ['./skill.component.css']
 })
 export class SkillComponent implements OnChanges {
 
@@ -20,7 +20,8 @@ export class SkillComponent implements OnChanges {
   skillList: Skill[] = [];
 
   constructor() { }
-
+  
+  //Colors To Correct Category
   ngOnChanges(): void {
     if (this.activeSkillList.length > 0) {
       this.highlightSkills();
@@ -33,6 +34,7 @@ export class SkillComponent implements OnChanges {
     }
   }
 
+  //Selects Current SKill
   highlightSkills(): void {
     const listLength = this.currentSkillList.length;
     for (let i = 0; i < listLength; i++) {

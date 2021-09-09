@@ -1,61 +1,10 @@
-.brand-logo {
+ .brand-logo {
     max-width: 160px;
     width: auto;
     height: auto;
     object-fit: contain;
     margin-top: 5px;
+    margin-bottom: 10px;
 }
 
-ul {
-    padding-bottom: 0;
-}
 
-li, a {
-    color: #F26925;
-    font-family: Futura-Bold, sans-serif;
-}
-
-.active-link {
-    border-bottom: solid 2px #474C55;
-    border-radius: 2px;
-    background-color:  #f2f2f2;
-}
-
-.navbar-link {
-    padding-right: 1.2rem;
-}
-
-.navbar-link::after {
-    border-color: transparent;
-}
-
-@media only screen and (max-width: 1024px) {
-    li {
-        font-size: .85rem;
-        padding: 3px;
-    }
-    .brand-logo {
-        max-width: 160px;
-    }
-    .navbar-menu {
-        background-color: white;
-        box-shadow: 0 0 0 0;
-        padding: 0;
-    }
-    ul {
-        padding: 0;
-    }
-    nav {
-        margin-bottom: -1.1rem;
-    }
-}
-
-@media only screen and (max-width: 415px) {
-    li, a {
-        font-size: .75rem;
-    }
-    .brand-logo {
-        max-width: 130px;
-        margin-top: 10px;
-    }
-}

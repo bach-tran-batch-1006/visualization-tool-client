@@ -1,0 +1,297 @@
+<div>
+    <form>
+      <fieldset class="infobox">
+        <label for="name">
+          <legend>Please enter a name for your Primer.</legend>
+        </label>
+  
+        <div class="columns">
+          <div class="column">
+        <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-rounded" (click)="showPrimer2()">OK</button>
+          </div>
+        </div>
+  
+        <label for="show"><legend>Or, select one of the options below</legend>
+        </label>
+      <div class="buttons">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMPrimer()">Modify Primer</button>      
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDPrimer()">Delete Primer</button>
+      </div>
+      </fieldset>
+  
+      <fieldset *ngIf="visiblePrimers2" id="hideMe" class="infobox">
+        <legend> Would you like to associate your new Primer with any of these Skills?</legend><br>
+           
+        <div class="columns">
+          <div class="column">
+            <!-- --Skill List-- -->
+            <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+              <ul class="showSkillList">
+                  <li *ngFor="let skill of skillList; let i = index">
+                      <label class="skillLabel" for="skill_{{skill.skillId}}">
+                          <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                              [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                          {{ skill.skillName }}
+                      </label>
+                  </li>
+              </ul>
+          </fieldset>
+        </div>
+       <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="hidePrimer()" value="Add Primer">
+          </div>
+        </div>
+        <legend>Or, you can make a new skill.</legend> 
+        <!--<app-skill-category-edit></app-skill-category-edit>-->
+      </fieldset>
+    </form>
+  </div>
+  
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMPrimers" class="infobox">
+        <label for="name">
+          <legend>What primer do you want to Modify?</legend>
+        </label>
+        <div class="columns">
+          <div class="column">
+            --Primer List--
+        </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showDPrimer2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+  
+      <fieldset *ngIf="visibleMPrimers2" id="hideMe" class="infobox"> 
+        <legend> Would you like to associate your new Primer with any of these Skills?</legend><br>
+  
+        <div class="columns">
+                <div class="column">
+                  --Skill List--
+          </div>
+          <!--<app-skill-category-edit></app-skill-category-edit>-->
+        <div class="column is-narrow">
+        <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()" value="New Primer"> 
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDPrimers" class="infobox">
+        <label for="name"><legend>What primer do you want to Delete?</legend>
+        </label>
+        <!-- <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> -->
+        <div class="columns">
+          <div class="column">
+            --Primer List--
+         </div>
+         <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showDPrimer2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+      <!-- <fieldset *ngIf="visibleDPrimers2" id="hideMe" class="infobox"> 
+        <strong><label for="name">
+          <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+  
+        <div class="buttons">
+        <input type="submit" class="button is-info is-danger is-rounded" id="delete" value="Yes, delete">
+        <input type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel"> 
+        </div>
+      </fieldset> -->
+    </form>
+  </div>
+  
+  
+    <!-- SKILL HTML FLOW -->
+  <div>
+    <form>
+      <fieldset *ngIf="visibleSkills" class="infobox">
+        <label for="name">
+          <legend>Please enter a name for your Skill </legend>
+        </label>
+  
+        <div class="columns">
+           <div class="column">
+        <input type="text" class="input input-shadow" id="name" width="400px" maxlength="32" minlength="3" required>
+       </div>
+       <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showSkills2()">OK</button>
+        </div>
+      </div>
+        <label for="show">
+          <legend>Or, select one of the options below</legend>
+        </label>
+  
+        <div class="buttons">
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMSkills()">Modify Skill</button>
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDSkills()">Delete Skill</button>
+        </div>
+      </fieldset>
+
+      <fieldset *ngIf="visibleSkills2" id="hideMe" class="infobox">
+        <div class="column is-narrow">
+         <input type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()" (click)="addSkill()" value="Add Skill"> 
+           </div>
+       </fieldset>
+     </form>
+   </div>
+
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleMSkills" class="infobox">
+        <label for="name">
+          <legend>What skill do you want to modify? </legend>
+        </label>
+        <div class="columns">
+          <div class="column">
+            --Skill List--
+        </div>
+         <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> 
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click)="showMSkills2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+    </form>
+  </div>
+  
+  
+  <div>
+    <form>
+      <fieldset *ngIf="visibleDSkills" class="infobox">
+        <label for="name">
+          <legend>What skill do you want to delete?</legend>
+        </label>
+         <input type="text" id="name" width="400px" maxlength="32" minlength="3" required> 
+  
+        <div class="columns">
+          <div class="column">
+            --Skill List--
+          </div>
+        <div class="column is-narrow">
+        <button type="button" class="button is-info is-outlined is-rounded" (click) = "updatePrimer()" (click)="showDSkills2()">OK</button>
+          </div>
+        </div>
+      </fieldset>
+  
+  
+      <fieldset *ngIf="visibleDSkills2" id="hideMe" class="infobox">
+        <strong><label for="name">
+          <legend>Are you sure you want to delete?</legend>
+        </label></strong>
+  
+        <div class="buttons">
+        <input type="submit" class="button is-danger is-outlined is-rounded" id="delete" value="Yes, delete" (click)="deleteSkill()">
+        <input type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()"value="Cancel">
+       </div>
+      </fieldset>
+    </form>
+  </div>
+
+
+<!-- <fieldset class="container is-fluid containerflex borders">
+    <legend>Primer</legend>
+    <div class="columns columnheight row "> -->
+
+ <!-- Primer-EDIT-LIST 
+ <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+    <legend>Primer-Edit</legend>
+    <ul class="listofprimer">
+        <li *ngFor="let primer of primerList; let i = index">
+            <label class="primerLabel" for="primer_{{primer.primerId}}">
+                <input type="radio" id="primer_{{primer.primerId}}" [value]="primer" 
+                    name="primerList" [(ngModel)]="selectedPrimer"
+                    (change)="displayPrimer()" />
+                {{ primer.primerName }}
+            </label>
+        </li>
+    </ul>
+</fieldset>-->
+<!-- Primer-EDIT-LIST -->
+
+
+ <!-- Skill-SELECT-LIST 
+ <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+    <legend>Skill-Select</legend>
+    <ul>
+        <button class="button is-small btn-light-gray" (click)="resetSkillActive()">Clear
+            Selection</button>
+        <li *ngFor="let skill of skillList; let i = index">
+            <label class="skillLabel" for="skill_{{skill.skillId}}">
+                <input type="checkbox" id="skill_{{skill.skillId}}" [value]="skill"
+                    [checked]="skill.isActive" name="skillList"
+                    (change)="toggleSkill(skill.skillId)" />
+                {{ skill.skillName }}
+            </label>
+        </li>
+    </ul>
+</fieldset>-->
+<!-- Skill-SELECT-LIST 
+    </div>
+<div class="columns row">-->
+
+
+<!-- Primer-EDIT-BUTTONS 
+<div class="column">
+    <div class="editbottom">
+        <div class="columns">
+            <div class="column">
+                <div class="buttons">
+                    <div class="buttons">
+                        <button id="addPrimerButton" class="button is-small btn-add"
+                            [ngClass]="showAddPrimer? 'is-active' : ''"
+                            (click)="toggleAddPrimer()">Add Primer</button>
+                        <button id="updatePrimerButton" class="button is-small btn-update"
+                            [ngClass]="showUpdatePrimer? 'is-active' : ''"
+                            (click)="toggleUpdatePrimer()">Update Primer</button>
+                        <button id="deletePrimerButton" class="button is-small has-background-danger"
+                            (click)="deletePrimer()">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <ng-container *ngIf="showPrimerDeleteFail">
+                    <p class="help has-text-danger">Please select a Primer to delete.</p>
+                </ng-container>
+                <ng-container *ngIf="showAddPrimer">
+                    <input id="addPrimerTextBox" class="input add-input mb-1" placeholder="Primer Name"
+                        [(ngModel)]="primerNameAdd" />
+                    <p class="help add-primer-help"
+                        *ngIf="primerNameAdd == '' || primerNameAdd == null">Please select a Name
+                        for this Primer</p>
+                    <p class="help add-primer-help" *ngIf="selectedSkillList.length==0">Please
+                        select Skills for this Primer</p>
+                    <button id="submitAdd" class="button is-small btn-add"
+                        (click)="addPrimer()">Submit</button>
+                </ng-container>
+                <ng-container *ngIf="showUpdatePrimer">
+                    <input id="updatePrimerTextBox" class="input update-input mb-1" placeholder="Primer Name"
+                        [(ngModel)]="primerNameUpdate" />
+                    <p class="help update-primer-help" *ngIf="primerNameUpdate == null">Please
+                        select a primer for update</p>
+                    <button id="submitUpdate" class="button is-small btn-update"
+                        (click)="updatePrimer()">Update</button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!-- Primer-EDIT-BUTTONS 
+
+</div>
+</fieldset>-->

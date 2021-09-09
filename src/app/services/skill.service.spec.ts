@@ -13,7 +13,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 
 describe('SkillService', () => {
   let service: SkillService;
-  const apiUrl = 'http://3.226.243.38:8081/skill';
+  const apiUrl = 'http://localhost:8081/skill';
 
   const skilldto = {
     name: 'Skilltest',

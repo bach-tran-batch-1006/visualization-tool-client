@@ -1,0 +1,19 @@
+<div class="projectList">
+    <div *ngIf="currentProjectList.length === 0">
+        <p id="nocurriula">No Project</p>
+    </div>
+    <ng-container *ngFor="let project of projectList; let idx = index">
+        <label (click)="changeCurrentProject(project.projectId)">
+            <input
+                class="project-button"
+                type="radio"
+                name="project-input"
+                value="{{ project.projectName }}"
+                [checked]="(idx === 0)"
+            >
+            <div class="button project-button-input column leftColumn mb-0 is-full">
+                <p>{{ project.projectName }}</p>
+            </div>
+        </label>
+    </ng-container>
+</div>

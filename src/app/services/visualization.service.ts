@@ -4,13 +4,15 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Visualization, VisualizationDTO} from '../models/Visualization';
 import { Skill } from '../models/Skill';
 import { Category } from '../models/Category';
+import { Curriculum } from '../models/Curriculum';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class VisualizationService {
-
-  apiURL = 'http://3.226.243.38:8081/visualization/';
+  apiURL = 'http://54.221.159.251:8090/visualization/visualization/';
+  //apiURL = 'http://localhost:8080/visualization/visualization';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -37,12 +39,28 @@ export class VisualizationService {
     return this.httpClient.delete<number>(`${this.apiURL}${id}`);
   }
 
-  getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(`${this.apiURL}${id}/skills`);
+  getCurriculumById(id: number): Observable<Curriculum[]>{
+    return this.httpClient.get<Curriculum[]>(`${this.apiURL}${id}`);
   }
 
-  getAllUniqueCategoriesByVisualization(id: number): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(`${this.apiURL}${id}/categories`);
+  getSkillsById(id: number):  Observable<Skill[]> {
+    return this.httpClient.get<Skill[]>(`${this.apiURL}${id}`);
   }
+
+  getCategoriesById(id: number): Observable<Category[]> {
+    return this.httpClient.get<Category[]>(`${this.apiURL}${id}`);
+  }
+
+  getPrimerById(id: number): Observable<number>{
+    return this.httpClient.get<number>(`${this.apiURL}${id}`);
+  }
+
+  // getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {
+  //   return this.httpClient.get<Skill[]>(`${this.apiURL}${id}/skills`);
+  // }
+
+  // getAllUniqueCategoriesByVisualization(id: number): Observable<Category[]> {
+  //   return this.httpClient.get<Category[]>(`${this.apiURL}${id}/categories`);
+  // }
 
 }

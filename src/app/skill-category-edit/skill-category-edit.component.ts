@@ -7,7 +7,7 @@ import { SkillService } from '../services/skill.service';
 @Component({
   selector: 'app-skill-category-edit',
   templateUrl: './skill-category-edit.component.html',
-  styleUrls: ['./skill-category-edit.component.css']
+  //styleUrls: ['./skill-category-edit.component.css']
 })
 export class SkillCategoryEditComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class SkillCategoryEditComponent implements OnInit {
   showAddSkill = false;
   showUpdateSkill = false;
 
-  skillNameAdd: string;
+  skillNameAdd: string = " ";
   skillNameUpdate: string;
 
   selectedSkill: Skill;
@@ -26,18 +26,136 @@ export class SkillCategoryEditComponent implements OnInit {
   categoryList: Category[] = [];
   showAddCategory = false;
   showUpdateCategory = false;
-  categoryNameAdd: string;
+  categoryNameAdd: string =" ";
   categoryDescriptionAdd: string;
   categoryName: string;
   categoryDescription: string;
   selectedCategory: Category;
   showCategoryDeleteFail = false;
+  nullCat: Category = { categoryId: 0,
+    categoryName: null,
+    categoryDescription: null,
+    categoryColor: null};
+
+  visible:boolean = true;
+  intro:boolean = true;
+
+  visibleVisual:boolean =false;
+  visibleVisual2:boolean =false;
+  visibleMVisual:boolean=false;
+  visibleMVisual2:boolean=false;
+  visibleDVisual:boolean=false;
+  visibleDVisual2:boolean=false;
+
+  visibleCurric:boolean =false;
+  visibleCurric2:boolean =false;
+  visibleMCurric:boolean=false;
+  visibleMCurric2:boolean=false;
+  visibleDCurric:boolean=false;
+  visibleDCurric2:boolean=false;
+
+  visibleProject:boolean =false;
+  visibleProject2:boolean =false;
+  visibleMProject:boolean=false;
+  visibleMProject2:boolean=false;
+  visibleDProject:boolean=false;
+  visibleDProject2:boolean=false;
+
+  visibleSkills:boolean =false;
+  visibleSkills2:boolean =false;
+  visibleMSkills:boolean=false;
+  visibleMSkills2:boolean=false;
+  visibleDSkills:boolean=false;
+  visibleDSkills2:boolean=false;
+
+  visibleCatego:boolean =false;
 
   constructor(private skillService: SkillService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.getAllCategories();
     this.getAllSkills();
+  }
+
+  // ********** SKILL VISUAL MANIPULATORS **********
+  
+  visualReset(){
+    this.intro=true;
+  
+    this.visibleSkills=false;
+    this.visibleSkills2 =false;
+    this.visibleMSkills=false;
+    this.visibleMSkills2=false;
+    this.visibleDSkills=false;
+    this.visibleDSkills2=false;
+  
+    this.visibleCatego=false;
+  }
+
+  showSkills(){
+    this.intro =false;
+    this.visibleSkills =true;
+  
+    this.visibleVisual=false;
+    this.visibleVisual2=false;  
+    this.visibleMVisual=false;
+    this.visibleMVisual2=false;
+    this.visibleDVisual=false;
+    this.visibleDVisual2=false;
+  
+    this.visibleCurric=false;
+    this.visibleCurric2=false;
+    this.visibleMCurric=false;
+    this.visibleMCurric2=false;
+    this.visibleDCurric=false;
+    this.visibleDCurric2=false;
+  
+    this.visibleProject=false;
+    this.visibleProject2 =false;
+    this.visibleMProject=false;
+    this.visibleMProject2=false;
+    this.visibleDProject=false;
+    this.visibleDProject2=false;
+  
+    this.visibleSkills2 =false;
+    this.visibleMSkills=false;
+    this.visibleMSkills2=false;
+    this.visibleDSkills=false;
+    this.visibleDSkills2=false;
+  
+    this.visibleCatego=false;
+  }
+  showSkills2(){
+  this.visibleSkills2 =true;
+  this.visibleCatego =true;
+  }
+  showMSkills(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleCurric =false;
+    this.visibleProject =false;
+    this.visibleSkills =false;
+    this.visibleMSkills =true;
+  }
+  showMSkills2(){
+  this.visibleMSkills2 =true;
+  this.visibleCatego =true;
+  }
+  showDSkills(){
+    this.intro =false;
+    this.visibleVisual =false;
+    this.visibleCurric =false;
+    this.visibleProject =false;
+    this.visibleSkills =false;
+    this.visibleDSkills =true;
+  }
+  showDSkills2(){
+  this.visibleDSkills2 =true;
+  }
+  hideSkills(){
+    this.visibleSkills2 =false;
+    this.visibleCatego =false;
+  
   }
 
   getAllCategories(): void {
@@ -64,7 +182,8 @@ export class SkillCategoryEditComponent implements OnInit {
   addCategory(): Category {
     const catDTO: CategoryDTO = {
       categoryName: this.categoryNameAdd,
-      categoryDescription: this.categoryDescriptionAdd
+      categoryDescription: null,
+      userid: Number(localStorage.getItem('userId'))
     };
     console.log(catDTO);
     let newCat;
@@ -74,6 +193,7 @@ export class SkillCategoryEditComponent implements OnInit {
     });
     this.categoryName = '';
     this.categoryDescription = '';
+    //console.log(newCat);
     return newCat;
   }
 
@@ -81,7 +201,8 @@ export class SkillCategoryEditComponent implements OnInit {
     const catId = this.selectedCategory.categoryId;
     const catDTO: CategoryDTO = {
       categoryName: this.categoryName,
-      categoryDescription: this.categoryDescription
+      categoryDescription: this.categoryDescription,
+      userid: Number(localStorage.getItem('userId'))
     };
     let newCat;
     this.categoryService.updateCategory(catId, catDTO).subscribe((response) => {
@@ -175,25 +296,44 @@ export class SkillCategoryEditComponent implements OnInit {
 
   displaySkill(): void {
     this.skillNameUpdate = this.selectedSkill.skillName;
-    const selectedCategoryRadio = document.getElementById(`category_${this.selectedSkill.category.categoryId}`) as HTMLInputElement;
-    selectedCategoryRadio.checked = true;
+    // const selectedCategoryRadio = document.getElementById(`category_${this.selectedSkill.category.categoryId}`) as HTMLInputElement;
+    // selectedCategoryRadio.checked = true;
     this.showAddSkill = false;
     this.showUpdateSkill = true;
     this.showSkillDeleteFail = false;
   }
 
   addSkill(): Skill {
-    const skillDTO: SkillDTO = {
-      name: this.skillNameAdd,
-      category: this.selectedCategory
-    };
-    let newSkill;
-    this.skillService.addSkill(skillDTO).subscribe((response) => {
+    if(this.selectedCategory === undefined){
+      const skillDTO: SkillDTO = {
+        name: this.skillNameAdd,
+        category: this.nullCat,
+        userId: Number(localStorage.getItem('userId'))
+      };
+      console.log(skillDTO);
+      let newSkill;
+      this.skillService.addSkill(skillDTO).subscribe((response) => {
       newSkill = response;
       this.getAllSkills();
     });
     this.skillNameAdd = '';
     return newSkill;
+    }else{
+      const skillDTO: SkillDTO = {
+        name: this.skillNameAdd,
+        category: this.selectedCategory,
+        userId: Number(localStorage.getItem('userId'))
+      };
+      console.log(skillDTO);
+      let newSkill;
+      this.skillService.addSkill(skillDTO).subscribe((response) => {
+      newSkill = response;
+      this.getAllSkills();
+      });
+      this.skillNameAdd = '';
+      return newSkill;
+   }
+    
   }
 
   updateSkill(): Skill {
@@ -222,8 +362,8 @@ export class SkillCategoryEditComponent implements OnInit {
       const selectedSkillRadio = document.getElementById(`skill_${this.selectedSkill.skillId}`) as HTMLInputElement;
       selectedSkillRadio.checked = false;
 
-      const selectedCategoryRadio = document.getElementById(`category_${this.selectedSkill.category.categoryId}`) as HTMLInputElement;
-      selectedCategoryRadio.checked = false;
+      // const selectedCategoryRadio = document.getElementById(`category_${this.selectedSkill.category.categoryId}`) as HTMLInputElement;
+      // selectedCategoryRadio.checked = false;
 
       this.skillService.deleteSkill(skillId).subscribe((response) => {
         deleteID = response;

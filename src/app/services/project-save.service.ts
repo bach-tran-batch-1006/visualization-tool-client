@@ -14,7 +14,7 @@ export class ProjectSaveService {
   };
 
    constructor(private httpClient: HttpClient) { }
-   getAllCurriculum(): Observable<Project[]> {
+   getAllProjects(): Observable<Project[]> {
     return this.httpClient.get<Project[]>(`${this.apiURL}`);
   }
 

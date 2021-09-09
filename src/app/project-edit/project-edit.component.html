@@ -18,8 +18,10 @@
       </label>
 
       <div class="buttons">
-        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMProject()">Modify Project</button>
-        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDProject()">Delete Project</button>
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMProject()">Modify
+          Project</button>
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDProject()">Delete
+          Project</button>
       </div>
     </fieldset>
 
@@ -32,18 +34,19 @@
           --Skill List--
           <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <ul class="showSkillList">
-                <li *ngFor="let skill of skillList; let i = index">
-                    <label class="skillLabel" for="skill_{{skill.skillId}}">
-                        <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
-                            [(ngModel)]="selectedSkill" (change)="displaySkill()" />
-                        {{ skill.skillName }}
-                    </label>
-                </li>
+              <li *ngFor="let skill of skillList; let i = index">
+                <label class="skillLabel" for="skill_{{skill.skillId}}">
+                  <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
+                    [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                  {{ skill.skillName }}
+                </label>
+              </li>
             </ul>
-        </fieldset>
+          </fieldset>
         </div>
         <div class="column is-narrow">
-          <button type="button" id="submit" class="button is-info is-outlined is-rounded" (click)="addProject()" (click)="hideProject()">Add
+          <button type="button" id="submit" class="button is-info is-outlined is-rounded" (click)="addProject()"
+            (click)="hideProject()">Add
             Project</button>
         </div>
       </div>
@@ -78,18 +81,19 @@
           --Skill List--
           <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <ul class="showSkillList">
-                <li *ngFor="let skill of skillList; let i = index">
-                    <label class="skillLabel" for="skill_{{skill.skillId}}">
-                        <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
-                            [(ngModel)]="selectedSkill" (change)="displaySkill()" />
-                        {{ skill.skillName }}
-                    </label>
-                </li>
+              <li *ngFor="let skill of skillList; let i = index">
+                <label class="skillLabel" for="skill_{{skill.skillId}}">
+                  <input type="radio" id="curriculum_{{skill.skillId}}" [value]="skill" [checked]="skill.isActive"
+                    name="skillList" (change)="toggleSkill(skill.skillId)" />
+                  {{ curriculum.skillName }}
+                </label>
+              </li>
             </ul>
-        </fieldset>
+          </fieldset>
         </div>
         <div class="column is-narrow">
-          <button type="submit" id="submit" class="button is-info is-outlined is-rounded" (click)="visualReset()">Submit</button>
+          <button type="submit" id="submit" class="button is-info is-outlined is-rounded"
+            (click)="visualReset()">Submit</button>
         </div>
       </div>
     </fieldset>
@@ -121,7 +125,8 @@
 
       <div class="buttons">
         <button type="button" class="button is-danger is-outlined is-rounded" id="delete">Yes, delete</button>
-        <button type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()">Cancel</button>
+        <button type="button" class="button is-warning is-outlined is-rounded" id="cancel"
+          (click)="visualReset()">Cancel</button>
       </div>
     </fieldset>
   </form>
@@ -147,8 +152,10 @@
       </label>
 
       <div class="buttons">
-        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMSkills()">Modify Skill</button>
-        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDSkills()">Delete Skill</button>
+        <button type="button" class="button is-warning is-outlined is-rounded" (click)="showMSkills()">Modify
+          Skill</button>
+        <button type="button" class="button is-danger is-outlined is-rounded" (click)="showDSkills()">Delete
+          Skill</button>
       </div>
     </fieldset>
 
@@ -161,15 +168,15 @@
           --Category List--
           <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <ul class="showCategoryList">
-                <li *ngFor="let category of categoryList; let i = index">
-                    <label class="categoryLabel" for="category_{{category.categoryId}}">
-                        <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
-                            [(ngModel)]="selectedCategory" (change)="displayCategory()" />
-                        {{ category.categoryName }}
-                    </label>
-                </li>
+              <li *ngFor="let category of categoryList; let i = index">
+                <label class="categoryLabel" for="category_{{category.categoryId}}">
+                  <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
+                    [(ngModel)]="selectedCategory" (change)="displayCategory()" />
+                  {{ category.categoryName }}
+                </label>
+              </li>
             </ul>
-        </fieldset>
+          </fieldset>
         </div>
         <div class="column is-narrow">
           <input type="checkbox" id="box" name="primary key" value="true">dummy
@@ -210,15 +217,15 @@
           --Category List--
           <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
             <ul class="showCategoryList">
-                <li *ngFor="let category of categoryList; let i = index">
-                    <label class="categoryLabel" for="category_{{category.categoryId}}">
-                        <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
-                            [(ngModel)]="selectedCategory" (change)="displayCategory()" />
-                        {{ category.categoryName }}
-                    </label>
-                </li>
+              <li *ngFor="let category of categoryList; let i = index">
+                <label class="categoryLabel" for="category_{{category.categoryId}}">
+                  <input type="radio" id="category_{{category.categoryId}}" [value]="category" name="categoryList"
+                    [(ngModel)]="selectedCategory" (change)="displayCategory()" />
+                  {{ category.categoryName }}
+                </label>
+              </li>
             </ul>
-        </fieldset>
+          </fieldset>
         </div>
         <div class="column is-narrow">
           <input type="checkbox" id="box" name="primary key" value="true">dummy
@@ -258,7 +265,8 @@
       <div class="buttons">
         <button type="button" class="button is-danger is-outlined is-rounded" id="delete" (click)="deleteSkill()">Yes,
           delete</button>
-        <button type="button" class="button is-warning is-outlined is-rounded" id="cancel" (click)="visualReset()">Cancel</button>
+        <button type="button" class="button is-warning is-outlined is-rounded" id="cancel"
+          (click)="visualReset()">Cancel</button>
       </div>
     </fieldset>
   </form>

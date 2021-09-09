@@ -4,7 +4,7 @@ export interface Project{
     projectId?: number;
     projectName: string;
     // projectDesc?:string;
-    // isActive: boolean;
+     isActive: boolean;
 }
 
 export interface ProjectDTO {

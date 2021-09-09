@@ -53,6 +53,18 @@
       <div class="columns">
         <div class="column">
           --Curriculum List--
+          <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <ul>
+                <li *ngFor="let curriculum of curriculumList; let i = index">
+                    <label class="curriculumLabel" for="curriculum_{{curriculum.curriculumId}}">
+                        <input type="checkbox" id="curriculum_{{curriculum.curriculumId}}" [value]="curriculum"
+                            [checked]="curriculum.isActive" name="curriculumList"
+                            (change)="toggleCurriculum(curriculum.curriculumId)" />
+                        {{ curriculum.curriculumName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
       </div>
       
       <div class="column is-narrow">
@@ -68,6 +80,18 @@
       <div class="columns">
         <div class="column">
           --Project List--
+          <fieldset class="column borders boxcolumn is-6-desktop is-12-mobile">
+            <ul>
+                <li *ngFor="let project of projectList; let i = index">
+                    <label class="projectLabel" for="project_{{project.projectId}}">
+                        <input type="checkbox" id="project_{{project.projectId}}" [value]="project"
+                            [checked]="project.isActive" name="projectList"
+                            (change)="toggleProject(project.projectId)" />
+                        {{ project.projectName }}
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
       </div>
 
       <div class="column is-narrow">
@@ -154,8 +178,9 @@
             <ul class="showSkillList">
                 <li *ngFor="let skill of skillList; let i = index">
                     <label class="skillLabel" for="skill_{{skill.skillId}}">
-                        <input type="radio" id="skill_{{skill.skillId}}" [value]="skill" name="skillList"
-                            [(ngModel)]="selectedSkill" (change)="displaySkill()" />
+                        <input type="checkbox" id="skill_{{skill.skillId}}" [value]="skill" 
+                            [checked]="skill.isActive" name="skillList"
+                            (change)="toggleSkill(skill.skillId)" />
                         {{ skill.skillName }}
                     </label>
                 </li>

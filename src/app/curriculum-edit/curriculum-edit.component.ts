@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Curriculum, CurriculumDTO } from '../models/Curriculum';
+import { Project } from '../models/Project';
 import { Skill } from '../models/Skill';
 import { CurriculumService } from '../services/curriculum.service';
+import { ProjectSaveService } from '../services/project-save.service';
 import { SkillService } from '../services/skill.service';
 
 @Component({
@@ -22,6 +24,9 @@ export class CurriculumEditComponent implements OnInit {
 
   curriculumNameAdd: string;
   curriculumNameUpdate: string;
+
+  projectList: Project[] = [];
+  selectedProjectList: Project[] = [];
 
   skillList: Skill[] = [];
   selectedSkillList: Skill[] = [];
@@ -59,7 +64,7 @@ export class CurriculumEditComponent implements OnInit {
 
   visibleCatego:boolean =false;
 
-  constructor(private curriculumService: CurriculumService, private skillService: SkillService ) { }
+  constructor(private curriculumService: CurriculumService, private skillService: SkillService, private projectService:ProjectSaveService ) { }
 
 // ********** CURRICULUM MANIPULATORS **********
 
@@ -211,6 +216,31 @@ showProject2(){
     this.getAllCurriculum();
     this.getAllSkills();
     this.visualReset();
+  }
+
+  getAllProjects():void{
+    this.projectService.getAllProjects().subscribe((response) => {
+      this.projectList = response;
+      this.projectList.sort((a, b) => (a.projectName.toLowerCase() > b.projectName.toLowerCase()) ? 1 : -1);
+      const listSize = this.projectList.length;
+      for (let index = 0; index < listSize; index++) {
+        this.projectList[index].isActive = false;
+      }
+    })
+  }
+
+  toggleProject(currentProjectId: number): void {
+    const listSize = this.curriculumList.length;
+    for (let index = 0; index < listSize; index++) {
+      if (this.projectList[index].projectId === currentProjectId) {
+        if (!this.curriculumList[index].isActive) {
+          this.selectedProjectList.push(this.projectList[index]);
+        } else {
+          this.selectedProjectList = this.selectedProjectList.filter((c) => c.projectId !== currentProjectId);
+        }
+        this.projectList[index].isActive = !this.projectList[index].isActive;
+      }
+    }
   }
 
   getAllCurriculum(): void {

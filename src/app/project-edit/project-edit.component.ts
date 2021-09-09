@@ -224,6 +224,7 @@ getAllSkills(): void {
   this.skillService.getSkills().subscribe((response) => {
     this.skillList = response;
     this.skillList.sort((a, b) => (a.skillName.toLowerCase() > b.skillName.toLowerCase()) ? 1 : -1);
+    console.log(this.skillList);
     const listSize = this.skillList.length;
     for (let index = 0; index < listSize; index++) {
       this.skillList[index].isActive = false;

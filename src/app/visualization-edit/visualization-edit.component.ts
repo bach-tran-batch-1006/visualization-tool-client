@@ -5,6 +5,7 @@ import { CurriculumService } from '../services/curriculum.service';
 import { Curriculum } from '../models/Curriculum';
 import { Primer } from '../models/Primer';
 import { PrimerService } from '../services/primer.service';
+import { Skill } from '../models/Skill';
 
 
 @Component({
@@ -37,6 +38,10 @@ export class VisualizationEditComponent implements OnInit {
 
   curriculumList: Curriculum[] = [];
   selectedCurriculumList: Curriculum[] = [];
+
+
+  skillList: Skill[] = [];
+  selectedSkillList: Skill[] = [];
 
    primerList: Primer[] = [];
    selectedPrimerList: Primer[] = [];
@@ -140,6 +145,7 @@ export class VisualizationEditComponent implements OnInit {
     const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameAdd,
       curricula: this.selectedCurriculumList,
+      skill: this.selectedSkillList,
       primer: this.selectedPrimerList
     };
     this.visualizationService.addVisualization(visualizationDTO).subscribe((response) => {
@@ -162,6 +168,7 @@ export class VisualizationEditComponent implements OnInit {
     const visualizationDTO: VisualizationDTO = {
       title: this.visualizationNameUpdate,
       curricula: this.selectedCurriculumList,
+      skill: this.selectedSkillList,
       primer: this.selectedPrimerList
     };
     this.visualizationService.updateVisualization(visualizationId, visualizationDTO).subscribe((response) => {

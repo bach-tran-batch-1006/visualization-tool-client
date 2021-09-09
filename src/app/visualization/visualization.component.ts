@@ -35,16 +35,16 @@ export class VisualizationComponent implements OnInit {
     this.visualizationId = Number(this.route.snapshot.paramMap.get('id'));
     this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
       this.currentVisualization = response;
-      this.currentCurriculumList = response.curriculumList;
-      this.currentPrimerList = response.primerList;
-      if (this.currentCurriculumList.length !== 0) {
-        this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
-      }
+      // this.currentCurriculumList = response.curriculumList;
+      // this.currentPrimerList = response.primerList;
+      // if (this.currentCurriculumList.length !== 0) {
+      //   this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
+      // }
     });
-    this.visualizationService.getAllUniqueSkillsByVisualization(this.visualizationId).subscribe((response) => {
+    this.visualizationService.getSkillsById(this.visualizationId).subscribe((response) => {
       this.distinctSkillList = response;
     });
-    this.visualizationService.getAllUniqueCategoriesByVisualization(this.visualizationId).subscribe((response) => {
+    this.visualizationService.getCategoriesById(this.visualizationId).subscribe((response) => {
       this.distinctCategoryList = response;
       const total = Math.floor(360 / this.distinctCategoryList.length);
       for (let idx = 0; idx < this.distinctCategoryList.length; idx++) {

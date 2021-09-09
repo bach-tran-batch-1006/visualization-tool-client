@@ -37,12 +37,24 @@ export class VisualizationService {
     return this.httpClient.delete<number>(`${this.apiURL}${id}`);
   }
 
-  getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(`${this.apiURL}${id}/skills`);
+  getSkillsById(id: number):  Observable<Skill[]> {
+    return this.httpClient.get<Skill[]>(`${this.apiURL}${id}`);
   }
 
-  getAllUniqueCategoriesByVisualization(id: number): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(`${this.apiURL}${id}/categories`);
+  getCategoriesById(id: number): Observable<Category[]> {
+    return this.httpClient.get<Category[]>(`${this.apiURL}${id}`);
   }
+
+  getPrimerById(id: number): Observable<number>{
+    return this.httpClient.get<number>(`${this.apiURL}${id}`);
+  }
+
+  // getAllUniqueSkillsByVisualization(id: number): Observable<Skill[]> {
+  //   return this.httpClient.get<Skill[]>(`${this.apiURL}${id}/skills`);
+  // }
+
+  // getAllUniqueCategoriesByVisualization(id: number): Observable<Category[]> {
+  //   return this.httpClient.get<Category[]>(`${this.apiURL}${id}/categories`);
+  // }
 
 }

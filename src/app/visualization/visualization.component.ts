@@ -13,7 +13,7 @@ import { VisualizationService } from '../services/visualization.service';
   //styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent implements OnInit {
-  visualizationId = 0;
+  visualizationId= 1;
 
   currentVisualization: Visualization;
   currentCurriculumList: Curriculum[] = null;
@@ -22,6 +22,7 @@ export class VisualizationComponent implements OnInit {
 
   distinctSkillList: Skill[] = [];
   distinctCategoryList: Category[] = [];
+  distinctCurriculumList: Curriculum[] = [];
   currentCurriculumId: number;
   currentSkillList: Skill[] = [];
 
@@ -41,16 +42,32 @@ export class VisualizationComponent implements OnInit {
       //   this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
       // }
     });
-    this.visualizationService.getSkillsById(this.visualizationId).subscribe((response) => {
-      this.distinctSkillList = response;
-    });
-    this.visualizationService.getCategoriesById(this.visualizationId).subscribe((response) => {
-      this.distinctCategoryList = response;
-      const total = Math.floor(360 / this.distinctCategoryList.length);
-      for (let idx = 0; idx < this.distinctCategoryList.length; idx++) {
-        this.categoryColorList.push(this.randColor(idx, total));
-      }
-    });
+
+
+    // this.visualizationService.getCurriculumById(this.visualizationId).subscribe(
+    //   (response) =>{
+    //     this.distinctCurriculumList = response;
+    //   });
+
+    // this.visualizationId = Number(this.route.snapshot.paramMap.get('id'));
+    // this.visualizationService.getVisualizationById(this.visualizationId).subscribe((response) => {
+    //   this.currentVisualization = response;
+    //   // this.currentCurriculumList = response.curriculumList;
+    //   // this.currentPrimerList = response.primerList;
+    //   // if (this.currentCurriculumList.length !== 0) {
+    //   //   this.changeCurriculumEvent(this.currentCurriculumList[0].curriculumId);
+    //   // }
+    // });
+    // this.visualizationService.getSkillsById(this.visualizationId).subscribe((response) => {
+    //   this.distinctSkillList = response;
+    // });
+    // this.visualizationService.getCategoriesById(this.visualizationId).subscribe((response) => {
+    //   this.distinctCategoryList = response;
+    //   const total = Math.floor(360 / this.distinctCategoryList.length);
+    //   for (let idx = 0; idx < this.distinctCategoryList.length; idx++) {
+    //     this.categoryColorList.push(this.randColor(idx, total));
+    //   }
+    // });
   }
   changeCurriculumEvent(currentCurriculumId: number): void {
     for (const curriculum of this.currentVisualization.curriculumList){

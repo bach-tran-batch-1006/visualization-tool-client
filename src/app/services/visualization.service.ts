@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Visualization, VisualizationDTO} from '../models/Visualization';
 import { Skill } from '../models/Skill';
 import { Category } from '../models/Category';
+import { Curriculum } from '../models/Curriculum';
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +37,10 @@ export class VisualizationService {
 
   deleteVisualization(id: number): Observable<number> {
     return this.httpClient.delete<number>(`${this.apiURL}${id}`);
+  }
+
+  getCurriculumById(id: number): Observable<Curriculum[]>{
+    return this.httpClient.get<Curriculum[]>(`${this.apiURL}${id}`);
   }
 
   getSkillsById(id: number):  Observable<Skill[]> {
